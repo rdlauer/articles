@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Go QRazy with the Barcode Scanner Plugin</title>
+
+</head>
+<body>
+<h2>Go QRazy with the Barcode Scanner Plugin</h2>
+
+<p>They are everywhere: QR codes are plastered on practically every piece of marketing material you see these days. And while consumer acceptance of actually scanning QR codes is relatively low (estimated at 19% at the beginning of 2013), the usage is rising at a steady pace. What if you are creating a hybrid mobile app with Icenium and want to add barcode/QR code scanning (or in some cases even add the ability to create your own QR code)? Lucky you because there is a Cordova plugin for that - and it's included as part of Icenium!</p>
+
+<p>The utility of the barcode cannot be denied. There is really no easier way to provide information to a user in an easy to use, machine-readable format. QR codes especially excel at this as they are unmatched in their ability to start a large amount of data but also quickly be readable by even a very old mobile device.</p>
+
+<p>In case you're not quite sure just what a QR code is, here you go (and yes you can safely scan this one - it will just send you to Wikipedia!)</p>
+
+<p><img src="qr.png" alt="qr code example" /></p>
+
+<p>In this post we'll go over how you can integrate the Barcode Scanner plugin into your next Icenium project. We'll cover how you scan for codes (and what to do with the data) and also how to allow your users to create their own QR codes! If you're the curious type, you can look at the documentation for the Barcode Scanner implementations for <a href="https://github.com/phonegap/phonegap-plugins/tree/master/iOS/BarcodeScanner">iOS</a> and <a href="https://github.com/phonegap/phonegap-plugins/tree/master/Android/BarcodeScanner">Android</a>.</p>
+
+<h3>Types of Barcodes</h3>
+
+<p>There are a wide variety of barcodes that you may scan with this plugin. They do vary based on whether you are scanning with an iOS or an Android device.</p>
+
+<p><strong>Android Compatibility:</strong></p>
+
+<ul>
+<li>QR_CODE</li>
+<li>DATA_MATRIX</li>
+<li>UPC_E</li>
+<li>UPC_A</li>
+<li>EAN_8</li>
+<li>EAN_13</li>
+<li>CODE_128</li>
+<li>CODE_39</li>
+<li>CODE_93</li>
+<li>CODABAR</li>
+<li>ITF</li>
+<li>RSS14</li>
+<li>PDF417</li>
+<li>RSS_EXPANDED</li>
+</ul>
+
+
+<p><strong>iOS Compatibility:</strong></p>
+
+<ul>
+<li>QR_CODE</li>
+<li>DATA_MATRIX</li>
+<li>UPC_E</li>
+<li>UPC_A</li>
+<li>EAN_8</li>
+<li>EAN_13</li>
+<li>CODE_128</li>
+<li>CODE_39</li>
+</ul>
+
+
+<p>Odds are the only code types you really care about are QR codes and UPC (which are supported by both), but this is still a good reference.</p>
+
+<p>So how do we actually set up an app to scan a barcode? Lets walk through an easy example by first starting a new project in Graphite:</p>
+
+<h3>Initial Setup and Configuration</h3>
+
+<p>You can go ahead and create a new project from the Graphite Dashboard (or use an existing project, either way is fine). If you aren't familiar with the Graphite IDE, take a look at the multi-part <a href="http://www.icenium.com/community/blog/icenium-team-blog/2013/04/05/diving-into-icenium-graphite-part-1-of-3">Deep Dive into Icenium Graphite</a> series.</p>
+
+<p>The first thing I'm going to do is include the Barcode Scanner plugin in my app. Navigate to your project properties by double-clicking on the <strong>Properties</strong> option in the <strong>Project Navigator</strong>.</p>
+
+<p><img src="properties.png" alt="project properties" /></p>
+
+<p>Navigate to the <strong>Plugins</strong> pane and check the box next to the <strong>Barcode Scanner</strong> plugin. Save your changes and that's it - the plugin is ready to be used in your project!</p>
+
+<p><img src="plugins.png" alt="plugins pane" /></p>
+
+<h3>Scanning Barcodes</h3>
+
+<p>Let say we are developing an app that needs to be able to scan QR codes and act on the data returned from the scan. How would we accomplish this? The Barcode Scanner plugin does most of the heavy lifting for us, but lets walk through the code it will take to get us there.</p>
+
+<p>Lets start with some simple HTML:</p>
+
+<pre><code>&lt;button class="button" id="btnScan"&gt;Scan&lt;/button&gt;
+&lt;div id="result"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>We want to wire this up so that when the button is clicked, we pull up the scanner and the results of the scanner are inserted into the "result" div element. We need some simple JavaScript to accomplish this:</p>
+
+<pre><code>$("#btnScan").click(function (){
+    window.plugins.barcodeScanner.scan(
+        function(result) {
+            if (!result.cancelled) {
+                $("#result").text(result.format + " | " + result.text);
+            }
+        }, 
+        function(error) {
+            console.log("Scanning failed: " + error);
+        });
+});
+</code></pre>
+
+<p>The key parts are the <strong>result.format</strong> and <strong>result.text</strong> properties. The format is going to provide us with the type of code that was scanned. The text will provide us the data hidden in the code. For example, if you were to scan the code included at the top of this post, the result would be: <strong>QR_CODE | http://en.m.wikipedia.org</strong> - which tells us that this is a QR code and it is a URL to the mobile wikipedia site.</p>
+
+<p>At this point it is up to you to decide what to do with the data. If it's a URL, maybe you spawn an <a href="http://docs.phonegap.com/en/2.4.0/cordova_inappbrowser_inappbrowser.md.html">InAppBrowser</a> and automatically redirect them to the URL. If it's a UPC code maybe you use that to look up the product using <a href="http://aws.amazon.com/">Amazon's web services</a>.</p>
+
+<h3>Encoding Barcodes</h3>
+
+<p>What if you want to allow your users to create their own barcodes? Well it just so happens that this capability is built in to the Barcode Scanner plugin as well. <em>One big catch though - it's only available for Android!</em></p>
+
+<p>We can create another simple example based on the "Scanning Barcodes" example above. Here is our simple HTML:</p>
+
+<pre><code>&lt;input type="text" id="txtEncode" /&gt;
+&lt;button class="button" id="btnEncode"&gt;Encode&lt;/button&gt;
+</code></pre>
+
+<p>In this case we are going to take whatever is entered in the <strong>txtEncode</strong> input element and create a QR code from it.</p>
+
+<pre><code>$("#btnEncode").click(function (){
+    window.plugins.barcodeScanner.encode(
+            BarcodeScanner.Encode.TEXT_TYPE,
+            $("#txtEncode").val(), 
+            function(success) {
+                console.log("Encoding success: " + success);
+            }, function(fail) {
+                console.log("Encoding failed: " + fail);
+            });
+});
+</code></pre>
+
+<p>This will present the user with a QR code which they may then take a screen capture of to use as they please or even show the code to another device for them to scan directly.</p>
+
+<h3>Conclusion</h3>
+
+<p>The Barcode Scanner plugin is a really easy plugin to integrate with your Icenium projects. If you ever have the need to scan and/or encode a barcode, this is your best bet to do so easily and reliably. I hope this is useful to anyone starting out with developing hybrid mobile apps with Icenium!</p>
+</body>
+</html>

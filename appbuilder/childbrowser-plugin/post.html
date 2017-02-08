@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>ChildBrowser Plugin - External Web Content Inside Your App</title>
+
+</head>
+<body>
+<h2>ChildBrowser Plugin - External Web Content Inside Your App</h2>
+
+<p>Arguably the most popular Cordova plugin since it was first released, the ChildBrowser plugin is both a remarkably useful and easy to use addition. If you aren't familiar with ChildBrowser, it provides you with a way to display external web content within the context of your app. As the name implies, it spawns a child browser window that runs inside of your app. ChildBrowser is so popular, in fact, that as of version 2.3 of Cordova, similar functionality is included by default (called InAppBrowser). In this post I hope to show you everything you need to get started with both ChildBrowser and InAppBrowser.</p>
+
+<h3>ChildBrowser or InAppBrowser - Which to Choose?</h3>
+
+<p>ChildBrowser and InAppBrowser are more alike than they are different. As noted above, InAppBrowser is included as part of Cordova, while ChildBrowser is an external plugin. However, ChildBrowser is included as part of Icenium, so setup is also a breeze. When InAppBrowser was first released, it was much more limited than ChildBrowser. Since that time, though, InAppBrowser has caught up to be nearly feature-identical. What I'm essentially saying is: you can't go wrong either way. If you have an existing app that uses ChildBrowser (and you like it) - keep using it. If you are starting a new app, you might want to give InAppBrowser a try.</p>
+
+<p>Lets take a little time to go through how we configure and utilize both ChildBrowser and InAppBrowser. Maybe then you'll get an idea of which solution is right for you.</p>
+
+<h3>ChildBrowser Setup</h3>
+
+<p>Lets start a new project within Graphite and see what it takes to get going with the ChildBrowser plugin. If you aren't yet familiar with the Graphite IDE, take a look at the multi-part <a href="http://www.icenium.com/community/blog/icenium-team-blog/2013/04/05/diving-into-icenium-graphite-part-1-of-3">Deep Dive into Icenium Graphite</a> series.</p>
+
+<p>First things first, I'm going to include the ChildBrowser plugin in my Icenium project. Navigate to your project properties by double-clicking on the <strong>Properties</strong> option in the <strong>Project Navigator</strong>.</p>
+
+<p><img src="properties.png" alt="project properties" /></p>
+
+<p>Navigate to the <strong>Plugins</strong> pane and check the box next to the <strong>ChildBrowser</strong> plugin. Save your changes and you are all set - ChildBrowser is ready to be used in your project!</p>
+
+<p><img src="plugin.png" alt="plugins pane" /></p>
+
+<p>Finally, add a reference to the ChildBrowser JavaScript file:</p>
+
+<pre><code>&lt;script src="Plugins/Child Browser/childbrowser.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Now we're ready to write some code!</p>
+
+<h3>ChildBrowser Example</h3>
+
+<p>At it's very simplest, we can open a ChildBrowser window with an input (in this case a Kendo UI Mobile touch widget that responds to tap events) which is then tied to a little JavaScript function.</p>
+
+<pre><code>&lt;a id="btnCB" data-role="touch" data-tap="openChildBrowserWindow" class="km-button"&gt;Try ChildBrowser&lt;/a&gt;
+
+function openChildBrowserWindow() {
+    window.plugins.childBrowser.showWebPage("http://google.com/");
+}
+</code></pre>
+
+<p>When we touch the "Try ChildBrowser" button, we get the following result:</p>
+
+<p><img src="cb.png" alt="childbrowser example" /></p>
+
+<p>ChildBrowser offers a few options that you can optionally pass when initiating the window:</p>
+
+<ul>
+<li>showLocationBar - shows or hides the location bar (default true)</li>
+<li>showAddress -  show or hides the address bar (default true)</li>
+<li>showNavigationBar - shows or hides the entire navigation bar (default true)</li>
+</ul>
+
+
+<p>Example usage:</p>
+
+<pre><code>window.plugins.childBrowser.showWebPage("http://google.com/", { showLocationBar: false });
+</code></pre>
+
+<p>You may close your ChildBrowser window by calling the <strong>close</strong> method:</p>
+
+<pre><code>window.plugins.childBrowser.close();
+</code></pre>
+
+<p><strong>Android Note:</strong> If you are using ChildBrowser with an Android device, you can use the <strong>openExternal</strong> method in place of <strong>showWebPage</strong>. This allows you to use the built-in Android browser, which is useful for displaying PDFs or YouTube videos.</p>
+
+<p>Finally, ChildBrowser allows you to <strong>subscribe to events</strong> associated with the browser window. For example, you can call a function when the ChildBrowser window is closed or when the location changes:</p>
+
+<pre><code>window.plugins.childBrowser.onClose = function () {
+    console.log("The window was closed");
+};
+
+window.plugins.childBrowser.onLocationChange = function (url) {
+    console.log("The location has changed to: " + url);     
+};
+</code></pre>
+
+<p>At this point we've seen how easy it is to use the ChildBrowser plugin. Can it get any simpler? Well, yes, if we use the InAppBrowser instead!</p>
+
+<h3>InAppBrowser Example</h3>
+
+<p>One nice feature of InAppBrowser is that there is no setup or configuration at all, it just works as part of Cordova 2.3 and later. So lets get right to a simple example use:</p>
+
+<pre><code>&lt;a id="btnIA" data-role="touch" data-tap="openInAppBrowserWindow" class="km-button"&gt;Try InAppBrowser&lt;/a&gt;
+
+function openInAppBrowserWindow() {
+    window.open("http://google.com/", "_blank");
+}
+</code></pre>
+
+<p>Touching the "Try InAppBrowser" button provides us with the following result (looks similar to the ChildBrowser window, no?):</p>
+
+<p><img src="ia.png" alt="inappbrowser example" /></p>
+
+<p>As with ChildBrowser, you can hide the location bar if you so desire:</p>
+
+<pre><code>window.open("http://google.com/", "_blank", "location=no");
+</code></pre>
+
+<p>You can also close your InAppBrowser window by calling the <strong>close</strong> method:</p>
+
+<pre><code>function openInAppBrowserWindow() {
+    var win = window.open("http://google.com/", "_blank");
+    win.close();
+}
+</code></pre>
+
+<p><strong>Android Note:</strong> If you are using InAppBrowser with an Android device and want to display a PDF or YouTube video (for example), you can specify a target of "_system" which will bring up the built-in browser:</p>
+
+<pre><code>window.open("http://google.com/", "_system");
+</code></pre>
+
+<p>Finally (and again, like ChildBrowser), InAppBrowser allows you to <strong>subscribe to events</strong> associated with loading and exiting the browser window.</p>
+
+<pre><code>function openInAppBrowserWindow() {
+    var win = window.open("http://google.com/", "_blank");
+
+    win.addEventListener('loadstart', function(e) { 
+        console.log(e.type + ' - ' + e.url);
+    });
+
+    win.addEventListener('loadstop', function(e) {
+        console.log(e.type + ' - ' + e.url);
+    });
+
+    win.addEventListener('loaderror', function(e) {
+        console.log(e.type + ' - ' + e.url + ' - ' + e.code + ' - ' + e.message);
+    });
+
+    win.addEventListener('exit', function(e) {
+        console.log(e.type);
+    });
+}
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>The ability to spawn a browser window inside of your hybrid mobile app is a really easy win that provides you, as an app developer, additional flexibility. I hope you've seen how easy it is to integrate either the ChildBrowser plugin or the built-in InAppBrowser into your Icenium projects.</p>
+</body>
+</html>

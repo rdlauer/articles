@@ -1,0 +1,74 @@
+<p>Today we're happy to announce a new release of Icenium with a number of new features, updated library support, and stability improvements. There's a lot to cover so let's dive right in.</p>
+
+<h4>Overview of This Release</h4>
+
+<ul>
+<li><a href="#mist">A New Look for Mist</a></li>
+<li><a href="#cordova">Support for Apache Cordova 3.2</a></li>
+<li><a href="#visual-studio-extension">Updated Visual Studio Extension</a></li>
+<li><a href="#ui-mobile">Improved UI Mobile Designer</a></li>
+</ul>
+
+<h3 id="mist">A New Look For Mist</h3>
+
+<p><a href="https://app.icenium.com/Mist/">Icenium Mist</a>, our cloud based development suite has been redesigned from the ground up for a cleaner look and an improved user experience.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-mist.png?sfvrsn=2" alt="Look of Mist editor after new release"></p>
+
+<p>All menus, popup messages, dialogs, and wizards have been reworked to provide more context-sensitive information to help you complete tasks. For instance the build dialog now gives you additional help text on the various build options Icenium provides.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-mist-build.png?sfvrsn=2" alt="Look of Mist dialog after new release"></p>
+
+<p>We'd love to hear your thoughts on the new look and whether there's anything else we can do to improve.</p>
+
+<h3 id="cordova">Support for Apache Cordova 3.2</h3>
+
+<p>Apache Cordova released version 3.2 in late November with a <a href="http://cordova.apache.org/announcements/2013/11/22/cordova-320.html">number of bug fixes and enhancements</a> - including one for the dreaded <a href="/blog/icenium-team-blog/2013/11/07/everything-hybrid-web-apps-need-to-know-about-the-status-bar-in-ios7">status bar in iOS7</a>.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/apache-cordova-logo.png?sfvrsn=2" alt="Cordova icon"></p>
+
+<p>All Icenium project templates and sample applications have been updated to target Apache Cordova 3.2. To update your existing projects go to its project properties shown below.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-upgrade-1.png?sfvrsn=2" alt="Screenshot of project properties menu"></p>
+
+<p>Then update the "Cordova Version" accordingly.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-upgrade-2.png?sfvrsn=2" alt="Screenshot showing the Cordova version drop down"></p>
+
+<p><em>Note: To get to the same dialog in Visual Studio right click on the project in the Solution Explorer and select "Properties".</em></p>
+
+<p>In addition to this, Icenium now comes with integrated support for the <a href="https://github.com/apache/cordova-plugins/blob/master/statusbar/README.md">StatusBar</a> and <a href="https://github.com/apache/cordova-plugins/blob/master/keyboard/README.md">Keyboard</a> plugins for iOS.</p>
+
+<h3 id="visual-studio-extension">Updated Visual Studio Extension</h3>
+
+<p>Out latest release also brings a number of enhancements to Icenium's extension for Visual Studio, including:</p>
+
+<ul>
+<li><strong>Support for on-device debugging of iOS apps.</strong><br>For devices that run iOS6 or later, and apps that have a provisioning profile for iOS development, you can now do on-device debugging directly within Visual Studio.</li>
+<li><strong>Improved support for the connection API in the device simulator.</strong><br>Within Visual Studio's simulator, setting the connection type to <em>None</em> now disables all network requests - perfect for testing the offline capabilities of your apps. <img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-vs-connection.png?sfvrsn=2" alt="Screenshot showing the connection option in Visual Studio's simulator"></li>
+<li><strong>Improved build process</strong><br>To help debug potential issues, the Icenium Extension for Visual Studio now uploads temporary build data. You can remove this data at any time by selecting <strong>Icenium -> Remove <project name> Data from Cloud</strong> in the menu bar.</li>
+</ul>
+
+<h3 id="ui-mobile">Improved UI Mobile Designer</h3>
+
+<p>Finally, this release adds a number of powerful new features to our UI Mobile Designer in Mist and Graphite.</p>
+
+<p>From within the UI Mobile Designer, you can now switch between tablet and phone simulators, switch iOS versions, and even change the device orientation between portrait and landscape.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-designer.gif?sfvrsn=2" alt="Showing off the tablet and portrait/landscape tools in the designer"></p>
+
+<p>We've also made the UI designer easier to use with an integrated widget filter and some context sensitive help that links to <a href="http://docs.kendoui.com/api/mobile/">Kendo UI Mobile's API documentation</a> appropriately. You can see these new enhancements below.</p>
+
+<p><img src="http://www.icenium.com/iceniumImages/default-source/blog-images/1-10-designer-library.png?sfvrsn=2" alt="Showing off the new UX improvements to the UI library for the UI Mobile Designer"></p>
+
+<h3>What's Next?</h3>
+
+<p>We're hard at working getting our next set of features ready for the new year, but what we really want to know is what's important to you? We'd love to hear about what features would make your life easier in our <a href="http://feedback.telerik.com/Project/87">feedback portal</a>.</p>
+
+<div style="padding: 20px 0px; margin-top: 20px; border-top-color: #999999; border-top-width: 1px; border-top-style: dashed;" class="author">
+	<img alt="TJ VanToll" style="float: left;" src="http://www.kendoui.com/images/default-source/blog-images/me.jpg?sfvrsn=2" title="TJ VanToll" />
+	<p style="margin-left: 150px; margin-top: 0px;">
+		<strong>About the Author<br /></strong>
+		<a href="https://plus.google.com/107609230756320894410">TJ VanToll</a> is a web developer, speaker, and writer living in Lansing, MI and working as a developer advocate for <a href="http://www.icenium.com/">Icenium</a>. He is an open source advocate that is on the <a href="http://jqueryui.com/about/">jQuery UI team</a> and publishes <a href="http://tjvantoll.com">his blog</a> open source. When not on the internet, TJ is generally found helping his significant other chase their twin sons in circles. TJ is on Twitter as <a href="https://twitter.com/tjvantoll">@tjvantoll</a> and <a href="https://github.com/tjvantoll">tjvantoll</a> on Github.
+	</p>
+</div>

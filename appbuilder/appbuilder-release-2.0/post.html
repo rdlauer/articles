@@ -1,0 +1,222 @@
+<p>Fresh off the <a href="http://blogs.telerik.com/blogs/14-02-06/telerik-platform-101">release of the Telerik Platform</a>, we have an epic release of <a href="http://www.telerik.com/appbuilder">Telerik AppBuilder</a> to discuss - packed full of several highly-requested features (including Windows Phone 8 support!). There's a lot to talk about, so let's dive right in.</p>
+
+<h4>Overview of This Release</h4>
+
+<ul>
+<li><a href="#cli">A Fully-Featured CLI</a></li>
+<li><a href="#sublime">Sublime Text Integration</a></li>
+<li><a href="#windows-phone">Windows Phone 8 Support</a></li>
+<li><a href="#version-control">Advanced Version Control Support</a></li>
+</ul>
+
+<h3 id="cli">A Fully-Featured CLI</h3>
+
+<p>We're happy to announce the beta release of a command-line interface for AppBuilder. The CLI is open-source and <a href="https://github.com/Icenium/icenium-cli/">available on GitHub</a> for manual installation and hacking.</p>
+
+<p>In fact, the CLI is already available on npm, so you can install it right now.</p>
+
+<pre>
+> npm install -g appbuilder
+</pre>
+
+<blockquote>
+<p>Don't have Node.js installed? You can get an installer for Windows and OS X at <a href="http://nodejs.org/">http://nodejs.org/</a>.</p>
+</blockquote>
+
+<p>Run <code>appbuilder help</code> to get a list of the commands available.</p>
+
+<pre style="height: 200px; overflow: auto;">
+> appbuilder help
+Usage:
+    $ appbuilder <command> [command parameters] [--command <options>]
+
+General commands:
+    help <command>                  Shows additional information about the commands in this list.
+    login                           Logs you into the Telerik Platform.
+    logout                          Logs you out from the Telerik Platform.
+    user                            Prints information about the currently logged in user.
+
+Project development commands:
+    create                          Creates a new project from template.
+    init                            Creates a project in the current folder.
+    build                           Builds the project and produces a QR code for deploying the application package.
+    deploy                          Deploys the project to a connected device.
+    cloud-sync                      Synchronizes the project with the cloud to enable LiveSync for remote devices.
+    livesync                        Synchronizes the latest changes in your project to connected devices.
+    simulate                        Runs the current project in the device simulator.
+    find-plugins                    Searches for plugins in the Apache Cordova Plugin Registry by keyword.
+    fetch-plugin                    Imports an Apache Cordova plugin into your project.
+    edit-configuration              Opens configuration file for editing.
+    prop-add                        Adds more values to a list project property.
+    prop-set                        Sets a project property.
+    prop-remove                     Removes values from a list project property.
+    prop-print                      Prints the value of a project property.
+    list-projects                   Lists all projects of your account.
+    export-project                  Exports one of your remote projects into a local AppBuilder project.
+
+Device commands:
+    list-devices                    Lists all recognized connected devices.
+    open-device-log-stream          Opens the log stream for given device.
+
+Certificate management and publishing commands:
+    list-certificates               Lists all configured certificates for code signing
+                                    iOS applications and Android applications.
+    create-self-signed-certificate  Creates self signed certificate for code signing Android applications.
+    remove-certificate              Removes certificate from the server.
+    export-certificate              Exports certificate from the server.
+    import-certificate              Imports certificate to the server.
+    list-provisions                 Lists all configured provisioning profiles for code signing iOS applications.
+    import-provision                Imports a provisioning profile from file.
+    remove-provision                Removes a registered provisioning profile.
+    appstore-list                   Lists all applications in iTunes Connect that are ready for upload.
+    appstore-upload                 Builds the project and uploads the app to iTunes Connect.
+
+Global Options:
+    --help                Prints help about the command given in the rest of the command line.
+    --path <path>         Specifies the file path to the project. If not specified, the project is searched for
+                          in the current directory and all directories above it.
+    --version             Prints the client's version and exits.
+
+</pre>
+
+<p>There's a lot here, and we'll have subsequent articles to go into more detail, but for now let's look at what it takes to get a project up and running on a device.</p>
+
+<p>We'll start by running running <code>appbuilder create</code>, which scaffolds a new project for us.</p>
+
+<pre>
+> appbuilder create
+</pre>
+
+<p>This new project uses <a href="http://www.telerik.com/kendo-ui-mobile">Kendo UI Mobile</a>, with the directory structure shown below.</p>
+
+<pre>
+.
+└── app
+    ├── App_Resources
+    │   └── ...
+    ├── cordova.android.js
+    ├── cordova.ios.js
+    ├── index.html
+    ├── kendo
+    │   ├── js
+    │   │   ├── ...
+    │   │   └── kendo.mobile.min.js
+    │   └── styles
+    │       ├── ...
+    │       └── kendo.mobile.all.min.css
+    ├── scripts
+    │   ├── ...
+    │   └── app.js
+    └── styles
+        ├── ...
+        └── main.css
+</pre>
+
+<blockquote>
+  <p>Don't want to use Kendo UI Mobile? <code>appbuilder create</code> can build jQuery Mobile, Kendo UI Mobile, Kendo UI DataViz, or blank projects. To switch from Kendo UI Mobile, set the <code>--template</code> option. Run <code>appbuilder create --help</code> for details.</p>
+</blockquote>
+
+<p>We now have a project, but we want to want to see what this looks like on a device. To do that, first we need to go into our new app's directory.</p>
+
+<pre>
+> cd app
+</pre>
+
+<p>Then we can build it with the <code>appbuilder build</code> command. The following performs performs an Android build.</p>
+
+<pre>
+> appbuilder build android
+</pre>
+
+<p>Building requires you to be logged into a Telerik Platform account, so the <code>build</code> command first prompts you to login via a new browser before performing the build. (If you don't have a Telerik Platform account you can <a href="http://platform.telerik.com/">create</a> one for free.) You can also login at any time using <code>appbuilder login</code>. After the login, the <code>build</code> command performs an Android build, and opens a browser with a QR code, as shown below.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-qr-code.png?sfvrsn=2" alt="A browser open with a QR code displaying" title="" /></p>
+
+<p>You can scan this code to download the built .apk file and install it on your device - which is cool, but we can make the process even easier by <a href="http://docs.telerik.com/platform/appbuilder/testing-your-app/running-on-devices/running-on-connected-devices/google-android-devices/how-to-configure-usb-device-drivers-for-your-android-device">connecting an Android device</a> and using the <code>deploy</code> command.</p>
+
+<pre>
+> appbuilder deploy android
+</pre>
+
+<p>This command starts by building the project, but when the build completes, instead of showing a QR code, it actually opens the project on the connected Android device.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-deploy.gif?sfvrsn=2" alt="An Android phone screenshot showing the project open"></p>
+
+<p>It gets even cooler with <a href="http://docs.telerik.com/platform/appbuilder/testing-your-app/livesync/using-livesync">LiveSync</a>, or our way of pushing code changes directly into built native applications.</p>
+
+<p>For example let's say we decide that our template's heading isn't nearly exciting enough, and we want to change <code>&lt;h1&gt;Welcome!&lt;/h1&gt;</code> to <code>&lt;h1&gt;OMG Welcome!!!&lt;/h1&gt;</code>. We can go to our text editor of choice, make the change, and then run <code>appbuilder livesync</code> to push the change directly to our device - no re-build required! This workflow is shown below.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-live-sync.gif?sfvrsn=2" alt="An Android phone screenshot showing the project open" style="height: 400px;"></p>
+
+<p>There's a lot more to the CLI than this. You can build, deploy, and live sync iOS projects; you can even upload apps to iTunes Connect directly from the command line (<code>appbuilder appstore-upload</code>), but we'll leave those topics to future blog posts. For now, let's talk about another of my favorite projects: Sublime Text.</p>
+
+<blockquote>
+  <p>There's also a more thorough walkthrough of the CLI basics available at <a href="https://github.com/Icenium/icenium-cli/blob/docs/README.md">its GitHub repo</a>.</p>
+</blockquote>
+
+<h3 id="sublime">Sublime Text Integration</h3>
+
+<p>I'll start with a confession: as much as I love the tooling in the AppBuilder <a href="http://www.telerik.com/appbuilder/in-browser-client">in-browser client</a>, I had a hard time giving up <a href="http://www.sublimetext.com/">Sublime Text</a>. Luckily, I no longer have to be conflicted, because in addition to the CLI, AppBuilder now offers direct Sublime Text integration through a <a href="https://github.com/Icenium/appbuilder-sublime-package">dedicated Sublime package</a>.</p>
+
+<p>There are two ways to install the package. The easiest is through Sublime Text's <a href="https://sublime.wbond.net/docs/usage">Package Control plugin</a>.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-sublime-package.png?sfvrsn=2" alt="Image of installing ST in package control"></p>
+
+<p>If you're not not a Package Control user, or if manual installation and tinkering is your thing, you can also <a href="https://github.com/Icenium/appbuilder-sublime-package">grab the code from GitHub</a>. (Like the CLI it's also open source.)</p>
+
+<p>After installing the package you need to restart Sublime Text, and then you'll see a shiny new AppBuilder menu under Tools.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-sublime-menu.png?sfvrsn=2" alt="Image of AppBuilder menu in Sublime Text"></p>
+
+<blockquote>
+  <p>Windows-based Sublime Text users also have a <em>Run in Simulator</em> option that opens the application in <a href="http://www.telerik.com/appbuilder/windows-client">AppBuilder Windows client</a>. OS X users will be getting a similar option in our next release.</p>
+</blockquote>
+
+<p>Personally I'm a huge fan of the <em>LiveSync On Save</em> command. With <em>LiveSync On Save</em> set, changes made in Sublime Text are instantly rendered on a connected device. This is shown below.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-sublime.gif?sfvrsn=2" alt="An Android phone screenshot showing the project open" style="height: 400px;"></p>
+
+<p>What's really exciting to me is that the Sublime package is a fairly lightweight wrapper around CLI commands. The Sublime Text package's <em>LiveSync Application</em> command is a shorthand for running <code>appbuilder livesync</code> from the command line. So if your favorite IDE isn't Sublime Text (or <a href="http://www.telerik.com/appbuilder/visual-studio-extension">Visual Studio which we also integrate with</a>), let us know! Or better yet, since it's all open source, you can write one yourself!</p>
+
+<blockquote>
+  <p>For more on the Sublime package, including documentation on each menu option, and information on contributing to the package, see <a href="https://github.com/Icenium/appbuilder-sublime-package">the package's GitHub repo</a>.</p>
+</blockquote>
+
+<h3 id="windows-phone">Windows Phone 8 Support</h3>
+
+<p>If a CLI and Sublime Text integration weren't enough, we're also happy to announce beta support for Windows Phone. With this release you can design, develop, simulate, and build Windows Phone applications directly within AppBuilder. Let's look at each.</p>
+
+<p>To start, our UI Designer has been updated to support designing Windows Phone apps with Kendo UI Mobile controls.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-ui-designer.png?sfvrsn=2" alt="Image of in-browser editor showing Windows Phone controls"></p>
+
+<p>Next, our list of simulators has a new Windows Phone option to emulate the experience without needing to use an actual device.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-windows-simulator.png?sfvrsn=2" alt="Menu showing a new option for Windows Phone simulation"></p>
+
+<p>And when you are ready for testing on a device, you can perform now perform Windows Phone builds in the cloud.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-windows-build.png?sfvrsn=2" alt="Menu processes for performing a Windows Phone build in AppBuilder"></p>
+
+<p>The build gives you a XAP file that you can <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402565(v=vs.105).aspx">deploy and run</a>) on a <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff769508(v=vs.105).aspx">registered Windows Phone device</a>). Look for more details on this in a coming blog post.</p>
+
+<p>Windows Phone support is in beta, and we have a lot more features on the way - including QR code-based deployment, CLI support, and more. Stay tuned!</p>
+
+<h3 id="version-control">Advanced Version Control Support</h3>
+
+<p>AppBuilder has always had <a href="http://blogs.telerik.com/appbuilder/posts/13-12-19/git-started-with-github-in-mist">robust support for git-based version control</a>, but with this release we've made it even better by supporting creating, deleting, checking out, and merging branches directly within our in-browser and Windows clients.</p>
+
+<p>For instance, here are just some of the things you can do at our in-browser client's version control screen.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-version-control.png?sfvrsn=2" alt="View of the version control screen in AppBuilder in-browser client"></p>
+
+<p>When merge conflicts occur we have a new conflicts view to help you resolve them.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/2-0-conflicts-view.png?sfvrsn=2" alt="View of the version control screen in AppBuilder in-browser client"></p>
+
+<p>With full branching support, large teams can work on multiple features at once - and they never have to leave AppBuilder to do it.</p>
+
+<h3>Wrapping Up</h3>
+
+<p>There's a lot more to talk about - including Android 4.4 support, <a href="http://blogs.telerik.com/blogs/14-03-11/telerik-speeds-up-cordova-plugman-26-second-faster-ios-builds!">faster builds</a>, and LESS file support - so look for more information over the coming weeks. For a full list of all updates and changes check out our <a href="http://docs.telerik.com/platform/appbuilder/release-notes/v2-0">release notes</a>.</p>
+

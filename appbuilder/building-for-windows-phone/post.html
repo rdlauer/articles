@@ -1,0 +1,158 @@
+<p>In today's software world, we have no shortage of choices when it comes to developing applications. Even in the limited scope of Windows Phone development, there are choices galore. Do you develop a native Windows Phone app? Do you take a hybrid approach? How about Xamarin? Should we use ChocolateChip UI? (Yeah, that's actually <a href="http://chocolatechip-ui.com/">a thing</a>.) WHAT DOES IT ALL MEAN!?</p>
+
+<p>To help you wade through this complexity, in this article, we'll take an in-depth look at one of these approaches: hybrid. Specifically, we'll look at why you would want to build hybrid, and how to do it. Let's start by looking at where hybrid can be a good fit.</p>
+
+<h3>Why Hybrid?</h3>
+
+<p>Hybrid development, popularized by <a href="http://phonegap.com/">PhoneGap</a>, refers to a technique for building an application using Web technologies—HTML, CSS, and JavaScript—and deploying it as a native application. (It can appear in app stores, and do app-y things—like push notifications.) The primary appeal of hybrid is that, unlike native development, you can author applications using a single codebase that can deploy to multiple platforms. In the context of Windows Phone apps, this means the same app you develop for Windows Phone can also reach iOS and Android users.</p>
+
+<p>Another benefit of hybrid is that the code you're writing—HTML, CSS, and JavaScript—is familiar and open. Unlike native development, where few companies have an existing Objective C (iOS) or Java (Android) skill set, most shops have developers proficient in the Web stack. And the Web stack itself is developed in the open, so you don't have to worry about being tied to one company's proprietary APIs.</p>
+
+<p>But these apps aren't limited to the capabilities of the Web. Because hybrid apps run in a native container, projects like <a href="http://cordova.apache.org/">Apache Cordova</a> provide access to device APIs that are not accessible via the Web alone—APIs like the accelerometer, contacts, and even push notifications.</p>
+
+<p>Hopefully that gives you an idea of what hybrid is and why you might want to use it. But enough talk, let's see how you actually build a hybrid app.</p>
+
+<h3>Starting a Hybrid Windows Phone App</h3>
+
+<p>Although there are many ways you build a hybrid app, including <a href="http://tech.pro/blog/1704/2-ways-to-get-started-with-phonegapapache-cordova">using the PhoneGap CLI, or AppBuilder's in-browser editor</a>, in this article we're going to focus on building a hybrid application directly within Visual Studio using <a href="http://www.telerik.com/appbuilder/visual-studio-extension">Telerik AppBuilder's Extension for Visual Studio</a>. If you don't have the extension installed and want to follow along, you can <a href="http://visualstudiogallery.msdn.microsoft.com/d486edc5-aae3-4ad9-84c1-578efc0a32ed">download it from the Visual Studio Gallery</a>.</p>
+
+<p>With the extension installed, the <strong>FILE</strong> --> <strong>New</strong> --> <strong>Project...</strong> menu now has the options shown in the screenshot below. You have a few templates you can choose between, but for now let's go with the Kendo UI Mobile template.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-new-project.png?sfvrsn=2" alt="File --> New project screen showing the template options"></p>
+
+<p>This generates a boilerplate project with the files shown below.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-files.png?sfvrsn=2" alt="List of files in the newly created project."></p>
+
+<p>Your next question may be, how do we see what this new project actually looks like?</p>
+
+<h3>Simulating a Windows Phone</h3>
+
+<p>AppBuilder contains a device simulator for testing hybrid apps that you can run directly within Visual Studio. To do so, select the <strong>Run [Project Name] in Simulator</strong> option from the <strong>APPBUILDER</strong> menu.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-simulator-option.png?sfvrsn=2" alt="List of options in the APPBUILDER menu, including the simulator option"></p>
+
+<p>Within the simulator, you can see how your application will appear on various devices, as well as some more advanced functionality, such as mocking a device's location, network, and contacts. You can even debug your application using Chrome's Dev Tools.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-simulator.png?sfvrsn=2" alt="View of the simulator running within Visual Studio"></p>
+
+<p>But wait? <em>Chrome's</em> Dev Tools? Isn't this a <em>Windows</em> Phone app?</p>
+
+<p>Yes it is. But remember this a <em>simulator</em>, and while AppBuilder's simulator does try to mimic the native platform—by doing things like providing accurate dimensions and user-agent strings—it's no substitute for testing a real Windows Phone application on a real Windows Phone. But don't worry—AppBuilder makes it easy to do that too.</p>
+
+<blockquote>
+  <p>Under the hood, the simulator uses <a href="https://code.google.com/p/chromiumembedded/">Chromium Embedded Framework (CEF)</a> which is <a href="http://www.chromium.org/blink">Blink</a> based, and Windows Phone uses Internet Explorer which is <a href="http://en.wikipedia.org/wiki/Trident_(layout_engine)">Trident</a> based—so there are definitely going to be differences between what displays in the simulator and what displays on a Windows Phone device.</p>
+</blockquote>
+
+<h3>Building Windows Phone Apps</h3>
+
+<p>At this point, we have our sample application, and we played around with it in the simulator, but we need to see it on a real device. To do so, let's head back to the <strong>APPBUILDER</strong> menu, and this time we'll pick <strong>Build [Project Name] in Cloud</strong>.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-build-option.png?sfvrsn=2" alt="The build option in the AppBuilder menu"></p>
+
+<p>After selecting that option, you'll see the following dialog that allows you to build your application for iOS, Android, or Windows Phone.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-build.png?sfvrsn=2"></p>
+
+<p>After selecting Windows Phone, AppBuilder performs the Windows Phone build for you in the cloud, and returns a built .xap file.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-build-results.png?sfvrsn=2"></p>
+
+<p>We now have a built .xap file on our local machine, but not on our actual Windows Phone device. The dialog in the above screenshot says that we need to use the <em>Application Deployment tool</em>, but what is that? And how do we use it?</p>
+
+<h3>Getting the App on a Device</h3>
+
+<p>Before we get to the Application Deployment tool, there are a few prerequisites you must complete before you'll be able to test your app on a device.</p>
+
+<ul>
+<li>You must own a Windows Phone (hopefully, this one is obvious).</li>
+<li>You must have a <a href="http://windows.microsoft.com/en-US/windows-live/sign-up-create-account-how">Microsoft account</a>.</li>
+<li>If you want to deploy apps to the Windows Phone Store, you must additionally have a <a href="http://dev.windowsphone.com/join">Microsoft developer account</a>. Without a developer account, you can still register a single device for testing, but you cannot publish the apps you build.</li>
+<li>Your device must be <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff769508(v=vs.105).aspx">unlocked and registered</a>.</li>
+<li>You must download and install the <a href="https://dev.windowsphone.com/en-us/downloadsdk">Windows Phone SDK</a>.</li>
+</ul>
+
+<p>These steps can be slightly overwhelming, but if you do Windows-based development there's a good chance you have completed a few of these steps already. And it's worth noting that these steps aren't unique to hybrid Windows Phone apps; you have to go through the same steps for any Windows Phone development.</p>
+
+<p>When you do have all this done, it's time to run the Application Deployment tool we referred to earlier. The tool itself is <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402565(v=vs.105).aspx#BKMK_tool">an executable located within the Windows Phone SDK</a>, located at <code>C:\Program Files (x86)\Microsoft SDKs\Windows Phone8.0\Tools\XAP Deployment\XapDeploy.exe</code>.</p>
+
+<p>Run the executable and you'll see the following screen.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-deployment.png?sfvrsn=2"></p>
+
+<p>Here you'll want to connect your Windows Phone device to your PC, select the AppBuilder-built .xap file, and click Deploy. When it finishes, head over to your device and checkout the list of all apps.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-all-apps-list.png?sfvrsn=2"></p>
+
+<p>As an alternative to the Application Deployment tool, you can use the <b>Build [Project Name] and Deploy</b> option in the <b>APPBUILDER</b> menu.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-deploy-option.png?sfvrsn=2"></p>
+
+<p>This builds our testing project, deploys it to the device, and opens it automatically. This convenience saves some time as you don't have to download a .xap file and manually upload it. But regardless of how you choose to get your app onto your device... what do you do next?</p>
+
+<h3>Developing Hybrid Windows Phone Apps</h3>
+
+<p>We've seen how to start an app, simulate it, and get it onto a device—but we've yet to touch on the most important thing: the actual development of the app. But really, there's not a whole lot new to talk about here. Remember that a hybrid app is still a Web app, so you have the full power of the Web at your disposal. You can use <a href="http://demos.telerik.com/kendo-ui/mobile/overview/index.html">Kendo UI Mobile</a>, <a href="http://jquerymobile.com/">jQuery Mobile</a>, or any Web-based tool you need to do your thing.</p>
+
+<blockquote>
+  <p>If you're looking for a good walkthrough on how to build a hybrid application from scratch, Burke Holland has an excellent article on <a href="http://blogs.telerik.com/blogs/14-03-27/structuring-hybrid-mobile-applications">structuring hybrid mobile applications</a>.</p>
+</blockquote>
+
+<p>What <em>is</em> unique to hybrid is the ability to access native device features that are not available to the Web, and the canonical library to perform this is <a href="http://cordova.apache.org/">Cordova</a>. If you head over to <a href="http://cordova.apache.org/docs/en/edge/guide_support_index.md.html#Platform%20Support">Cordova's documentation</a> (or look at the chart below pulled from it), you can see a list of the APIs available on each supported platform.</p>
+
+<blockquote>
+  <p>Confused about the difference between PhoneGap and Cordova? Checkout <a href="http://blogs.telerik.com/appbuilder/posts/13-03-26/demystifying-apache-cordova-and-phonegap">Jim Cowart's article that demystifies the project names</a>.</p>
+</blockquote>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-cordova-apis.png?sfvrsn=2"></p>
+
+<p>AppBuilder automatically adds Cordova to each new project for us, so we can use any of Cordova's APIs directly in our JavaScript code. For example the following creates a native dialog message.</p>
+
+<pre class="prettyprint"><code>
+navigator.notification.alert( "A native message", function () {
+    // I'm a callback
+}, "The title", "The button" );
+</code></pre>
+
+<p>This appears as follows on our Windows Phone testing app.</p>
+
+<p><img src="http://blogs.telerik.com/images/default-source/appbuilder/wp8-dialog.png?sfvrsn=2"></p>
+
+<p>What's cool is that this is a native dialog, not a Web-based one; and all we had to do is invoke a built-in function to use it.</p>
+
+<blockquote>
+  <p>Need a native API that isn't an official Cordova API? The Cordova project maintains a repository of third-party plugins available at <a href="http://plugins.cordova.io/">http://plugins.cordova.io/</a>. You can even <a href="http://cordova.apache.org/docs/en/edge/guide_platforms_wp8_plugin.md.html#Windows%20Phone%20Plugins">write your own</a>.</p>
+</blockquote>
+
+<h3>Yeah, But What About the Back End?</h3>
+
+<p>You can still have one, but there's one very important criterion: the back end must be accessible over the Web. If you think about it this makes sense. iOS speaks Objective C, Android speaks Java, Windows Phone speaks C#, and BlackBerry does <a href="http://developer.blackberry.com/platforms/">something</a>.</p>
+
+<p>The point being, the only language all these platforms speak is the Web—so if you want to write your back end in another language you can, but it has to run on your own server, and you must expose it via a web-based API. If you don't know how to do that don't worry. We have some guides that can help you out:</p>
+
+<ul>
+    <li>
+        <a href="https://www.youtube.com/watch?v=fAnlUo50DXk">Build Cross-Platform Mobile Apps Using Visual Studio and .NET</a> by <a href="https://twitter.com/csharpfritz">Jeff Fritz</a><br>
+        A Webinar that walks through creating a hybrid app in Visual Studio and connecting it to back-end data.
+    </li>
+    <li>
+        <a href="http://blogs.telerik.com/appbuilder/posts/13-11-26/using-asp.net-web-api-services-in-mobile-apps">Using ASP.NET Web API Services in Mobile Apps</a> by <a href="https://twitter.com/ifandelse">Jim Cowart</a><br>
+        Walks through how to integrate Web API services into hybrid apps.
+    </li> 
+</ul>
+
+<p>The other option you have is to use a Backend service instead of writing your own. Basically this means that, instead of hosting data on your own servers, you store it with an external provider—kind of like a database in the cloud. Jim Cowart has an <a href="http://www.developereconomics.com/finding-right-baas/">excellent article on what to look for in a BaaS</a> (Backend as a Service), and discusses some of the more popular options.</p>
+
+<h3>Wrapping Up</h3>
+
+<p>If you're looking to develop a Windows Phone app, developing it as a hybrid app can be an appealing option. Specifically, the following are the key advantages of a hybrid Windows Phone app:</p>
+
+<ul>
+<li>You can target iOS and Android with the same codebase.</li>
+<li>You can leverage existing Web skills.</li>
+<li>You can access native device APIs through Cordova.</li>
+<li>You can develop directly within Visual Studio.</li>
+</ul>
+
+<p>That being said, hybrid isn't for everyone. If you're not interested in building for multiple platforms (i.e. you only need a Windows Phone app), and you have an existing .NET skill set, you will likely be better off sticking with native Windows Phone development. But if you do need to target multiple platforms, hybrid applications provide an elegant means to reach these audiences using a single Web codebase.</p>
+

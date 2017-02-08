@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Icenium 1.6 is Here!</title>
+
+</head>
+<body>
+<h2>Icenium 1.6 is Here!</h2>
+
+<p>We are very excited about the new features in this release! Especially the fact that Icenium now supports the use of custom Cordova plugins! The key highlights I want to briefly cover from version 1.6 are:</p>
+
+<ul>
+<li>Cordova 2.7.0 Support</li>
+<li>Custom Cordova Plugins</li>
+<li>UI Designer (<em>Experimental Feature</em>)</li>
+</ul>
+
+
+<h3>Cordova 2.7 Support</h3>
+
+<p><img src="./cordova_bot.png" alt="" /></p>
+
+<p>Cordova 2.7.0 was released last month (May) - and contains a number of bug fixes as well as some new features for InAppBrowser, etc. For specifics on what the 2.7.0 release entailed, here are few posts worth checking out:</p>
+
+<ul>
+<li><a href="http://shazronatadobe.wordpress.com/2013/05/03/whats-new-in-cordova-ios-2-7-0/">What’s new in Cordova iOS 2.7.0</a></li>
+<li><a href="http://webcache.googleusercontent.com/search?q=cache:lIrWprVfXV8J:www.infil00p.org/whats-new-for-cordova-2-7-0/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">What’s new for Cordova 2.7.0 Android</a></li>
+</ul>
+
+
+<h3>Custom Cordova Plugins</h3>
+
+<p><img src="./applause.gif" alt="" /></p>
+
+<p>Say it with me again: <strong>Custom. Cordova. Plugins</strong>. The beauty of developing hybrid mobile applications using Cordova is the fact that if Cordova doesn't already expose a native API to which you need access, you can write your own plugin to bridge that 'gap'. With custom plugins, you can extend native API access as much as you need and unleash the full native potential of the device. While Icenium has supported a handful of stock plugins for a while, is hasn't been possible to upload custom plugins until now. This has been our <a href="http://feedback.telerik.com/Project/87/Feedback/Details/879-generic-phonegap-plugin-support">most requested feature</a> – now the wait is over! Yes, that sounds you hear <em>is</em> actually angels singing. We won't let those angels keeps us from taking a brief look at using custom plugins, though.</p>
+
+<h4>Using the Canvas2Image Plugin</h4>
+
+<p><a href="https://twitter.com/therealdevgeeks">Tommy Williams</a> created the <a href="https://github.com/devgeeks/Canvas2ImagePlugin">Canvas2Image Cordova plugin</a> for iOS devices as an exercise in saving the contents of an HTML canvas to the camera roll of the device. So - what would it take for us to utilize this plugin in Icenium and deploy it to a device for testing?</p>
+
+<h5>First - We Download the Plugin</h5>
+
+<p>First thing's first, let's grab a zip of the plugin from github (by clicking on the zip download option):</p>
+
+<p><img src="./c2img1.jpg" alt="" /></p>
+
+<h5>Second - We Upload the Plugin To Our Icenium Project</h5>
+
+<p>I'm using Mist (our browser-based IDE). You'll notice a new folder in our project, named "Plugins". All we need to do is upload our zip to the plugins folder (right-click, choose Add -> From Archive):</p>
+
+<p><img src="./UploadCustomPlugin.jpg" alt="" /></p>
+
+<p>Once our zip is uploaded, we'll see a folder for our plugin - something along these lines:</p>
+
+<p><img src="CustomPluginFolder.jpg" alt="" /></p>
+
+<p>Now here's an <em>important caveat</em>: for a custom Cordova plugin to work with Icenium, it needs to follow the <a href="https://github.com/apache/cordova-plugman/blob/master/plugin_spec.md">plugman spec</a>. You'll notice below that Canvas2Image plugin included a <code>plugin.xml</code> file at the root of the folder. Let's open that up and check it out:</p>
+
+<p><img src="./plugin_xml.jpeg" alt="" /></p>
+
+<p>This file provides the metadata we need to include the plugin in the build. The <code>asset</code> element (line 8) and the <code>platform</code> element (line 11) are of particular importance. The <code>asset</code> element provides the path to our JavaScript library which exposes the native APIs this plugin makes available. The <code>platform</code> element provides the platform-specific assets that should be installed. You can see, in this case, the plugin supports iOS, and includes <code>header-file</code> and <code>source-file</code> elements that point to native source code that should be compiled and included in the build.</p>
+
+<div>
+    <table style="width:60%; margin-left:auto;margin-right:auto;">
+        <tr>
+            <td width="150"><img src="./olderschema.jpg"/></td>
+            <td><em>AN IMPORTANT NOTE ON COMPATIBILITY:</em><br/>
+The plugman spec is evolving - and it's important to recognize that the plugin.xml schema often differs between versions of Cordova. The `plugin.xml` above was modified to work with Cordova 2.7.0 - whereas the one that's in the actual github repository is using an older schema for Cordova 2.2.0.</td>
+        </tr>
+    </table>
+</div>
+
+
+<h5>Third - Create Your App!</h5>
+
+<p>I put together a <a href="https://github.com/ifandelse/Canvas2ImageIceniumDemo">basic sample app</a> – inspired by the demo used by Jonathan Creamer <a href="http://tech.pro/tutorial/1383/javascript-one-language-to-rule-them-all">here</a> – that utilizes the Canvas2Image plugin - allowing you to import a photo from your camera roll, add a caption to it (all of which is done on an HTML5 canvas) and then save it back to your camera roll as a new image. Once we've uploaded the zip archive (as we saw above), we need to add the script include to our <code>index.html</code> file. Remember how our <code>plugin.xml</code> file had an <code>asset</code> element which pointed to the <code>Canvas2Image.js</code> JavaScript file? Thanks to that, all we have to do is include a script tag like this in our <code>index.html</code>:</p>
+
+<p><img src="./scriptinclude1.jpg" alt="" /></p>
+
+<p>At this point, I can simply write my app as needed, calling the <code>Canvas2Image.js</code> code wherever I need. You can see how the <code>saveCanvasToImage</code> method uses the Canvas2Image plugin <a href="https://github.com/ifandelse/Canvas2ImageIceniumDemo/blob/master/CustomPlugins/scripts/app.js#L119-L136">here</a>.</p>
+
+<h5>Fourth - Run the App</h5>
+
+<p>In Mist, I chose "Run -> Build -> iOS -> Build (with Provision)" to generate the .ipa installer, which I then downloaded and installed to my device via iTunes.</p>
+
+<p>Let's check out some screenshots:</p>
+
+<div>
+<table style="margin-left:auto;margin-right:auto;">
+    <tr>
+        <td style="text-align: center;"><span style="font-weight: bold">Upon opening the app:</span></td>
+        <td style="text-align: center;"><span style="font-weight: bold">Selected Image, Added Caption:</span></td>
+    </tr>
+    <tr>
+        <td><img src="./c2i_app1.png" width="250" /></td>
+        <td><img src="./c2i_app2.png" width="250" /></td>
+    </tr>
+</table>
+</div>
+
+
+<p><span style="clear:both;"></span></p>
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+    And proof that Tommy's plugin works as advertised, here's the actual image exported by the app:<br/>
+    <img src="./c2i_app3.png" />
+</div>
+
+
+<h5>Two Important Things to Be Aware Of:</h5>
+
+<ul>
+<li>Custom plugins will not work in the simulator. You could provide your own mock of the plugin's API, if you really needed to – but running the application on an actual device is the best way to ensure that it functions properly.</li>
+<li>You won't be able to use Icenium Ion to download the app for testing on your iOS device (thanks to Apple's restrictions preventing us from compiling the native part(s) of your plugins inside Ion).</li>
+</ul>
+
+
+<p>So there you have it - your first tour through using custom Cordova plugins in Icenium! Before we finish, though, I want to mention a new experimental feature we've added.</p>
+
+<h3>UI Designer</h3>
+
+<p>Our engineering team has included a UI Designer, which currently only supports Kendo UI Mobile (though we may expand it to support other UI frameworks in the future). As I mentioned above, it's an <em>experimental</em> feature at the moment, but we'd love your feedback as we work over the coming weeks to mature it. You can access the designer when you open an HTML file in project that's using Kendo UI Mobile. For example, if I open the <code>index.html</code> file from our sample application above, you'll see "Code", "Designer" and "Split" tabs at the bottom of the IDE (I'm using Mist in the example below):</p>
+
+<p><img src="./kendodesigner1.jpg" alt="" /></p>
+
+<p>The "Code" view is what you've been seeing up until now (and it's still the default view). As you can probably guess, clicking on "Designer" will open WYSIWYG style editor,  and clicking "Split" will show "Designer" and "Code" side-by-side:</p>
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+    The Designer View:<br/>
+    <img src="./kendodesigner2.jpg" />
+</div>
+
+
+<p>You'll notice that we've included some of the basic Kendo UI Mobile widgets in the "UI Library" tool pane on the left - these are drag-and-droppable.</p>
+
+<p>When you choose the "Split" view, you have the option to split vertically or horizontally, as well as swap which pane holds the design vs code view. These options expand next to the "Split" on the tab menu at the bottom:</p>
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+    Splitting Vertically:<br/>
+    <img src="./kendodesigner3.jpg" />
+</div>
+
+
+
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+    Splitting Horizontally:<br/>
+    <img src="./kendodesigner4.jpg" />
+</div>
+
+
+<p>When you're working with the designer, you'll notice that "Outline Inspector" and "Property Inspector" panes will appear docked to the right of the design area. The "Outline Inspector" allows you to quickly traverse the DOM hierarchy of the view you are editing, and "Property Inspector" provides visibility into Kendo-UI-centric attribute and event values on the selected element. In this screenshot, I have the top level view of our sample app selected:</p>
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+    <img src="./kendodesigner5.jpg" />
+</div>
+
+
+<h2>Conclusion</h2>
+
+<p>Icenium 1.6 is live, so grab your custom plugins, and start custom-plugging-away on your favorite new mobile app idea. We value your feedback, so please let us know what you think!</p>
+
+<div style="padding: 20px 0px; margin-top: 20px; border-top-color: #999999; border-top-width: 1px; border-top-style: dashed;" class="author"> <img alt="Jim Cowart" style="float: left;" src="http://icenium.com/iceniumImages/default-source/blog-images/jamescowart_180.jpeg?sfvrsn=0" title="Jim Cowart" width="141" height="115" sfref="[images]3bccfef6-a963-6e48-9015-ff00002e69be" />
+<p style="margin-left: 150px; margin-top: 0px;"><strong>About the Author<br />
+</strong><a target="_blank" href="http://freshbrewedcode.com/jimcowart" rel="author">Jim Cowart</a> is an architect, developer, open source author, and overall web/hybrid mobile development geek. He is an active speaker and writer, with a passion for elevating developer knowledge of patterns and helpful frameworks. Jim works for Telerik as a Developer Advocate and is <a target="_blank" href="http://twitter.com/ifandelse">@ifandelse on Twitter</a>.</p>
+</div>
+
+</body>
+</html>
