@@ -1,6 +1,6 @@
 # Installing NativeScript on Windows
 
-Windows developers, we have not forsaken you! While you've been able to install the NativeScript framework on Windows for a long time now, the process has always been focused on the command line. We fully realize that the Windows command line experience isn't quite up to par with macOS, and therefore isn't comfortable for many Windows developers. That has now changed with the release of our new Windows installer.
+Windows developers, we have not forsaken you! While you've been able to install the [NativeScript](https://www.nativescript.org/) framework on Windows for a long time now, the process has always been focused on the command line. We fully realize that the Windows command line experience isn't quite up to par with macOS, and therefore isn't comfortable for many Windows developers. That has changed now with the release of our new Windows installer!
 
 Command-line tools are all the rage, and *nix-based operating systems like macOS make CLI development very comfortable. But the fact remains that a narrow majority of developers are on some form of Windows:
 
@@ -21,15 +21,15 @@ This is where most of us should start, for good reason. Pure simplicity:
 
 ![nativescript windows installer](win-installer.png)
 
-It's important to note that this installer package is more than just the NativeScript framework. We also check for (and install when possible) required dependencies like JDK and Node.js. This is purposefully meant to be an extremely easy way to get started with NativeScript on Windows.
+It's important to note that this installer package is more than just the NativeScript framework. We also check for (and install when possible) required dependencies like [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Node.js](https://nodejs.org/en/). This is purposefully meant to be an extremely easy way to get started with NativeScript on Windows.
 
-> Note: Since Xcode is macOS-only, you can only use the NativeScript CLI to develop Android apps on Windows. If you want to build iOS apps, you may want to try out Telerik Platform. Telerik Platform provides robust tooling for NativeScript, including a service that builds for iOS and Android in the cloud, removing the need to install any dependencies!
+> Note: Since Xcode is macOS-only, you can only use the NativeScript CLI to develop Android apps on Windows. If you want to build iOS apps, you may want to try out [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder). AppBuilder (part of [Telerik Platform](http://www.telerik.com/platform)) provides robust tooling for NativeScript, including a service that builds for iOS and Android in the cloud, removing the need to install any dependencies!
 
 If the installer doesn't work for you for some reason (let us know! LINK????) or if you prefer command-line tooling, there are other options for you.
 
 ### Using the Command Prompt
 
-After you have installed Node.js from [nodejs.org](https://nodejs.org), you can open an *administrator* command prompt and run `npm install -g nativescript`.
+After you have installed [Node.js](https://nodejs.org/en/), you can open an *administrator* command prompt and run `npm install -g nativescript`.
 
 You'll then want to install some required dependencies with this PowerShell command:
 
@@ -53,7 +53,7 @@ With the framework installed, your next step will be to make sure you have your 
 
 ### Development Tooling
 
-In terms of tooling, there is nothing stopping you from using any IDE you want! However, we generally recommend these IDEs/editors as they have built-in functionality for improving the development and debugging experience of NativeScript apps:
+In terms of tooling, there is nothing stopping you from using any IDE or text editor! However, we generally recommend these IDEs/editors as they have built-in functionality for improving the development and debugging experience of NativeScript apps:
 
 - [NativeScript extension for Visual Studio Code](https://www.nativescript.org/nativescript-for-visual-studio-code)
 - [NativeScript plugin for WebStorm](https://plugins.jetbrains.com/webstorm/plugin/8588-nativescript)
@@ -69,7 +69,7 @@ What's that? You want to build and test on iOS? Read on!
 
 A natural limitation of developing cross-platform apps on Windows is the fact that the Xcode build tools are only available for macOS. There are plenty of ways to work around this though!
 
-1. Try [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) (with its optional [extension for Visual Studio](http://www.telerik.com/platform/appbuilder/visual-studio-extension)) to build your apps for iOS in the cloud.
+1. Try the aforementioned [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) (with its optional [extension for Visual Studio](http://www.telerik.com/platform/appbuilder/visual-studio-extension)) to build your apps for iOS in the cloud.
 2. Standalone build services like BuddyBuild let you add cloud builds to your continuous integration/continuous delivery workflow. NEED LINK TO TODD'S POST!!!!
 3. If you have a Mac available, use it! By using a network share or code repository you can easily share code between Windows and Mac to perform builds and use the iOS Simulator.
 
