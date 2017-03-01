@@ -1,6 +1,6 @@
 # Installing NativeScript on Windows
 
-Windows developers, we have not forsaken you! While you've been able to install the [NativeScript](https://www.nativescript.org/) framework on Windows for a long time now, the process has always been focused on the command line. We fully realize that the Windows command line experience isn't quite up to par with macOS, and therefore isn't comfortable for many Windows developers. That has changed now with the release of our new Windows installer!
+Windows developers, we have not forsaken you! While you've been able to install the NativeScript framework on Windows for a long time now, the process has always been focused on the command line. We fully realize that the Windows command line experience isn't quite up to par with macOS, and therefore isn't comfortable for many Windows developers. That has changed now with the release of our new [Windows installer](https://docs.nativescript.org/start/ns-setup-installer)!
 
 Command-line tools are all the rage, and *nix-based operating systems like macOS make CLI development very comfortable. But the fact remains that a narrow majority of developers are on some form of Windows:
 
@@ -10,13 +10,19 @@ Command-line tools are all the rage, and *nix-based operating systems like macOS
 
 Let's take a look at the different ways you can get up and running developing NativeScript apps on Windows.
 
+- [Installing NativeScript](#installing)
+- [Tooling and Emulators](#tooling)
+- [Building for iOS](#ios)
+- [Updating NativeScript](#updating)
+
+<a name="installing"></a>
 ## Installing NativeScript
 
 ### Using the Windows Installer
 
 This is where most of us should start, for good reason. Pure simplicity:
 
-1. Download the Windows installer.
+1. [Download the Windows installer](https://docs.nativescript.org/start/ns-setup-installer).
 1. Run the installer.
 
 ![nativescript windows installer](win-installer.png)
@@ -25,7 +31,9 @@ It's important to note that this installer package is more than just the NativeS
 
 > Note: Since Xcode is macOS-only, you can only use the NativeScript CLI to develop Android apps on Windows. If you want to build iOS apps, you may want to try out [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder). AppBuilder (part of [Telerik Platform](http://www.telerik.com/platform)) provides robust tooling for NativeScript, including a service that builds for iOS and Android in the cloud, removing the need to install any dependencies!
 
-If the installer doesn't work for you for some reason (let us know! LINK????) or if you prefer command-line tooling, there are other options for you.
+If the installer doesn't work for you for some reason [please let us know](https://github.com/nativescript/nativescript-cli/issues)!
+
+If you *prefer* command-line tooling, there are other options for you:
 
 ### Using the Command Prompt
 
@@ -35,7 +43,7 @@ You'll then want to install some required dependencies with this PowerShell comm
 
 	@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://www.nativescript.org/setup/win'))"
 
-> Alternatively you may want to consult our [detailed setup instructions for Windows](http://docs.nativescript.org/start/ns-setup-win).
+> You may want to consult our [detailed setup instructions for Windows](http://docs.nativescript.org/start/ns-setup-win).
 
 When installation is complete, be sure to verify your installation by running the `tns doctor` command.
 
@@ -47,6 +55,7 @@ If you are running Windows 10, you [now have the option](http://www.zdnet.com/ar
 
 **I caution that your mileage may vary, as the Linux instructions provided will not map perfectly to Ubuntu on Windows.** However, if you are a linux person trapped on a Windows PC, you may find this a more palatable route!
 
+<a name="tooling"></a>
 ## Tooling and Emulators
 
 With the framework installed, your next step will be to make sure you have your development tooling and device emulators set up and functioning properly.
@@ -55,9 +64,9 @@ With the framework installed, your next step will be to make sure you have your 
 
 In terms of tooling, there is nothing stopping you from using any IDE or text editor! However, we generally recommend these IDEs/editors as they have built-in functionality for improving the development and debugging experience of NativeScript apps:
 
-- [NativeScript extension for Visual Studio Code](https://www.nativescript.org/nativescript-for-visual-studio-code)
-- [NativeScript plugin for WebStorm](https://plugins.jetbrains.com/webstorm/plugin/8588-nativescript)
-- Telerik AppBuilder's [cloud IDE](http://www.telerik.com/platform/appbuilder) or [extension for Visual Studio](http://www.telerik.com/platform/appbuilder/visual-studio-extension)
+- Visual Studio Code and the [NativeScript extension for VS Code](https://www.nativescript.org/nativescript-for-visual-studio-code)
+- WebStorm and the [NativeScript WebStorm plugin](https://plugins.jetbrains.com/webstorm/plugin/8588-nativescript)
+- Visual Studio and Telerik AppBuilder's [extension for Visual Studio](http://www.telerik.com/platform/appbuilder/visual-studio-extension)
 
 ### Simulators and Emulators
 
@@ -65,20 +74,22 @@ While developing and debugging on real devices is a perfectly reasonable route t
 
 What's that? You want to build and test on iOS? Read on!
 
+<a name="ios"></a>
 ## Building for iOS
 
 A natural limitation of developing cross-platform apps on Windows is the fact that the Xcode build tools are only available for macOS. There are plenty of ways to work around this though!
 
 1. Try the aforementioned [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) (with its optional [extension for Visual Studio](http://www.telerik.com/platform/appbuilder/visual-studio-extension)) to build your apps for iOS in the cloud.
-2. Standalone build services like BuddyBuild let you add cloud builds to your continuous integration/continuous delivery workflow. NEED LINK TO TODD'S POST!!!!
+2. Standalone build services like [BuddyBuild](https://www.buddybuild.com/) let you add cloud builds to your continuous integration/continuous delivery workflow.
 3. If you have a Mac available, use it! By using a network share or code repository you can easily share code between Windows and Mac to perform builds and use the iOS Simulator.
 
+<a name="updating"></a>
 ## Updating NativeScript
 
 After a successful NativeScript installation, your next question might be how to **update** the NativeScript framework. There is a great [guide for upgrading NativeScript](http://docs.nativescript.org/releases/upgrade-instructions), which boils down to simply running `npm install -g nativescript` to get the latest bits (regardless of how you initially installed NativeScript).
 
-*Be sure to follow that same guide to quickly upgrade all of your individual NativeScript projects!*
+*Be sure to follow that same guide to also quickly upgrade all of your individual NativeScript projects!*
 
-## What's Next?
+## Get Started!
 
 Once NativeScript is installed, you should start with our [comprehensive getting started tutorial](http://docs.nativescript.org/) to develop a cross-platform app using plain JavaScript or TypeScript + Angular!
