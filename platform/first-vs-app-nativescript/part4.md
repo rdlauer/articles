@@ -171,7 +171,7 @@ and
 	    selected-tab-text-color: #ffffff;
 	}
 
-**Last, but not least, let's add a new font to our app.** NativeScript allows you to use TTF fonts in your app, just like you would on the web.
+**Last, but not least, let's add a new font to our app to display icons.** NativeScript allows you to use TTF fonts in your app, just like you would on the web.
 
 Start by downloading the latest [Font Awesome font set](http://fontawesome.io/). Unzip it and find the `fontawesome-webfont.ttf` file (in my case found at "font-awesome-4.7.0\fonts"). Create a new directory called **fonts** inside your **app** directory in your Visual Studio project. Copy and paste the `fontawesome-webfont.ttf` file into that directory.
 
@@ -190,3 +190,111 @@ and
 
 	<TabViewItem title="&#xf200; Chart">
 
+## Telerik UI for NativeScript Charts
+
+If you're looking to add some pizazz to your apps (who isn't?), you need look no further than [UI for NativeScript](http://www.telerik.com/nativescript-ui). UI for NativeScript provides a set of fully native, cross-platform, components to extend your app with gorgeous and functional UI.
+
+While we are going to limit our usage of UI for NativeScript to the [Chart component](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescript-s-charts), we've written extensively in the past about many of the other components, such as:
+
+- [ListView](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescripts-listview)
+- [SideDrawer](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescripts-sidedrawer)
+- [DataForm](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescripts-dataform)
+- [AutoCompleteTextView](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescripts-autocompletetextview)
+- [Calendar](https://www.nativescript.org/blog/a-deep-dive-into-telerik-ui-for-nativescripts-calendar)
+
+UI for NativeScript comes in two flavors: a series of free controls (ListView and SideDrawer) and a series of paid controls (all the rest). The Chart component is one of the paid controls, so we are continue this tutorial by using a [free trial of UI for NativeScript Pro](http://www.telerik.com/download-trial-file/v2/nativescript-ui)!
+
+We can install UI for NativeScript via the **Properties** window:
+
+![nativescript appbuilder properties](part-4-properties.png)
+
+With the properties window open:
+
+1. Choose the **Dependencies** pane;
+2. Click the **Install from Plugins Marketplace** button;
+3. Click the **npm** tab in the **Manage Packages** window;
+4. Search for "telerik ui nativescript pro";
+5. Click **Install**.
+
+![npm ui for nativescript pro](part-4-dependencies.png)
+
+> Since we are using the Telerik Platform Companion App to use/debug our app, we don't need to go through this installation process as UI for NativeScript is set up by default. However, if we were to build and deploy it as a standalone app, we will need it installed.
+
+Open up `main-page.xml` and add the namespace for our chart component to our top-level `<Page>` element like so:
+
+	<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:chart="nativescript-telerik-ui-pro/chart" loaded="pageLoaded">
+
+Next, replace the `<Label>` that we used as a placeholder for our chart with this block of code:
+
+	<chart:RadPieChart height="300">
+		<chart:RadPieChart.series>
+			<chart:PieSeries
+				selectionMode="None"
+				items="{{ movies }}"
+				outerRadiusFactor="0.8"
+				valueProperty="count"
+				legendLabel="movie"
+				showLabels="true">
+			</chart:PieSeries>
+		</chart:RadPieChart.series>
+		<chart:RadPieChart.legend>
+			<chart:RadLegendView
+			position="Right"
+			width="110" />
+		</chart:RadPieChart.legend>
+	</chart:RadPieChart>
+
+The specifics of each `RadPieChart` property can be [learned here](http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/Chart/Series/pie). Most should be self-explanatory, but I encourage you to try out different values to see how you can customize your chart control.
+
+Finally, open up `main-page.ts` and add a new function to your `pageLoaded` function:
+
+	export function pageLoaded(args: observable.EventData) {
+	    page = <pages.Page>args.object;
+	    loadQuote();
+	    loadChart();
+	}
+
+And the corresponding `loadChart()` function should look like this:
+
+	function loadChart() {
+	    let chartData = new observable.Observable();
+	    chartData.set("movies", [
+	        { movie: "Ghostbusters", count: 2 },
+	        { movie: "Caddyshack", count: 2 },
+	        { movie: "Stripes", count: 1 },
+	        { movie: "Groundhog Day", count: 2 }
+	    ]);
+	    page.bindingContext = chartData;
+	}
+
+What's that? We are cheating? Yes, in this case to save time we are mocking in some data, but in reality you would want to create another simple Web API service that exposes the counts of movie quotes with their associated movies.
+
+You'll also notice that we are setting a `bindingContext` on the page itself, not just on an individual control. NativeScript provides ample flexibility in code-writing styles!
+
+Make sure you save your changes, use the **Synchronize {app name} with Cloud** menu option and do a **three-finger press** to load your changes:
+
+![ui for nativescript chart](part-4-chart.png)
+
+> Tip: When managing custom NativeScript plugins within Visual Studio, it's a good idea to [consult these instructions](http://docs.telerik.com/platform/appbuilder/nativescript/working-with-custom-modules/manage-npm-custom-modules).
+
+## Animations + CSS + Icon Font + Chart =
+
+With everthing saved, use the **Synchronize {app name} with Cloud** menu option and do a **three-finger press** to load your changes (or use the **Build {app name} in Cloud** to load a new copy of the app if it's been a while since you last synced).
+
+<img src="demo-ios.gif" alt="ios demo" style="border:1px solid #5c5c5c" /> <img src="demo-android.gif" alt="ios demo" style="border:1px solid #5c5c5c" />
+
+## Are We Done?
+
+Yes! Congratulations! If you've made it this far you have (hopefully) built a complete NativeScript app from beginning to end with Visual Studio. Your app should work equally well on iOS and Android, all *without making any code changes to support completely different platforms!* You used Microsoft technologies like TypeScript, SQL Server, and Web API to build a complete app, front end and back end.
+
+And while we went uber-simple with our code, you can utilize the [built-in MVVM support](https://docs.nativescript.org/tutorial/chapter-3) of NativeScript to better structure your app.
+
+## Next Steps
+
+This is just the proverbial beginning! There is A LOT more you can do with AppBuilder and Visual Studio to boost your development productivity. You can use Visual Studio and AppBuilder to:
+
+1. Debug your NativeScript app.
+2. Build and deploy a true version of the app to an iOS or Android device.
+3. Deploy your app to the app stores.
+
+This is all from Windows, all using Visual Studio and the features provided by AppBuilder. If you haven't already, start your free trial of AppBuilder and happy NativeScripting!
