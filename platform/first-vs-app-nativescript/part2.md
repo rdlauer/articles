@@ -6,7 +6,8 @@ In the first post of this series, we started our "Bill Murray" mobile app with [
 
 - Learn about NativeScript layouts;
 - Build our app structure using native UI elements;
-- Mock in some data to show off a fully-functional app.
+- Mock in some data to show off a fully-functional app;
+- Debug our app with Visual Studio debugging tools.
 
 Let's get started!
 
@@ -24,9 +25,9 @@ Of course both XAML and NativeScript [have more layout options than just these](
 
 > Tip: Read more about layouts in this article on ["Demystifying NativeScript Layouts"](http://developer.telerik.com/featured/demystifying-nativescript-layouts/)
 
-If you recall from last time, our simple Bill Murray app is going to have one page with a `TabView` containing two views of data. One tab is going to show quotes and images from some of his movies and the second will show a chart breaking down the quotes by movie.
+If you recall from last time, our simple Bill Murray app is going to have one page with a `TabView` containing two views of data. One tab is going to show quotes and images from some of his movies and the second will show a pie chart breaking down the quotes by movie.
 
-The first view will need the ability to show a random quote (we need a `<Label>` to display a string) and an image of Bill Murray (we need an `<Image>` to display an image). We will want the UI elements stacked on each other, so we will use the `<StackLayout>` layout tag.
+The first view will need the ability to show a random quote (we need a `<Label>` element to display a string) and an image of Bill Murray (we need an `<Image>` element to display an image). We will want the UI elements stacked on each other, so we will use a `<StackLayout>` element.
 
 Open up `main-page.xml` and replace the current contents with this:
 
@@ -50,15 +51,17 @@ Open up `main-page.xml` and replace the current contents with this:
 	  </TabView>
 	</Page>
 
-> Tip: Tabs can also be [dynamically generated](https://docs.nativescript.org/cookbook/ui/tab-view) at runtime, but for simplicity sake we are going to do as much layout as we can with XML.
+> Tip: Tabs can also be [dynamically generated](https://docs.nativescript.org/cookbook/ui/tab-view) at runtime, but for simplicity sake we are going to do everything with XML.
 
-Remember, to see your changes at any time you can use the **Build {app name} in Cloud** function to build for the Telerik Platform Companion App. If you've already deployed an app build to the Companion App, you can use the **Synchronize {app name} with Cloud** function and do a **three-finger tap** (iOS) or **tap the "sync" function in the notification menu** (Android) to load your changes.  (Android)
+Remember, to see your changes at any time you can use the **Build {app name} in Cloud** function to build for the Telerik Platform Companion App. If you've already deployed an app build to the Companion App, you can use the **Synchronize {app name} with Cloud** function and do a **three-finger tap** (iOS) or **tap the "sync" function in the notification menu** (Android) to load your changes.
 
 You may be asking yourself, "what are those {{ }} curly braces all about?". This is commonly referred to as "mustache syntax" and is a way for us to implement [data binding](https://docs.nativescript.org/core-concepts/data-binding) in our app. Which makes now a great time to start building out our code behind!
 
+> You can find the complete source code for this NativeScript app in [this Github repository](https://github.com/rdlauer/tns-bill-murray).
+
 ## Code Behind and Mock Data
 
-The brains of our app will be in the `main-page.ts` code behind file (we know it's the code-behind file for `main-page.xml` simply because of the file name syntax). Let's start working on our app's business logic and mock in some sample data so we can get a real-world idea of how our app will function.
+The brains of our app will be in the `main-page.ts` code behind file (we know it's the code behind file for `main-page.xml` simply because of the file name match). Let's start working on our app's business logic and mock in some sample data so we can get a real-world idea of how our app will function.
 
 Go ahead and replace everything in your `main-page.ts` file with this:
 
@@ -77,7 +80,7 @@ Go ahead and replace everything in your `main-page.ts` file with this:
 	
 	}
 
-You can see we've made some small changes to our `pageLoaded` function, which is called when this view is first loaded (see `loaded="pageLoaded"` in `main-page.xml`). We are also binding static data to our `StackLayout` element (you can see how we get the reference to the `StackLayout` as we select the element by its id with `page.getViewById("layout")`.
+You can see we've made some small changes to our `pageLoaded` function, which is called when this view is first loaded (see `loaded="pageLoaded"` in `main-page.xml`). We are also binding mock data to our `StackLayout` element (you can see how we get the reference to the `StackLayout` as we select the element by its id with `page.getViewById("layout")`).
 
 > We will be using [fillmurray.com](https://www.fillmurray.com/) to load remote images of Bill!
 
@@ -120,7 +123,7 @@ In this code snippet you'll notice some iOS- and Android-specific properties. Th
 - Icons from the `systemIcon` sets on both iOS and Android (see iOS and Android [system icon options](https://docs.nativescript.org/ui/action-bar#setting-icons));
 - Positioning the iOS icon to the *right* of the action bar title, and Android positioning *on* the action bar (just some platform-specific quirks!).
 
-Of course, we don't have a corresponding `onReload` function set up yet, but just for the sake of the UI, your code should now look like this in `main-page.xml`:
+Of course, we don't have a corresponding `onReload` function set up yet, but just for the sake of the UI, your `<ActionBar>` element should now look like this in `main-page.xml`:
 
 	<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
 	  <ActionBar title="Bill Murray Quotes">
@@ -141,11 +144,36 @@ Error handling for NativeScript apps in the Telerik Platform Companion App is no
 
 1. Kill and re-open the NativeScript Developer App on your device;
 2. Discover the error with the console log output provided (see iOS example below);
-3. Tap **Reset** to completely reset your NativeScript Developer App and start over with a new build.
+3. Fix the problem, tap **Reset** to completely reset your NativeScript Developer App, and start over with a new build.
 
 ![error in companion app](part-2-error.png)
 
 > One way to help avoid errors is by [writing unit tests](http://developer.telerik.com/products/nativescript/adding-unit-tests-to-your-nativescript-app/). NativeScript has built-in support for Jasmine, Mocha, and QUnit.
+
+If you are experiencing issues with your app, instead of trying to debug in the Telerik Platform Companion App, you should really take advantage of Visual Studio's powerful debugging features.
+
+## Debugging NativeScript  in Visual Studio
+
+Visual Studio isn't just a text editor. It includes expansive debugging tooling that we can tap into when developing for iOS or Android with NativeScript.
+
+Before we start debugging on a physical device, take a quick look at the [requirements for debugging on device](http://docs.telerik.com/platform/appbuilder/nativescript/debugging-your-code/debugging-on-device/prerequisites-for-debugging). Nothing too crazy in here as the default TypeScript settings in our app already conform to the requirements.
+
+We could write a whole article on debugging an app, but for right now, I'm going to debug on a physical Android device (thereby avoiding the provisioning hassle of iOS).
+
+> Tip: Check out the specific docs for debugging on [Android](http://docs.telerik.com/platform/appbuilder/nativescript/debugging-your-code/debugging-on-device/debug-on-android-device) and [iOS](http://docs.telerik.com/platform/appbuilder/nativescript/debugging-your-code/debugging-on-device/debug-on-ios-device) as there are some gotchas for both platforms.
+
+Since I'm debugging on Android, I'll want to make sure my [developer options system setting is available](https://www.howtogeek.com/129728/how-to-access-the-developer-options-menu-and-enable-usb-debugging-on-android-4.2/) and that USB debugging is also enabled. Next, with my device connected to my PC, I'll do the following to debug my app:
+
+1. From the **APPBUILDER** menu, choose **Build {app name} and Deploy** (this will build the app in the cloud and deploy it to a connected device).
+2. Next, choose the device, make sure the **Debug** configuration is selected, and click **Run**.
+3. Once the app is running on your device, open up a TypeScript (.ts) file and in the margin of the code editor, click next to a line number to set a breakpoint.
+4. In the Visual Studio toolbar, choose your device and click the magical green arrow to start debugging!
+ 
+![visual studio debug toolbar](part-2-debug-menu.png)
+
+You can now set more breakpoints, use step-through debugging, and fully debug your app with the built-in Visual Studio debugger!
+
+![debugging nativescript with visual studio](part-2-debug.png)
 
 ## What's Next?
 

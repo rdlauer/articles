@@ -29,7 +29,7 @@ Using SQL Server Management Studio (SSMS), you can create a database and then ad
 
 ![sql server table](part-3-table.png)
 
-We're then going to manually populate this table with a handful of quotes from some of Bill's most popular movies. If you want, you can [download the Excel source file](part-3-bill-quotes.xls) and, inside SSMS, right-click on your database, go to **Tasks** --> **Import Data** to import this data from Excel.
+We're then going to manually populate this table with a handful of quotes from some of Bill's most popular movies. If you want, you can [download the Excel source file](part-3-bill-quotes.xls) and, inside SSMS, right-click on your database, go to **Tasks** --> **Import Data**, and import the data from Excel.
 
 ## Why ASP.NET Web API?
 
@@ -99,7 +99,7 @@ Now hit the magic Visual Studio green button to build and run this app! Your bro
 
 ![hello nativescript](part-3-hello-nativescript.png)
 
-Now all this does is just return a string. What we want to do is query our newly-created SQL Server database and return a random quote, and return the result in JSON format.
+Now all this does is just return a string. What we want to do is query our newly-created SQL Server database to get a random quote, and return the result in JSON format.
 
 Before we get into the code of how to do this, we need to set up our data source in Visual Studio!
 
@@ -115,7 +115,7 @@ In the next step, be sure to choose **EF Designer from database**. This is becau
 
 ![ef designer from database](part-3-ef-from-database.png)
 
-In the next window you'll want to select your data source. In our case we already created a table in a SQL Server instance, so go ahead and add a new data source, choosing **Microsoft SQL Server**:
+In the next window you'll want to select your data source. In our case we already created a table in our SQL Server instance, so go ahead and add a new data source, choosing **Microsoft SQL Server**:
 
 ![data source](part-3-data-source.png)
 
@@ -162,7 +162,7 @@ Open up the `QuoteController.cs` file (this is where we previously created the m
 	    }
 	}
 
-What changed? Well, quite a bit, but the code is still relatively easy to follow:
+**What changed?** Well, quite a bit, but the code is still relatively easy to follow:
 
 - Instead of returning a `string` our `GetQuote` method now returns a `JsonResult`;
 - We create a random number based on the count of records in our `Quotes` table;
@@ -177,7 +177,7 @@ The information we want is in the `Data` property of this object. What's with al
 
 ## Deploy the Web API Project
 
-The final step of setting up your backend will be to deploy it to a location that your mobile app can access. This could be a local deployment (with an network-accessible endpoint), a remote server, or a cloud provider like [Microsoft Azure](https://azure.microsoft.com/en-us/).
+The final step of setting up your backend will be to deploy it to a location that your mobile app can access. This could be a local deployment (with a network-accessible endpoint), a remote server, or a cloud provider like [Microsoft Azure](https://azure.microsoft.com/en-us/).
 
 ## What's Next?
 

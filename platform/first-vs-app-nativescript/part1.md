@@ -2,29 +2,29 @@
 
 Visual Studio is quite possibly the most adored IDE of all time. For years .NET developers have relied on the myriad robust features and integrations in Visual Studio to make them more productive creating desktop apps, web apps, and now (increasingly) mobile apps.
 
-In the early days of the mobile revolution, a handful of developers leveraged Visual Studio to create native Windows Phone apps. These same .NET developers were left out of any true cross-platform development opportunities though - until [Apache Cordova](http://cordova.apache.org/) and [Xamarin.Forms](https://www.xamarin.com/forms) rose in prominence.
+In the early days of the mobile revolution, a subset of developers leveraged Visual Studio to create native Windows Phone apps. These .NET developers were left out of any true cross-platform development opportunities though - until [Apache Cordova](http://cordova.apache.org/) and [Xamarin.Forms](https://www.xamarin.com/forms) came about.
 
 Cordova presented an opportunity for web developers to create [hybrid mobile apps](http://developer.telerik.com/featured/what-is-a-hybrid-mobile-app/) for virtually every platform. And [Telerik Platform](http://www.telerik.com/platform#overview) was one of the first mobile app development platforms to embrace the hybrid model. But the knock on hybrid apps is usually performance - issues that truly native apps don't generally experience.
 
 With Xamarin.Forms, .NET developers can leverage their existing knowledge of C# to build cross-compiled native apps for iOS, Android, and Windows. Combining the cross-platform capabilities of Xamarin.Forms with [Telerik UI for Xamarin](http://www.telerik.com/xamarin-ui) for instance, C# developers are now empowered to build native apps while sharing a fair amount of code.
 
-*While Xamarin is a big win for C# developers, Visual Studio has always been about more than just C#!*
-
 ## Enter NativeScript
 
-As a C# developer, you most likely also enjoy what [TypeScript](http://www.typescriptlang.org/) has to offer. Likewise if you are doing client-side development with [Angular](https://angular.io/), or just like the dynamic nature of vanilla JavaScript, and also want to keep leveraging your favorite IDE, NativeScript may be just the thing for you!
+While Xamarin is a big win for C# developers, Visual Studio has always been about more than just C#! Visual Studio considers JavaScript a [first class citizen](https://msdn.microsoft.com/en-us/library/hh334522.aspx) and Microsoft's own [TypeScript](http://www.typescriptlang.org/) was created to effectively give a C# feel to the JavaScript language. Many .NET developers are also leveraging JavaScript and [Angular](https://angular.io/) for client-side development.
+
+If you want to keep leveraging your favorite IDE, while creating truly native cross-platform apps with JavaScript or TypeScript (and optionally Angular) NativeScript may be just the thing for you!
 
 > For more information, read [NativeScript for the .NET Developer](http://developer.telerik.com/featured/nativescript-for-the-net-developer/).
 
-[NativeScript](https://www.nativescript.org/) is an open source framework (with [enterprise support](https://www.nativescript.org/enterprise)) that allows you to build truly native cross-platform mobile apps using the skills you know and love:
+[NativeScript](https://www.nativescript.org/) is a free and open source framework (with [enterprise support](https://www.nativescript.org/enterprise)) that allows you to build native cross-platform mobile apps using the skills you know and love:
 
 - **XAML-like XML** for your UI markup;
 - **CSS** for styling your UI;
 - and **JavaScript/TypeScript** for your app logic.
 
-NativeScript also allows for nearly 100% code sharing across platforms as well, dramatically decreasing development time and getting you to market faster than ever before.
+NativeScript also allows for nearly 100% code sharing across platforms, dramatically decreasing development time and getting you to market faster than ever before.
 
-Add [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) (part of Telerik Platform) to the mix, and you can also **build your apps for iOS without owning a Mac** and dealing with dependencies like Xcode or command line tooling.
+Add [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) (part of Telerik Platform) to the mix, and you can also **build your apps for iOS without owning a Mac** and avoid dealing with dependencies like Xcode and command line tooling.
 
 So now that you're here, let's build a cross-platform native app together with NativeScript and Visual Studio!
 
@@ -42,7 +42,9 @@ The app we are going to build is...wait for it...a Bill Murray app! Who doesn't 
 
 Just so we know what the end result will look like, here is a quick example of our soon-to-be-created app on iOS and Android:
 
-<img src="demo-ios.gif" alt="ios demo" style="border:1px solid #5c5c5c" /> <img src="demo-android.gif" alt="ios demo" style="border:1px solid #5c5c5c" />
+<img src="demo-ios.gif" alt="ios demo" style="border:1px solid #5c5c5c" /> <img src="demo-android.gif" alt="android demo" style="border:1px solid #5c5c5c" />
+
+> You can find the complete source code for this NativeScript app in [this Github repository](https://github.com/rdlauer/tns-bill-murray).
 
 ## Initial Setup
 
@@ -52,23 +54,25 @@ Let's make sure our environment is set up for us. We will need to:
 2. [Start a free 30 day trial](https://platform.telerik.com/#register) of Telerik Platform (which includes AppBuilder).
 3. Download and install the [AppBuilder extension for Visual Studio](http://cdn.icenium.com/live/vs/AppBuilder.vsix).
 
-With these brief installations done (well, brief if you didn't have to install Visual Studio!) you are all set. There are no other dependencies you have to manage to build an app for iOS and Android!
+With these brief installations done (well, brief if you didn't have to install Visual Studio!) you are all set. There are no other dependencies you have to manage to build an app for iOS or Android!
 
 ## Initialize an App
 
-Open Visual Studio and log in to your newly created Telerik Platform account. On the screen provided, you'll see that you have numerous options to create a new hybrid app with Cordova, a new native app with NativeScript, get sample code, view documentation, or take a spin through our quick start tutorial. All good things to do! However, today let's go directly to creating a new NativeScript app:
+Open Visual Studio and log in to your newly created Telerik Platform account. On the Telerik Platform Start Page, you'll see that you have numerous options to create a new hybrid app with Cordova, a new native app with NativeScript, get sample code, view documentation, or take a spin through our quick start tutorial. All good things to do! However, today let's go directly to creating a new NativeScript app:
 
 ![create nativescript app](part-1-new-project.png)
+
+> If the Telerik Platform Start Page isn't visible, you can open the **APPBUILDER** menu and choose **View Start Page**.
 
 There are a lot of templates to choose from when starting an app. Whether you want to use JavaScript, TypeScript, or Angular templates, you have options. Since we are building a tabbed interface with TypeScript, let's start with the TypeScript "TabbedApp":
 
 ![typescript tabbed app](part-1-typescript.png)
 
-After the project loads, let's take a quick look at the assets that are part of this template in our solution explorer:
+Once the project is created, take a quick look at the assets that are part of this template in the solution explorer:
 
 ![solution explorer](part-1-solution.png)
 
-I'm highlighting two important groups of assets: the `app` and `main-page` files. In NativeScript, `app.js` is the very first file executed and effectively bootstraps your app. In `app.ts` you'll see some pretty straightforward code:
+I'm highlighting two important groups of assets: the `app` and `main-page` file bundles. In NativeScript, `app.ts` is the very first file executed and effectively bootstraps your app. In `app.ts` you'll see some pretty straightforward code:
 
 	import application = require("application");
 	application.cssFile = "./app.css"
@@ -136,10 +140,10 @@ The layout provided in `main-page.xml` is a little more complicated, but not muc
 You'll see we have:
 
 - a `Page` element that encompasses all of our UI;
-- a `TabView` element which is the parent of our two `TabViewItem` elements;
+- a `TabView` element which is the parent of our two `TabViewItem` elements (effectively two separate views);
 - each `TabViewItem` contains a view with a `StackLayout` and two `Label` elements.
 
-Finally, the `main-page.ts` file is the code-behind of our `main-page.xml` view. All of our business logic will be executed here:
+Finally, the `main-page.ts` file is the code behind of our `main-page.xml` view. All of our business logic will be executed here:
 
 	import observable = require("data/observable");
 	import pages = require("ui/page");
@@ -154,9 +158,9 @@ Here we are simply importing the `observable` and `pages` NativeScript modules. 
 
 > NativeScript modules are cross-platform abstractions of native code. This allows you to just use JavaScript/TypeScript instead of writing code that looks like Objective-C or Java. Yuck!
 
-Many of the TypeScript samples we will use are fully functional, but naively simple! In the real world you'll probably want to utilize Angular or NativeScript's built-in [MVVM pattern](https://docs.nativescript.org/tutorial/chapter-3) to better structure your app.
+Many of the TypeScript samples we will use are fully functional, but naively simple! In the real world you'll probably want to utilize [NativeScript with Angular](https://docs.nativescript.org/tutorial/ng-chapter-0) or NativeScript's built-in [MVVM pattern](https://docs.nativescript.org/tutorial/chapter-3) to better structure your app.
 
-## NativeScript Companion Apps
+## NativeScript Developer App
 
 Before we proceed, let's see what this template looks like on a real device. The fastest and easiest way to do this is by using the Telerik Platform Companion app + the NativeScript Developer App. Both are available for free:
 
@@ -169,11 +173,11 @@ The Telerik Platform Companion App is where you will discover and open apps up f
 
 These apps work with Visual Studio by syncing your local project files with the cloud and pushing them to your device. This happens without a lengthy app build, so your app is almost instantly available.
 
-Go ahead and open up the Telerik Platform Companion App. Log in with your Telerik Platform credentials and tap on **MyApps**. You'll probably get a screen that looks like this:
+Go ahead and open up the Telerik Platform Companion App. Log in with your Telerik Platform credentials and tap on **My Apps**. You'll probably get a screen that looks like this:
 
 ![telerik platform companion app](part-1-no-apps.png)
 
-That's fine, because as we stated already, since your project is only on your PC, your Companion App knows nothing about your Visual Studio project. Let's change that.
+That's fine, since your project files are only on your PC, your Companion App knows nothing about your Visual Studio project. Let's change that.
 
 Back in Visual Studio, use the **APPBUILDER** menu and choose **Build {app name} in Cloud**:
 
@@ -200,7 +204,7 @@ LiveSync allows you to see changes in your app as you make them. No waiting for 
 
 Let's quickly try it out!
 
-In Visual Studio, open your `main-page.xml` file and change one of the labels. Let's change the "First View" text in one of our labels to "Hello NativeScript!". The first `<Label>` element should now look like this:
+In Visual Studio, open your `main-page.xml` file and change one of the labels. Let's change the "First View" text property of one of our labels to "Hello NativeScript!". The first `<Label>` element should now look like this:
 
 	<Label text="Hello NativeScript!" class="title"/>
 
@@ -210,7 +214,7 @@ Save the file and go to the **APPBUILDER** menu and choose **Synchronize {app na
 
 Back on your device, **tap and hold three fingers** with your app running (iOS) or **tap the "sync" function in the notification menu** (Android). You'll get a notification that the the Companion App is downloading and extracting the package. And finally:
 
-![hello nativescript iod](part-1-hello-nativescript.png) ![hello nativescript android](part-1-hello-nativescript-android.png)
+![hello nativescript ios](part-1-hello-nativescript.png) ![hello nativescript android](part-1-hello-nativescript-android.png)
 
 All without having to do a complete re-build and re-deployment of the app!
 
@@ -218,6 +222,6 @@ All without having to do a complete re-build and re-deployment of the app!
 
 You've come a long way and we've covered A LOT of new concepts!
 
-In the next article in this series, we are going to write some code! We will build the structure of our app using NativeScript layouts, native UI elements, and mock in some data. After that we are going to dive into creating a simple ASP.NET Web API backend and look at how we can style our app with CSS and native animations!
+In the next article in this series, we are going to write some code! We will build the structure of our app using NativeScript layouts, native UI elements, and mock in some data. We will also look at debugging our app with the built-in debugging capabilities of Visual Studio. After that we are going to dive into creating a simple ASP.NET Web API backend and look at how we can style our app with CSS and native animations!
 
 [**Read Part 2 --&gt;**](#)
