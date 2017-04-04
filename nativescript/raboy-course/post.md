@@ -18,9 +18,9 @@ TDN: [**NativeScript for the Angular Developer**](http://www.telerik.com/campaig
 
 Telerik: <a data-gtm-pageview="/virtual/telerik-blog/nativescript-video-nsangularcourse" href="http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript-and-angular">**NativeScript for the Angular Developer**</a>
 
-TDN: [**NativeScript 101: A Quickstart to Building Mobile Apps**](http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript?utm_medium=internal-banner&utm_source=tdn&utm_campaign=nativescript-video-nsangularcourse)
+TDN: [**NativeScript 101: A Quickstart to Building Mobile Apps**](http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript?utm_medium=internal-banner&utm_source=tdn&utm_campaign=nativescript-video-nscourse)
 
-{N}: [**NativeScript 101: A Quickstart to Building Mobile Apps**](http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript?utm_medium=external-banner&utm_source=nsblog&utm_campaign=nativescript-video-nsangularcourse)
+{N}: [**NativeScript 101: A Quickstart to Building Mobile Apps**](http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript?utm_medium=external-banner&utm_source=nsblog&utm_campaign=nativescript-video-nscourse)
 
 Telerik: <a data-gtm-pageview="/virtual/telerik-blog/nativescript-video-nscourse" href="http://www.telerik.com/campaigns/building-a-mobile-application-with-nativescript">**NativeScript 101: A Quickstart to Building Mobile Apps**</a>
 
