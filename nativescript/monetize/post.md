@@ -1,6 +1,6 @@
-# 3 Ways to Monetize Your NativeScript App with Plugins
+# 5 Plugins to Monetize Your NativeScript App
 
-While it's all fun and games to develop a mobile app, at the end of the day, you gotsta get paid. Realizing many of us are developing apps on a fee basis for clients or as part of our company's strategic mobile initiatives, there remains a large segment of developers who are staking out on their own and pursuing a dream of Flappy Bird 2.0.
+While it's all fun and games to develop a mobile app, at the end of the day, you gotsta get paid. Realizing many of us are developing apps on a fee basis for clients or as part of our company's strategic mobile initiative, there remains a large segment of developers who are staking out on their own and pursuing a dream of Flappy Bird 2.0.
 
 Aside from charging per download from the app stores, let's take a look at some ways to easily monetize your NativeScript apps with a variety of [NativeScript plugins](http://plugins.nativescript.org/):
 
@@ -12,7 +12,7 @@ Take, for example, the [Truecaller](https://itunes.apple.com/us/app/truecaller-s
 
 ![truecaller ads](truecaller.png)
 
-*The ad is highly visible, yet doesn't disrupt any part of your experience using the app. If you're interested, you'll tap on it.*
+*The ad is highly visible, yet doesn't disrupt any part of your experience using the app. If you're interested in the ad, you'll tap on it.*
 
 The same can be done on NativeScript of course, by using the [NativeScript AdMob plugin](http://plugins.nativescript.org/plugin/nativescript-admob). 
 
@@ -49,11 +49,11 @@ We've [written extensively](https://www.nativescript.org/blog/monetize-your-nati
 
 ## In-App Purchases
 
-As we see developers shying away from one-time initial app download fees, we see an equal increase in the usage of the native in-app purchase platforms. What better way to leverage both Apple's and Google's native platforms than with one [cross-platform in-app purchase plugin](http://plugins.nativescript.org/plugin/nativescript-purchase)!?
+As we see consumers shying away from one-time initial app download fees, we see an increase in the usage of the native in-app purchase platforms. What better way to leverage both Apple's and Google's native platforms than with one [cross-platform in-app purchase plugin](http://plugins.nativescript.org/plugin/nativescript-purchase)!?
 
 ![in-app purchase and billing](in-app-purchase.png)
 
-Install the `nativescript-purchase` plugin with `tns plugin add nativescript-purchase` and in this code snippet from the nativescript-purchase plugin docs, you can see how easy it is to list the "products" you offer as part of your in-app purchase offerings:
+Install the `nativescript-purchase` plugin with `tns plugin add nativescript-purchase` and in this code snippet you can see how easy it is to list the "products" you offer as part of your in-app purchase offerings:
 
 	import { Product } from "nativescript-purchase/product";
 	
@@ -80,7 +80,7 @@ Another option is to directly integrate with online payment providers like PayPa
 
 ![paypal logo](paypal.png)
 
-The king of online payments since the late 90's, [PayPal](https://www.paypal.com/) has made it easy to request and receive payments. By using the [PayPal plugin for NativeScript](http://plugins.nativescript.org/plugin/nativescript-paypal) plugin, you can add the PayPal flexibility to your NativeScript app.
+The king of online payments since the late 90's, [PayPal](https://www.paypal.com/) has made it easy to request and receive payments. By using the [PayPal plugin for NativeScript](http://plugins.nativescript.org/plugin/nativescript-paypal), you can add the PayPal experience to your NativeScript app.
 
 Creating a PayPal purchase couldn't be much easier:
 
@@ -110,7 +110,15 @@ Creating a PayPal purchase couldn't be much easier:
 	    });
 	}
 
-> Note that as of this writing, the PayPal plugin is Android-only, but the iOS implementation [is being developed](https://github.com/mkloubert/nativescript-paypal/issues/1).
+> Note that as of this writing, the PayPal plugin is Android-only, but the iOS implementation [is being actively developed](https://github.com/mkloubert/nativescript-paypal/issues/1).
+
+![stripe logo](stripe.png)
+
+One the (relatively) new payment gateways out there, [Stripe](https://stripe.com/) is a favorite of many due to its unparalleled user experience. And recently a [brand new NativeScript plugin was released for Stripe](https://www.npmjs.com/package/nativescript-stripe)!
+
+This plugin allows you to integrate a credit card component into your NativeScript views with the `<stripe:CreditCardView>` element.
+
+Alternatively, you can use [Stripe's JavaScript API](https://stripe.com/docs/stripe.js?) directly as it has no browser DOM dependencies.
 
 ![molpay logo](molpay.png)
 
@@ -118,6 +126,10 @@ NativeScript developers in Southeast Asia will probably be the most familiar wit
 
 The [MOLPay plugin for NativeScript](http://plugins.nativescript.org/plugin/molpay-mobile-xdk-nativescript) provides an easy way to interface with MOLPay along with very detailed documentation.
 
-![stripe logo](stripe.png)
+## Summary
 
-One the (relatively) new payment gateways out there, [Stripe](https://stripe.com/) is a favorite of many due to its unparalleled user experience. While there is not a NativeScript plugin available yet, [we are gauging interest](https://nativescript.ideas.aha.io/ideas/NS-I-136) to see if this is something we should prioritize in the near future!
+The [NativeScript plugin ecosystem](http://plugins.nativescript.org/) is growing every day. With plugins like this, you can go from collecting virtual underpants, to ?, to profit in no time!
+
+*Special thanks to the [South Park Gnomes](https://www.youtube.com/watch?v=tO5sxLapAts) for their inspiration to us all :)*
+
+![south park underpants](underpants.jpg)
