@@ -1,6 +1,6 @@
 # 5 Plugins to Monetize Your NativeScript App
 
-While it's all fun and games to develop a mobile app, at the end of the day, you gotsta get paid. Realizing many of us are developing apps on a fee basis for clients or as part of our company's strategic mobile initiative, there remains a large segment of developers who are staking out on their own and pursuing a dream of Flappy Bird 2.0.
+It's all fun and games to develop a mobile app, but at the end of the day, you gotsta get paid. While many of us are developing apps on a fee basis for clients or as part of our company's strategic mobile initiative, there remains a large segment of developers who are staking out on their own and pursuing a dream of Flappy Bird 2.0.
 
 Aside from charging per download from the app stores, let's take a look at some ways to easily monetize your NativeScript apps with a variety of [NativeScript plugins](http://plugins.nativescript.org/):
 
@@ -76,7 +76,7 @@ Install the `nativescript-purchase` plugin with `tns plugin add nativescript-pur
 
 ## Collect Payments
 
-Another option is to directly integrate with online payment providers like PayPal, MolPay, or Stripe:
+If you have a product or feature to sell, another option is to directly integrate with online payment providers like PayPal, MolPay, or Stripe:
 
 ![paypal logo](paypal.png)
 
