@@ -1,8 +1,10 @@
-# Style Your Apps with the NativeScript Theme Builder
+# Give Your Apps Some Style with the NativeScript Theme Builder
 
-I'm not going to lie to you folks, I'm no designer. While at best I may have an eye for good use of white space, picking complementary colors and perfecting the layout of UI elements is far from my cup of tea. And we know that in general, app developers are more engineers than artists. While the best of us dual-majored in CS and Fine Arts, most of us rely on other people (i.e. trained designers) to provide us what we need - which quickly gets expensive.
+I'm not going to lie to you folks, I'm no designer. While at best I may have an eye for good use of white space - picking complementary colors and perfecting the layout of UI elements is far from my cup of tea. And we know that in general, app developers are more engineers than artists.
 
-**Enter the [NativeScript Theme Builder](http://www.nativescriptthemebuilder.com/).** The Theme Builder is a pure visual tool that can very easily take your app from boring, native styles to gorgeous, engaging ones:
+While the best of us dual-majored in CS and Fine Arts, most of us rely on other people (i.e. trained designers) to provide us what we need: gorgeous designs with color schemes that *don't* look like a 1996 Microsoft Word theme.
+
+**Enter [NativeScript Theme Builder](http://www.nativescriptthemebuilder.com/).** The Theme Builder is a pure visual tool that can very easily take your native UI elements from dreadfully boring to gorgeously engaging:
 
 ![native ui using theme builder](comparison.png)
 
@@ -16,7 +18,7 @@ And NativeScript UI elements are fully native out of the box. When we instantiat
 
 **But the native styles can get boring, and fast.** So leveraging the power of NativeScript and CSS allows the NativeScript Theme Builder to generate perfectly compliant styles for your native UI elements.
 
-The trick is though, that the Theme Builder-generated CSS doesn't "just work". You do also need to use the core themes that now ship as part of the core NativeScript framework:
+The trick is though, that the Theme Builder-generated CSS doesn't "just work". **You also need to use the [core themes](https://docs.nativescript.org/ui/theme) that now ship as part of the core NativeScript framework:**
 
 ![nativescript core themes](color-schemes-light-and-dark.png)
 
@@ -26,11 +28,11 @@ Let's take a quick look at how you make this work.
 
 ## Using the NativeScript Theme Builder
 
-To leverage themes created by the NativeScript Theme Builder, you just need to follow a few simple steps:
+To leverage themes created by the NativeScript Theme Builder, you need to follow a few simple steps:
 
 ### 1) Use the NativeScript Core Theme
 
-Since NativeScript 2.4, the [core theme](https://docs.nativescript.org/ui/theme) has shipped as part of all NativeScript projects. If your app is, for some reason, on a version of NativeScript prior to 2.4, you can install it with: `npm install nativescript-theme-core --save`.
+Since NativeScript 2.4, the [core theme](https://docs.nativescript.org/ui/theme) has shipped as part of all NativeScript projects. If your app is, for some reason, on a version of NativeScript prior to 2.4, you can still install the core theme with: `npm install nativescript-theme-core --save`.
 
 Open your `app.css` file, and make sure this line is included (it is by default):
 
@@ -59,7 +61,7 @@ Same goes for `<Button>` and literally every other native UI element:
 
 	<Button class="btn btn-primary" text="I use the theme's primary color pattern!"></Button>
 
-> A complete listing of the CSS classes required can be [found in the NativeScript docs](https://docs.nativescript.org/ui/theme#class-names)!
+> A complete listing of the CSS classes required can be [found in the NativeScript docs](https://docs.nativescript.org/ui/theme#class-names)
 
 **Once all of your classes are applied, you party!**
 
