@@ -2,7 +2,7 @@
 
 Recently on the [Telerik Developer Network](http://developer.telerik.com/) (TDN), we published a series titled ["Creating Your First Native Mobile App with Visual Studio"](http://developer.telerik.com/products/nativescript/creating-your-first-native-mobile-app-with-visual-studio-part-1/). This is a great introductory tutorial for those of you on Windows who use Visual Studio as your primary IDE.
 
-By leveraging Visual Studio, you can take advantage of the integration with [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) to handle app builds in the cloud (meaning no Mac needed to develop for iOS) as well as utilize the built-in on-device debugging features!
+By leveraging Visual Studio, you can take advantage of the integration with [Telerik AppBuilder](http://www.telerik.com/platform/appbuilder) to handle app builds in the cloud (meaning no Mac needed to develop for iOS), utilize on-device debugging features, and quickly view your app on a device with the provided Companion Apps.
 
 By following along in this series, you will develop every part of a cross-platform NativeScript app from scratch (with a sweet Bill Murray theme!), using typical Microsoft technologies like:
 
@@ -17,9 +17,14 @@ By following along in this series, you will develop every part of a cross-platfo
 - Custom UI layouts;
 - Remote data access (with SQL Server and ASP.NET Web API);
 - Theming with CSS;
+- Charting with [UI for NativeScript](http://www.telerik.com/nativescript-ui);
 - Custom font icons, images, and animations.
 
+<<<<<<< HEAD
 *Resulting in the following "Bill Murray" app:*
+=======
+*Resulting in the following Bill Murray app:*
+>>>>>>> origin/master
 
 <img src="demo-ios.gif" alt="ios demo" style="border:1px solid #5c5c5c" /> <img src="demo-android.gif" alt="ios demo" style="border:1px solid #5c5c5c" />
 
