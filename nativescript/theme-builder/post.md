@@ -8,7 +8,7 @@ While the best of us dual-majored in CS and Fine Arts, most of us rely on other 
 
 ![native ui using theme builder](comparison.png)
 
-## {N} + CSS = 😍
+## {N} + CSS = EMOJI
 
 Mobile apps written with JavaScript and the NativeScript framework are fully native, and work equally well on both iOS and Android platforms. We all know this. And the way apps are styled is by using the [same CSS](https://docs.nativescript.org/ui/styling) we've known and (mostly kind of) loved for many years on the web.
 
@@ -16,15 +16,15 @@ And NativeScript UI elements are fully native out of the box. When we instantiat
 
 ![native ios and android buttons](native-buttons.png)
 
-**But the native styles can get boring, and fast.** So leveraging the power of NativeScript and CSS allows the NativeScript Theme Builder to generate perfectly compliant styles for your native UI elements.
+**But the native styles can get boring, and fast.** Leveraging the power of NativeScript and CSS allows the NativeScript Theme Builder to generate perfectly compliant styles for your native UI elements.
 
 The trick is though, that the Theme Builder-generated CSS doesn't "just work". **You also need to use the [core themes](https://docs.nativescript.org/ui/theme) that now ship as part of the core NativeScript framework:**
 
 ![nativescript core themes](color-schemes-light-and-dark.png)
 
-Let's take a quick look at how you make this work.
-
 > The core themes also ship with a [variety of color schemes](https://docs.nativescript.org/ui/theme#color-schemes) you can use out of the box.
+
+Let's take a quick look at how you make this work.
 
 ## Using the NativeScript Theme Builder
 
