@@ -64,7 +64,7 @@ Fill out the form provided to create your Salesforce data source:
 
 What's that? OData? [OData](http://www.odata.org/) is a standard to help us define RESTful APIs. DataDirect Cloud uses the OData standard to securely expose our data to the outside world.
 
-In your existing Salesforce data source, click on the **OData** tab, and then click on the **Edit Configuration** button. From the schema dropdown provided, choose **SFORCE**.
+In your existing Salesforce data source, click on the **OData** tab, and then click on the **Configure Schema** button. From the schema dropdown provided, choose **SFORCE**.
 
 You can then choose the data entities that you want to expose in your OData endpoint. In my case, I'm just going to choose the `ACCOUNT` table:
 
@@ -216,7 +216,6 @@ Likewise, replace your existing `main-page.js` code with this:
 
 Clearly this just scratches the surface of what you can do with NativeScript, Salesforce, and DataDirect Cloud. Where to go next? Check out these NativeScript resources that may be of interest to you:
 
+- [Getting Started with NativeScript](https://docs.nativescript.org/#get-started)
 - [CTO's Guide to NativeScript](https://www.nativescript.org/ctos-guide)
-- [Enterprise Support](https://www.nativescript.org/enterprise)
-- [NativeScript Resources](https://www.nativescript.org/resources)
 - [NativeScript FAQ](https://www.nativescript.org/faq)
