@@ -1,12 +1,14 @@
 # Migrating from Cordova to NativeScript
 
-Have you ever seen the depressingly true "time/money/energy" diagram? No? Now you have:
+Have you ever seen the depressingly true "time/money/energy" diagram? No?
+
+Now you have:
 
 ![time money energy](time-money-energy.png)
 
-Many of us adults are actively giving up time (being at work) in exchange for money. (I think the energy meter should be half-full, but that's beside the point ☺️.) We are forced to make compromises throughout our lives. **Why should our mobile development life be any different?**
+Many of us are actively giving up time (being at work) in exchange for money. (I think the energy meter should be half-full, but that's beside the point ☺️.) We are forced to make compromises to live day-to-day, so why should we expect our mobile development life be any different?
 
-In lieu of "time/money/energy", mobile developers are balancing "cross-platform/web skills/native performance". The problem is that we want it all, and we want it now.
+**In lieu of "time/money/energy", mobile developers are balancing "cross-platform/web skills/native performance".** The problem is that we want it all, and we want it now.
 
 *And what is it exactly we want?*
 
@@ -19,7 +21,7 @@ In lieu of "time/money/energy", mobile developers are balancing "cross-platform/
 
 **We have tried going purely native.** But that meant sacrificing one codebase AND our web skills in favor of performance. This meant "siloed" code, new languages, and new frameworks. 👎
 
-**We have stuck with the web.** This has worked out fairly well for us, as the advent of [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/) have helped boost mobile web performance. We also see more device features being exposed via new APIs. But we realize the web will always lag behind native when it comes to performance, offline access, and native device features. 🤔
+**We have stuck with the web.** This has worked out fairly well for us, as the advent of [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/) have helped boost mobile web performance. We also see more device features being exposed via new APIs. But we realize the web will always lag behind native when it comes to performance, offline capabilities, and native device features. 🤔
 
 **We have utilized the hybrid model.** Apache Cordova (PhoneGap) started to bring these worlds together: developing one codebase for multiple platforms, with our web skills, accessing almost any device feature we could want.
 

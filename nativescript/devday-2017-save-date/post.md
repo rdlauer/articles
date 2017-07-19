@@ -1,4 +1,4 @@
-# Save the Date: NativeScript Developer Day 2017 in NYC
+# Save the Date: NativeScript Developer Day Sept 18-19 in NYC
 
 NativeScript Developer Day is happening (again)!
 
