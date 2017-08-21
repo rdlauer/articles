@@ -163,7 +163,7 @@ NativeScript doesn't have a concept of a DOM (remember, it's native UI, not a We
 
 Likewise, if you're familiar with the [MVVM pattern](https://docs.nativescript.org/tutorial/chapter-3), you will be at home with NativeScript. You also may be glad to hear that [TypeScript is supported](https://www.nativescript.org/using-typescript-with-nativescript-when-developing-mobile-apps) out-of-the-box.
 
-Finally, **Angular is a first class citizen in NativeScript**. In fact, if you have an app built with Angular 2+, you'll find the transition from hybrid to native to be incredibly simple as your UI is already decoupled from your business logic.
+Finally, **Angular is a first class citizen in NativeScript**. In fact, if you have an app built with Angular 2+, you'll find the transition from hybrid to native to be incredibly simple as your UI is already decoupled from your business logic. Likewise, NativeScript has early support for the popular [Vue framework](http://developer.telerik.com/products/nativescript/native-ios-android-vue-nativescript/)!
 
 > If you're interested in a true code-sharing experience across web and native iOS/Android with Angular, check out this [Angular NativeScript Seed](https://github.com/TeamMaestro/angular-native-seed).
 

@@ -1,0 +1,11 @@
+# NativeScript - The Evolution of Hybrid App Development
+
+When Progress acquired Telerik in 2014, one of the most intriguing technologies being incubated within Telerik was a new way of developing native mobile applications. NativeScript, as it would soon be called, represented a dramatic leap forward within the mobile app development ecosystem. Providing developers a way to leverage their existing web-based skillset to create truly native cross-platform mobile apps would soon prove to be critical for organizations trying to stay on top of an ever-changing mobile landscape.
+
+But when we talk about using web skills to create mobile apps, usually the term "hybrid app" is thrown in. A hybrid app is an app that uses PhoneGap, or Apache Cordova, to create what is effectively a mobile website running inside a native app container. This allows a developer to *mimic* a native app quickly using HTML, JavaScript, and CSS. And while you can get to market quickly by leveraging these existing web skills, hybrid apps are often plagued with performance issues that can render a substandard final product.
+
+Let's be clear: NativeScript apps are *not* hybrid apps! Yes, developers do leverage their web skills (XML, JavaScript, and CSS) to create mobile apps with NativeScript, but that is where the similarities to hybrid end. NativeScript apps use JavaScript to power native UI, removing any performance compromises previously experienced with hybrid apps.
+
+Here at Progress, we have a long and proud history with hybrid app development. We've provided a solution for hybrid app development in the Telerik Platform. But we knew we could do better. To us, NativeScript is a logical evolution of what we helped start with hybrid apps. NativeScript is the key to efficient cross-platform native mobile app development.
+
+We see NativeScript as one of the most important products in our mobility strategy going forward. With the blossoming of JavaScript in the enterprise, NativeScript provides a critical missing component for organizations modernizing their app development strategies.
