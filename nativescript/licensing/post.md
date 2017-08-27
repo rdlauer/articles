@@ -1,57 +1,74 @@
 # NativeScript Licensing Explained
 
-Open source software licensing is about as sexy as me in a bikini (hint: am a male with a great farmer's tan). However, the *code* that our OSS licenses protect are the reasons many of us are here today. These licenses help to keep OSS projects free, customizable, and allow for lawyer-free integration with existing software packages across all platforms.
+Open source software (OSS) licensing is about as sexy as me in a bikini (hint: am a dude with a great farmer's tan). However, the *code* that OSS licenses protect is quite literally critical to most of us performing our jobs. These licenses help keep OSS projects free, customizable, and allow for lawyer-free integration with existing software across all platforms and industries.
 
-It wasn't always so easy though. Back in the early 90's, "open source" was still cast aside as a realm for Linux geeks and developers who wanted to give away their software for free. What a crazy idea! Luckily for them, the GNU General Public License (GPL) provided some great initial support of their work. Licensing started to change and evolve as developers (and corporations) crafted strategies to protect their IP (intellectual property).
+It wasn't always so easy though. Back in the early 90's, the term "open source" was generally limited to Linux geeks and altrusitic developers who wanted to give away their software. The insanity! Luckily for them, the GNU General Public License (GPL) helped provide a basis of liability protection for them and their work. As the success of these early OSS projects became more widely known, licensing started to change and evolve as both indie developers and larger organizations crafted strategies to protect themselves and their intellectual property.
+
+IMAGE OF GPL? GNU?
+
+Fast forward to 2014, when work on NativeScript began. During this time, many great OSS licensing options emerged and matured, primarily MIT, Apache 2.0 (ASLv2), and BSD.
+
+The NativeScript team realized the had an opportunity to license the software in the most friendly manner possible, while still protecting IP and the company (Telerik at that time, Progress now) sponsoring development. **Our answer then, as it still is today, is the Apache 2.0 license.**
+
+We aren't here to spread FUD about competing frameworks and their licensing issues (whether legitimate or negligible is up to you and/or your company to decide). We do however want to focus on the ASLv2 license and what that means for you.
+
+## First, Why We Chose ASLv2
+
+Being a good community citizen in the OSS world means starting with a permissive license that also allows for a certain amount of legal protection (primary from patent trolls!).
+
+IMAGE PATENT TROLL??
+
+The ASLv2 license provides a great balance between free/permissive use of the code, while also protecting the NativeScript brand. ASLv2 prevents someone from literally cloning NativeScript (including naming/branding) and redistributing it on their own. 
+
+ASLv2 is a lot like the equally popular MIT license. It provides most of the benefits of the MIT license, while still protecting the parent company. More on this in a bit. Needless to say, choosing ASLv2 was an easy decision.
+
+## What are the ASLv2 Terms and Conditions?
+
+> Let me start by stating that I'm no lawyer and you should really consult someone with OSS legal knowledge if you have question
+At a high level, the two key points of ASLv2 are:
+
+**Apache 2.0 is a permissive license.** The *permissive* aspect of ASLv2 means you may alter/edit/modify/change NativeScript to your heart's content and release said version under any license of your choice. **However, any unmodified parts must retain the original Apache License.**
+
+**Apache 2.0 is business-friendly.** Apache 2 is *not* a [copyleft license](https://en.wikipedia.org/wiki/Copyleft). GNU GPL, which is a copyleft license, requires software that uses any GPL-licensed component to release its full source code and all rights to modify and distribute the code. This is *not* a business-friendly way to license your OSS project - if an internal project of yours uses a GPL-licensed component, you are legally required to open source your entire project.
+
+One of my favorite legal websites (but there are so many fun ones!), tldrlegal.com, provides a [great summary of Apache 2](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) (and other licenses):
 
 IMAGE
 
-Fast forward to 2014, when work on NativeScript began. We had an opportunity at the time to license our software in the most friendly manner possible, while still protecting our IP and the company (Telerik at that time, Progress now) who was sponsoring the development. Our answer then, as it still is today, is the Apache 2 license.
+## What About BSD?
 
-We aren't here today to spread FUD about competing frameworks and their licensing issues (whether legitimate or negligible is up to you and/or your company to decide). We do however want to focus on the licensing model NativeScript utilizes and what that means for you.
+The BSD license is another widely used (and permissible) license that allows you to modify and distribute software as you like.
 
-## What are the Apache 2 Terms and Conditions?
+Interestingly, early versions of the Apache license were very similar to the original BSD licenses, but ASLv2 differentiates them a bit:
 
-Let me start by stating that I'm no lawyer and you should really consult someone with OSS legal knowledge if you have detailed questions. However, at a high level, I can provide a summary of the Apache 2 terms:
+- ASLv2 grants explicit patent rights while using/modifying/distributing the licensed software;
+- ASLv2 is very explicit in the terms/concepts that it uses. There is very little legal ambiguity when compared to BSD;
+- ASLv2 is convenient in that it can be used by other projects without rewording. You just drop it in and go!
 
-**Apache 2 is a permissive license.** What does this mean? It means you can actually release a modified version of NativeScript under any license of your choice. However, any unmodified parts must retain the original Apache License.
+It gets a little more murky when companies add their own clauses. But remember, we aren't going to go there 😅.
 
-**Apache 2 is business-friendly.** Apache 2 is *not* a copyleft license. The popular GNU GPL, which is a copyleft license, requires software that uses any GPL-licensed component to release its full source code and all rights to modify and distribute the code. This is not a business-friendly way to license your OSS project, since if an internal project of yours uses a GPL-licensed component, you are legally required to release your entire project as open source.
+## And Why Not Use MIT?
 
-One of my favorite legal websites (there are so many fun ones!), tldrlegal.com, provides a [great summary of Apache 2](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) (and other licenses):
+The MIT license is probably the most permissive OSS license. It's also one of the most widely used license, especially within smaller organizations and individual developers.
 
-IMAGE
+Basically MIT-licensed software let's you do literally anything you want to with that software - just make sure that you add a copy of the original MIT license and copyright notice. You just can't sue the creator!
 
-## How Does Apache 2 Differ from BSD?
+The MIT license is very attractive due to its short, easy to comprehend, license agreement (in contrast to ASLv2 and BSD, which are a bit more wordy 📓).
 
-The BSD license is also a permissible license that allows you to modify and distribute software as you like.
+> The ASLv2 appendix, which explains *how* to apply the license, is longer than the entire MIT license.
 
-Interestingly, early versions of the Apache license were very similar to the original BSD licenses, but Apache 2 differentiates them a bit:
+## Can I License/Sell Code Created under ASLv2?
 
-- Apache 2 grants explicit patent rights while using/modifying/distributing the licensed software;
-- Apache 2 is very explicit in the terms/concepts that it uses. There is very little legal ambiguity when compared to BSD;
-- Apache 2 is convenient in that it can be used by other projects without rewording. You just drop it in and go!
+Yes! ASLv2 allows you to release your own software under the Apache license. And yes! You can sell any ASLv2-licensed software/code.
 
-It gets a little more murky when companies add their own clauses to licenses, such as BSD+. But remember, we aren't going to go there :).
+## So What Does It All Mean for Me?
 
-## What about the MIT License?
+In terms of your relationship to Progress and NativeScript, you can use NativeScript for your own purposes or commercially, for whatever you dream up. You even have the ability to modify the framework, redistribute it, and sublicense the framework itself. However, you cannot hold Progress liable for any damages incurred while using the software, nor can you use the NativeScript trademark without explicit permission from Progress. Easy enough!
 
-The MIT license...
-
-MIT is one of the most permissive free software licenses. Basically, you can do whatever you want with a software licensed under the MIT license - just make sure that you add a copy of the original MIT license and copyright notice to it.
-The Apache License is also a permissive license. However, it has stringent terms when it comes to modifications. It requires you to explicitly list out all the modifications that you’ve done in the original software, i.e., you’re required to preserve modification notices. The Apache License also states clearly that you can’t name your product in any way that hints at the product being endorsed by Apache. So you can call your product “SuperWonderServer powered by Apache” but not “Apache SuperWonderServer”. The MIT license doesn’t impose any such terms.
-The MIT license is also gaining popularity with developers due to its short and clear license agreement, in contrast to the Apache license agreement. Although the Apache License is nearly identical in terms of what you can and can't do, it is much more heavily "lawyered" and is significantly more verbose. Heck, the appendix alone, which explains how to apply the license, is longer than the entire MIT license.
-
-## Can I License or Sell Code Created under Apache 2?
-
-Yes. The Apache License 2.0 allows you to release your own software under the Apache license. Yes. You can sell any Apache licensed software/code.
-
-## So What Does It Mean for Me?
-
-You can use NativeScript for your own purposes or commercially. You have the ability to modify it, redistribute it, even sublicense the framework itself. However, you cannot hold Progress liable for any damages incurred while using the software, nor can you use the NativeScript trademark without explicit permission from Progress.
+> Remember to check out tldrlegal.com for a full run-down of the ASLv2 license!
 
 TLDR LEGAL IMAGE FULL?
 
 ## Future Considerations
 
-•	We consider talking about whether we would dual license with the MIT license if enough people needed it
+While NativeScript is available under ASLv2 today, that doesn't necessarily mean nothing will change in the future. But not in a bad way! We have considered other options like a dual license under both MIT and ASLv2, if the community requires it. Any other thoughts on NativeScript licensing? Sound off in the comments!
