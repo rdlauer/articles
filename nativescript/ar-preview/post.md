@@ -4,7 +4,7 @@ Coinciding with the official release of iOS 11, we are pleased to announce a pre
 
 div style='position:relative;padding-bottom:54%'><iframe src='https://gfycat.com/ifr/SecondaryKindCrayfish' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0' allowfullscreen></iframe></div>
 
-The respective releases of AR SDKs from Apple ([ARKit](https://developer.apple.com/arkit/)) and Google ([ARCore](https://developers.google.com/ar/)) have presented an opportunity for NativeScript to enable developers to create immersive cross-platform AR experiences. The app in the video above was created with an alpha version of our soon-to-be-released `nativescript-ar` plugin. Today, this plugin leverages the ARKit APIs available in iOS 11. In the near future, support will be added for Android via the ARCore APIs.
+The releases of AR SDKs from Apple ([ARKit](https://developer.apple.com/arkit/)) and Google ([ARCore](https://developers.google.com/ar/)) have presented an opportunity for NativeScript to enable developers to create immersive cross-platform AR experiences. The app in the video above was created with an alpha version of our soon-to-be-released `nativescript-ar` plugin. Today, this plugin leverages the ARKit APIs available in iOS 11. In the near future, support will be added for Android via the ARCore APIs.
 
 While devices must be running iOS 11 to use ARKit, due to how NativeScript APIs are loaded at runtime, if you use the `nativescript-ar` plugin you can still target lower versions of iOS. This means you can add supplemental AR features to your app without disturbing iOS <= 10 users.
 
@@ -27,6 +27,8 @@ The goal of our AR plugin is to eliminate unnecessary platform-specific confusio
 
 The `<AR></AR>` element can be part of any ordinary NativeScript layout or you can even go full screen. In either case, you have the option to overlay other standard NativeScript UI elements on top of it.
 
+> The `nativescript-ar` plugin will work equally well in Angular and vanilla JavaScript NativeScript apps!
+
 With the `nativescript-ar` plugin, you will be able to catch events and interact programmatically with the camera feed on your screen. For example, you can get notified of what coordinate of a plane was tapped with:
 
 	<AR (planeTapped)="planeTapped($event)">
@@ -35,10 +37,9 @@ With the `nativescript-ar` plugin, you will be able to catch events and interact
 
 	planeTapped(position: ARPosition): void {
 		this.ar.addModel({
-			name: "art.scnassets/Lowpoly_tree_sample.dae",
-			childNodeName: "Tree_lp_11",
+			name: "tree.dae",
 			position: position,
-			scale: 0.01, // tree
+			scale: 0.01,
 			mass: 0.0002,
 			onLongPress: ((model: ARNode) => {
 				model.remove();
