@@ -4,27 +4,38 @@ Earlier this week, Progress hosted the second-ever [NativeScript Developer Day](
 
 IMAGE
 
-To kick things off on Monday, [Todd Anglin](https://twitter.com/toddanglin) presented a keynote chock full of announcements regarding NativeScript framework and tooling, such as:
+## Day One
 
-- xxx
-- xxx
-- xxx
+To kick things off on Monday, [Todd Anglin](https://twitter.com/toddanglin) presented a keynote chock full of announcements focused on NativeScript tooling, such as:
+
+- The release of the NativeScript Marketplace;
+- NativeScript Playground - an easy way to experiment with {N} on the web;
+- Massive updates to NativeScript Sidekick;
+- Not one, but TWO brand new NativeScript books!
 
 IMAGE
 
 > Be sure to check the NativeScript blog in the coming weeks as we dive into these announcements in more detail!
 
-Todd's keynote was followed by a day full of deep dive sessions in two separate tracks with plenty of options for both beginners and more seasoned {N} developers. Some of the highlights included XXX.
+Todd's keynote was followed by a day full of deep dive sessions in two separate tracks with plenty of options for both beginners and more seasoned {N} developers. Just a few of the highlights included:
+
+- A 📺-side chat on plugins with Nathan Walker, Nathanael Anderson, and Brad Martin (the nStudio team);
+- Jeff Whelpley and Rob Laverty provided an Angular deep dive;
+- Daniel Zen held court on TypeScript and ES6 development.
 
 IMAGE
 
-At night we enjoyed...???
+At the end of day one we enjoyed some great chats (and a variety of adult beverages) on the gorgeous roof top of Scandinavia House:
 
 IMAGE
 
-Day two included engaging talks from the NativeScript engineering team and prominent community members (including so-and-so's awesome talk on ???).
+## Day Two
+
+Day two included engaging talks from the NativeScript engineering team and prominent community members (including Stanimira Vlaeva's awesome talk on improving Angular start up time):
 
 IMAGE
+
+There were too many other great talks to single out any individual highlights (seriously!). You can get a taste of what you missed on day two from the [NativeScript Developer Day schedule](http://developerday.nativescript.org/).
 
 ## ICYMI
 
