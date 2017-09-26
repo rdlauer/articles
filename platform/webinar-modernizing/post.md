@@ -12,7 +12,7 @@ Telerik Platform has been an indispensable tool for all of us over the past thre
 
 - See how NativeScript benefits Telerik Platform users;
 - Dive into some new NativeScript tooling options;
-- Learn how to become even more productive at creating native, engaging, mobile app experiences;
+- Learn how to leverage (the newly free) professional [NativeScript UI](https://www.nativescript.org/ui-for-nativescript) widgets;
 - Take a peek at the latest in NativeScript framework improvements.
 
 Join us to learn all about how mobility is evolving and how you can modernize your hybrid mobile apps.
