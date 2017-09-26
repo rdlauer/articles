@@ -16,7 +16,7 @@ If you're new to NativeScript (or just getting back from a *very* extended Pokem
 
 And we continue to move forward, improving the core NativeScript framework, adding valuable features, and boosting support for your favorite tools.
 
-**On [Thursday, October 19th, at 10 AM EDT](https://attendee.gotowebinar.com/register/2558904791825604611), the NativeScript team will demonstrate to you the very latest in the evolution of the NativeScript stack.**
+**On [Thursday, October 19th, at 10 AM EDT](https://attendee.gotowebinar.com/register/2558904791825604611), the NativeScript team will demonstrate the latest in the evolution of the NativeScript stack.**
 
 Not only will we cover some of the highlights of recent releases, but we will also be covering NativeScript 3.3, diving into web + mobile code sharing, and even have a special guest appearance by NativeScript plugin developer extraordinaire, [Eddy "the plugin" Verbruggen](https://twitter.com/eddyverbruggen)!
 
