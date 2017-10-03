@@ -4,7 +4,7 @@ The mobile development landscape has evolved immensely over the last ten years. 
 
 ![cordova and nativescript](cordova-nativescript.png)
 
-**And yet mobility continues to mature.** Telerik Platform once had a laser focus on hybrid app development, but now offers a look at native app development with NativeScript. We know app performance and stability are critical to you, which is why we are helping to modernize mobility, one hybrid app at a time.
+**And mobility continues to mature!** Telerik Platform once had a laser focus on hybrid app development, but now offers a look at native app development with NativeScript. We know app performance and stability are critical to you, which is why we are helping to modernize mobility, one hybrid app at a time.
 
 **Join us on [Thursday, October 26th at 10AM EDT](https://register.gotowebinar.com/register/7292542042936553731) as we demonstrate how you can modernize your hybrid mobile apps with NativeScript.**
 
