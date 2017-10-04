@@ -40,6 +40,8 @@ From the **Tools** menu, choose **Certificate Signing Request**. From here you c
 
 ![create csr](sidekick-csr.png)
 
+> [Review the Sidekick docs](http://docs.nativescript.org/sidekick/user-guide/code-signing/code-signing-for-ios/ios-developer-program.html) for a full explanation of the CSR workflow.
+
 And soon you won't need a Mac for *any* part of your iOS development process! You don't need a Mac for builds (due to Sidekick's cloud builds), you don't need a Mac to generate certificates or profiles, and in a coming release you won't need a Mac for app store publishing. Stay tuned!
 
 <a name="debug"></a>
@@ -49,7 +51,7 @@ We've made significant improvements to the Sidekick debugging workflow. Now when
 
 ![sidekick debugger](debugger.png)
 
-...and your Chrome dev tools will open, allowing you access to a plethora of debugging utilities. LiveSync now works perfectly alongside your debugging tools too!
+...and your Chrome dev tools will open, allowing you access to a plethora of debugging utilities. **LiveSync is now enabled by default**, and works perfectly alongside your debugging tools!
 
 ![sidekick devtools](debugger-device.png)
 
@@ -77,8 +79,6 @@ Coming soon in Sidekick is the ability to query the NativeScript Marketplace dir
 
 > [Check out this article](https://www.nativescript.org/blog/nativescript-marketplace---discover-high-quality-plugins-templates-and-tools) that dives deeper into what the marketplace provides.
 
-## What's Next from Sidekick
+## Ready to Try Sidekick?
 
-NativeScript Sidekick is a critical component of the NativeScript ecosystem. Soon we will be releasing support for [Webpack](https://docs.nativescript.org/best-practices/bundling-with-webpack) in cloud builds to make your apps start faster with a smaller package size. We will also be taking the "public beta" label off and releasing Sidekick 1.0 later this month (along with some great new features).
-
-Thanks for all of your support and, if you haven't already, [grab your own free copy of NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick) - it works equally well on Windows, Mac, and Linux.
+If you haven't tried NativeScript Sidekick yet, [grab your own free copy today](https://www.nativescript.org/nativescript-sidekick) - it works equally well on Windows, Mac, and Linux.
