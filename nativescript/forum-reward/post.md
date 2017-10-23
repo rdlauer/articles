@@ -12,7 +12,7 @@ NativeScript community support started with [our Slack channel](http://tinyurl.c
 
 ## How Does it Work?
 
-On or about the first of every month, we will offer gifts to the top three individuals who have received the most "likes" (represented by a ♥️ in forum posts) in the previous month. Likewise, we will offer *premium* NativeScript swag every quarter (i.e. January 1st, April 1st, July 1st, October 1st) for the person who received the most "likes" in the previous quarter.
+On or about the first of every month, we will offer gifts to the top three individuals who have received the most "likes" (represented by a 💗 in forum posts) in the previous month. Likewise, we will offer *premium* NativeScript swag every quarter (i.e. January 1st, April 1st, July 1st, October 1st) for the person who received the most "likes" in the previous quarter.
 
 > To be as accurate as possible, this system relies on all of us to make sure we are handing out likes when someone has helped answer a question!
 
