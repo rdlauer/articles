@@ -1,5 +1,7 @@
 # Did You Miss the Evolution of NativeScript Webinar?
 
+![evolution of nativescript](evolution.png)
+
 Last week hundreds of NativeScript developers tuned in to hear about the **Evolution of NativeScript**. But what *exactly* did that entail?
 
 - [Jen Looper](https://twitter.com/jenlooper) showed off the latest in NativeScript tooling: from the [Marketplace](https://market.nativescript.org/), to the [Playground](https://play.nativescript.org/), to [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick);
@@ -18,7 +20,7 @@ iframe width="560" height="315" src="https://www.youtube.com/embed/Z0wZs8JSf-k" 
 
 We love having the opportunity to answer questions live during the event. If you're curious, you can take a look at the Q&A by checking out [#AskNativeScript](https://twitter.com/search?f=tweets&vertical=default&q=%23asknativescript&src=typd) on Twitter.
 
-We had some great questions, but this one stood out as being the most poignant:
+We had some great questions, but this one stood out:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AskNativescript?src=hash&amp;ref_src=twsrc%5Etfw">#AskNativescript</a> Will SideKick support webpack?</p>&mdash; Josh Comley (@joshcomley) <a href="https://twitter.com/joshcomley/status/921026044748025856?ref_src=twsrc%5Etfw">October 19, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
