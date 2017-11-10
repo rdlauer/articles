@@ -28,7 +28,7 @@ By the end of the book, you'll know the majority of the key concepts needed to b
 
 ## The NativeScript Book
 
-Another set of community advocates, the [Brosteins](https://twitter.com/Brosteins) ([Nick](https://twitter.com/NickBranstein) and [Mike](https://twitter.com/MikeBranstein) to be specific), have collaborated on a book titled, appropriately enough, *The NativeScript Book*. While *NativeScript for Angular Mobile Development* focuses on developing with Angular, *The NativeScript Book* approaches NativeScript development from the perspective of the traditional vanilla JavaScript developer (although it also contains three chapters on Angular as well!).
+Another outstanding set of community members, the [Brosteins](https://twitter.com/Brosteins) ([Nick](https://twitter.com/NickBranstein) and [Mike](https://twitter.com/MikeBranstein) to be specific), have collaborated on a book titled, appropriately enough, *The NativeScript Book*. While *NativeScript for Angular Mobile Development* focuses on developing with Angular, *The NativeScript Book* approaches NativeScript development from the perspective of the traditional vanilla JavaScript developer (although it also contains three chapters on Angular).
 
 ![the nativescript book](nsbook.png)
 

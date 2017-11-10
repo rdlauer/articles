@@ -1,8 +1,8 @@
 # Resources for Upgrading Your Hybrid App to NativeScript
 
-Yes, in fact, there *is* life after Telerik Platform! While the recent news that Telerik Platform is set to shut down in May has frustrated some, the good news is that Progress is in no way abandoning mobility. Over the past year the NativeScript team has been working hard to release new tools and improve the core framework that allows you to create truly native, cross-platform, apps **using the same web skills** you've been using to create hybrid apps.
+Yes, in fact, there *is* life after Telerik Platform! While the recent news that [Telerik Platform is set to shut down](https://www.telerik.com/platform-next-level) in May 2018 is filled with mixed emotions, the good news is that **Progress is in no way abandoning our mobility customers!** Over the past year the NativeScript team has been working hard to release new tools and improve the core framework that allows you to create truly native, cross-platform, apps **using the same web skills** you've been using to create hybrid apps.
 
-> The future of mobile app development is NativeScript, and we are here to help you find you way there.
+> The future of mobile app development is NativeScript, and we will help you find your way there!
 
 **Make no mistake: NativeScript is at the core of the Progress mobility strategy going forward.** Progress is dedicating significant resources to make sure your transition from hybrid (i.e. Cordova/PhoneGap) to native (NativeScript) is as seamless as possible.
 
@@ -14,11 +14,11 @@ With the online resource [hybridtonative.com](http://www.hybridtonative.com/), w
 
 ![nativescript app showcase](nativescript-showcase.png)
 
-This extensive guide contains everything you need to know when comparing hybrid to native. From a comparison of hybrid and native technologies, to a look at using the Ionic CLI vs the NativeScript CLI, to comparing UI implementations, and more, [hybridtonative.com](http://www.hybridtonative.com/) should be your first stop on your upgrade path.
+This extensive guide contains everything you need to know when upgrading your hybrid app. From a comparison of hybrid and native technologies, to a look at using the Ionic CLI vs the NativeScript CLI, to comparing UI implementations, and more, [hybridtonative.com](http://www.hybridtonative.com/) should be your first stop on your upgrade path.
 
 ## Migrating from Cordova to NativeScript
 
-In the article, [*Migrating from Cordova to NativeScript*](https://developer.telerik.com/content-types/tutorials/migrating-cordova-nativescript/), we take a high level look at taking an existing hybrid app and upgrading it to NativeScript.
+In the article, [*Migrating from Cordova to NativeScript*](https://developer.telerik.com/content-types/tutorials/migrating-cordova-nativescript/), we take a high level look at an existing hybrid app and what it takes to upgrade it to NativeScript.
 
 By breaking down an existing hybrid app and looking at the views/layouts, JavaScript business logic, and CSS styling, we see how a transition from hybrid to native isn't nearly as difficult as one might think.
 
@@ -34,7 +34,7 @@ For example, we can take this HTML from a hybrid app:
 	    </ul>
 	</section>
 
-...and convert it to a truly native view with NativeScript:
+...and convert it to a truly native view with NativeScript-flavored markup:
 
 	<StackLayout>
 	    <Label text="todos" class="title" />
