@@ -1,51 +1,80 @@
-# Fast Cloud Builds with NativeScript Forge
+# Develop iOS Apps on Windows with NativeScript Sidekick
 
-Last week we announced the first public beta of NativeScript Forge. This is a new desktop application (for Windows, Mac, and Linux) that simplifies your NativeScript development experience. So, to celebrate, this week is all about Forge on the NativeScript blog! Every day we will do a deep dive into some of the most valuable features of NativeScript Forge.
+Recently we announced version 1.0 of [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick). This is a new desktop application (for Windows, Mac, and Linux) that simplifies your NativeScript development experience. So, to celebrate, this week is all about Sidekick on the NativeScript blog! Every day we will do a deep dive into some of the most valuable features of Sidekick.
 
-To kick things off, today we are going to look at the time-saving (and headache-reducing) cloud build feature of Forge. Let's get started!
+Today is all about building in the cloud and what Sidekick can do for Windows developers!
+
+- Intro to Sidekick
+- Starter Kits
+- Cloud Builds and iOS on Windows Features (today!)
+- Debugging and LiveSync (coming Thursday)
+- Resource and Settings Management (coming Friday)
+
+Let's look more closely at the time-saving (and headache-reducing) cloud build feature of Sidekick - and also see how else Sidekick helps out us Windows developers!
 
 ## What's a Cloud Build?
 
 Normally when you create the IPA file (for iOS) or APK file (for Android), you're using the native SDKs installed on your machine. For iOS you are using the Xcode tools and for Android you are using the Android SDK. The problem with building your apps locally is the amount of time it takes to download, install, and configure these tools. Is it doable? Absolutely.
 
-But what if you didn't have to?
+*But what if you didn't have to?*
 
-> We provide a full installation guide on setting up these dependencies as part of our getting started tutorials.
+> We provide a full installation guide on setting up these dependencies as part of our [getting started tutorials](https://docs.nativescript.org/).
 
-With NativeScript Forge you can leave SDK management to us. You simply tell Forge to build your app in our cloud and we will deliver you the IPA/APK app package back to you. Your NativeScript assets are secure in their delivery, and we don't story your data in the cloud.
+With NativeScript Sidekick you can leave SDK management to us, literally. You simply tell Sidekick to build your app in our cloud and we will deliver you the IPA and/or APK app package back to you. Your NativeScript assets are secure in their delivery, and we don't store your data in the cloud.
 
-Now typically cloud builds are considered much slower than local builds. This is natural, as local builds are running on your own hardware and files don't have to be transferred over the wire. However, Forge cloud builds are fast. Ridiculously fast. In fact, there is a chance that our cloud builds end up being **faster** than your local builds. Why? Forge builds are run on the latest Mac Pros with a fast network connect to make sure your files are uploaded, built, and downloaded as fast as possible.
+![sidekick cloud build menu](cloud-builds-menu.png)
 
-In fact, as a "bake off", I compared the local build of one of the NativeScript starter kits to a cloud build. Here were my results:
+Typically cloud builds are considered much slower than local builds. This is natural, as local builds are running on your own hardware and files don't have to be transferred over any network. However, Sidekick cloud builds are fast. Ridiculously fast. In fact, there is a chance that our cloud builds end up being comparable in speed your local builds. Why? Sidekick builds are run on the latest Mac Pros with a fast network connection to make sure your files are uploaded, built, and downloaded as fast as possible.
 
-Local iOS: xxx seconds -- Local Android: xxx seconds
+As a "bake off", I compared the local Android build of the "blank" NativeScript starter kit to a cloud build. Here were my results:
 
-Cloud iOS: xxx seconds -- Cloud Android: xxx seconds
+- Local Build: 8 seconds
+- Cloud Build + Upload/Download: 38 seconds
+
+Not too bad!
+
+> Of course, your mileage may vary. Total build times will depend on size of the app and your network speed.
 
 ## Can I Still Build Locally?
 
-Yes, definitely. If you already have the appropriate SDKs set up locally, you can simply choose to perform a "local" build within Forge.
+Yes, definitely. If you already have the appropriate SDKs set up locally, you can simply choose to perform a "local" build within Sidekick.
 
+![sidekick local builds](cloud-builds-local.png)
 
-## CI Builds?
+## How Do I Create a Build with Sidekick?
 
+It couldn't be much easier. With an app open in Sidekick, go to the **Run** menu and choose **Build**.
 
-## How Do I Create a Build with Forge?
+![cloud builds menu](cloud-builds-build-menu.png)
 
+In the window provided, choose between iOS or Android builds and make sure **Cloud Build** is selected.
 
-## What's Next for Cloud Builds?
+> Leave **Clean Build** unchecked, unless you know you need to delete the cache before a build.
 
+The trick comes with building on iOS, as you need a certificate and provisioning profile. With Android release builds, you also need a certificate for publishing to Google Play. No worries though! We have comprehensive docs already that focus on the [iOS code signing process](https://docs.nativescript.org/sidekick/user-guide/code-signing/code-signing-for-ios/ios-developer-program). We also provide a mechanism for generating these certificates - see below!
 
+## What About Continuous Integration Builds?
 
+As a GUI desktop application, Sidekick isn't the first thing you consider when thinking about your continuous integration (CI) process. However, we are actively looking into options to expose our cloud build services via the NativeScript CLI. Stay tuned for more info in the coming weeks and months!
 
-Builds
-•	Is there a way to integrate cloud builds with an existing CI infrastructure? I don’t see how that is possible with Forge, but maybe I’m missing something?
-There is. As the infrastructure for online help, logging in and account management is not in place yet, we need to be careful with externally communicating it. In essence, this is what you need:
+## iOS Development on Windows!?!
 
-npm i -g nativescript
-tns extension install nativescript-cloud
-tns build cloud android
-tns build cloud ios --provision <path to provision> --certificate <path to certificate> --certificatePassword <pass>
-tns build cloud android --release --keyStorePath <path to certificate> --keyStorePassword <pass>
-tns build cloud ios --release --provision <path to provision> --certificate <path to certificate> --certificatePassword <pass>
-tns build cloud ios --emulator //for ios simulator
+Clearly the ability to create a build of an iOS from Windows using Sidekick is a huge advantage to us Windows developers. But there are other features we expose to make your life even easier:
+
+Sidekick also allows you to generate certificates for app signing, starting with a CSR:
+
+![sidekick csr](cloud-builds-csr.png)
+
+Not to mention, if you don't have a valid iOS provisioning profile and certificate pair, Sidekick can *automatically* generate them for you:
+
+![sidekick provisioning profile](cloud-builds-auto-gen.png)
+
+The final piece of the puzzle is app store submissions. Without a Mac you're unable to actually submit your binary APK file to the Apple App Store. Luckily, Sidekick allows you to build and deploy directly to the app store:
+
+![sidekick publish to app stores](cloud-builds-publish.png)
+
+## Summary
+
+NativeScript Sidekick is a critical component for NativeScript developers who prefer to work on Windows. You've seen today how cloud builds and provisioning profile/certificate management are made easy with Sidekick.
+
+P.S. If you haven't already, take 10 seconds to subscribe to [NativeScript News](https://www.nativescript.org/nativescript-newsletter)!
