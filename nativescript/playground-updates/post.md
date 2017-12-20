@@ -1,6 +1,6 @@
 # NativeScript Playground is on 🔥
 
-One of the most exciting [new NativeScript resources](https://www.nativescript.org/resources), the [NativeScript Playground](https://play.nativescript.org/) has already evolved from being the best way to *experiment* with NativeScript to the best way to *learn* NativeScript. By using the Playground, you can edit code, drag-and-drop UI components, deploy to iOS or Android with a QR code, and now even add arbitrary NPM packages to your apps!
+One of the most exciting [new NativeScript resources](https://www.nativescript.org/resources), the [NativeScript Playground](https://play.nativescript.org/) has already evolved from being the best way to *experiment* with NativeScript to the best way to *learn* NativeScript. By using the Playground, you can edit code, drag-and-drop UI components, deploy to iOS or Android with a QR code, and now even add NPM packages to your apps!
 
 ![nativescript playground](playground.png)
 
@@ -15,7 +15,7 @@ Let's take a closer look!
 <a name="tutorials"></a>
 ## Embedded NativeScript Tutorials
 
-Most of us got started with NativeScript by going through the [Angular](http://docs.nativescript.org/angular/tutorial/ng-chapter-0) or [JavaScript](http://docs.nativescript.org/tutorial/chapter-0) version of the Groceries app tutorial. The only hiccup with this process is that you were forced to set up your local dev environment before you could even see the power of NativeScript. That changes now as we introduce both tutorials in the Playground.
+Most of us got started with NativeScript by going through one of the [Angular](http://docs.nativescript.org/angular/tutorial/ng-chapter-0) or [JavaScript](http://docs.nativescript.org/tutorial/chapter-0) versions of the Groceries app tutorial. The only hiccup with this process is that you were forced to set up your local dev environment before you could even see the power of NativeScript. That changes now as we introduce both tutorials in the Playground.
 
 As of last week, you can access either tutorial by using the **Learning** menu within the Playground:
 
@@ -38,7 +38,7 @@ The Playground will then download the corresponding .tgz file from the public re
 
 > Please note that adding NativeScript plugins that depend on CocoaPods or Android libraries (or require changes to `App_Resources`) is not currently supported!
 
-**Did you read the note above? Even if you did, read it again!** This feature is limited in scope to packages that don't depend on native iOS or Android dependencies. These plugins require recompiling the application to include the native dependencies in the resulting binary. For obvious reasons, such packages cannot work with the Playground companion apps that you download from the app stores.
+**Did you read the note above? Even if you did, read it again!** This feature is limited in scope to packages that don't rely on CocoaPods or Android libraries. These plugins require recompiling the application to include the native dependencies in the resulting binary. For obvious reasons, such packages cannot work with the Playground companion apps that you download from the app stores.
 
 What this means for you is that we support all NPM packages that only call into pure native libraries that are already part of the pristine underlying Android or iOS operating systems.
 

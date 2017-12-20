@@ -12,7 +12,7 @@ Have you missed any of the other topics cover so far this week? If so take a loo
 
 I know you don't write code with 🐛 or 🐜, neither do I! But let's learn about debugging with Sidekick anyway.
 
-## LiveSync
+## LiveSync 📲
 
 In its most broad definition, the process of "debugging" involves iterating through changes to see why a particular code implementation isn't working they way you expected or hoped. With traditional native mobile app development, this generally means:
 
@@ -29,7 +29,7 @@ There is a better way! Using LiveSync, NativeScript lets you view changes you ma
 
 ![nativescript livesync example](livesync-example.gif)
 
-## Debugging
+## Debugging 🐛
 
 When we talk about actually *debugging* a NativeScript app, your first stop will likely be the [Chrome DevTools](https://docs.nativescript.org/tooling/chrome-devtools):
 

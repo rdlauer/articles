@@ -12,7 +12,7 @@ Today is all about building in the cloud and what Sidekick can do for Windows de
 
 Let's look more closely at the time-saving (and headache-reducing) cloud build feature of Sidekick - and also see how else Sidekick helps out us Windows developers!
 
-## What's a Cloud Build?
+## What's a Cloud Build? ☁️ 🏗️
 
 Normally when you create the IPA file (for iOS) or APK file (for Android), you're using the native SDKs installed on your machine. For iOS you are using the Xcode tools and for Android you are using the Android SDK. The problem with building your apps locally is the amount of time it takes to download, install, and configure these tools. Is it doable? Absolutely.
 
