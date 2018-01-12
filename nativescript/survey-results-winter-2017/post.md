@@ -6,15 +6,25 @@ We've finished compiling the results and, while there were a few surprises, than
 
 ## tl;dr
 
-<img style="float:left" src="performance.png">
-
 More developers are using NativeScript than ever before, with a [350%](https://npm-stat.com/charts.html?package=nativescript&from=2016-12-01&to=2017-12-31) year-over-year increase in downloads from npm.
 
 In the survey we saw very positive 📈 trends in usage beyond the first few months, along with a more than **60% increase in our NPS** ([net promoter score](https://en.wikipedia.org/wiki/Net_Promoter)) from May to December. We must be doing something right!
 
 **Angular is more popular than ever**, with almost 70% of you stating it as your preferred way of developing with NativeScript.
 
+![framework usage](frameworks.png)
+
 But let's take a more detailed look at the results, shall we?
+
+## But First: Prize Winners! 🎁
+
+We gave out a handful of $100 gift cards to five lucky respondents to the survey. All of these folks have already been contacted, so if you think it's your name on the list, unfortunately it probably isn't. Better luck next time though (and thanks anyway for filling out the survey!).
+
+- Todd F.
+- Michael O.
+- Tomas B.
+- Ben M.
+- ???
 
 ## Getting Started with NativeScript
 
@@ -26,7 +36,7 @@ When looking at pain points most often experienced with NativeScript, the top hi
 
 ## Frameworks, Languages, IDEs, oh my!
 
-<img style="float:left;padding-right:20px" src="typescript.png">
+<img style="float:left;padding-right:20px" src="visual-studio-code.png">
 
 While [Angular has been a first class citizen](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) in the NativeScript ecosystem almost since day one (more on this in the next section), make no mistake that NativeScript allows for other frameworks and languages to be utilized.
 
@@ -34,11 +44,11 @@ Examining what people are using today: **69% of our audience prefers Angular, 22
 
 This will get more interesting as our [community-backed Vue integration](https://nativescript-vue.org/#/) moves towards v1.0, as evidenced by Vue ending up in a tie with plain JavaScript when we asked what your *preferred* framework would be (React finished 4th in this question).
 
-<img style="float:right;padding-left:20px" src="visual-studio-code.png">
-
 TypeScript usage remains quite popular, with **77% of you preferring TypeScript** over traditional JavaScript.
 
-We have a "winner" in the IDE/text editor battle of 2017 as well, with [Visual Studio Code](https://www.nativescript.org/nativescript-for-visual-studio-code) coming out as the clear preference. Usage increased 8% since our last survey in May 2017, with almost **70% of our users preferring VS Code** over the next nearest competitor, [WebStorm/IntelliJ](https://plugins.jetbrains.com/plugin/8588-nativescript).
+We have a "winner" in the IDE/text editor battle of 2017 as well, with [Visual Studio Code](https://www.nativescript.org/nativescript-for-visual-studio-code) coming out as the clear preference. Usage increased 8% since our last survey in May 2017, with almost **70% of our users preferring VS Code** over the next nearest competitor, [WebStorm/IntelliJ](https://plugins.jetbrains.com/plugin/8588-nativescript):
+
+![ide usage](ide-usage.png)
 
 The Mac vs Windows vs Linux debate has yet to be settled, as our respondents are split with **45% on Mac, 40% on Windows, and 14% on Linux** (which *almost* equals 100% 😀).
 
@@ -46,11 +56,13 @@ Also, following most industry trends, a narrow majority of you are publishing to
 
 ## Angular
 
-<img style="float:left" src="angular.png">
+Our [integration with Angular](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) remains as popular as ever, with almost **70% either actively using Angular or planning on using it**. Plus, almost 90% of these folks plan on using Angular more or the same as they do today:
 
-Our [integration with Angular](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) remains as popular as ever, with almost **70% either actively using Angular or planning on using it** (and almost 90% of these folks planning on using Angular more or the same as they do today).
+![angular usage](angular-usage.png)
 
 When asking about what we could do to improve our Angular integration, the majority of you asked for a *common project structure between Angular web and NativeScript projects*. Which dovetails nicely into our next set of questions on web and mobile code sharing with Angular!
+
+> Coming up on January 24th, 2018 we have a free online webinar on [Web/Mobile Code Sharing with Angular](https://attendee.gotowebinar.com/register/7713138227852952835?source=Blog+Announcement)
 
 In a dramatic change from our last survey in May, almost **20% MORE of you stated you would be interested in sharing code** between your Angular web app and NativeScript apps. A narrow majority of these folks also stated interest in developing both web and mobile simultaneously, instead of creating a web or mobile app first.
 
@@ -93,15 +105,15 @@ While many of us suffer from the [impostor syndrome](https://en.wikipedia.org/wi
 
 ## UI/UX and App Styling
 
-<img style="float:right;padding-left:20px" src="styling.png">
-
 Gone are the days when providing a basic forms-over-data app to your audience was good enough. Today's app consumers demand more from the user experience.
 
 It was a bit surprising, then, to see that **only about 1/3 of you are aware of (and regularly using) the [NativeScript core theme](https://docs.nativescript.org/ui/theme)**. Another 1/3 were just aware of it, and the final group not aware at all 😭. This is a travesty as the core theme builds on the native iOS and Android styles to provide a clean, consistent UI across all platforms. We can do better here!
 
 Speaking of the core theme, those of you who *do* use it are most interested in seeing us *improve the existing styles* and *provide a better out-of-the-box experience* (along with making sure the cross-platform UI story is locked down).
 
-The Sass vs CSS battle is one that is still waging on after all these years, with **46% of you preferring Sass, 39% CSS, and the rest couldn't care less** 😀.
+The Sass vs CSS battle is one that is still waging on after all these years, with **46% of you preferring Sass, 38% CSS, and the rest couldn't care less** 😀:
+
+![sass vs css](sass-vs-css.png)
 
 ## How Does {N} Measure Up?
 
