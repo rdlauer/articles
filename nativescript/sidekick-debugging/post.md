@@ -1,6 +1,6 @@
 # Speed Up Your Development with NativeScript Sidekick Debugging
 
-With the recent release of [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick) 1.0, we unveiled an entirely new set of features and services to help improve your experience developing cross-platform mobile apps with the NativeScript framework. This week we are diving deep into some of the most valuable features of Sidekick, and today we are going to look at how Sidekick helps you squash 🐛 in your NativeScript apps!
+With the release of [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick), we unveiled an entirely new set of features and services to help improve your experience developing cross-platform mobile apps with the NativeScript framework. This week we are diving deep into some of the most valuable features of Sidekick, and today we are going to look at how Sidekick helps you squash 🐛 in your NativeScript apps!
 
 Have you missed any of the other topics cover so far this week? If so take a look:
 
@@ -59,10 +59,10 @@ While not part of Sidekick, many of you are using Visual Studio Code. Did you kn
 
 ![sidekick vscode debugging](debug-vscode.png)
 
-> Psst...there's a rumor that there will be a NativeScript Sidekick extension for Visual Studio 2015/2017!
+> Psst...there's a rumor that there will be a NativeScript Sidekick extension for Visual Studio 2017 as well!
 
 ## Summary
 
 Debugging apps is often the most painful part of any developer's life. We aim to help ease that pain with NativeScript Sidekick and the extensive debugging options available.
 
-P.S. If you haven't already, you may want to subscribe to [NativeScript News](https://www.nativescript.org/nativescript-newsletter)!
+P.S. If you haven't already, subscribe to [NativeScript News](https://www.nativescript.org/nativescript-newsletter)!

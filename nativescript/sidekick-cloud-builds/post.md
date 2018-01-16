@@ -26,13 +26,6 @@ With NativeScript Sidekick you can leave SDK management to us, literally. You si
 
 Typically cloud builds are considered much slower than local builds. This is natural, as local builds are running on your own hardware and files don't have to be transferred over any network. However, Sidekick cloud builds are fast. Ridiculously fast. In fact, there is a chance that our cloud builds end up being comparable in speed your local builds. Why? Sidekick builds are run on the latest Mac Pros with a fast network connection to make sure your files are uploaded, built, and downloaded as fast as possible.
 
-As a "bake off", I compared the local Android build of the "blank" NativeScript starter kit to a cloud build. Here were my results:
-
-- Local Build: 8 seconds
-- Cloud Build + Upload/Download: 38 seconds
-
-Not too bad!
-
 > Of course, your mileage may vary. Total build times will depend on size of the app and your network speed.
 
 ## Can I Still Build Locally?
@@ -53,25 +46,25 @@ In the window provided, choose between iOS or Android builds and make sure **Clo
 
 The trick comes with building on iOS, as you need a certificate and provisioning profile. With Android release builds, you also need a certificate for publishing to Google Play. No worries though! We have comprehensive docs already that focus on the [iOS code signing process](https://docs.nativescript.org/sidekick/user-guide/code-signing/code-signing-for-ios/ios-developer-program). We also provide a mechanism for generating these certificates - see below!
 
-## What About Continuous Integration Builds?
-
-As a GUI desktop application, Sidekick isn't the first thing you consider when thinking about your continuous integration (CI) process. However, we are actively looking into options to expose our cloud build services via the NativeScript CLI. Stay tuned for more info in the coming weeks and months!
-
 ## iOS Development on Windows!?!
 
-Clearly the ability to create a build of an iOS from Windows using Sidekick is a huge advantage to us Windows developers. But there are other features we expose to make your life even easier:
+Clearly the ability to create a build of an iOS app from Windows using Sidekick is a huge advantage to us Windows developers. But there are other features we expose to make your life even easier:
 
 Sidekick also allows you to generate certificates for app signing, starting with a CSR:
 
 ![sidekick csr](cloud-builds-csr.png)
 
-Not to mention, if you don't have a valid iOS provisioning profile and certificate pair, Sidekick can *automatically* generate them for you:
+Not to mention, if you don't have a valid iOS provisioning profile and certificate pair, Sidekick can *automatically* generate them for you with a free Apple account:
 
 ![sidekick provisioning profile](cloud-builds-auto-gen.png)
 
 The final piece of the puzzle is app store submissions. Without a Mac you're unable to actually submit your binary APK file to the Apple App Store. Luckily, Sidekick allows you to build and deploy directly to the app store:
 
 ![sidekick publish to app stores](cloud-builds-publish.png)
+
+## What About Continuous Integration Builds?
+
+As a GUI desktop application, Sidekick isn't the first thing you consider when thinking about your continuous integration (CI) process. However, we are actively looking into options to expose our cloud build services via the NativeScript CLI. Stay tuned for more info in the coming weeks!
 
 ## Summary
 
