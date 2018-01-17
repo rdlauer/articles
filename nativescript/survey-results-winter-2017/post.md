@@ -1,6 +1,6 @@
 # NativeScript Community Survey - Winter 2017
 
-In December of 2017, the NativeScript team released a survey to take the pulse of our community. What are we doing right? What are we doing wrong? Where do you want to see NativeScript go in 2018?
+In December of 2017, the NativeScript team released a survey to take the pulse of our community. *What are we doing right? What are we doing wrong?* **Where do you want to see NativeScript go in 2018?**
 
 We've finished compiling the results and, while there were a few surprises, thankfully much of the data aligns with what we've witnessed over the past year in the mobile development space. Continue on for a closer look at some of the key insights we gleaned from this survey.
 
@@ -18,13 +18,13 @@ But let's take a more detailed look at the results, shall we?
 
 ## But First: Prize Winners! 🎁
 
-We gave out a handful of $100 gift cards to five lucky respondents to the survey. All of these folks have already been contacted, so if you think it's your name on the list, unfortunately it probably isn't. Better luck next time though (and thanks anyway for filling out the survey!).
+We gave out $100 gift cards to five lucky respondents to the survey. All of these folks have already been contacted, so if you think it's your name on the list, unfortunately it probably isn't 😉. Better luck next time though (and thanks for filling out the survey!).
 
 - Todd F.
 - Michael O.
 - Tomas B.
 - Ben M.
-- ???
+- Rob B.
 
 ## Getting Started with NativeScript
 
