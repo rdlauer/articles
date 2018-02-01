@@ -1,6 +1,6 @@
 # Develop iOS Apps on Windows with NativeScript Sidekick
 
-Recently we announced version 1.0 of [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick). This is a new desktop application (for Windows, Mac, and Linux) that simplifies your NativeScript development experience. So, to celebrate, this week is all about Sidekick on the NativeScript blog! Every day we will do a deep dive into some of the most valuable features of Sidekick.
+Recently we released a new version of [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick). This is a new desktop application (for Windows, Mac, and Linux) that simplifies your NativeScript development experience. So, to celebrate, this week is all about Sidekick on the NativeScript blog! Every day we will do a deep dive into some of the most valuable features of Sidekick.
 
 Today is all about building in the cloud and what Sidekick can do for Windows developers!
 

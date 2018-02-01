@@ -59,7 +59,7 @@ While not part of Sidekick, many of you are using Visual Studio Code. Did you kn
 
 ![sidekick vscode debugging](debug-vscode.png)
 
-> Psst...there's a rumor that there will be a NativeScript Sidekick extension for Visual Studio 2017 as well!
+> Psst...there's a rumor that there will be a NativeScript Sidekick extension for Visual Studio 2015/2017 as well!
 
 ## Summary
 

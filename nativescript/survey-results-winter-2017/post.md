@@ -1,4 +1,4 @@
-# NativeScript Community Survey - Winter 2017
+# NativeScript Community Survey Results - Winter 2017
 
 In December of 2017, the NativeScript team released a survey to take the pulse of our community. *What are we doing right? What are we doing wrong?* **Where do you want to see NativeScript go in 2018?**
 
