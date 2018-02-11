@@ -1,110 +1,120 @@
 # Using WordPress Content in a Native Mobile App
 
-WordPress is, by far, the most popular content management system (CMS) in the world today. 60% of the CMS market is owned by WordPress, and further, almost 30% of all websites are run on WordPress [[source](https://w3techs.com/technologies/overview/content_management/all)]. This means there is A LOT of content in A LOT of websites that is just dying to be used in new ways, on new devices. Enter NativeScript.
+WordPress is, by far, the most popular content management system (CMS) in use today. 60% of the CMS market is owned by WordPress, and further, almost 30% of **all websites** are [run on WordPress](https://w3techs.com/technologies/overview/content_management/all). This means A LOT of content in A LOT of websites that is craving to be used in new ways, on new devices. It some cases it makes perfect sense to leverage said content in a native mobile app. Enter NativeScript.
 
 IMAGE of wordpress + {N}?
 
-Ok, WordPress is for managing web content (HTML) and NativeScript is a great framework for building cross-platform native mobile apps (decidedly not HTML). What do the two have in common?
+Yes, WordPress is for managing web content (HTML) and NativeScript is a great framework for building cross-platform native mobile apps (decidedly *not* HTML). So what do the two have in common?
+
+> We don't advocate re-creating websites in mobile apps. You run the risk of violating Apple's terms for a "useful ???", and more importantly users likely will avoid your app if you are simply re-creating the same web experience. It's an opportunity to get creative! 👨‍🎨
 
 ## APIs FTW
 
-As with any great relationship, it all started with a RESTful API.
+As with any great relationship, NativeScript + WordPress = 😍 all started with a RESTful API...
 
 IMAGE
 
-Out of the box, WordPress includes RESTful API endpoints for WordPress data types, providing web (and now mobile) developers the ability to interact with web content in new and exciting ways. And of course, the provided RESTful API endpoints are language-agnostic. Any language/framework that consumes JSON will happily consume what WordPress provides. Being that NativeScript is built on many web standards, consuming such an API with a simple `fetch` call in JavaScript is as simple as it gets.
+Out of the box, WordPress includes RESTful API endpoints for WordPress data types, providing web developers (and mobile, and desktop) the ability to interact with stored content in new and exciting ways. And of course, the provided RESTful API endpoints are language-agnostic. Any framework that can consume JSON will happily digest what WordPress provides. Being that NativeScript is built on many web standards, consuming such an API with a simple `fetch` call in JavaScript is standard fare.
 
 ## Let's Build an App
 
-I imagine if you are here, you have an existing WordPress site with weeks, months, or even years worth of content. The potential to re-purpose that content with a mobile app is intriguing to say the least.
+I imagine if you are here, you have an existing WordPress site with weeks, months, or even years worth of content. The potential to re-purpose said content within a native, cross-platform, mobile app is intriguing to say the least.
 
-I think there is no better way to learn something than to do it yourself. So let's build an app!
+I think there is no better way to learn something than to do it yourself. **So let's build an app!**
 
-We are going to put together a simple NativeScript app to leverage WordPress content categories, posts, and post content.
+Let's put together a simple NativeScript app to leverage WordPress content categories, posts, and post content, running on both iOS and Android, all from the same shared codebase.
 
 > While a deep dive of the WordPress API is out of the scope of this article, suffice it to say the API is well documented over at wordpress.org.
 
-**Every good NativeScript app starts with NativeScript Sidekick.** This is a free tool for Mac, Windows, and Linux that runs on top of the NativeScript CLI to provide you with starter templates, plugin management, cloud builds, and app store publishing.
+## NativeScript Sidekick
 
-With Sidekick open, let's create a new app and choose the **Blank** template:
+Trust me when I say every good NativeScript app starts with a starter kit provided by NativeScript Sidekick.
+
+Sidekick is a free tool for Mac, Windows, and Linux that runs on top of the NativeScript CLI to provide you with templates, plugin management, cloud builds, and app store publishing.
+
+> Read all about the features provided by NativeScript Sidekick in this series of articles.
+
+Once you get Sidekick installed, open it up, **create a new app**, and choose the **Blank** template:
 
 ![nativescript sidekick starter templates](sidekick-starter-kits.png)
 
 *I'm going to stick with plain JavaScript, but you're welcome to use TypeScript or Angular if you're more comfortable with those architectures.*
 
-Before we open our code editor of choice, let's add a few pages to our app that we know we will need right now.
+Before we open our code editor of choice, let's add a few pages to our app that we know we will need.
 
 Click the **New Page** button and add two more pages, or views, to our app.
 
 ![nativescript sidekick add new page](sidekick-new-page.png)
 
-Both of the pages can just be **blank** pages, but you can name the first `category` and the second `post`.
+Both of the pages can just be **blank** pages, and you can name the first `category` and the second `post`.
 
 ## The Code
 
-Our app has three simple views:
+Our scaffolded app has three basic views:
 
-- main-page.xml
-- category.xml
-- post.xml
+- `home-page.xml` (comes with blank template)
+- `category-page.xml` (you created this)
+- `post-page.xml` (you also created this)
 
-> Note that a completed version of this app is available here on Github!
+> It's a good time to note that a completed version of this app is available here on Github if you get lost!
 
 Our `main-page` view is just going to be a button. Because who doesn't love a good button?
 
 SCREENSHOT
 
-So our `main-page.xml` file just needs some simple layout code:
+To render that screen, our `main-page.xml` file just needs some simple layout code with a button:
 
 CODE
 
-...and the corresponding `main-page.js` file just needs some plumbing to direct us to the `category` view:
+...and its corresponding `main-page.js` file needs a little plumbing to wire up the button to send us to the next view, `category-page`:
 
 CODE
 
-Now it gets interesting. Open up `category.xml` and drop in a NativeScript ListView with an item template like so:
+**Now it gets interesting.** Open up `category-page.xml` and replace the existing code with the following NativeScript `ListView` (including an item template) like so:
 
 CODE
 
-The code behind JavaScript file, `category.js`, contains two functions. `pageLoaded` is, not surprisingly, executed when the page is loaded, and `showPost` will navigate us to the next view, retaining the context of the category the user tapped:
+This view's accompanying JavaScript file, `category-page.js`, contains two functions. `pageLoaded` is, not surprisingly, executed when the page is loaded, and `showPost` will navigate us to the next view (`post-page`), retaining the *context* of the category the user tapped:
 
 CODE
 
-Leaving us with a pleasing little ListView:
+Leaving us with a pleasing little screen containing our WordPress post categories:
 
 SCREENSHOT
 
-The key here is the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) that we are using in our JavaScript code. `fetch` allows us to request data from a remote endpoint and return it in JSON format. Making it easily digestible in a NativeScript app!
+The key code in `category.js` is the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). `fetch` allows us to request data from a remote endpoint and return it in JSON, making it easily consumable in our app!
 
-> You'll also notice the API endpoint we are using is leveraging the WordPress demo dataset.
+> You'll also quickly notice the API endpoint we are using is leveraging the WordPress demo dataset. With a lot of latin.
 
-If we take a look at the returned JSON that returns categories, we see a pretty legible dataset:
-
-CODE
-
-Finally, we need to wire up our `post.xml` view with another `ListView`:
+If we take a look at the returned JSON, we see a pretty legible dataset:
 
 CODE
 
-...again, with our `post.js` code behind powering the view and containing another two functions: `pageNavigatedTo` and `loadWebSite` which, perform another `fetch` request to load our posts and fires up a NativeScript WebView to show the post content's HTML output.
+Ok, let's finish up and replace `post-page.xml` with another `ListView`:
 
 CODE
 
-> Reminder, all of this code is available here.....
+...again, with our `post-page.js` code behind powering the view - and containing another two functions: `pageNavigatedTo` and `loadWebSite` which, respectively, perform a `fetch` request to load our posts and fire up a NativeScript WebView to show the post content's HTML output in an in-app web browser.
 
-And we are done! Well, if you run the app as-is, it might not look exactly like these screenshots. That is until you grab the completed app.css file from Github, to save you some time.
+CODE
 
-Back in Sidekick, go to the **Run** menu and choose **Run on Device**. Choose the device you want to run your app on, and build the app using our cloud servers (or locally if you have the SDKs set up).
+> While I'm glossing over some of the details to save space, a reminder that all of this code is available here on Github.
 
-> Any troubles? Consult the NativeScript Sidekick docs!
+	**And we are done!** Well, if you run the app as-is, it might not look exactly like these screenshots. That is until you grab the completed `app.css`, the `/images/bg.png` background image, and font files from `/fonts` from Github and add those to your app.
 
-SCREENSHOT
+## Deploy Your App
 
-Now sharing website content between platforms is one thing. **What about sharing website code?** While not related to WordPress, if you're an Angular developer and interested in the NativeScript + Angular web/mobile code sharing story, be sure to check out our code sharing webinar on YouTube.
+Back in NativeScript Sidekick, go to the **Run** menu and choose **Run on Device**. Choose the connected device on which you want to run your app, and build the app using our cloud servers (or build locally if you have the appropriate SDKs set up).
+
+> Any troubles deploying an app? Consult the NativeScript Sidekick docs!
+
+SCREENSHOT (GIF?)
+
+> Sharing website content between web and mobile platforms is one thing. **What about sharing the actual website code with mobile?** While not related to WordPress, if you're an Angular developer and interested in the NativeScript + Angular web/mobile code sharing story, be sure to check out our code sharing webinar on YouTube.
 
 ## Summary
 
-Today we looked at how we can consume the WordPress REST API to power a truly native, cross-platform app with NativeScript. By using a little JavaScript and CSS, we can re-purpose years worth of content and provide a new, engaging, user experience for our customers. Happy NativeScripting!
+Today we looked at how we can consume existing WordPress content with the WordPress REST API to power a truly native, cross-platform app with NativeScript. By using a little JavaScript and CSS, you can re-purpose years worth of content and provide a new, engaging, user experience for your users. Happy NativeScripting!
 
 
 
