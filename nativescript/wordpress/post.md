@@ -2,7 +2,7 @@
 
 WordPress is, by far, the most popular content management system (CMS) in use today. 60% of the CMS market is owned by WordPress, and further, almost 30% of **all websites** are [run on WordPress](https://w3techs.com/technologies/overview/content_management/all). This means A LOT of content in A LOT of websites that is craving to be used in new ways, on new devices. It some cases it makes perfect sense to leverage said content in a native mobile app. Enter NativeScript.
 
-IMAGE of wordpress + {N}?
+![wordpress and nativescript](wordpress-plus-nativescript.png)
 
 Yes, WordPress is for managing web content (HTML) and NativeScript is a great framework for building cross-platform native mobile apps (decidedly *not* HTML). So what do the two have in common?
 
@@ -11,8 +11,6 @@ Yes, WordPress is for managing web content (HTML) and NativeScript is a great fr
 ## APIs FTW
 
 As with any great relationship, NativeScript + WordPress = 😍 all started with a RESTful API...
-
-IMAGE
 
 Out of the box, WordPress includes RESTful API endpoints for WordPress data types, providing web developers (and mobile, and desktop) the ability to interact with stored content in new and exciting ways. And of course, the provided RESTful API endpoints are language-agnostic. Any framework that can consume JSON will happily digest what WordPress provides. Being that NativeScript is built on many web standards, consuming such an API with a simple `fetch` call in JavaScript is standard fare.
 
@@ -60,7 +58,7 @@ Our scaffolded app has three basic views:
 
 Our `main-page` view is just going to be a button. Because who doesn't love a good button?
 
-SCREENSHOT
+![wordpress button screen](wordpress-button-screenshot.png)
 
 To render that screen, our `main-page.xml` file just needs some simple layout code with a button:
 
@@ -80,7 +78,7 @@ CODE
 
 Leaving us with a pleasing little screen containing our WordPress post categories:
 
-SCREENSHOT
+![wordpress categories](wordpress-categories-screenshot.png)
 
 The key code in `category.js` is the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). `fetch` allows us to request data from a remote endpoint and return it in JSON, making it easily consumable in our app!
 
