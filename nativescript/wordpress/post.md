@@ -4,15 +4,17 @@ WordPress is, by far, the most popular content management system (CMS) in use to
 
 ![wordpress and nativescript](wordpress-plus-nativescript.png)
 
-Yes, WordPress is for managing web content (HTML) and NativeScript is a great framework for building cross-platform native mobile apps (decidedly *not* HTML). So what do the two have in common?
+Yes, WordPress is for managing web content (HTML) and NativeScript is a framework for building cross-platform native mobile apps (decidedly *not* HTML). So what do the two have in common?
 
 > We don't advocate re-creating websites in mobile apps. You run the risk of violating [Apple's terms](https://developer.apple.com/app-store/review/guidelines/#minimum-functionality) for an app that isn't unique or "app-like", and more importantly, users likely will avoid your app if you are simply re-creating the same web experience. It's an opportunity to get creative! 👨‍🎨
 
 ## APIs FTW
 
-As with any great relationship, NativeScript + WordPress = 😍 all started with a RESTful API...
+As with any great relationship, it all started with a RESTful API...
 
-Out of the box, WordPress includes [RESTful API endpoints](https://developer.wordpress.org/rest-api/) for WordPress data types, providing web developers (and mobile, and desktop) the ability to interact with stored content in new and exciting ways. And of course, the provided endpoints are language-agnostic. Any framework that can consume JSON will happily digest what WordPress provides. Given that NativeScript is built on JavaScript, consuming such an API with a simple `fetch` call is standard fare.
+NativeScript + WordPress = 😍
+
+Out of the box, WordPress includes [RESTful API endpoints](https://developer.wordpress.org/rest-api/) for WordPress data types, providing web developers (and mobile, and desktop) the ability to interact with stored content in new and exciting ways. And of course, the provided endpoints are language-agnostic. Any framework that can consume JSON will happily digest what WordPress provides. Given that NativeScript apps are built on JavaScript, consuming such an API with a simple `fetch` call is standard fare.
 
 ## Let's Build an App
 
@@ -154,7 +156,7 @@ Leaving us with a pleasing little screen containing our WordPress post categorie
 
 The key code in `category-page.js` is the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). `fetch` allows us to request data from a remote endpoint and return it in JSON, making it easily consumable in our app!
 
-> You'll also quickly notice the API endpoint we are using is leveraging the WordPress demo dataset. *With a lot of latin.*
+> You'll also quickly notice the API endpoint we are using is leveraging the WordPress demo dataset. *With a lot of lorem ipsum.*
 
 If we take a look at the returned JSON, we see a pretty legible dataset:
 
