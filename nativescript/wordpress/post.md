@@ -1,6 +1,6 @@
 # Using WordPress Content in a Native Mobile App
 
-WordPress is, by far, the most popular content management system (CMS) in use today. 60% of the CMS market is owned by WordPress, and further, almost 30% of **all websites** are [run on WordPress](https://w3techs.com/technologies/overview/content_management/all). This means A LOT of content in A LOT of websites that is craving to be used in new ways, on new devices. In some cases it makes perfect sense to leverage said content in a native mobile app. Enter NativeScript.
+[WordPress](https://wordpress.org/) is, by far, the most popular content management system (CMS) in use today. 60% of the CMS market is owned by WordPress, and further, almost 30% of **all websites** are [run on WordPress](https://w3techs.com/technologies/overview/content_management/all). This means A LOT of content in A LOT of websites that is craving to be used in new ways, on new devices. In some cases it makes perfect sense to leverage said content in a native mobile app. Enter NativeScript.
 
 ![wordpress and nativescript](wordpress-plus-nativescript.png)
 
@@ -246,7 +246,7 @@ Back in NativeScript Sidekick, go to the **Run** menu and choose **Run on Device
 
 ![nativescript sidekick run on device](sidekick-run-on-device.png)
 
-> Sharing website content between web and mobile platforms is one thing. **What about sharing the actual website code with mobile?** While not related to WordPress, if you're an Angular developer and interested in the NativeScript + Angular web/mobile code sharing story, be sure to [check out our code sharing webinar on YouTube](https://www.youtube.com/watch?v=lumqZlnDs_I).
+Sharing website content between web and mobile platforms is one thing. **What about sharing the actual website code with mobile?** While not related to WordPress, if you're an Angular developer and interested in the NativeScript + Angular web/mobile code sharing story, be sure to [check out our code sharing webinar on YouTube](https://www.youtube.com/watch?v=lumqZlnDs_I).
 
 ## Summary
 
