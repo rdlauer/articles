@@ -1,33 +1,39 @@
 # The NEXT NativeScript Conference
 
-Last September in New York City, we held the second-ever NativeScript Developer Day. A fantastic array of speakers and attendees combined to provide an opportune environment for learning more our about beloved framework.
+Last September in New York City, we held the second-ever [NativeScript Developer Day](http://developerday.nativescript.org/). A fantastic array of speakers and attendees combined to provide an opportune environment for learning more our about beloved open source framework.
 
-Did you know there is an even larger conference coming up in May with a **massive** mobility track that includes loads of NativeScript content?
+Well there is an *even larger* conference at the end of May with **massive mobility-focused tracks** that include loads of NativeScript content!
 
-ProgressNEXT is quite literally a global gathering of developers and IT professionals that covers the entire Progress portfolio.
+![progress next logo](progress-next-logo.png)
+
+**[ProgressNEXT](https://www.progress.com/next) is a global gathering of developers and IT professionals that covers the entire Progress portfolio, including NativeScript, [Kinvey](https://www.kinvey.com/), and [Kendo UI](https://www.telerik.com/kendo-ui).**
 
 > Did you know that Progress sponsors the open source work behind NativeScript? Now you know!
 
-Hosted at the beautiful ??? in Boston, from May 29th to June 1st, ProgressNEXT is this spring's source for IT knowledge sharing.
+Hosted at the beautiful [Westin Waterfront Hotel](https://aws.passkey.com/go/ProgressSoftware2018) in Boston, from May 29th to June 1st, ProgressNEXT is your next opportunity to attend sessions and interact with key personalities in the NativeScript ecosystem.
 
 ## NativeScript Sessions
 
+![nativescript speakers](speakers.png)
+
 If you're curious about what NativeScript-specific content you'll find, how about topics such as:
 
-- NativeScript 101
-- Building for iOS from Windows......
+- Cross-Platform Augmented Reality
+- Access Remote Databases from NativeScript Mobile Apps
+- Boost Your App's Emotional Intelligence with NativeScript and Machine Learning
+- Sharing Code Between Web and Mobile with NativeScript and Kendo UI
+- Building a Robot Army with NativeScript
+- Getting Started with NativeScript
+- Build for iOS from Windows with NativeScript Sidekick
 
-> You can view the full NativeScript agenda at ProgressNEXT
+> Feel free to [browse the full NativeScript agenda](https://www.progress.com/next/agenda#filters-nativescript) at ProgressNEXT
 
 ## Register Today
 
-Registration is open now, but if a wealth of NativeScript content isn't enough to convince you, how about:
+Registration is open now, and if a wealth of NativeScript content isn't enough to convince you, how about:
 
-- Keynote speakers from NASA, Bayhealth Development, TVH Group, and Progress;
-- 150 unique sessions covering not only the Progress portfolio, but also thought leadership across many technology topics;
-- An opportunity to interact with Progress executives, and maybe more importantly for you, NativeScript engineering, product management, and developer relations!
+- Keynote speakers from **NASA**, BayHealth Development, TVH Group, and Progress;
+- **150 unique sessions** covering not only the Progress portfolio, but thought leadership sessions spanning many technology topics;
+- An opportunity to interact with Progress executives, and maybe more importantly for you: NativeScript engineering, product management, and developer relations!
 
-Curious? Take a look at the ProgressNEXT website to get all of the details and secure your registration today.
-
-https://www.progress.com/next/agenda#filters-nativescript
-https://www.progress.com/next
+Curious? Take a closer look 🧐 at [ProgressNEXT](https://www.progress.com/next) to get all of the details and secure your registration today!
