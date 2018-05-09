@@ -1,6 +1,6 @@
 # Securing Your Enterprise Mobile Apps - a Free Online Course
 
-How do we secure our enterprise mobile applications? NativeScripting has launched a [brand new video course](https://courses.nativescripting.com/p/nativescript-enterprise-auth/?product_id=308158&coupon_code=AUTH101) that shows us how to do just that.
+How do we secure our enterprise mobile applications? NativeScripting.com has launched a [brand new video course](https://courses.nativescripting.com/p/nativescript-enterprise-auth/?product_id=308158&coupon_code=AUTH101) that shows us how to do just that.
  
 If we have secure enterprise applications (think Office 365 or Salesforce or SharePoint) and need to grant or deny users and groups access to those applications, then we need a variety of methods to handle this security when building mobile apps. There are several security protocols that have landed out in the wild over the years, and then ended up the enterprise due to their strong support and intelligent implementation. **OAuth, OpenID, and SAML are just a few of these technologies.**
  
