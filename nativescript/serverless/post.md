@@ -2,13 +2,13 @@
 
 Let's not kid ourselves, until [Pied Piper's "new internet"](https://www.wired.com/2017/06/pied-pipers-new-internet-isnt-just-possible-almost/) goes online and renders data centers irrelevant, the world will still run on the server. Whether under your desk or in an Azure cloud container, a server is still a server.
 
-How many of us have had conversations with non-techie friends and family asking us what the *cloud* "is" and whether or not they should be "in" the cloud? Que eye roll and a pithy explanation of how **the cloud is really just someone else's server**.
+How many of us have had conversations with non-techie friends and family asking us what the *cloud* "is" and whether or not they should be "in" the cloud? Queue eye roll and a pithy explanation of how **the cloud is really just someone else's server**.
 
 Throw "serverless" into the mix (along with acronyms like IaaS, PaaS, SaaS, and FaaS) and even the best of us end up with a spinning head 😵.
 
 ## A Brief History of the Cloud
 
-Today most of us realize the value of the mystical cloud and the ROI it provides for everyone from hobbyists to large enterprises. In the pre-cloud days, when deploying an app developers had to concern themselves with:
+Today most of us realize the value of the mystical cloud and the ROI it provides for everyone from hobbyists to large enterprises. In the pre-cloud days, when deploying an app, developers had to concern themselves with:
 
 - Buying a server;
 - Finding a physical place to house it;
@@ -45,11 +45,11 @@ The next layer of our cloud pyramid is PaaS (Platform-as-a-Service). What is Paa
 
 The best way for me to think of PaaS is the concept of deploying your app to a pre-configured environment. As the developer, you don't worry about underlying infrastructure, storage, or network considerations. But you do have control over the apps themselves and environmental configurations.
 
-PaaS is easily the least-defined section of the cloud, yet also holds the most opportunity. You could argue Azure and [Kinvey](https://www.kinvey.com/) are PaaS-focused, but both offer services beyond the typical PaaS definition.
+PaaS is easily the most vaguely-defined section of the cloud, yet also holds the most opportunity. You could argue Azure and [Kinvey](https://www.kinvey.com/) are PaaS-focused, but both offer services beyond the typical PaaS definition.
 
 ### Software-as-a-Service (SaaS)
 
-In the traditional cloud model, SaaS (Software-as-a-Service) sits at the top. This is the end game of software development. Digital bits that are offered up for a monthly fee to a virtually limitless number of users. Examples of popular SaaS offerings include Microsoft's O365, Google Docs, MailChimp, Salesforce, or even [NativeScript Sidekick's](https://www.nativescript.org/nativescript-sidekick) cloud build offerings. High performance, distributed services, that can be spun up almost immediately without any local configuration or installations necessary.
+In the traditional cloud model, SaaS (Software-as-a-Service) sits at the top. This is the end game of software development. Digital bits that are offered up for a monthly fee to a virtually limitless number of users. Examples of popular SaaS offerings include Microsoft's O365, Google Docs, MailChimp, Salesforce, or even [NativeScript Sidekick's](https://www.nativescript.org/nativescript-sidekick) cloud build offerings. They are high performance, distributed services, that can be spun up almost immediately without any local configuration or installations necessary.
 
 ### Function-as-a-Service (FaaS)
 
@@ -69,34 +69,39 @@ While spinning up environments for all of these services is easier than it's eve
 
 The serverless difference is development becomes focused on individual functions instead of services. Think in terms of [Kinvey FlexServices](https://devcenter.kinvey.com/rest/guides/flex-services). These are low code and lightweight "microservices" that handle your app's server-side business logic.
 
-For example:
+For example, if you wanted to use the Google URL Shortener API, you might do something like:
 
-	const sdk = require("kinvey-flex-sdk");
+	function shortenURL(context, complete, modules) {
+	  const requestOptions = {
+	    uri: 'https://www.googleapis.com/urlshortener/v1/url?key=',
+	    body: {
+	      longUrl: context.body.longUrl
+	    },
+	    json: true,
+	    resolveWithFullResponse: true
+	  };
+	  _getConfig(complete, modules).then((result) => {
+	    requestOptions.uri += result;
+	    request.post(requestOptions, (error, res, body) => {
+	      if (error) {
+	        return complete().setBody(error).runtimeError().done();
+	      }
+	      complete()
+	        .setBody({ shortUrl: body.id })
+	        .done();
+	    });
+	  });
+	}
+	
+	exports.shortenURL = shortenURL;
 
-	sdk.service(function (err, flex) {
-		const data = flex.data;   // gets the FlexData object from the service
-		function getRecordById(context, complete, modules) {
-			let entityId = context.entityId;
-			let entity = null;
-			// Do some logic to get the entity id from the remote data store
-			// Assume that data is retrieved and stored in "entity" variable
-			// After entity is retrieved, check to see if it exists
-			if (typeof entity === "undefined" || entity === null) {
-				return complete("The entity could not be found").notFound().next();
-			} else {
-				// return the entity
-				return complete().setBody(entity).ok().next();
-			}
-		}
-		// set the serviceObject
-		const widgets = data.serviceObject("widgets");
-		// wire up the event that we want to process
-		widgets.onGetById(getRecordById);
-	});
+...with the full implementation [available here](https://github.com/remotesynth/flex-service-samples/tree/master/shorten-url).
+
+**Find additional Flex Services examples in [this GitHub repository](https://github.com/remotesynth/flex-service-samples).**
 
 These functions live in the cloud, and are executed in the cloud in an environment that is predictable, scalable, and reliable. Developers build systems out of these functions, piecing together apps in the most distributed and powerful way possible.
 
-> Read more about [Developing and Testing of Kinvey Flex Services the Easier Way](https://www.kinvey.com/developing-and-testing-of-kinvey-flex-services-the-easier-way/)
+> Read more about [Getting Started with Kinvey FlexServices](https://www.progress.com/blogs/getting-started-with-kinvey-flexservices)
 
 ## The NativeScript Angle
 

@@ -4,7 +4,7 @@ Seasoned web and mobile developers know that an easy way to add some pizzazz to 
 
 ![90s banner](90s.png)
 
-While the waves and pastels of the '90s are long past us (RIP!), the desire to create engaging user interfaces has not changed. **So let's make this happen with NativeScript.** 
+While the waves and pastels of the '90s are long past us (RIP! ⚰️), the desire to create engaging user interfaces has not changed. **So let's make this happen with NativeScript.** 
 
 Now the question of *how* to use a custom font is mostly handled in the [NativeScript docs](https://docs.nativescript.org/ui/styling#using-fonts). However, there are some extra steps that you may need to help smooth your journey to Comic Sans glory.
 
@@ -113,6 +113,8 @@ Now in my markup I can simply reference the above class:
 **Done!** 🎉
 
 ![final font output](final.png)
+
+> **TIP:** You can [try out this app](https://play.nativescript.org/?template=play-tsc&id=Y4fVGt&v=16) in the NativeScript Playground!
 
 ## Bonus Guide: Icon Fonts
 
