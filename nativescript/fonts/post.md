@@ -1,12 +1,12 @@
 # Using Custom Fonts in a NativeScript App
 
-Seasoned web and mobile developers know that an easy way to add some pizzazz to an app is to switch to a custom font face. Heck, I'm old enough to remember the renaissance that Verdana brought to the web stage back in the late '90s!
+Seasoned web and mobile developers know that an easy way to add some pizzazz to an app is to switch to a custom font face. Heck, I've been around long enough to remember the Verdana renaissance back in the late '90s!
 
 ![90s banner](90s.png)
 
 While the waves and pastels of the '90s are long past us (RIP! ⚰️), the desire to create engaging user interfaces has not changed. **So let's make this happen with NativeScript.** 
 
-Now the question of *how* to use a custom font is mostly handled in the [NativeScript docs](https://docs.nativescript.org/ui/styling#using-fonts). However, there are some extra steps that you may need to help smooth your journey to Comic Sans glory.
+The question of *how* to use a custom font is mostly handled in the [NativeScript docs](https://docs.nativescript.org/ui/styling#using-fonts). However, there are some extra tips that you may need to help smooth your journey to Comic Sans glory.
 
 ![comic sans hate](comic-sans.png)
 
@@ -18,16 +18,16 @@ If you're looking for some ideas for a mobile-friendly font, you've come to the 
 
 ### System Fonts
 
-Both iOS and Android come with a set of fonts pre-installed in the OS. The problem is the venn diagram of fonts doesn't overlap too well, so if you're picking a system font, it's likely you'll have different choices for iOS vs Android (not to mention the fact that each iteration of Android can have wildly different fonts installed).
+Both iOS and Android come with a set of fonts pre-installed. The problem is the venn diagram of iOS/Android fonts doesn't overlap much. So if you're picking a system font, it's likely you'll have different choices for iOS vs Android (not to mention the fact that each iteration of Android can have wildly different fonts installed).
 
 **BUT system fonts are a great way to experiment!** There is nothing to download and copy to your app. You just pick a font, and [update your CSS](#css).
 
 - 🍎 Find a list of iOS system fonts at [iosfonts.com](http://iosfonts.com/);
 - 🤖 Find a list of Android system fonts in [this extensive thread on Stack Overflow](https://stackoverflow.com/questions/19691530/valid-values-for-androidfontfamily-and-what-they-map-to).
 
-### Discover Font from Image
+### Identify Font from an Image
 
-All-too-often, my discovery of new custom fonts comes from existing web or mobile UIs. Maybe I'm not a creative person, but when I see something I like, I'm pretty good at copying it 😅.
+My discovery of new custom fonts regulary comes from existing web or mobile UIs. Maybe I'm not a creative person, but when I see something I like, I'm pretty good at copying it 😅.
 
 Luckily for me, our friends at Font Squirrel provide a [Font Matcherator](https://www.fontsquirrel.com/matcherator) service that is usually up to the task of identifying a font from an image!
 
@@ -47,7 +47,7 @@ In this case I went cheap and picked the [Varela font](https://fonts.google.com/
 
 ### Other Font Resources
 
-Using the power of the Internet you might just be able to find another free (or paid) font that you want. My favorite font sites are [Google Fonts](https://fonts.google.com/) (because those are all free and I am cheap!) and [Font Squirrel](https://www.fontsquirrel.com/) (because they have everything else, for when I'm actually willing to open the pocket book 💸).
+Using the power of the Google you might just be able to find another free (or paid) font that you want. My favorite font sites are [Google Fonts](https://fonts.google.com/) (because those are all free and I am cheap!) and [Font Squirrel](https://www.fontsquirrel.com/) (because they have everything else, for when I'm actually willing to open the pocket book 💸).
 
 <a name="ttf"></a>
 ## TTF, OTF, WTF?
@@ -58,7 +58,7 @@ Ok, you've found the font you want, you've downloaded it, and unzipped it. And s
 
 **BUT I JUST WANT ROBOTO!**
 
-So, sometimes it takes a little picking-and-choosing to determine the exact font files you need. If you're just starting out with a font, it's best to just include all of the files with **either the .ttf or .otf file extension**. There is no difference for NativeScript, so just pick one, and delete the other files.
+So, sometimes it takes a little picking-and-choosing to determine the *exact* font files you need. If you're just starting out with a font, it's best to just include all of the files with **either the .ttf or .otf file extension**. There is no difference for NativeScript, so just pick one, and delete the other files.
 
 Now that we are down to just .ttf (in this case), we can further narrow down the fonts we need by *variant*. For instance, if I *know for a fact* that I only need a `Regular` and `Bold` variant (and not `Italics`), I only need those font files, which in the Roboto case is:
 
@@ -122,8 +122,8 @@ Another very common use of custom fonts is for **icons**. The most popular image
 
 **In the case of icon fonts, the instructions are *exactly* the same as above!** The only difference is with the text output. There are a couple of ways to tackle this:
 
-- Use a [NativeScript plugin](https://market.nativescript.org/plugins/nativescript-fonticon) that is built to make using icon fonts easy;
-- Simply look up the unicode value that you want to display.
+- Use a [NativeScript plugin](https://market.nativescript.org/plugins/nativescript-fonticon) created to make using icon fonts easy.
+- Look up the unicode value that you want to display.
 
 In the case of Font Awesome, we can look up an icon from the [master list](https://fontawesome.com/icons) and grab the unicode value:
 
@@ -140,6 +140,8 @@ Copy that value and paste it into the `text` property of your NativeScript UI el
 ...which will render a nice little icon as requested:
 
 ![font awesome sun icon](font-awesome-sun.png)
+
+> Check out this guide from Nic Raboy???
 
 ## Wrapping Up
 
