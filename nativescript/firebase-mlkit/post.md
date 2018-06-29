@@ -1,6 +1,6 @@
-# Using ML Kit for Firebase to Uncover Beer Ratings
+# Using ML Kit for Firebase to Tap into Beer Ratings
 
-Over the past year machine learning (ML) has gone mainstream. How do we know this? When someone presumably uses ML to create an Olive Garden commercial script:
+Over the past year machine learning (ML) has gone mainstream. How do we know this? When someone uses ML to create an Olive Garden commercial script:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I forced a bot to watch over 1,000 hours of Olive Garden commercials and then asked it to write an Olive Garden commercial of its own. Here is the first page. <a href="https://t.co/CKiDQTmLeH">pic.twitter.com/CKiDQTmLeH</a></p>&mdash; Keaton Patti (@KeatonPatti) <a href="https://twitter.com/KeatonPatti/status/1006961202998726665?ref_src=twsrc%5Etfw">June 13, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -9,7 +9,7 @@ Much like with augmented reality, we are still collectively working out the most
 
 How many times have you entered a restaurant or bar and been assaulted with a beer menu of copious choices, about 5% of which you've heard of?
 
-![beer](beer.gif)
+![confusing beer menu](beer-menu.png)
 
 I decided it was in my palette's best interest to create a mobile app that would allow me to leverage:
 
