@@ -5,7 +5,7 @@ Over the past year machine learning (ML) has gone mainstream. How do we know thi
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I forced a bot to watch over 1,000 hours of Olive Garden commercials and then asked it to write an Olive Garden commercial of its own. Here is the first page. <a href="https://t.co/CKiDQTmLeH">pic.twitter.com/CKiDQTmLeH</a></p>&mdash; Keaton Patti (@KeatonPatti) <a href="https://twitter.com/KeatonPatti/status/1006961202998726665?ref_src=twsrc%5Etfw">June 13, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Much like with augmented reality, we are still collectively working out the most practical applications for ML. But the best use of any new technology solves an existing real world problem. For me, the king of (first world) problems is deciding which beer to drink.
+Much like with augmented reality, we are still collectively working out the most practical applications for ML. But the best use of any new technology solves an existing real world problem. **For me, the king of (first world) problems is deciding which beer to drink.**
 
 How many times have you entered a restaurant or bar and been assaulted with a beer menu of copious choices, about 5% of which you've heard of?
 
@@ -13,7 +13,7 @@ How many times have you entered a restaurant or bar and been assaulted with a be
 
 I decided it was in my palette's best interest to create a mobile app that would allow me to leverage:
 
-- [NativeScript](https://www.nativescript.org/) to create a native cross-platform mobile app;
+- [NativeScript](https://www.nativescript.org/) to create a native cross-platform mobile app with JavaScript;
 - [ML Kit for Firebase](https://firebase.google.com/docs/ml-kit/) to read a menu and return beer names;
 - [Untappd](https://untappd.com/) to provide detailed beer info and ratings.
 
@@ -70,7 +70,7 @@ For this app we are going to leverage ML Kit's [text recognition APIs](https://f
 
 Take a Picture --> ML Kit Processes Picture --> Get Beer Info from Untappd
 
-Let's first see it in action:
+*Let's first see it in action:*
 
 <img src="hoppy-example.gif" alt="hoppy example" style="border: 1px solid black" />
 
@@ -208,7 +208,7 @@ Spotted Cow is an honored favorite of Wisconsin microbrews! 🍺🐄
 	  }
 	}
 
-We then bind the resultset to a [NativeScript ListView](https://docs.nativescript.org/ui/list-view) to provide a native scrolling list (presented here without class attributes to improve readibility):
+We then bind the resultset to a [NativeScript ListView](https://docs.nativescript.org/ui/list-view) to provide a native scrolling list (presented here without class attributes to improve readibility).
 
 	<ListView items="{{ myBeers }}" itemTap="beerTap">
 		<ListView.itemTemplate>
@@ -238,6 +238,8 @@ We then bind the resultset to a [NativeScript ListView](https://docs.nativescrip
 	</ListView>
 	
 ![listview screen](listview-screen.png)
+
+> A NativeScript ListView is an abstraction on top of Android's [android.widget.ListView](https://developer.android.com/reference/android/widget/ListView) and iOS's [UITableView](https://developer.apple.com/documentation/uikit/uitableview)
 	
 You'll notice the `beerTap` method executed on `itemTap`. This will navigate us to a new view that shows more details about the selected beer:
 
