@@ -2,7 +2,7 @@
 
 // https://developer.telerik.com/featured/sending-text-messages-to-phone-contacts-using-nativescript-on-ios/
 
-The goal of this tutorial is to show how to pull a contact from your iOS contact list into a NativeScript app and prepare a text message for delivery. It leverages two NativeScript extensions that I have built – [nativescript-contacts](https://market.nativescript.org/plugins/nativescript-contacts) and [nativescript-messenger](https://market.nativescript.org/plugins/nativescript-messenger).
+The goal of this tutorial is to show how to pull a contact from your iOS contact list into a NativeScript app and prepare a text message for delivery. It leverages two NativeScript extensions that I have built: [nativescript-contacts](https://market.nativescript.org/plugins/nativescript-contacts) and [nativescript-messenger](https://market.nativescript.org/plugins/nativescript-messenger).
 
 > This tutorial assumes you are already reasonably comfortable with NativeScript. If you’re new to NativeScript, I recommend following the [documentation on how to get started](https://docs.nativescript.org/).
 

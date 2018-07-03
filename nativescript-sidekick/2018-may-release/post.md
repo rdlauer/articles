@@ -14,11 +14,11 @@ The goal here is to get an app built and deployed on your device ASAP 🏎️. Y
 
 *Deploying an iOS App with a <strong>Free</strong> Apple Developer Account:*
 
-VIDEO EMBED
+iframe width="560" height="315" src="https://www.youtube.com/embed/eLOLiiCSWF8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 *Deploying an iOS App with a <strong>Paid</strong> Apple Developer Account:*
 
-VIDEO EMBED
+iframe width="560" height="315" src="https://www.youtube.com/embed/5gKuR2UCOnM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 > **NOTE:** We've also squashed A LOT of bugs 🐛 recently. [Follow the closed issues on GitHub](https://github.com/NativeScript/sidekick-feedback/issues?q=is%3Aissue+is%3Aclosed) to see what's been fixed.
 
