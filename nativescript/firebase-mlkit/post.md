@@ -50,7 +50,7 @@ Even though machine learning is still in its infancy, we've learned to trust Goo
 
 ![nativescript firebase logos](nativescript-firebase.png)
 
-If you're not familiar with [ML Kit](https://firebase.google.com/docs/ml-kit/), it's an SDK that unleashes the power of Google's ML capabilities to mobile apps. It's relatively easy to integrate and requires no knowledge of neural networks to get rolling.
+If you're not familiar with [ML Kit](https://firebase.google.com/docs/ml-kit/), it's an SDK that unleashes the power of Google's machine learning capabilities to mobile apps. It's relatively easy to integrate and requires no knowledge of neural networks to get rolling.
 
 As a mobile-focused machine learning SDK, ML Kit supports both on-device and cloud-based data models, providing easy offline functionality when needed.
 
@@ -64,13 +64,13 @@ After a little analysis, Untappd was the obvious choice. Not only is it a wildly
 
 For this app we are going to leverage ML Kit's [text recognition APIs](https://firebase.google.com/docs/ml-kit/recognize-text). Yes, it's kind of like OCR, but way cooler because we get to say we are using machine learning!
 
-> If you're interested in the full source code of the app I'm about to show you, you may [consult this GitHub repo](NEED LINK).
+> If you're interested in the full source code of the app I'm about to show you, you may [consult this GitHub repo](https://github.com/rdlauer/hoppy).
 
 *The simplified flow of the app is:*
 
 Take a Picture --> ML Kit Processes Picture --> Get Beer Info from Untappd
 
-*Let's first see it in action:*
+*Let's first see it in action on iOS:*
 
 <img src="hoppy-example.gif" alt="hoppy example" style="border: 1px solid black" />
 
@@ -140,7 +140,7 @@ Once we have captured an image, we need to send the image file to Firebase for t
 	    });
 	}
 
-> A keen eye will notice that we are using [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics/) for error logging as well. Read more about [using Crashlytics with NativeScript](NEED LINK).
+> A keen eye will notice that we are using [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics/) for error logging as well. Crashlytics is also supported in the [NativeScript Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase/blob/master/docs/CRASHREPORTING.md).
 
 As previously noted, ML Kit allows us to use on-device or cloud-based text recognition. In this example we are using `recognizeTextCloud`, but you can swap in `recognizeTextOnDevice` as well. You can even use NativeScript's [connectivity module](https://docs.nativescript.org/ns-framework-modules/connectivity) to determine whether or not your user is online, and thus use the appropriate ML Kit text recognition API:
 
@@ -273,10 +273,10 @@ You'll notice the `beerTap` method executed on `itemTap`. This will navigate us 
 
 ## Conclusion
 
-The power of leveraging Firebase services with NativeScript and the NativeScript-Firebase plugin can't be understated. You can create dynamic, engaging mobile apps for both iOS and Android from one codebase; saving time, money, and a load of headaches.
+The power of leveraging Firebase services with NativeScript and the [NativeScript-Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase) can't be understated. You can create dynamic, engaging mobile apps for both iOS and Android from one codebase; saving time, money, and a load of headaches.
 
 You can get started with NativeScript (without installing anything on your local machine) by accessing the [NativeScript Playground](https://play.nativescript.org/). Setting up a [new Firebase account](https://console.firebase.google.com/) takes about a minute and has very generous free offerings.
 
-The app you see here (Hoppy) is completely free and available on the [iOS App Store](NEED LINK) and [Google Play](NEED LINK).
+The app you see here (Hoppy) is completely free and available on the [iOS App Store](https://itunes.apple.com/us/app/hoppy-discover-beer-ratings/id1406526158?ls=1&mt=8) and [Google Play](https://play.google.com/store/apps/details?id=org.nativescript.hoppy).
 
 Cheers! 🍻
