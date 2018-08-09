@@ -1,6 +1,6 @@
 # What is Serverless and Why Does it Matter?
 
-Let's not kid ourselves, until [Pied Piper's "new internet"](https://www.wired.com/2017/06/pied-pipers-new-internet-isnt-just-possible-almost/) goes online and renders data centers irrelevant, the world will still run on the server. Whether under your desk or in an Azure cloud container, a server is still a server.
+Let's not kid ourselves, until [Pied Piper's "new internet"](https://www.wired.com/2017/06/pied-pipers-new-internet-isnt-just-possible-almost/) goes public and renders data centers irrelevant, the world will still run on the server. Whether under your desk or in a cloud container, a server is still a server.
 
 How many of us have had conversations with non-techie friends and family asking us what the *cloud* "is" and whether or not they should be "in" the cloud? Queue eye roll and a pithy explanation of how **the cloud is really just someone else's server**.
 
@@ -8,7 +8,7 @@ Throw "serverless" into the mix (along with acronyms like IaaS, PaaS, SaaS, and 
 
 ## A Brief History of the Cloud
 
-Today most of us realize the value of the mystical cloud and the ROI it provides for everyone from hobbyists to large enterprises. In the pre-cloud days, when deploying an app, developers had to concern themselves with:
+Today most of us realize the value of the cloud and the ROI it provides for everyone from hobbyists to large enterprises. In the pre-cloud days, when deploying an app, developers had to concern themselves with:
 
 - Buying a server;
 - Finding a physical place to house it;
@@ -45,7 +45,7 @@ The next layer of our cloud pyramid is PaaS (Platform-as-a-Service). What is Paa
 
 The best way for me to think of PaaS is the concept of deploying your app to a pre-configured environment. As the developer, you don't worry about underlying infrastructure, storage, or network considerations. But you do have control over the apps themselves and environmental configurations.
 
-PaaS is easily the most vaguely-defined section of the cloud, yet also holds the most opportunity. You could argue Azure and [Kinvey](https://www.kinvey.com/) are PaaS-focused, but both offer services beyond the typical PaaS definition.
+PaaS is easily the most vaguely-defined section of the cloud, yet also holds the most opportunity. You could argue Azure and [Progress Kinvey](https://www.progress.com/kinvey) are PaaS-focused, but both offer services beyond the typical PaaS definition.
 
 ### Software-as-a-Service (SaaS)
 
@@ -61,13 +61,13 @@ Let's stop talking about FaaS (even though it fits nicely in our acronym model) 
 
 ### Serverless
 
-Think about a mobile app today. A responsible developer will pick a framework like NativeScript (shameless plug 😄) to share code between iOS and Android. Add on a web variant that needs its own hosting environment. Likely there is a database somewhere, NoSQL or relational. Maybe a messaging service. A crash monitoring service. You get the picture.
+Think about a mobile app today. A responsible developer will pick a framework like [NativeScript](https://www.nativescript.org/) (shameless plug 😄) to share code between iOS and Android. Add on a web variant that needs its own hosting environment. Likely there is a database somewhere, NoSQL or relational. Maybe a messaging service. A crash monitoring service. You get the picture.
 
 While spinning up environments for all of these services is easier than it's ever been, that doesn't mean it's easy. PaaS providers take away a lot of the pain, but there is also the server-side business logic (a.k.a. cloud code) to handle. This is the beauty of serverless. **It's just your code, running in the cloud.**
 
 **Of course, serverless doesn't mean server-less.** Serverless the concept of bridging the last gap of app deployment and obfuscating any and all decisions completely away from the developer. **You write code and deploy it. End of story.** Everything is provisioned and managed for you.
 
-The serverless difference is development becomes focused on individual functions instead of services. Think in terms of [Kinvey FlexServices](https://devcenter.kinvey.com/rest/guides/flex-services). These are low code and lightweight "microservices" that handle your app's server-side business logic.
+The serverless difference is development becomes focused on individual functions instead of services. Think in terms of [Kinvey FlexServices](https://devcenter.kinvey.com/guides/flex-services). These are low code and lightweight "microservices" that handle your app's server-side business logic.
 
 For example, if you wanted to use the Google URL Shortener API, you might do something like:
 
@@ -105,12 +105,10 @@ These functions live in the cloud, and are executed in the cloud in an environme
 
 ## The NativeScript Angle
 
-*So what is this article doing on the NativeScript blog?*
-
-While mobile apps are generally distributed via the app stores and of course run on mobile devices, nearly every app has a supporting backend. Therefore, when you are building your next NativeScript app, consider the serverless capabilities of [Kinvey](https://www.kinvey.com/). You can build a better app with capabilities like:
+While mobile apps are generally distributed via the app stores and of course run on mobile devices, nearly every app has a supporting backend. Therefore, when you are building your next NativeScript app, consider the serverless capabilities of [Kinvey](https://www.progress.com/kinvey). You can build a better app with capabilities like:
 
 - 🏃 Quick access to [legacy databases](https://devcenter.kinvey.com/guides/rapid-data);
-- 🔌 Easy connectivity to [enterprise authentication](https://www.kinvey.com/enterprise-authentication-kinvey/) systems;
+- 🔌 Easy connectivity to [enterprise authentication](https://www.progress.com/blogs/enterprise-authentication-kinvey) systems;
 - 🍃 The ability to write [low code, lightweight microservices](https://devcenter.kinvey.com/guides/flex-services) for data integrations and business logic;
 - 📲 [Push notifications](https://devcenter.kinvey.com/guides/push) for iOS and Android;
 - 📂 [Data](https://devcenter.kinvey.com/guides/datastore) and [file](https://devcenter.kinvey.com/guides/files) storage;
