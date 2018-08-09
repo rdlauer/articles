@@ -1,8 +1,8 @@
-# {N}: Meet the NativeScript Experts at jsMobileConf
+# {N} Blog: Meet the NativeScript Experts at jsMobileConf
 
-It's almost fall - time to think about back-to-school activities, what you're going to dress up as for Halloween, and of course the fall tech conference season!
+It's almost fall - time to think about back-to-school activities, what you're going to dress up as for Halloween 🎃, and of course the fall tech conference season!
 
-Over the past couple of years we've met many of you at our previous "NativeScript Developer Day" events in Boston and New York. This year we are doing something a little (ok A LOT) different. Building on our previous NativeScript-focused events, we are putting on an even bigger show that encompasses even more of the JavaScript ecosystem.
+Over the past couple of years we've met many of you at our previous *NativeScript Developer Day* events in Boston and New York. This year we are doing something a little (ok A LOT) different. Building on our previous NativeScript-focused events, we are putting on an even bigger show that encompasses even more of the JavaScript ecosystem.
 
 We are happy to be bringing you [jsMobileConf](https://jsmobileconf.com/) - a two-day, two-track event focused on all things JavaScript (*including* NativeScript!).
 
@@ -16,7 +16,7 @@ Come and meet some of the very best speakers from the broader NativeScript commu
 
 **Today JavaScript means more.** It means more to developers and reaches more technologies than ever before. So it's time to bring together some of the experts in a variety of cutting-edge fields to talk about how *you* can leverage **JavaScript** to hack on:
 
-- Native mobile apps and PWAs
+- Native Mobile Apps and PWAs
 - Internet of Things (IoT)
 - Blockchain
 - Serverless
@@ -31,7 +31,7 @@ Here is but a sample of the sessions that may interest you most:
 
 - NEED SESSIONS WITH SPEAKERS
 
-> For a full session list, be sure to check out jsMobileConf.com
+> For a full session list, be sure to check out jsMobileConf.com (NEED DEEP LINK TO SCHEDULE)
 
 ## See You in Boston
 
@@ -42,7 +42,7 @@ jsMobileConf will be hosted at the magnificent [Aloft Boston Seaport District ho
 
 
 
-# Kendo UI: Meet the Kendo UI and PWA Experts at jsMobileConf
+# Kendo UI (Telerik Blog): Meet the Kendo UI and PWA Experts at jsMobileConf
 
 Even though our summer vacations are winding down, it's important to look at the bright side: the kids are headed back to school! 🎉
 
@@ -62,11 +62,12 @@ Come and meet some of the very best speakers from the broader Kendo UI community
 
 **Today JavaScript means more.** It means more to developers and reaches more technologies than ever before. So it's time to bring together some of the experts in a variety of cutting-edge fields to talk about how *you* can leverage **JavaScript** to hack on:
 
-- Native mobile apps and PWAs
+- Progressive Web Apps
+- AR and VR
 - Internet of Things (IoT)
 - Blockchain
 - Serverless
-- AR and VR
+- Native Mobile Apps
 - Artificial Intelligence
 
 ## Who is Speaking?
@@ -77,7 +78,7 @@ Here is but a sample of the sessions that may interest you most:
 
 - NEED SESSIONS WITH SPEAKERS
 
-> For a full session list, be sure to check out jsMobileConf.com
+> For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
 
 ## See You in Boston
 
@@ -88,7 +89,7 @@ jsMobileConf will be hosted at the magnificent [Aloft Boston Seaport District ho
 
 
 
-# Progress: Meet the JavaScript Experts at jsMobileConf
+# Progress Blog: Meet the JavaScript Experts at jsMobileConf
 
 Progress has been at the forefront of cutting edge JavaScript tech for years now. When you think of the web you think [Kendo UI](https://www.telerik.com/kendo-ui). When you think of native mobility you think [NativeScript](https://www.nativescript.org/). When you think serverless backend you think [Progress Kinvey](https://www.progress.com/kinvey).
 
@@ -96,10 +97,10 @@ This is why Progress is pleased to be hosting a new event this fall in Boston, M
 
 But jsMobileConf is far more than Progress. With jsMobileConf we are putting on a show that encompasses *more* of the JavaScript ecosystem:
 
-- Native mobile apps and Progressive Web Apps (PWAs)
-- Internet of Things (IoT)
-- Blockchain
 - Serverless
+- Blockchain
+- Internet of Things (IoT)
+- Native mobile apps and Progressive Web Apps (PWAs)
 - AR and VR
 - Artificial Intelligence
 
@@ -121,7 +122,7 @@ Here is but a sample of the sessions that may interest you most:
 
 - NEED SESSIONS WITH SPEAKERS
 
-> For a full session list, be sure to check out jsMobileConf.com
+> For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
 
 ## See You in Boston
 
