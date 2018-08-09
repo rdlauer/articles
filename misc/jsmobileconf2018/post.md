@@ -27,9 +27,25 @@ Come and meet some of the very best speakers from the broader NativeScript commu
 
 Ah, great question! We've already lined up some amazing speakers for you from Microsoft, Adobe, Progress, a variety of Google Developer Experts, and more.
 
-Here is but a sample of the sessions that may interest you most:
+*Here is but a small sample of the sessions that may interest you most:*
 
-- NEED SESSIONS WITH SPEAKERS
+<style>
+.speakers td { border: 1px solid #ccc; }
+</style>
+<table class="speakers">
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/stanimiravlaeva.jpg" alt="stanimira vlaeva" /></td>
+<td><strong>Stanimira Vlaeva</strong><br /><br /><em>Webpack and Debugging</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/jeffwhelpley.jpg" alt="jeff whelpley" /></td>
+<td><strong>Jeff Whelpley</strong><br /><br /><em>Angular???</em></td>
+</tr>
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/tjvantoll.jpeg" alt="tj vantoll" /></td>
+<td><strong>TJ VanToll</strong><br /><br /><em>NativeScript AR???</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/jenlooper.jpeg" alt="jen looper" /></td>
+<td><strong>Jen Looper</strong><br /><br /><em>Human vs AI???</em></td>
+</tr>
+</table>
 
 > For a full session list, be sure to check out jsMobileConf.com (NEED DEEP LINK TO SCHEDULE)
 
@@ -74,9 +90,25 @@ Come and meet some of the very best speakers from the broader Kendo UI community
 
 Ah, great question! We've already lined up some amazing speakers for you from Microsoft, Adobe, Progress, a variety of Google Developer Experts, and more.
 
-Here is but a sample of the sessions that may interest you most:
+*Here is but a small sample of the sessions that may interest you most:*
 
-- NEED SESSIONS WITH SPEAKERS
+<style>
+.speakers td { border: 1px solid #ccc; }
+</style>
+<table class="speakers">
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/burkeholland.jpg" alt="burke holland" /></td>
+<td><strong>Burke Holland</strong><br /><br /><em>VS Code???</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/taramanicsic.jpg" alt="tara manicsic" /></td>
+<td><strong>Tara Manicsic</strong><br /><br /><em>Service Workers???</em></td>
+</tr>
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/stanimiravlaeva.jpg" alt="stanimira vlaeva" /></td>
+<td><strong>Stanimira Vlaeva</strong><br /><br /><em>Webpack and Debugging</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/MichaelSolati.jpg" alt="michael solati" /></td>
+<td><strong>Michael Solati</strong><br /><br /><em>Progressive Web Apps???</em></td>
+</tr>
+</table>
 
 > For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
 
@@ -118,9 +150,23 @@ Come and meet some of the leading voices in the JavaScript community - including
 
 Ah, great question! We've already lined up some amazing speakers for you from Microsoft, Adobe, Progress, a variety of Google Developer Experts, and more.
 
-Here is but a sample of the sessions that may interest you most:
-
-- NEED SESSIONS WITH SPEAKERS
+<style>
+.speakers td { border: 1px solid #ccc; }
+</style>
+<table class="speakers">
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/sagefranch.jpg" alt="sage franch" /></td>
+<td><strong>Sage Franch</strong><br /><br /><em>Blockchain Crash Course</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/simonmacdonald.jpeg" alt="simon macdonald" /></td>
+<td><strong>Simon MacDonald</strong><br /><br /><em>FaaS???</em></td>
+</tr>
+<tr>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/tejasranade.jpeg" alt="tejas ranade" /></td>
+<td><strong>Tejas Ranade</strong><br /><br /><em>Serverless</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/macykuang.png" alt="macy kuang" /></td>
+<td><strong>Macy Kuang</strong><br /><br /><em>Product Design for VR</em></td>
+</tr>
+</table>
 
 > For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
 
