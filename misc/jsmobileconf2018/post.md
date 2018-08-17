@@ -1,6 +1,6 @@
 # {N} Blog: Meet the NativeScript Experts at jsMobileConf
 
-It's almost fall - time to think about back-to-school activities, what you're going to dress up as for Halloween 🎃, and of course the fall tech conference season!
+It's almost fall - time to think about back-to-school activities 🏫, what you're going to dress up as for Halloween 🎃, and of course the fall tech conference season!
 
 Over the past couple of years we've met many of you at our previous *NativeScript Developer Day* events in Boston and New York. This year we are doing something a little (ok A LOT) different. Building on our previous NativeScript-focused events, we are putting on an even bigger show that encompasses even more of the JavaScript ecosystem.
 
@@ -8,7 +8,7 @@ We are happy to be bringing you [jsMobileConf](https://jsmobileconf.com/) - a tw
 
 > jsMobileConf will be held on October 25th and 26th in Boston, MA. Skip the details and check out [jsMobileConf.com](https://jsmobileconf.com/) for speakers, sessions, and early bird pricing.
 
-Come and meet some of the very best speakers from the broader NativeScript community. You'll find folks from the NativeScript Developer Relations team, members of the engineering team behind NativeScript, and a variety of community experts ([view the full speaker list](https://jsmobileconf.com/#lgx-speakers)).
+Come and meet some of the very best speakers from the broader NativeScript community. You'll find folks from the NativeScript Developer Relations team, members of the engineering team behind NativeScript, and a variety of community experts ([check out the full speaker list](https://jsmobileconf.com/#lgx-speakers)).
 
 ## You Can Do A Lot with JavaScript
 
@@ -27,27 +27,28 @@ Come and meet some of the very best speakers from the broader NativeScript commu
 
 Ah, great question! We've already lined up some amazing speakers for you from Microsoft, Adobe, Progress, a variety of Google Developer Experts, and more.
 
-*Here is but a small sample of the sessions that may interest you most:*
+*Here is but a small sample of the topics that may interest you most:*
 
 <style>
 .speakers td { border: 1px solid #ccc; }
+.speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
 <tr>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/stanimiravlaeva.jpg" alt="stanimira vlaeva" /></td>
 <td><strong>Stanimira Vlaeva</strong><br /><br /><em>Webpack and Debugging</em></td>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/jeffwhelpley.jpg" alt="jeff whelpley" /></td>
-<td><strong>Jeff Whelpley</strong><br /><br /><em>Angular???</em></td>
+<td><strong>Jeff Whelpley</strong><br /><br /><em>Angular</em></td>
 </tr>
 <tr>
-<td><img src="https://jsmobileconf.com/assets/img/speakers/tjvantoll.jpeg" alt="tj vantoll" /></td>
-<td><strong>TJ VanToll</strong><br /><br /><em>NativeScript AR???</em></td>
+<td><img src="https://jsmobileconf.com/assets/img/speakers/burkeholland.jpg" alt="burke holland" /></td>
+<td><strong>Burke Holland</strong><br /><br /><em>VS Code Can Do That!?</em></td>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/jenlooper.jpeg" alt="jen looper" /></td>
-<td><strong>Jen Looper</strong><br /><br /><em>Human vs AI???</em></td>
+<td><strong>Jen Looper</strong><br /><br /><em>Humans vs AI</em></td>
 </tr>
 </table>
 
-> For a full session list, be sure to check out jsMobileConf.com (NEED DEEP LINK TO SCHEDULE)
+> For the full schedule, be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule)
 
 ## See You in Boston
 
@@ -66,7 +67,7 @@ But more importantly, it's almost the fall tech conference season! If you've bee
 
 While we are still hosting DevReach and ProgressNEXT, we are doing something a little different on the JavaScript mobility front this year. Building on the JavaScript theme, we are putting on an even bigger show that encompasses even more of the JavaScript ecosystem.
 
-We are happy to be bringing you [jsMobileConf](https://jsmobileconf.com/) - a two-day, two-track event focused on all things JavaScript (*including* Kendo UI and PWAs!).
+**We are happy to be bringing you [jsMobileConf](https://jsmobileconf.com/) - a two-day, two-track event focused on all things JavaScript (*including* Kendo UI and PWAs!).**
 
 > jsMobileConf will be held on October 25th and 26th in Boston, MA. Skip the details and check out [jsMobileConf.com](https://jsmobileconf.com/) for speakers, sessions, and early bird pricing.
 
@@ -90,27 +91,28 @@ Come and meet some of the very best speakers from the broader Kendo UI community
 
 Ah, great question! We've already lined up some amazing speakers for you from Microsoft, Adobe, Progress, a variety of Google Developer Experts, and more.
 
-*Here is but a small sample of the sessions that may interest you most:*
+*Here is but a small sample of the topics that may interest you most:*
 
 <style>
 .speakers td { border: 1px solid #ccc; }
+.speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
 <tr>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/burkeholland.jpg" alt="burke holland" /></td>
-<td><strong>Burke Holland</strong><br /><br /><em>VS Code???</em></td>
+<td><strong>Burke Holland</strong><br /><br /><em>VS Code Can Do That!?</em></td>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/taramanicsic.jpg" alt="tara manicsic" /></td>
-<td><strong>Tara Manicsic</strong><br /><br /><em>Service Workers???</em></td>
+<td><strong>Tara Manicsic</strong><br /><br /><em>Service Workers</em></td>
 </tr>
 <tr>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/stanimiravlaeva.jpg" alt="stanimira vlaeva" /></td>
 <td><strong>Stanimira Vlaeva</strong><br /><br /><em>Webpack and Debugging</em></td>
 <td><img src="https://jsmobileconf.com/assets/img/speakers/MichaelSolati.jpg" alt="michael solati" /></td>
-<td><strong>Michael Solati</strong><br /><br /><em>Progressive Web Apps???</em></td>
+<td><strong>Michael Solati</strong><br /><br /><em>Progressive Web Apps</em></td>
 </tr>
 </table>
 
-> For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
+> For a full session list, be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule)
 
 ## See You in Boston
 
@@ -125,7 +127,7 @@ jsMobileConf will be hosted at the magnificent [Aloft Boston Seaport District ho
 
 Progress has been at the forefront of cutting edge JavaScript tech for years now. When you think of the web you think [Kendo UI](https://www.telerik.com/kendo-ui). When you think of native mobility you think [NativeScript](https://www.nativescript.org/). When you think serverless backend you think [Progress Kinvey](https://www.progress.com/kinvey).
 
-This is why Progress is pleased to be hosting a new event this fall in Boston, MA. [jsMobileConf](https://jsmobileconf.com/) is a two-day, two-track, event focused on all things JavaScript (*including* Kendo UI, NativeScript, and Kinvey!).
+This is why Progress is pleased to be hosting a new event this fall in Boston, MA. **[jsMobileConf](https://jsmobileconf.com/) is a two-day, two-track, event focused on all things JavaScript (*including* Kendo UI, NativeScript, and Kinvey!).**
 
 But jsMobileConf is far more than Progress. With jsMobileConf we are putting on a show that encompasses *more* of the JavaScript ecosystem:
 
@@ -152,6 +154,7 @@ Ah, great question! We've already lined up some amazing speakers for you from Mi
 
 <style>
 .speakers td { border: 1px solid #ccc; }
+.speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
 <tr>
@@ -168,7 +171,7 @@ Ah, great question! We've already lined up some amazing speakers for you from Mi
 </tr>
 </table>
 
-> For a full session list, be sure to check out jsMobileConf.com  (NEED DEEP LINK TO SCHEDULE)
+> For a full session list, be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule)
 
 ## See You in Boston
 
