@@ -6,13 +6,9 @@ Let's face facts: the computers have won! The future now effectively lies in the
 
 While the present day isn't *quite* a Terminator-style reality 🤖, the truth is that "cognitive services" are exploding. From machine learning to artificial intelligence to other cognitive APIs, these "thinking" services are offloading incredible capabilities to the cloud.
 
-When we talk about specialized cognitive APIs, [Microsoft Azure](https://azure.microsoft.com/) stands out as a reliable option for engaging APIs such as:
+> Read more about what Progress is doing to [accelerate cognitive app development](https://www.progress.com/cognitive-business-apps), and also read a free e-book on the [New Mobile Development Landscape](https://www.progress.com/campaigns/kinvey/new-mobile-development-landscape). 
 
-- [Vision](https://azure.microsoft.com/en-us/services/cognitive-services/directory/vision/)
-- [Knowledge](https://azure.microsoft.com/en-us/services/cognitive-services/directory/know/)
-- [Language](https://azure.microsoft.com/en-us/services/cognitive-services/directory/lang/)
-- [Speech](https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/)
-- [Search](https://azure.microsoft.com/en-us/services/cognitive-services/directory/search/)
+[Microsoft Azure](https://azure.microsoft.com/) is a solid option for specialized cognitive APIs such as [Vision](https://azure.microsoft.com/en-us/services/cognitive-services/directory/vision/), [Knowledge](https://azure.microsoft.com/en-us/services/cognitive-services/directory/know/), [Language](https://azure.microsoft.com/en-us/services/cognitive-services/directory/lang/), [Speech](https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/), and [Search](https://azure.microsoft.com/en-us/services/cognitive-services/directory/search/). Let's see how we can leverage one of these APIs within a native iOS/Android app built with NativeScript.
 
 ## Azure Face API
 
