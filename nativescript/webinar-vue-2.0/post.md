@@ -17,7 +17,7 @@ In this free online webinar we will cover all of the 2.0 updates including:
 - A completely overhauled app template;
 - Updates to the professional [NativeScript UI components](https://www.nativescript.org/ui-for-nativescript);
 - Full compatibility with the latest version of NativeScript;
-- A preview of the redesigned router, allowing you to use the same router concepts from Vue.js;
+- A preview of the integration with the Vue.js CLI devtools;
 - An early look at NativeScript 5.0 features like, wait for it...stateful reload (a.k.a. Hot Module Reload!) 😀.
 
 [Register for the Webinar](https://attendee.gotowebinar.com/register/1758384468554226433?source=blog)
