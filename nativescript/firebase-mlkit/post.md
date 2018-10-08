@@ -1,9 +1,8 @@
 # Using ML Kit for Firebase to Tap into Beer Ratings
 
-Over the past year machine learning (ML) has gone mainstream. How do we know this? When someone uses ML to create an Olive Garden commercial script:
+Over the past year machine learning (ML) has gone mainstream. How do we know this? When we let [computers create paint colors](https://arstechnica.com/information-technology/2017/05/an-ai-invented-a-bunch-of-new-paint-colors-that-are-hilariously-wrong/):
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I forced a bot to watch over 1,000 hours of Olive Garden commercials and then asked it to write an Olive Garden commercial of its own. Here is the first page. <a href="https://t.co/CKiDQTmLeH">pic.twitter.com/CKiDQTmLeH</a></p>&mdash; Keaton Patti (@KeatonPatti) <a href="https://twitter.com/KeatonPatti/status/1006961202998726665?ref_src=twsrc%5Etfw">June 13, 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![generated paint colors](paint-colors.png)
 
 Much like with augmented reality, we are still collectively working out the most practical applications for ML. But the best use of any new technology solves an existing real world problem. **For me, the king of (first world) problems is deciding which beer to drink.**
 
