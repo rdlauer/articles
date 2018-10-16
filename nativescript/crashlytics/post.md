@@ -99,7 +99,8 @@ It's all fine and good to implement error logging in your apps, but how do we kn
 		
 	public forceCrash(): void {
 		if (isIOS) {
-			Crashlytics.sharedInstance().crash();
+			// some nonsense code that is guaranteed to throw an exception :)
+			var __error = 1/0;
 		} else {
 			throw new java.lang.Exception("Forced an exception.");
 		}
@@ -109,7 +110,7 @@ It's all fine and good to implement error logging in your apps, but how do we kn
 
 With some crashes logged, it's time to head over to your handy Firebase console and check on your report!
 
-IMAGE FROM EDDY?
+![crashlytics nativescript example](crashlytics-example.png)
 	
 **Happy 🐛 squashing!**
 
