@@ -1,4 +1,4 @@
-# The Benefits of Accessing Salesforce Data with Kinvey
+# The Modern Way to Connect to Salesforce for Web, Mobile, and Chat Applications
 
 Clearly positioned as the dominant CRM (Customer Relationship Management) product today, [Salesforce](https://www.salesforce.com/) powers countless businesses and, often times, the apps that power those businesses. But unless you are Certified Salesforce Expert Genius (yes, I just made that title up), figuring out *how* to access data housed in Salesforce (much less managing security considerations, offline data sync, and performance issues) can be a very intimidating prospect.
 
