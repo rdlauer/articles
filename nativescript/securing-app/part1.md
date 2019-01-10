@@ -4,7 +4,7 @@ Whether you are developing a traditional native app, a cross-compiled app from t
 
 > While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
 
-Mobile security is something that can no longer be taken lightly. Virtually everyone is walking around with sensitive data, access to corporate secrets, and/or protected heath information in their pockets.
+Mobile security is something that can no longer be taken lightly. Virtually everyone is walking around with sensitive data, access to corporate secrets, and/or protected health information in their pockets.
 
 ## A Bit 'o History
 
@@ -25,7 +25,7 @@ In this four-part series on the NativeScript blog, we are going to dive into a s
 - **Part Three:** Ensuring Data Integrity Between Device and Server (coming Wednesday)
 - **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
 
-> Check out the new course from [NativeScripting.com](https://nativescripting.com/) on mobile app security and get 30% off with the code: NSSECURE.
+> Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
 ## Source Code Security...?
 
@@ -89,6 +89,8 @@ It'll keep the casual hacker out of our business, but the problem is there are p
 
 Ok, well, it's a start. But I think we can do better.
 
+> Many people mention [ProGuard](https://stuff.mit.edu/afs/sipb/project/android/sdk/android-sdk-linux/tools/proguard/docs/index.html#manual/introduction.html) as an option as well. ProGuard can obfuscate *Java* code, but does nothing for *JavaScript*.
+
 ## Jscrambler (Obfuscation+++)
 
 Here on the NativeScript team, we've been in communication with the folks at [Jscrambler](https://jscrambler.com/) for many years now, dating back to our days of hybrid app development. Jscrambler is a service that provides advanced obfuscation to the point of the code being illegible, even after beautification.
@@ -151,33 +153,72 @@ An easy way to do this with NativeScript is by using [FlexServices](https://devc
 
 > **TIP:** Kinvey provides SDKs for numerous mobile frameworks like [Ionic](https://devcenter.kinvey.com/phonegap/reference), [Xamarin](https://devcenter.kinvey.com/xamarin/reference), [native iOS](https://devcenter.kinvey.com/ios/reference), [native Android](https://devcenter.kinvey.com/android/reference), and of course [NativeScript](https://devcenter.kinvey.com/nativescript/reference)!
 
-For instance, if we wanted to use the Google URL Shortener API in our app, instead of writing all this JavaScript and deploying it to the device, we can write it as a FlexService:
+You may occasionally have some proprietary business logic stored in your app that would be better-served living in the cloud (be it for IP protection or performance considerations, or even hiding *other* API keys on the server!). So instead of keeping this logic in your app, you can write a FlexService with Kinvey.
 
-	function shortenURL(context, complete, modules) {
-	  const requestOptions = {
-	    uri: 'https://www.googleapis.com/urlshortener/v1/url?key=',
-	    body: {
-	      longUrl: context.body.longUrl
-	    },
-	    json: true,
-	    resolveWithFullResponse: true
-	  };
-	  _getConfig(complete, modules).then((result) => {
-	    requestOptions.uri += result;
-	    request.post(requestOptions, (error, res, body) => {
-	      if (error) {
-	        return complete().setBody(error).runtimeError().done();
+![kinvey flexservice](1-flexservice.png)
+
+For instance, the following FlexService (provided by the illustrious [TJ VanToll](https://twitter.com/tjvantoll)) reads financial transaction data and scores how well you're doing, based on a proprietary algorithm:
+
+	const sdk = require('kinvey-flex-sdk');
+	
+	function getTransactions(modules) {
+	  return new Promise((resolve, reject) => {
+	    const store = modules.dataStore({ useUserContext: false });
+	    const collection = store.collection('Transactions');
+	    const query = new modules.Query();
+	
+	    collection.find(query, (err, result) => {
+	      if (err) {
+	        reject(err);
+	      } else {
+	        resolve(result);
 	      }
-	      complete()
-	        .setBody({ shortUrl: body.id })
-	        .done();
 	    });
 	  });
 	}
 	
-	exports.shortenURL = shortenURL;
+	function determineScore(transactions) {
+	  var score = 100;
+	  transactions.forEach((transaction) => {
+	    if (transaction.amount < 0) {
+	      score -= 5;
+	    }
+	    if (transaction.amount > 5) {
+	      score += 10;
+	    }
+	    if (transaction.category === "restaurant") {
+	      score -= 5;
+	    }
+	  });
+	  return score.toString();
+	}
+	
+	sdk.service((err, flex) => {
+	  function getBudgetScore(context, complete, modules) {
+	    getTransactions(modules).then((transactions) => {
+	      complete().setBody({
+	        score: determineScore(transactions)
+	      }).done();
+	    }).catch((err) => {
+	      complete().setBody(new Error(err)).runtimeError().done();
+	    });
+	  }
+	  
+	  flex.functions.register('getBudgetScore', getBudgetScore);
+	});
 
-And that FlexService is accessed via a REST endpoint provided by Kinvey!
+And this FlexService is accessed within our app via an endpoint provided by Kinvey:
+
+	return this.http.post(
+        "https://baas.kinvey.com/rpc/kid_<ID>/custom/BudgetScore",
+        {},
+        {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Authorization": "Basic <YOUR AUTH KEY>"
+            })
+        }
+    );
 
 Using this method your intellectual property is safe, your business logic is not exposed in any way to your users, AND you get the performance and reliability benefit of a fully scalable Kinvey instance.
 

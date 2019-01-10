@@ -15,7 +15,7 @@ Today our focus in on how we store (and secure) data locally. So let's get to it
 - **Part Three:** Ensuring Data Integrity Between Device and Server (coming Wednesday)
 - **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
 
-> Check out the new course from [NativeScripting.com](https://nativescripting.com/) on mobile app security and get 30% off with the code: NSSECURE.
+> Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
 ## Simple Secure Storage
 

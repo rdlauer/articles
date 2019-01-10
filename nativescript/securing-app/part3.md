@@ -13,7 +13,7 @@ Preserving the integrity of your app's data as it moves back and forth to and fr
 - **Part Three:** Ensuring Data Integrity Between Device and Server (that's today!)
 - **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
 
-> Check out the new course from [NativeScripting.com](https://nativescripting.com/) on mobile app security and get 30% off with the code: NSSECURE.
+> Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
 ## SSL Everywhere
 
@@ -65,6 +65,8 @@ A man-in-the-middle attack is a situation where someone secretly and transparent
 ![man-in-the-middle attack](3-man-in-the-middle-attack.png)
 
 Clearly this is a major issue when we are talking about ensuring the integrity of data in transit - and the solution to this is to use a concept known as SSL pinning.
+
+> SSL Pinning is the act of verifying the server's certificate against a known copy of that certificate. By bundling your server's SSL certificate inside your app and making sure any request validates that the server's cert matches the cert stored with the app.
 
 Luckily for us, there is a NativeScript plugin to address just this scenario! The [nativescript-https](https://market.nativescript.org/plugins/nativescript-https) plugin is a drop-in replacement for the [http module](https://docs.nativescript.org/ns-framework-modules/http).
 

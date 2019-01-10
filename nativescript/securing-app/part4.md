@@ -13,7 +13,7 @@ As we wrap up this series, we want to conclude with a topic that is critically i
 - **Part Three:** [Ensuring Data Integrity Between Device and Server]()
 - **Part Four:** Enterprise User Authentication and Authorization (hey that's today!)
 
-> Check out the new course from [NativeScripting.com](https://nativescripting.com/) on mobile app security and get 30% off with the code: NSSECURE.
+> Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
 ## Biometric Authentication
 
