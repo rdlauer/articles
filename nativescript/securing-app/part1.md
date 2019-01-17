@@ -2,9 +2,9 @@
 
 Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is app security.
 
-> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
-
 Mobile security is something that can no longer be taken lightly. Virtually everyone is walking around with sensitive data, access to corporate secrets, and/or protected health information in their pockets.
+
+> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
 
 ## A Bit 'o History
 
@@ -21,9 +21,9 @@ Traditionally users have relied on the public app stores as the ultimate app gat
 In this four-part series on the NativeScript blog, we are going to dive into a series of security-related tips and tricks for you to apply to your app. Most of these are incredibly easy to implement, as the heavy lifting has already been managed by our illustrious community of plugin developers.
 
 - **Part One:** Protecting Your Source Code (hey that's this one!)
-- **Part Two:** Securing Data at Rest (coming Tuesday)
-- **Part Three:** Ensuring Data Integrity Between Device and Server (coming Wednesday)
-- **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
+- **Part Two:** [Securing Data at Rest](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest)
+- **Part Three:** [Ensuring Data Integrity Between Device and Server](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit)
+- **Part Four:** [Enterprise User Authentication and Authorization](https://www.nativescript.org/blog/secure-your-mobile-app-secure-user-auth)
 
 > Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
@@ -69,7 +69,7 @@ The [NativeScript CLI](https://docs.nativescript.org/start/cli-basics) allows yo
 
 	tns build android|ios --bundle --env.uglify
 
-**Warning:** This is the equivalent of the cheap bike lock we used in middle school!
+**Warning:** This is the equivalent of the cheap bike locks we used in middle school!
 
 ![cheap bike lock](1-bikelock.png)
 
@@ -93,7 +93,7 @@ Ok, well, it's a start. But I think we can do better.
 
 ## Jscrambler (Obfuscation+++)
 
-Here on the NativeScript team, we've been in communication with the folks at [Jscrambler](https://jscrambler.com/) for many years now, dating back to our days of hybrid app development. Jscrambler is a service that provides advanced obfuscation to the point of the code being illegible, even after beautification.
+Here on the NativeScript team, we've been in touch with the folks at [Jscrambler](https://jscrambler.com/) for many years now, dating back to our days of hybrid app development. Jscrambler is a service that provides advanced obfuscation to the point of the code being illegible, even after beautification.
 
 ![jscrambler obfuscation](1-jscrambler.png)
 
@@ -135,7 +135,7 @@ Easy! But in some ways Android makes it even easier:
 
 ### Android Private Distribution
 
-Google is far less restrictive when it comes to deploying apps outside of Google Play. You can set up your own private app marketplace (or even create your own *app* that acts as an app store) without ruffling feathers like you would at Apple. Google even allows you to distribute apps via email or a website.
+Google is far less restrictive when it comes to deploying apps outside of Google Play. You can set up your own private app marketplace (or even create your own *app* that acts as an app store) without ruffling feathers like you would at Apple. Google even allows you to distribute apps via email, your own website, or even a [managed Google Play store](https://developer.android.com/distribute/google-play/work).
 
 > **NOTE:** If you don't use Google Play, you can't use the in-app billing and licensing services.
 
@@ -252,7 +252,7 @@ Not only does this exclude private keys, but also prevents the `platforms` and `
 
 Today we've learned how we can take some relatively simple steps towards protecting our app code, mitigating attempts by malicious users to view our code, reducing our app installation footprint, and offloading sensitive business logic to the cloud.
 
-In the next part we are going to look at how we can **better secure data stored on the device**.
+[In the next part](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest) we are going to look at how we can **better secure data stored on the device**.
 
 > Don't forget to [register for our mobile app security webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) coming up on January 23rd!
 

@@ -2,22 +2,22 @@
 
 Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is app security.
 
-> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
-
 More than ever before, I think we developers are far more aware of the myriad security issues we face. When you develop a cross-platform mobile app with NativeScript, you are developing a truly native app. But that also means the same security considerations apply as with any other native mobile app.
 
-In [the previous article](), we dove into securing our source code via advanced obfuscation, preventing code tampering, reducing the scope of our installations, and migrating sensitive business logic to the cloud.
+> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
+
+In [the previous article](https://www.nativescript.org/blog/secure-your-mobile-app-protecting-the-code), we dove into securing our source code via advanced obfuscation, preventing code tampering, reducing the scope of our installations, and migrating sensitive business logic to the cloud.
 
 Today our focus in on how we store (and secure) data locally. So let's get to it!
 
-- **Part One:** [Protecting Your Source Code]()
+- **Part One:** [Protecting Your Source Code](https://www.nativescript.org/blog/secure-your-mobile-app-protecting-the-code)
 - **Part Two:** Securing Data at Rest (that's today!)
-- **Part Three:** Ensuring Data Integrity Between Device and Server (coming Wednesday)
-- **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
+- **Part Three:** [Ensuring Data Integrity Between Device and Server](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit)
+- **Part Four:** [Enterprise User Authentication and Authorization](https://www.nativescript.org/blog/secure-your-mobile-app-secure-user-auth)
 
 > Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
-## Simple Secure Storage
+## Encrypt Local Data
 
 Out of the box both iOS and Android prevent data stored by one app to be accessed by any other app on the system. However, as we all know the road to hell is paved with good intentions, amirite? 🔥😰
 
@@ -47,7 +47,7 @@ The Secure Storage plugin allows us to encrypt, save, decrypt, and retrieve key/
 	
 > **NOTE:** Internally, on iOS this plugin uses KeyChain via the [SAMKeychain library](https://github.com/soffes/SAMKeychain) and Android via the [Hawk library](https://github.com/orhanobut/hawk) (which in turn uses [Facebook conceal](https://github.com/facebook/conceal)).
 
-## SQLite (with SQLCipher)
+## Encryption with SQLite + SQLCipher
 
 Are you a fan of [SQLite](https://www.sqlite.org/index.html)? Did you know there is a [full-featured NativeScript plugin](https://market.nativescript.org/plugins/nativescript-sqlite) that supports SQLite? Well now you do!
 
@@ -55,11 +55,11 @@ The free version (above) of the SQLite plugin provides all of the capabilities y
 
 ![sqlite and sqlcipher](2-sqlcipher.png)
 
-## Offline Data Sync with Encryption
+## Online/Offline Data Sync + Encryption
 
 Many of us use mobile backend services (mBaaS) like [Firebase](https://market.nativescript.org/plugins/nativescript-plugin-firebase) or [Progress Kinvey](https://www.progress.com/kinvey) for our remote backends. And when developing mobile apps, we need to be aware of online/offline connectivity, and syncing up data for when users toggle between those states (lest the app crashes without a network connection!).
 
-Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.kinvey.com/nativescript/guides/datastore) baked in, as outlined in this example from the docs:
+Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.kinvey.com/nativescript/guides/datastore) baked in, as outlined in this extensive code sample example from the docs:
 
 	// Retrieve an instance
 	const dataStore = Kinvey.DataStore.collection('books', Kinvey.DataStoreType.Sync) as Kinvey.SyncStore;
@@ -107,7 +107,7 @@ Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.k
 	    // ...
 	  });
 
-Additionally, [Kinvey provides for encryption of the data](https://devcenter.kinvey.com/nativescript/guides/encryption) at rest on the device, using SQLite and SQLCipher!
+Additionally, [Kinvey provides for encryption of the data](https://devcenter.kinvey.com/nativescript/guides/encryption) at rest on the device, using SQLite and SQLCipher, which is simply configured automatically when you initialize Kinvey:
 
 	Kinvey.init({
 		appKey: '<appKey>',
@@ -115,7 +115,7 @@ Additionally, [Kinvey provides for encryption of the data](https://devcenter.kin
 		encryptionKey: '<encryptionKey>'
 	});
 
-## Backend Compliance and Security
+## Backend Compliance and Security Considerations
 
 ![hipaa compliance and kinvey](2-hipaa.png)
 
@@ -123,10 +123,12 @@ Many of us who develop apps in the enterprise are acutely aware of compliance an
 
 > If you are developing an app that deals with PHI (private health information) in the health care industry, you absolutely need to make sure the data storage and transmission of said data is HIPAA-compliant.
 
-Kinvey reviews, affirms, and evolves security controls on an annual basis via SOC2, HIPAA, GDPR, Sarbanes-Oxley, and other compliance activities. For customers in banking focused on FFIEC or GLBA regulations, in health care focused on HIPAA, or doing business in the EU and concerned about GDPR, the Kinvey platform provides comprehensive end-to-end security with the capabilities needed to support your regulatory compliance efforts. [Read more here](https://www.progress.com/kinvey/enterprise-security) about how Kinvey can provide your organization the security and compliance coverage it requires.
+Kinvey reviews, affirms, and evolves security controls on an annual basis via SOC2, HIPAA, GDPR, Sarbanes-Oxley, and other compliance activities. For customers in banking focused on FFIEC or GLBA regulations, in health care focused on HIPAA, or doing business in the EU and concerned about GDPR, the Kinvey platform provides comprehensive end-to-end security with the capabilities needed to support your regulatory compliance efforts.
+
+[Read more here](https://www.progress.com/kinvey/enterprise-security) about how Kinvey can provide your organization the security and compliance coverage it requires.
 
 ## Next Up is Episode Three: Securing Data in Transit!
 
-Today we covered storing private data elements securely in our app and even looked into some local and remote secure data storage options. Next up we are going to look into how we *securely transfer* data back and forth from the client to the server. Hint: it's not *quite* as simple as SSL. 🤔
+Today we covered storing private data elements securely in our app and even looked into some local and remote secure data storage options. [Next up](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit) we are going to look into how we *securely transfer* data back and forth from the client to the server. Hint: it's not *quite* as simple as SSL. 🤔
 
 > Don't forget to [register for our mobile app security webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) coming up on January 23rd!

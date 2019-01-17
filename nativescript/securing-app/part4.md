@@ -2,15 +2,15 @@
 
 Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is app security.
 
-> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
+[In the previous article](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit), we made sure that data in transit was 100% secure from end-to-end, device to cloud. We learned that by leveraging [Progress Kinvey](https://www.progress.com/kinvey) we have a turnkey solution ensuring data integrity, compliance, and robust performance.
 
-In the previous article, we made sure that data in transit was 100% secure from end-to-end, device to cloud. We learned that by leveraging [Progress Kinvey](https://www.progress.com/kinvey) we have a turnkey solution ensuring data integrity, compliance, and robust performance.
+> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
 
 As we wrap up this series, we want to conclude with a topic that is critically important: securely authenticating and authorizing your app users.
 
-- **Part One:** [Protecting Your Source Code]()
-- **Part Two:** [Securing Data at Rest]()
-- **Part Three:** [Ensuring Data Integrity Between Device and Server]()
+- **Part One:** [Protecting Your Source Code](https://www.nativescript.org/blog/secure-your-mobile-app-protecting-the-code)
+- **Part Two:** [Securing Data at Rest](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest)
+- **Part Three:** [Ensuring Data Integrity Between Device and Server](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit)
 - **Part Four:** Enterprise User Authentication and Authorization (hey that's today!)
 
 > Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
@@ -78,7 +78,7 @@ You've probably heard of OAuth before, as [OAuth 2.0](https://oauth.net/2/) is a
 
 The OAuth 2.0 plugin helps to simplify access to OAuth providers that support the OAuth 2.0 protocol (e.g. Microsoft, Facebook, and Google), but you can also roll your own (or even use your organization's own provider).
 
-> Be sure to [consult the plugin documentation](https://market.nativescript.org/plugins/nativescript-oauth2) for a full set of documentation.
+> Be sure to [consult the plugin documentation](https://market.nativescript.org/plugins/nativescript-oauth2) for help getting started.
 
 If you're curious about how the technical implementation of this plugin works with NativeScript apps, check the provided demo apps available for all NativeScript-supported frameworks:
 
@@ -88,7 +88,7 @@ If you're curious about how the technical implementation of this plugin works wi
 
 ## Easy Enterprise Authentication
 
-Still with me? Ok, let's face it: user authentication is a giant pain.
+Still with me? Ok, I'll admit it: user authentication is a giant pain. 😥
 
 If you're rolling our own auth provider, you have to tediously set up login forms, password recovery systems, and the supporting backend infrastructure. Or maybe you’re trying to integrate with an existing enterprise auth provider that uses acronyms like SAML, OAuth (see above), or Open ID. 😵
 
@@ -104,6 +104,6 @@ You can read more about using the Enterprise Auth app template [here on the Nati
 
 ## Conclusion of the 📱🔐 Series 
 
-**We've covered A LOT over the past four articles!** We started out learning how to easily secure our source code, moved to making sure data stored locally is safe and encrypted, talked about some best practices for securing data over the wire, and concluded with some easy ways to make sure we are securely authenticating and authorizing our end users.
+**We've covered A LOT over the past four articles!** We started out learning how to easily [secure our source code](https://www.nativescript.org/blog/secure-your-mobile-app-protecting-the-code), moved to making sure [data stored locally is safe and encrypted](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest), talked about some best practices for [securing data over the wire](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-in-transit), and concluded with some easy ways to make sure we are securely authenticating and authorizing our end users.
 
-But is that all you need to know about app security? Not even close! [Register for our mobile app security webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) coming up on January 23rd to dive into more details and here from some more experts in the field.
+But is that all you need to know about app security? **Not even close!** [Register for our mobile app security webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) coming up on January 23rd to dive into more details and hear from some more experts in the field.

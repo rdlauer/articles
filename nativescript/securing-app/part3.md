@@ -2,20 +2,20 @@
 
 Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is app security.
 
-> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
+Last time, we looked at [securing the data we store on the device](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest) - whether it's via encrypted key/value storage, SQLite + SQLCipher, or a robust and compliant backend like [Progress Kinvey](https://www.progress.com/kinvey) for encryption and online/offline data sync.
 
-Last time, we looked at [securing the data we store on the device]() - whether it's via encrypted key/value storage, SQLite + SQLCipher, or a robust and compliant backend like [Progress Kinvey](https://www.progress.com/kinvey) for encryption and online/offline data sync.
+> While you're here, but sure to [register for the upcoming webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) on "Best Practices for Securing Your Mobile Apps", presented on January 23rd at 11AM ET.
 
 Preserving the integrity of your app's data as it moves back and forth to and from your backend is another critical piece of this puzzle, so today our focus in on how we protect and secure data while in transit.
 
-- **Part One:** [Protecting Your Source Code]()
-- **Part Two:** [Securing Data at Rest]()
+- **Part One:** [Protecting Your Source Code](https://www.nativescript.org/blog/secure-your-mobile-app-protecting-the-code)
+- **Part Two:** [Securing Data at Rest](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest)
 - **Part Three:** Ensuring Data Integrity Between Device and Server (that's today!)
-- **Part Four:** Enterprise User Authentication and Authorization (coming Thursday)
+- **Part Four:** [Enterprise User Authentication and Authorization](https://www.nativescript.org/blog/secure-your-mobile-app-secure-user-auth)
 
 > Check out the new course from [NativeScripting.com](https://nativescripting.com/course/securing-nativescript-applications) on mobile app security and get 30% off with the code: NSSECURE.
 
-## SSL Everywhere
+## SSL/TLS Everywhere
 
 ![encrypt all the things](3-encrypt-all.png)
 
@@ -28,7 +28,9 @@ Introduced with iOS 9, App Transport Security (ATS) is a default feature that en
 - Certs must be signed using a SHA256 (or greater) signature hash algorithm;
 - Invalid certificates result in a hard failure and no connection.
 
-This is great for developers, as we are forced into our iOS apps communicating over secure channels by default. However, there is still a way around this, which I'm pointing out here as something you should **not** add to your `info.plist`:
+This is great for developers, as we are forced into our iOS apps communicating over secure channels by default. However, there is still a way around this, which I'm pointing out here as something you should **not** add to your `info.plist`.
+
+**⚠️ Anti-pattern alert! ⚠️**
 
 	<key>NSAppTransportSecurity</key>
 	<dict>
@@ -46,19 +48,25 @@ This is great for developers, as we are forced into our iOS apps communicating o
 	    </dict>
 	</dict>
 
-Setting `NSAllowsArbitraryLoads` to true allows for loading any remote resources, regardless of the means of transfer. Again, please don't do this. 😀
+Setting `NSAllowsArbitraryLoads` to true allows for loading *any* remote resources, regardless of the security of the transfer protocol. Again, please don't do this. 😀
 
 ### Android
 
-The most recent version of Android ([Pie or 9.0](https://www.android.com/versions/pie-9-0/)) is a bit behind Apple, but does default to blocking HTTP traffic in apps by default.
+The most recent version of Android ([9.0 a.k.a. Pie](https://www.android.com/versions/pie-9-0/)) is a bit behind Apple, but does default to blocking HTTP traffic in apps by default.
 
-This requirement will apply to all apps that target Android 9, but, like with iOS, will require a specific declaration in the app's `AndroidManifest.xml` file if any non-secure HTTP connections are needed thought the [network security configuration](https://developer.android.com/training/articles/security-config) options. Like with iOS, please don't do this 😀.
+This requirement will apply to all apps that target Android 9, but, like with iOS, will require a specific declaration in the app's `network_security_config.xml` file if any non-secure HTTP connections are needed via the [network security configuration](https://developer.android.com/training/articles/security-config) options. Like with iOS, please don't do this 😀:
 
-So Rule #1 today, the simplest rule of them all, is to make sure that literally every remote call you make (I don't care if it's to an image or a remote endpoint) is performed over SSL.
+	<base-config cleartextTrafficPermitted="true">
+	    <trust-anchors>
+	        <certificates src="system" />
+	    </trust-anchors>
+	</base-config>
+
+So Rule #1 today, the simplest rule of them all, is to make sure that literally every remote call you make (I don't care if it's to an image or a remote endpoint) is performed over TLS.
 
 ## Preventing Man-in-the-Middle Attacks
 
-Leveraging SSL is critical when transferring data, but just hitting an `https` endpoint doesn't necessarily guarantee security. This is where the dreaded "man-in-the-middle" attack comes into play.
+Leveraging SSL/TLS is critical when transferring data, but just hitting an `https` endpoint doesn't necessarily guarantee security. This is where the dreaded "man-in-the-middle" attack comes into play.
 
 A man-in-the-middle attack is a situation where someone secretly and transparently relays and possibly alters the communication between two parties who believe they are directly communicating with each other.
 
@@ -84,10 +92,10 @@ Clearly the best solution for securing your data from the device to your backend
 
 ![progress kinvey logo](3-kinvey-logo.png)
 
-As noted in the [previous article](), with a feature-complete [NativeScript SDK](https://devcenter.kinvey.com/nativescript), Kinvey can encrypt data at rest on the device, protect the integrity of your data in transit, and secure your data in the cloud!
+As noted in the [previous article](https://www.nativescript.org/blog/secure-your-mobile-app-securing-data-at-rest), with a feature-complete [NativeScript SDK](https://devcenter.kinvey.com/nativescript), Kinvey can encrypt data at rest on the device, protect the integrity of your data in transit, and secure your data in the cloud!
 
 ## Last, But Not Least, is Episode Four: Secure Identity Management
 
-Our final article in this series focuses on a very common app scenario: securely authenticating and authorizing your users with existing providers and biometric security options.
+[Our final article in this series](https://www.nativescript.org/blog/secure-your-mobile-app-secure-user-auth) focuses on a very common app scenario: securely authenticating and authorizing your users with existing OAuth providers and biometric security options!
 
 > Don't forget to [register for our mobile app security webinar](https://www.progress.com/campaigns/kinvey/best-practices-for-securing-your-mobile-apps?utm_medium=social-owned&utm_source=blog&utm_campaign=kinvey-webinar-secureapps) coming up on January 23rd!
