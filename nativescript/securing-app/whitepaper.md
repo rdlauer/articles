@@ -2,19 +2,19 @@
 
 ## Introduction
 
-Mobile app security. Where does one even begin when confronted with the myriad threats presented to us? From user-focused phishing attempts, to man-in-the-middle attacks between apps and servers, to compromised devices, to unsecured legacy backend systems of record, the security landscape has never been more intimidating.
+Where do enterprise architects and mobile developers begin when confronted with the myriad mobile app security threats? From user-focused phishing attempts, to man-in-the-middle attacks between apps and servers, to compromised unmanaged devices, to unsecured legacy backend systems, the security landscape has never been more intimidating.
 
-Take a moment and think back 20+ years to the dawn of the information age. Many of us were performing numerous anti-patterns which today could lead to massive data breaches (and lawsuits):
+Take a moment and think back 20+ years to the dawn of the information age. Many of us were coding numerous anti-patterns, which today could lead to massive data breaches and subsequent lawsuits:
 
 - Storing user passwords unencrypted in clear text;
-- Sending requests with social security numbers in the query string (AND getting stored in the web server's log);
+- Sending requests with social security numbers in the query string (AND getting stored in the web server logs);
 - Accepting credit card payments without SSL/TLS enabled.
 
-As app developers and enterprise architects, our responsibility is to ensure data integrity, compliance, and security of our users' data. From the moment they pick up their device until they put it down again, security needs to be on our minds, so it doesn't have to be on theirs. The benefits of a secure app model from day one not only include reduced potential liability issues, but also lead to a more satisfied consumer, and thus increased revenue down the road.
+As app developers and architects, our responsibility is to ensure data integrity, compliance, and security of our users' data. From the moment they pick up their device until they put it down again, security needs to be on our minds, so it doesn't have to be on theirs. The benefits of a secure app model from day one not only include a reduction in liability, but also lead to a more satisfied consumer, and thus increased long term revenue.
 
-While the security threats presented are immense, this doesn't mean we don't have ways to mitigate those threats. And while we need not be scared, we need to be constantly vigilant, willing to adjust our practices, and remain up-to-date on modern techniques for securing the modern mobile app.
+While the security threats presented in this paper are immense, this doesn't mean we don't have ways to mitigate those threats. And we need not be scared, but rather we need to be constantly vigilant, willing to improve our practices, and remain up-to-date on modern techniques for securing the modern mobile app.
 
-What follows is a four-pronged set of defenses to help you with some tactical tips and tricks to secure your app, today, using code and techniques that are incredibly easy to implement (and priceless):
+What follows is a four-pronged set of defenses to help you via tactical tips and tricks to secure your app today, using practical code snippets, techniques, and third party services:
 
 - **Part One:** Protecting Your Source Code
 - **Part Two:** Securing Data at Rest
@@ -23,40 +23,40 @@ What follows is a four-pronged set of defenses to help you with some tactical ti
 
 ## Part One (Protecting Your Source Code)
 
-Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is a dire need to secure the app code. Literally securing the bits and bytes that live in your app package (the .apk and .ipa files) that house your code.
+Whether you are developing a traditional native app, a cross-compiled app from the likes of Appcelerator or Xamarin, a hybrid Cordova/PhoneGap app with Ionic, or a JavaScript-native app with NativeScript or React Native, a common thread that runs through each is a dire need to secure the app code. Literally securing the bits and bytes that live in your app package (the .apk and .ipa files) that house your code.
 
-Traditionally users have relied on the public app stores as the ultimate app gatekeepers: acting as virus wardens, preventing malicious API usage, and making sure our apps fall in the hands of (generally speaking) the users we want to target. The reality though is we developers are responsible for implementing additional security considerations before we deploy our next great app - and the truth is our source code is, by default, at risk of compromise.
+Traditionally, app developers have relied on the public app stores as the ultimate app gatekeepers: acting as virus wardens, preventing malicious API usage, and making sure apps fall in the hands of (generally speaking) the users we want to target. The reality though is we are responsible for implementing additional security considerations before we deploy our next great app - and the truth is our source code is, by default, at risk of compromise.
 
 ### Why Do We Need to Secure Source Code?
 
-Most of us come from a web development background. We are used to shipping our code (literally) via a server to a user's browser. Intellectual property (code copying) issues exist, yes, but there is little we can do to prevent those those. Desktop and mobile developers on the other hand, are a little more used to compiling code into mostly unreadable bits - protecting code and mitigating efforts to detect vulnerabilities.
+Most of us come from a web development background. We are used to shipping our code (literally) via a server to a user's browser. Intellectual property (code copying) issues exist, yes, but there is little we can do to prevent those those. Desktop and mobile developers on the other hand, are more used to compiling code into mostly unreadable bits - protecting code and mitigating efforts to detect vulnerabilities.
 
 So how does this new wave of "JavaScript native" apps, built with technologies like React Native and NativeScript, deal with these issues? And what about hybrid apps built with Ionic? Do "traditional" iOS and Android developers have to deal with this potential threat?
 
-> New to NativeScript? The free and open source NativeScript framework lets you build truly native apps for iOS, Android, and the Web from a single JavaScript-based codebase. You can also use popular JavaScript frameworks like Angular and Vue.js.
+> New to NativeScript? This free and open source NativeScript framework lets you build truly native apps for iOS, Android, and the Web from a single JavaScript-based codebase. You can also use popular JavaScript frameworks like Angular and Vue.js.
 
 ![securing source code](1-code.png)
 
-I hate to burst our collective bubble, but **source code shipped to the client is inherently not secure** - in that it is technically readable by an individual who has a copy of your app package, one way or another. NativeScript, React Native, and Cordova/PhoneGap/Ionic - none of these are compiled to native byte code. JavaScript is interpreted on the device at runtime in a JavaScript Virtual Machine, similar to how a web browser functions with client-side code it receives from a server.
+I hate to burst the collective bubble, but **source code shipped to the client is inherently not secure** - in that it is technically readable by an individual who has a copy of your app package, one way or another. NativeScript, React Native, and Cordova/PhoneGap/Ionic - none of these are compiled to native byte code. JavaScript is interpreted on the device at runtime in a JavaScript Virtual Machine, similar to how a web browser functions with client-side code it receives from a server.
 
 If you're what we call a "traditional" native iOS or Android developer (in terms of developing with Objective-C/Swift with Xcode or Java/Kotlin with Android Studio), you too are exposed to this risk. Even though your app packages are compiled, there are numerous freely available tools to decompile your code and read your secrets.
 
 ### The Risks of Exposed Source Code
 
-As stated previously, web developers have been sending unencrypted source code bits down the wire from a backend web server to the client browsers for years. And the vast majority of the time this isn't a problem. But when it becomes a problem is when we are concerned with:
+Web developers have been sending unencrypted source code bits down the wire from a backend web server to the client browsers for years. And the vast majority of the time this isn't a problem. But when it becomes a problem is when we are concerned with:
 
 - Intellectual property considerations
 - Vulnerability of our backend systems
 
 The same exact considerations must be made of our mobile apps, but the issues are even more significant, as more of your business logic is now stored and processed on the device.
 
-For example, if your mobile app has premium features baked in that are only exposed when someone makes a payment, it is certainly possible for an end user to examine your source for how a "premium" flag is set, and manually change the code and re-build the app for their own purposes. While this is a narrow threat, it's easy to see how this could scale for popular apps and torrent sites!
+For example, if your mobile app has premium features baked in that are only exposed when someone makes a payment, it is certainly possible for an end user to examine your source for how a "premium" flag is set, and manually change the code and re-build the app for their own purposes. While this is a narrow threat, it's easy to see how this could scale for popular apps via malicious software distribution venues!
 
 Is your intellectual property important to you? It should be, as there is a massive risk of "copycat apps" in the public app stores. Organization A has a great idea for a new game priced at $9.99. Shady Organization B copies the source code and markets the same game for $2.99.
 
 Are you relying heavily on a backend system to manage your app? Are API calls to your backend system properly secured? Could a hacker alter some parameters of those remote API calls and change the behavior of the app, or worse, the backend system itself?
 
-Again, the point of this paper is not to instill fear, but rather to clarify the issues and inspire some level of confidence that we can mitigate these threats. Let's look at some strategies for securing your source code and keeping prying eyes off your goods - protecting your intellectual property AND mitigating potential attacks to your apps and backend systems.
+The point here is not to instill fear, but rather to clarify the issues and inspire some level of confidence that we can mitigate these threats. Let's look at some strategies for securing your source code and keeping prying eyes off your goods - protecting your intellectual property AND mitigating potential attacks to your apps and backend systems.
 
 ### Minification and Obfuscation of Source Code
 
@@ -82,7 +82,7 @@ The first and, granted, least powerful method of securing your code is via a pro
 
 	const app=require("tns-core-modules/application"),HomeViewModel=require("./home-view-model");function onNavigatingTo(o){o.object.bindingContext=new HomeViewModel}function onDrawerButtonTap(o){app.getRootView().showDrawer()}exports.onNavigatingTo=onNavigatingTo,exports.onDrawerButtonTap=onDrawerButtonTap;
 
-When using The [NativeScript CLI](https://docs.nativescript.org/start/cli-basics) allows you to uglify your app out of the box, assuming you are already using [Webpack](https://docs.nativescript.org/performance-optimizations/bundling-with-webpack) (and if you're not, you should be!). Simply issue the following command to build and uglify your code:
+When using the [NativeScript CLI](https://docs.nativescript.org/start/cli-basics), you can "uglify" your app out of the box. Simply issue the following command to build and "uglify" your code:
 
 	tns build android|ios --bundle --env.uglify
 
@@ -124,6 +124,16 @@ The beauty of Jscrambler is that this obfuscated code cannot be beautified for l
 
 Securing the code stored in the app on the device is an excellent first step. However, how about moving your code to the cloud?
 
+### Quick Note on Progress Kinvey
+
+[Progress Kinvey](https://www.progress.com/kinvey) will come up numerous times throughout this paper as a solution for numerous security and compliance-related issues, so it's best to get a full understanding up front.
+
+Kinvey is a modern platform for rapidly building complex enterprise apps and scalable consumer app experiences. It is a cloud-based serverless solution with multiple deployment options. All editions are available as a multi-tenant, fully managed platform.
+
+**NOTE:** Kinvey Enterprise Edition includes an option for a single-tenant, dedicated, fully managed service where the infrastructure is logically and physically separate.
+
+![kinvey deployment](wp-kinvey-deployment.png)
+
 ### Store Business Logic in a Secure Cloud
 
 Instead of trying to secure private business logic *on the device*, why not offload it to a backend system? Similar to the way web apps tend to keep complex business logic on the backend, you can do the same for your mobile app.
@@ -138,7 +148,7 @@ You may occasionally have some proprietary business logic stored in your app tha
 
 ![kinvey flexservice](1-flexservice.png)
 
-For instance, the following FlexService (provided by the illustrious [TJ VanToll](https://twitter.com/tjvantoll)) reads financial transaction data and scores how well you're doing, based on a proprietary algorithm:
+For instance, the following FlexService reads financial transaction data and scores how well you're doing, based on a proprietary algorithm:
 
 	const sdk = require('kinvey-flex-sdk');
 	
@@ -205,6 +215,8 @@ Using this method your intellectual property is safe, your business logic is not
 
 > To see for yourself how Kinvey can benefit your mobile app development needs, [sign up for a free trial](https://www.progress.com/campaigns/kinvey/console-sign-up).
 
+![progress kinvey quote](wp-kinvey-goals.png)
+
 Up to now we've taken some solid steps to secure and protect the code we are delivering to our end users. How about taking an *additional step* to reduce the potential footprint of *who* can even install our app?
 
 ### Limit Access to Apps with Private App Stores
@@ -219,7 +231,7 @@ If you are developing an app that only needs to be delivered to a single entity 
 
 If you are part of a large enough organization, there is a good chance that your company relies on Mobile App Management (MAM) or Mobile Device Management (MDM) software to help secure your internal apps and/or devices. With a MAM provider, like [MobileIron](https://www.mobileiron.com/en/modern-security-modern-work) or [AirWatch](https://www.air-watch.com/), you are provided with an internal "enterprise" app store, so you don't have to worry that an unauthorized third party has the ability to download your apps. Combined with complete device management and role-based app deployment, MAM providers such as these provide a high grade of security for app provisioning (and deprovisioning).
 
-For smaller companies there are other, less expensive and less intrusive options though. However, this does mean effectively rolling your own app store:
+For smaller companies there are other, less expensive and less intrusive options though. However, this does mean effectively rolling your own app store (possibly twice):
 
 #### Apple Developer Enterprise Program
 
@@ -241,9 +253,9 @@ There are also numerous services that provide similar functionality, in case you
 
 ### Beware of Sharing Private Keys
 
-File this in the "common sense" bin, but in truth it happens far more often than you may believe: **make sure you aren't sharing private API keys!**
+File this in the "common sense" bin, but it happens far more often than you may believe: **make sure you aren't sharing private API keys**.
 
-When we use public repositories on GitHub or Bitbucket, we often don't restrict which files are uploaded. And there are bots that regularly scan repositories to find private AWS or Firebase keys for example, then use those keys for nefarious purposes, such as crypto currency mining.
+When we use public repositories on GitHub or Bitbucket, we often don't restrict which files are uploaded. And there are bots that regularly scan public repositories to find private AWS, Firebase, or Azure keys for example, then use those keys for nefarious purposes, such as crypto mining.
 
 The simplest way to avoid this issue is to use a `.gitignore` file and exclude the .ts/.js file(s) where you store private keys. Here is the standard `.gitignore` a developer could use for a NativeScript app for instance (assuming you are using TypeScript, this also excludes JavaScript files from the `app` directory):
 
@@ -259,7 +271,7 @@ The simplest way to avoid this issue is to use a `.gitignore` file and exclude t
 	app/**/google-services.json
 	app/**/GoogleService-Info.plist
 
-Not only does this exclude private keys, but also prevents the NativeScript `platforms` and `node_modules` directories from being shared (which are totally unnecessary if you're cloning the app - not to mention full of thousands of files!).
+Not only does this exclude private keys saved in a `keys.ts` named file, but also prevents the NativeScript `platforms` and `node_modules` directories from being shared (which are totally unnecessary if you're cloning the app - not to mention full of thousands of files!).
 
 ### Source Code: Secured
 
@@ -275,11 +287,11 @@ Let's focus in on how we store (and secure) data locally, on the user's device.
 
 ### Encrypt Local Data
 
-Out of the box, both iOS and Android prevent data stored by one app to be accessed by any other app on the device (effectively known as "sandboxing"). Historically this has been a very effective way of making sure data isn't shared across distinct apps. However there are plenty of valid use cases for *wanting* data to be shared between apps. This is where the concept of "custom URL schemes" come into play. These allow data to pass between applications using simple URLs:
+Out of the box, both iOS and Android prevent data stored by one app to be accessed by any other app on the device (known as "sandboxing"). Historically this has been a very effective way of making sure data isn't shared across distinct apps. However there are valid use cases for *wanting* data to be shared between apps. This is where the concept of "custom URL schemes" can come into play. URL schemes allow data to pass between applications using simple URLs:
 
 ![custom url scheme](2-custom-url-scheme.png)
 
-While custom URL schemes are not inherently unsecure, they do pose some risk for sharing data between apps using this shared URL scheme.
+While custom URL schemes are not inherently unsecure, they do pose some risk for sharing data between apps.
 
 In any case, it's always best to encrypt any and all data we are saving to the device.
 
@@ -309,13 +321,13 @@ For NativeScript apps, [nativescript-secure-storage](http://market.nativescript.
 
 [SQLite](https://www.sqlite.org/index.html) is quite possibly the most popular relational database on the market. In contrast to many other relational database management systems, SQLite is not a typical client–server database engine. Rather, it is embedded into the app itself, and stored locally. The attraction of SQLite comes from app developers who are more familiar and comfortable with SQL (as opposed to constructing queries for document databases like MongoDB).
 
-For NativeScript developers, there is a [full-featured NativeScript plugin](https://market.nativescript.org/plugins/nativescript-sqlite) as well. This free version of the SQLite plugin provides all of the capabilities you've come to expect from SQLite. However, there is a [paid option](https://nativescript.tools/product/10) that also includes encrypting your SQLite database at rest. By leveraging [SQLCipher](https://www.zetetic.net/sqlcipher/), you can have transparent 256-bit AES encryption of your SQLite database on device.
+For NativeScript developers, there is a [full-featured NativeScript plugin](https://market.nativescript.org/plugins/nativescript-sqlite). This free version of the SQLite plugin provides all of the capabilities you've come to expect from SQLite. However, there is a [paid option](https://nativescript.tools/product/10) that also includes encrypting your SQLite database at rest. By leveraging [SQLCipher](https://www.zetetic.net/sqlcipher/), you can have transparent 256-bit AES encryption of your SQLite database on device.
 
 ![sqlite and sqlcipher](2-sqlcipher.png)
 
 ### Online/Offline Data Sync + Encryption
 
-Many of us use mobile backend services (mBaaS) like [Firebase](https://market.nativescript.org/plugins/nativescript-plugin-firebase) or [Progress Kinvey](https://www.progress.com/kinvey) for our remote backends. And when developing mobile apps, we need to be aware of online/offline connectivity, and syncing up data for when users toggle between those states (lest the app crashes without a network connection!).
+Many of us use mobile backend services (mBaaS) like [Progress Kinvey](https://www.progress.com/kinvey) for our remote backends. And when developing mobile apps, we need to be aware of online/offline connectivity, and syncing up data for when users toggle between those states (lest the app crashes without a network connection!).
 
 Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.kinvey.com/nativescript/guides/datastore) baked in, as outlined in this extensive code sample example from the Kinvey documentation:
 
@@ -377,9 +389,13 @@ Additionally, [Kinvey provides for encryption of the data](https://devcenter.kin
 
 ![hipaa compliance and kinvey](2-hipaa.png)
 
-Many of us who develop apps in the enterprise are acutely aware of compliance and security regulations. Here in the US, a big one for developers creating apps for health care providers or insurance companies is [HIPAA](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act).
+Those of us who develop apps in the enterprise are acutely aware of compliance and security regulations. Here in the US, a big one for developers creating apps for health care providers or insurance companies is [HIPAA](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act).
 
 > If you are developing an app that deals with PHI (private health information) in the health care industry, you absolutely need to make sure the data storage and transmission of said data is HIPAA-compliant.
+
+[Progress HealthCloud](https://www.progress.com/solutions/health-cloud) (powered by Kinvey) provides a fully HIPAA-compliant serverless platform. With comprehensive end-to-end security and automated auditing and compliance tracking of users and access. All of the aforementioned Kinvey client libraries encrypt all data on device using AES-256.
+
+![kinvey security](wp-kinvey-security.png)
 
 Kinvey reviews, affirms, and evolves security controls on an annual basis via SOC2, HIPAA, GDPR, Sarbanes-Oxley, and other compliance activities. For customers in banking focused on FFIEC or GLBA regulations, in health care focused on HIPAA, or doing business in the EU and concerned about GDPR, the Kinvey platform provides comprehensive end-to-end security with the capabilities needed to support your regulatory compliance efforts.
 
@@ -387,7 +403,7 @@ Kinvey reviews, affirms, and evolves security controls on an annual basis via SO
 
 ### Data at Rest: Secured
 
-We just covered storing private data elements securely in our app and even looked into some local and remote secure data storage options. Next we are going to look into how we *securely transfer* data back and forth from the client to the server. And it's not quite as simple as SSL.
+We just covered storing private data elements securely in our app and even looked into some local and remote secure data storage options. Next we are going to look into how we *securely transfer* data back and forth from the client to the server. And it's not quite as simple as "just" SSL!
 
 ## Part Three (Securing Data in Transit)
 
@@ -401,7 +417,7 @@ The default method for securing communications between two distinct endpoints is
 
 TLS and SSL (which is now technically deprecated) are cryptographic protocols which provide communication security over a network. Implementations of these protocols are used of course in web browsing, email clients, IM clients, and voice over IP (VoIP). TLS aims primarily to provide privacy and data integrity between two or more communicating apps.
 
-But just saying "I use TLS" isn't enough anymore. Let's take a closer look at what else we may want to layer on to secure communication between devices.
+But just saying "use TLS" isn't enough anymore. Let's take a closer look at what else we may want to layer on to secure communication between devices.
 
 #### iOS Considerations
 
@@ -448,7 +464,7 @@ This requirement will apply to all apps that target Android 9, but, like with iO
 	    </trust-anchors>
 	</base-config>
 
-So Rule #1 with securing data in transit, the simplest rule of them all, is to make sure that literally every remote call you make (I don't care if it's to an image or a remote endpoint) is performed with the TLS protocol.
+Rule #1 with securing data in transit, the simplest rule of them all, is to make sure that literally every remote call you make (if it's to an image or a remote endpoint) is performed over TLS.
 
 ### Preventing Man-in-the-Middle Attacks
 
@@ -480,13 +496,38 @@ Clearly the best solution for securing your data from the device to your backend
 
 As noted previously, with a feature-complete [NativeScript SDK](https://devcenter.kinvey.com/nativescript), Kinvey can encrypt data at rest on the device, protect the integrity of your data in transit, and secure your data in the cloud.
 
+Kinvey ensures security at the application level, by design. This is especially important when the apps are running on unmanaged devices (i.e. devices *not* managed by an MAM/MDM solution). Kinvey provides the following security features at the application level:
+
+- User Authentication (see below)
+- App Connectivity to Enterprise Data & Networks
+- User Authorization
+- User Revocation
+- Data Security & Encryption
+- Sensitive Data Protection
+- Application Communications
+- Data Access Controls
+- Audit Trail
+- Access to Enterprise Data
+- Application Security Testing
+
+Additionally, Kinvey employs best practices to secure mobile services running on our multi-tenant and single-tenant (dedicated) cloud instances. Including:
+
+- Protecting Against Intrusions
+- Securing Access to Kinvey Services & Servers
+- Virus Scanning
+- Operating System Security
+- Safe Multi-tenancy
+- Audits
+
+![progress kinvey quote](wp-kinvey-quote.png)
+
 ### Data in Transit: Secured
 
-We've covered some simple, but effective mechanisms to make sure data integrity between device and cloud is secured. By relying on the default requirements of the iOS and Android platforms, we are forced to use TLS, and with SSL pinning we are guaranteeing that this traffic is secured.
+We've covered some simple, but effective mechanisms to make sure data integrity between device and cloud is secured. By relying on the default requirements of the iOS and Android platforms, we are forced to use TLS, and with SSL certificate pinning we are guaranteeing that this traffic is secured.
 
 ## Part Four (Secure User Authentication)
 
-As we wrap up this paper, we want to conclude with a topic that is critically important: securely authenticating and authorizing app users.
+As we wrap up, we want to conclude with a topic that is critically important: securely authenticating and authorizing app users.
 
 ### Biometric Authentication
 
@@ -547,7 +588,7 @@ The nativescript-fingerprint-auth is a great way to easily add biometric securit
 
 You've probably heard of OAuth before, as [OAuth 2.0](https://oauth.net/2/) is a commonly used industry-standard protocol for user authorization.
 
-OAuth is an open standard for delegating access to resources, often used as a way for end users to grant apps access to their information but without turning over their login credentials. This mechanism is used by companies such as Amazon, Google, Facebook, Microsoft, and Twitter to allow users of those serivices to share information about their accounts with permitted third party apps.
+OAuth is an open standard for delegating access to resources, used as a way for end users to grant apps access to their information but without turning over their login credentials. This mechanism is used by companies such as Amazon, Google, Facebook, Microsoft, and Twitter to allow users of those services to share information about their accounts with permitted third party apps.
 
 Thanks to an extensive community of plugin developers, there is in fact a plugin for interacting with OAuth 2.0 in NativeScript: the [nativescript-oauth2](https://market.nativescript.org/plugins/nativescript-oauth2) plugin.
 
@@ -567,7 +608,11 @@ For *easier* enterprise authentication, look no further than the [Enterprise Aut
 
 ![enterprise authentication with nativescript sidekick](4-sidekick.png)
 
-NativeScript Sidekick offers an [Enterprise Auth template](https://docs.nativescript.org/sidekick/user-guide/enterprise-auth/intro), as well as a handful of new features designed to help you connect to your authentication provider as quickly as possible. Powered by [Progress Kinvey](https://www.progress.com/kinvey), the Enterprise Auth template guides you through the process of connecting to your provider of choice and makes it easy to customize the look and feel of your login screen.
+NativeScript Sidekick offers an [Enterprise Auth template](https://docs.nativescript.org/sidekick/user-guide/enterprise-auth/intro), as well as a handful of new features designed to help you connect to your authentication provider as quickly as possible.
+
+Powered by [Progress Kinvey](https://www.progress.com/kinvey), the Enterprise Auth template guides you through the process of connecting to your provider of choice and makes it easy to customize the look and feel of your login screen.
+
+![kinvey user auth](wp-kinvey-userauth.png)
 
 You can read more about using the Enterprise Auth app template [here on the NativeScript blog](https://www.nativescript.org/blog/enterprise-authentication-made-easier-with-nativescript), or even register for a [free online course on NativeScripting.com](https://courses.nativescripting.com/p/nativescript-enterprise-auth/?product_id=308158&coupon_code=AUTH101) that walks you through the usage.
 ​
