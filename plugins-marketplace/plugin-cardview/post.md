@@ -1,4 +1,4 @@
-# Adding a Material Design CardView to Your NativeScript App
+# Adding a Material Design CardView to a NativeScript App
 
 One of the most popular mobile user interface components today is the card (a.k.a. CardView).
 
@@ -8,15 +8,15 @@ Individual cards are typically used to display information about a single compon
 
 While the NativeScript team (and our community) work towards full Material Design support, it's awfully handy that other folks are starting to fill this gap with a variety of NativeScript plugins. Take for example, the [nativescript-cardview plugin](https://market.nativescript.org/plugins/nativescript-cardview) from Brad Martin. This plugin implements the Material Design CardView component for *both* Android and iOS.
 
+> 🤫 Yes, we will soon have a much bigger announcement around Material Design support in NativeScript!
+
 ## Show Me Some Code
 
 Like any other NativeScript plugin, you install it with a simple command:
 
 	tns plugin add nativescript-cardview
-	
-> Alternatively, you can manage NativeScript plugins with [NativeScript Sidekick](https://www.nativescript.org/nativescript-sidekick).
 
-Next, if you are developing a plain JavaScript or plain TypeScript (as opposed to [Angular](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) or [Vue.js](https://www.nativescript.org/vue)), make sure you add the appropriate namespace to your `<Page>` element like so:
+If you are developing a plain JavaScript or plain TypeScript (as opposed to [Angular](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) or [Vue.js](https://www.nativescript.org/vue)), make sure you add the appropriate namespace to your `<Page>` element like so:
 
 	<Page xmlns:Card="nativescript-cardview">
 	
@@ -30,7 +30,7 @@ Your markup should then include a layout container and the `CardView` component.
 		</Card:CardView>
     </StackLayout>
 	
-> If you're using Angular, you can see some similar sample code [here](https://github.com/bradmartin/nativescript-cardview#nativescript--angular).
+> **TIP:** If you're using Angular, you can see some similar sample code [here](https://github.com/bradmartin/nativescript-cardview#nativescript--angular).
 
 This will lead to a UI that looks like:
 
@@ -38,12 +38,12 @@ This will lead to a UI that looks like:
 
 Wait a minute. Doesn't look so *cardy* to me. Looks like we need to add some CSS to spice things up. 💃
 
-Let's throw `class` properties on our `<CardView>` and `<StackLayout>` elements:
+Let's throw some `class` properties on our `<CardView>` and `<StackLayout>` elements:
 
 	<Card:CardView class="cardStyle">
 		<StackLayout class="cardContent">
 		
-And follow it up with the associated CSS in our `app.css` file:
+And follow it up with the associated styles in our `app.css` file:
 
 	.page {
 		background-color: rgb(237, 237, 237);
@@ -67,13 +67,13 @@ Alter our text a little and throw a cute kitteh picture in 🐈:
 
 ...and we get something that looks like the card UI we were expecting all along!
 
-![nativescript-cardview unstyled example](cardview-test-2.png)
+![nativescript-cardview styled example](cardview-test-2.png)
 
 ## Custom Attributes
 
-A tricky aspect about the [nativescript-cardview plugin](https://market.nativescript.org/plugins/nativescript-cardview) is that there are unique attributes for both iOS and Android implementations.
+A tricky aspect about the [nativescript-cardview plugin](https://market.nativescript.org/plugins/nativescript-cardview) is that there are separate unique attributes for both iOS and Android implementations.
 
-You can apply a `radius` to the element to customize the `border-radius`. (This actually works the same on both platforms).
+You can apply a `radius` to an element to customize the `border-radius`. (This actually works the same on both platforms).
 
 Shamelessly ripped from the plugin documentation, here are the platform-specific attributes (all are optional):
 

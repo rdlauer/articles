@@ -173,11 +173,9 @@ For instance, the following FlexService reads financial transaction data and sco
 	  transactions.forEach((transaction) => {
 	    if (transaction.amount < 0) {
 	      score -= 5;
-	    }
-	    if (transaction.amount > 5) {
+	    } else if (transaction.amount > 5) {
 	      score += 10;
-	    }
-	    if (transaction.category === "restaurant") {
+	    } else if (transaction.category === "restaurant") {
 	      score -= 5;
 	    }
 	  });
@@ -190,8 +188,6 @@ For instance, the following FlexService reads financial transaction data and sco
 	      complete().setBody({
 	        score: determineScore(transactions)
 	      }).done();
-	    }).catch((err) => {
-	      complete().setBody(new Error(err)).runtimeError().done();
 	    });
 	  }
 	  
@@ -337,16 +333,11 @@ Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.k
 	const promise = dataStore.pull()
 	  .then((entities: Array<{}>) => {
 	    // ...
-	  })
-	  .catch((error: Kinvey.BaseError) => {
-	    // ...
 	  });
 	// Find data locally on the device.
 	const subscription = dataStore.find()
 	  .subscribe((data: Array<{}>) => {
 	    // Called once, with local data
-	  }, (error: Kinvey.BaseError) => {
-	    // ...
 	  }, () => {
 	    // Called after the local data has been retrieved
 	  });
@@ -354,9 +345,6 @@ Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.k
 	const entity = {};
 	const promise = dataStore.save(entity)
 	  .then((entity: {}) => {
-	    // ...
-	  })
-	  .catch((error: Kinvey.BaseError) => {
 	    // ...
 	  });
 	// Syncs this store with the backend. This will first push any pending changes on the device to the backend and then pull data from the backend onto the device.
@@ -367,14 +355,6 @@ Out of the box, Kinvey comes with [online/offline data sync](https://devcenter.k
 	    //   push: [], // pushed entities
 	    //   pull: [] // pulled entities
 	    // };
-	    //
-	    // Each item in the array of pushed entities will look like the following
-	    // { _id: '<entity id before push>', entity: <entity after push> }
-	    // It could also possibly have an error property if the push failed.
-	    // { _id: '<entity id before push>', entity: <entity after push>, error: <reason push failed> }
-	  })
-	  .catch((error: Kinvey.BaseError) => {
-	    // ...
 	  });
 
 Additionally, [Kinvey provides for encryption of the data](https://devcenter.kinvey.com/nativescript/guides/encryption) at rest on the device, using SQLite and SQLCipher, which is simply configured automatically when you initialize Kinvey:
@@ -555,9 +535,7 @@ Basic usage of this plugin includes capabilities such as checking if biometric s
 	  }
 	
 	  this.fingerprintAuth.available().then((result: BiometricIDAvailableResult) => {
-	    console.log(`Biometric ID available? ${result.any}`);
-	    console.log(`Touch? ${result.touch}`);
-	    console.log(`Face? ${result.face}`);
+	    console.log(`Biometric ID available? ${result.any} Touch? ${result.touch} Face? ${result.face}`);
 	  });
 	}
 
@@ -577,7 +555,6 @@ And verifying a fingerprint (or face on iPhone X):
 		    // compare enteredPassword to the one the user previously configured for your app (which is not the users system password!)
 		  }
 		})
-		.catch(err => console.log(`Biometric ID NOT OK: ${JSON.stringify(err)}`)
 	);
 
 There is even a [full tutorial](https://www.progress.com/blogs/how-to-integrate-biometric-authentication-in-ios-and-android) for using this plugin with NativeScript and a Progress Kinvey backend.
