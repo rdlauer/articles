@@ -281,7 +281,7 @@ The `index.js` module imports `lights.js`. Webpack will check if it contains a h
 
 **src/index.js**
 
-	module.hot.accept(['./lights.js', function updateHandler() {
+	module.hot.accept(['./lights.js'], function updateHandler() {
 	    ...
 	}
 
@@ -307,7 +307,7 @@ Back to the tree - we noticed that there are two update handlers for `tree.js`. 
 **src/tree.js**
 
 	// comment or simply delete the code below
-	// if (module.hot) {src/tree.jssrc/tree.js
+	// if (module.hot) {
 	//     module.hot.accept();
 	// }
 
@@ -326,8 +326,7 @@ The changed module should have an update handler in **every** branch of its depe
 ![hot update rejected](2-hot-update-rejected.gif)
 
 > Notice that if we have only one root module, we can add an application-wide update handler in it. We won't do that in our project for now.
-
-If you're using Angular your task is a little easier, as most Angular apps have a single entry module - `main.ts`, which bootstraps the app. If there are no lazy loaded NgModules, main.ts will be the only root module. Adding the following handler to it will catch all hot updates in the app:
+For example, if you're using Angular your task is a little easier, as most Angular apps have a single entry module - `main.ts`, which bootstraps the app. If there are no lazy loaded NgModules, main.ts will be the only root module. Adding the following handler to it will catch all hot updates in the app:
 
 	if (module.hot) {
 	    module.hot.accept(["./app/app.module"], function() { ... });
