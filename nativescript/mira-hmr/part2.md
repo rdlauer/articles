@@ -2,7 +2,7 @@
 
 This article is the second part of a "deep dive" series on Hot Module Replacement with [webpack](https://webpack.js.org/).
 
-- Part 1: [The Basics]() TODO: INSERT LINK!
+- Part 1: [The Basics](https://www.nativescript.org/blog/deep-dive-into-hot-module-replacement-with-webpack-part-one-the-basics)
 - **Part 2: Handling Hot Updates with the `module.hot` API**
 
 ## Part 2: Handling Hot Updates with the module.hot API
