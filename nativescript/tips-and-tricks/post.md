@@ -1,77 +1,104 @@
-# {N} Tips and Tricks
+# NativeScript Tips and Tricks from the {N} Squad
 
-1.	Visual Studio Code snippets for NativeScript.
-2.	Using the Angular CLI generate commands with nativescript/schematics. I am about to push a PR to our docs that covers this topic.
+We asked the wider NativeScript team here at Progress if they could provide some useful and/or little known tips and tricks that might aid the NativeScript developer on their path to the next great app. Here is what they had to say!
 
-Trick 1: Enable router tracing.
-It’s not really NS-specific but it helps a lot in debugging router issues and figuring out what’s wrong with you routing config:
-It’s done with passing an option when calling NativeScriptRouterModule.forRoot:
-NativeScriptRouterModule.forRoot(routes, { enableTracing: true})
+<table><tr><td><img src="alexander-vakrilov.jpg" style="height:60%" /></td><td><h2>Alex Vaklirov</h2></td></tr></table>
+
+### Enable Router Tracing
+
+This isn't really NativeScript-specific, but it helps a lot when debugging router issues and figuring out what's wrong with your routing config!
+
+It's accomplished by passing an option when calling `NativeScriptRouterModule.forRoot`:
+
+	NativeScriptRouterModule.forRoot(routes, { enableTracing: true})
 
 The result is that all router events are logged in your console (including error in resolving routes):
-JS: Router Event: NavigationStart
-JS: NavigationStart(id: 2, url: '/home')
-JS: Router Event: RoutesRecognized
-JS: RoutesRecognized(id: 2, url: '/home', urlAfterRedirects: '/home', state: Route(url:'', path:'') { Route(url:'home', path:'home') } )
-JS: Router Event: GuardsCheckStart
-JS: GuardsCheckStart(id: 2, url: '/home', urlAfterRedirects: '/home', state: Route(url:'', path:'') { Route(url:'home', path:'home') } )
-… and so on
 
-Trick 2: Enable tracing
-There are a bunch of build-in tracing categories that we use in the tns-core-modules and ns-angular for logging. Enabling them might provide insights on what is happening inside the framework, when debugging a problem in a specific area. Here are some useful categories to enable
-import * as trace from "tns-core-modules/trace";
+	JS: Router Event: NavigationStart
+	JS: NavigationStart(id: 2, url: '/home')
+	JS: Router Event: RoutesRecognized
+	JS: RoutesRecognized(id: 2, url: '/home', urlAfterRedirects: '/home', state: Route(url:'', path:'') { Route(url:'home', path:'home') } )
+	JS: Router Event: GuardsCheckStart
+	JS: GuardsCheckStart(id: 2, url: '/home', urlAfterRedirects: '/home', state: Route(url:'', path:'') { Route(url:'home', path:'home') } )
 
-// Logs info on measure and layout passes
-trace.addCategories(trace.categories.Layout); 
+### Enable Tracing
 
-// Logs info when modifying the view tree (adding views, removing views, etc.)
-trace.addCategories(trace.categories.ViewHierarchy);
+There are a bunch of built-in tracing categories that we use in `tns-core-modules` and `ns-angular` for logging. Enabling them can provide insights on what is happening inside the framework when debugging a problem in a specific area. Here are some useful categories to enable:
 
-// Logs info related to navigation
-trace.addCategories(trace.categories.Navigation);
+	import * as trace from "tns-core-modules/trace";
+	
+	// Logs info on measure and layout passes
+	trace.addCategories(trace.categories.Layout); 
+	
+	// Logs info when modifying the view tree (adding views, removing views, etc.)
+	trace.addCategories(trace.categories.ViewHierarchy);
+	
+	// Logs info related to navigation
+	trace.addCategories(trace.categories.Navigation);
+	
+	// Don't forget to enable tracing
+	trace.enable();
 
-// Don't forget to enable tracing
-trace.enable();
+There are more core-module categories in `trace.categories.XXX`. For Angular projects there are also angular-specific tracing categories in the `nativescript-angular/trace` module.
 
-There are more “core-module” categories in trace.categories.XXX. For angular project there are also angular-specifc tracing categories in "nativescript-angular/trace" module.
+### Profiling Module
 
-Trick 3: Profiling module
-There are a bunch of interesting utilities in the profiling modules ("tns-core-modules/profiling").
-Some useful methods:
-•	time() the most accurate (and fast) way of getting time in NS
-•	start("my-timer-name") / stop("my-timer-name"). The stop method will return an TimerInfo object with some useful information like how many start/stop iterations were executed, total time, time of the last measurement etc.
-•	@profile decorator. You can add it on methods and it will automatically track how many time the execution goes through this method and the total time it took. You can dump all the info collected by profile decorators with dumpProfiles(). You should call enable() to use the decorator though.
+There are a bunch of interesting utilities in the profiling modules of `tns-core-modules/profiling`. Some useful methods:
 
-- tns resources generate
- - Code samples
- - Using the plugin seed
- - Android image optimization
+- `time()`: The most accurate (and fastest) way of getting time in NativeScript
+- `start("my-timer-name")` / `stop("my-timer-name")`: The stop method will return a `TimerInfo` object with some useful information like how many start/stop iterations were executed, total time, time of the last measurement, etc.
+- `@profile` decorator: You can add it on methods and it will automatically track how many times the execution goes through this method and the total time it took. You can dump all the info collected by profile decorators with `dumpProfiles()`. You should call `enable()` to use the decorator though.
 
-fonts
+<table><tr><td><img src="sebastian-witalec.jpg" style="height:60%" /></td><td><h2>Sebastian Witalec</h2></td></tr></table>
 
+- Take a look at the [Visual Studio Code snippets](https://marketplace.visualstudio.com/items?itemName=tsvetan-ganev.nativescript-xml-snippets) for NativeScript!
+- Using the Angular CLI `generate` commands with `nativescript/schematics` (more info on [web/mobile code sharing with Angular](https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7)).
 
-1.	USE TYPESCRIPT!!!
-2.	USE VISUAL STUDIO CODE!
-3.	Use Visual Studio Code (with {N} plugin) to set breakpoints in JS code and inspect variable values as app runs on device/simulator
-a.	Once you hit a breakpoint, you can start running arbitrary commands via the VS Code command line
-b.	Good for testing code you think should work or exploring available APIs
-4.	When in doubt, delete your node_modules, platform, hooks folders and rebuild/rerun your app to start “clean”
-5.	When building for iOS, you can always use XCode to build, deploy your app
-a.	Just be sure to open the *.xcworkspace and NOT the *.xcodeproj file
-6.	You can find the raw build assets for iOS and Android in platforms > [ios/android] > build
-7.	Use font icons for most of the small images you in need in an app (don’t create images at 1x, 2x, 3x for everything)
-8.	Use custom data binding converters to translate data in to images (like weather icons or images for specific model numbers, etc)
-9.	Make sure you have links to a privacy policy, terms of use, etc in your app if you plan to submit via iOS AppStore
-10.	AND if you don’t have these assets, there are tools to help you quickly generate them. Examples:
-a.	https://termly.io/privacy-policy/privacy-policy-generator
-b.	https://privacypolicies.com/
-c.	https://getterms.io/ 
-11.	 iOS AppStore tracks app VERSION and BUILD NUMBER
-a.	New VERSIONS trigger a manual review by the AppStore (even during beta testing)…which can take some time
-b.	New BUILD NUMBERS are usually approved INSTANTLY during beta testing
-c.	If you want to get a new beta out via TestFlight quickly, ONLY increment the build number (dirty, but works)
-12.	Think about how you’re going to monitor/triage app crashes/bugs when you’re ready to ship your app
-a.	If you don’t add some kind of logging, it’s a black box once you ship your app
+<table><tr><td><img src="todd-anglin.jpg" style="height:60%" /></td><td><h2>Todd Anglin</h2></td></tr></table>
 
+- USE [TYPESCRIPT](https://www.nativescript.org/using-typescript-with-nativescript-when-developing-mobile-apps)!!!
+- USE [VISUAL STUDIO CODE](https://code.visualstudio.com/)!!!
+- Use **Visual Studio Code** (with the [{N} plugin](https://www.nativescript.org/nativescript-for-visual-studio-code)) to set breakpoints in JS code and inspect variable values as your app runs on a device/simulator
+	- Once you hit a breakpoint, you can start running arbitrary commands via the VS Code command line
+	- Good for testing code you think should work, or exploring available APIs
+- When in doubt, delete your `node_modules`, `platform`, and `hooks` folders and rebuild/rerun your app to start “clean”
+- When building for iOS, you can always use XCode to build and deploy your app
+	- Just be sure to open the `*.xcworkspace` and NOT the `*.xcodeproj` file
+- You can find the **raw build assets** for iOS and Android in `platforms > [ios/android] > build`
+- Use **font icons** for most of the small images you in need in an app (don’t create images at 1x, 2x, 3x for everything)
+- Use **custom data binding converters** to translate data into images (like weather icons or images for specific model numbers, etc)
+- Make sure you have links to a **privacy policy**, terms of use, etc in your app if you plan to submit via iOS AppStore
+- AND if you don’t have these assets, there are tools to help you quickly generate them. Examples:
+	- [termly.io/privacy-policy/privacy-policy-generator](https://termly.io/privacy-policy/privacy-policy-generator)
+	- [privacypolicies.com](https://privacypolicies.com/)
+	- [getterms.io](https://getterms.io/)
+- iOS AppStore tracks app **VERSION** and **BUILD NUMBER**:
+	- New **VERSIONS** trigger a manual review by the AppStore (even during beta testing)...which can take some time
+	- New **BUILD NUMBERS** are usually approved INSTANTLY during beta testing
+	- If you want to get a new beta out via [TestFlight](https://developer.apple.com/testflight/) quickly, ONLY increment the build number (dirty, but works)
+- Think about how you’re going to **monitor/triage app crashes/bugs** when you’re ready to ship your app
+	- If you don’t add some kind of logging, it’s a black box once you ship your app!
 
-I meant that it is possible to add {N} extensions which don’t have native components while using the Playground. It’s “hidden” behind the “Add NPM package” menu entry.
+<table><tr><td><img src="rob-lauer.jpg" style="height:60%" /></td><td><h2>Rob Lauer</h2></td></tr></table>
+
+Take advantage of the time-saving capabilities provided by the `tns resources generate` command! You can [create your icons and splashscreens](https://docs.nativescript.org/tooling/docs-cli/project/configuration/resources/resources-generate-icons) from one master source in minutes.
+
+As many of you already know, the [sample apps in the NativeScript Marketplace](https://market.nativescript.org/?tab=samples&framework=all_frameworks&category=all_samples) are a fountain of ready "copy-and-pasteable" code. Plus, they already work in the NativeScript Playground, so they are super easy to experiment with.
+
+![nativescript sample app](weather.gif)
+
+*Developing a new NativeScript plugin?* [Use the plugin seed!](https://www.nativescript.org/blog/introducing-the-official-nativescript-plugin-seed) It takes away so much of the pain.
+
+*Dealing with large images on Android?* That can be a struggle, so look at our docs on [Android image optimization](https://docs.nativescript.org/performance-optimizations/images-optimisations) (and the other performance-focused articles on [webpack](https://docs.nativescript.org/performance-optimizations/bundling-with-webpack) and [improving start up times](https://docs.nativescript.org/performance-optimizations/startup-times) we have while you are at it!).
+
+Adding a new font to your app *might* be the easiest way to improve the look and feel. [Consult this blog post](https://www.nativescript.org/blog/using-custom-fonts-in-a-nativescript-app) on how to properly identify your custom fonts so your NativeScript app can use them properly.
+
+<table><tr><td><img src="todor-totev.jpg" style="height:60%" /></td><td><h2>Todor Totev</h2></td></tr></table>
+
+Just one 😀: You can add NativeScript plugins that don't have native components while using the [NativeScript Playground](https://play.nativescript.org/). It’s "hidden" behind the "Add NPM package" menu:
+
+![nativescript playground add npm package](playground-npm.png)
+
+## And You?
+
+Do you have your own tip or trick to share? Sound off in the comments!
