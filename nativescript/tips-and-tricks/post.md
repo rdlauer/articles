@@ -49,16 +49,11 @@ There are a bunch of interesting utilities in the profiling modules of `tns-core
 - `start("my-timer-name")` / `stop("my-timer-name")`: The stop method will return a `TimerInfo` object with some useful information like how many start/stop iterations were executed, total time, time of the last measurement, etc.
 - `@profile` decorator: You can add it on methods and it will automatically track how many times the execution goes through this method and the total time it took. You can dump all the info collected by profile decorators with `dumpProfiles()`. You should call `enable()` to use the decorator though.
 
-<table><tr><td><img src="sebastian-witalec.jpg" style="height:60%" /></td><td><h2>Sebastian Witalec</h2></td></tr></table>
-
-- Take a look at the [Visual Studio Code snippets](https://marketplace.visualstudio.com/items?itemName=tsvetan-ganev.nativescript-xml-snippets) for NativeScript!
-- Using the Angular CLI `generate` commands with `nativescript/schematics` (more info on [web/mobile code sharing with Angular](https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7)).
-
 <table><tr><td><img src="todd-anglin.jpg" style="height:60%" /></td><td><h2>Todd Anglin</h2></td></tr></table>
 
 - USE [TYPESCRIPT](https://www.nativescript.org/using-typescript-with-nativescript-when-developing-mobile-apps)!!!
 - USE [VISUAL STUDIO CODE](https://code.visualstudio.com/)!!!
-- Use **Visual Studio Code** (with the [{N} plugin](https://www.nativescript.org/nativescript-for-visual-studio-code)) to set breakpoints in JS code and inspect variable values as your app runs on a device/simulator
+- Use Visual Studio Code (with the [{N} plugin](https://www.nativescript.org/nativescript-for-visual-studio-code)) to **set breakpoints** in JavaScript code and inspect variable values as your app runs on a device/simulator
 	- Once you hit a breakpoint, you can start running arbitrary commands via the VS Code command line
 	- Good for testing code you think should work, or exploring available APIs
 - When in doubt, delete your `node_modules`, `platform`, and `hooks` folders and rebuild/rerun your app to start “clean”
@@ -68,10 +63,10 @@ There are a bunch of interesting utilities in the profiling modules of `tns-core
 - Use **font icons** for most of the small images you in need in an app (don’t create images at 1x, 2x, 3x for everything)
 - Use **custom data binding converters** to translate data into images (like weather icons or images for specific model numbers, etc)
 - Make sure you have links to a **privacy policy**, terms of use, etc in your app if you plan to submit via iOS AppStore
-- AND if you don’t have these assets, there are tools to help you quickly generate them. Examples:
-	- [termly.io/privacy-policy/privacy-policy-generator](https://termly.io/privacy-policy/privacy-policy-generator)
-	- [privacypolicies.com](https://privacypolicies.com/)
-	- [getterms.io](https://getterms.io/)
+	- AND if you don’t have these assets, there are tools to help you quickly generate them. Examples:
+		- [termly.io/privacy-policy/privacy-policy-generator](https://termly.io/privacy-policy/privacy-policy-generator)
+		- [privacypolicies.com](https://privacypolicies.com/)
+		- [getterms.io](https://getterms.io/)
 - iOS AppStore tracks app **VERSION** and **BUILD NUMBER**:
 	- New **VERSIONS** trigger a manual review by the AppStore (even during beta testing)...which can take some time
 	- New **BUILD NUMBERS** are usually approved INSTANTLY during beta testing
@@ -79,7 +74,7 @@ There are a bunch of interesting utilities in the profiling modules of `tns-core
 - Think about how you’re going to **monitor/triage app crashes/bugs** when you’re ready to ship your app
 	- If you don’t add some kind of logging, it’s a black box once you ship your app!
 
-<table><tr><td><img src="rob-lauer.jpg" style="height:60%" /></td><td><h2>Rob Lauer</h2></td></tr></table>
+<table><tr><td><img src="tj-vantoll.jpg" style="height:60%" /></td><td><h2>TJ VanToll</h2></td></tr></table>
 
 Take advantage of the time-saving capabilities provided by the `tns resources generate` command! You can [create your icons and splashscreens](https://docs.nativescript.org/tooling/docs-cli/project/configuration/resources/resources-generate-icons) from one master source in minutes.
 
@@ -92,6 +87,23 @@ As many of you already know, the [sample apps in the NativeScript Marketplace](h
 *Dealing with large images on Android?* That can be a struggle, so look at our docs on [Android image optimization](https://docs.nativescript.org/performance-optimizations/images-optimisations) (and the other performance-focused articles on [webpack](https://docs.nativescript.org/performance-optimizations/bundling-with-webpack) and [improving start up times](https://docs.nativescript.org/performance-optimizations/startup-times) we have while you are at it!).
 
 Adding a new font to your app *might* be the easiest way to improve the look and feel. [Consult this blog post](https://www.nativescript.org/blog/using-custom-fonts-in-a-nativescript-app) on how to properly identify your custom fonts so your NativeScript app can use them properly.
+
+<table><tr><td><img src="sebastian-witalec.jpg" style="height:60%" /></td><td><h2>Sebastian Witalec</h2></td></tr></table>
+
+- Take a look at the [Visual Studio Code snippets](https://marketplace.visualstudio.com/items?itemName=tsvetan-ganev.nativescript-xml-snippets) for NativeScript!
+- Using the Angular CLI `generate` commands with `nativescript/schematics` (more info on [web/mobile code sharing with Angular](https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7)).
+
+<table><tr><td><img src="rob-lauer.jpg" style="height:60%" /></td><td><h2>Rob Lauer</h2></td></tr></table>
+
+**Don't reinvent the wheel!** If you're trying to interface with a device API or third-party SDK, chances are someone else has already fought that battle. [Consult the NativeScript Marketplace](https://market.nativescript.org/) for a comprehensive list of plugins to save you some serious time.
+
+Once you **upgrade to the latest version** of the NativeScript CLI with `npm install -g nativescript`, be sure to *also* update your apps with [these detailed instructions](https://docs.nativescript.org/releases/upgrade-instructions).
+
+Oh, and while we are talking about updates, if you're using Visual Studio Code, install the [Version Lens extension](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens)! This extension displays the latest version for each package in your `package.json` using code lens (with one-click updating):
+
+![version lens in action](version-lens.png)
+
+> Note that once you update a package version in your `package.json`, you'll want to delete your `platforms` and `node_modules` directories before you re-build your app. 
 
 <table><tr><td><img src="todor-totev.jpg" style="height:60%" /></td><td><h2>Todor Totev</h2></td></tr></table>
 
