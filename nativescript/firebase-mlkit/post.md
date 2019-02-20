@@ -73,6 +73,8 @@ Take a Picture --> ML Kit Processes Picture --> Get Beer Info from Untappd
 
 <img src="hoppy-example.gif" alt="hoppy example" style="border: 1px solid black" />
 
+> Note that beer recognition heavily depends on the clarity and styling of the text on a given menu! Don't be surprised if you only find a 30-40% match on most menus...
+
 ## Step-By-Step
 
 ### Take a Picture with NativeScript
