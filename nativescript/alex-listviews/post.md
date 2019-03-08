@@ -1,5 +1,7 @@
 # Managing Component State in NativeScript ListView
 
+*This article originally appeared on [Medium](https://medium.com/@alexander.vakrilov/managing-component-state-in-nativescript-listview-b139e45d899b).*
+
 A while ago I blogged on using [Multiple Items Templates in a NativeScript ListView](https://medium.com/@alexander.vakrilov/faster-nativescript-listview-with-multiple-item-templates-8f903a32e48f) and briefly touched on the topics of **UI Virtualization** and **View/Component Recycling**. Looks like there are some hidden traps you can hit while developing apps with ListView related to this, especially if you are using Angular Components as items in you ListView and keep some state in the components.
 
 We will take a deep dive into the problem and show some approaches to overcome it.

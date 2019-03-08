@@ -14,7 +14,7 @@ Better known in the web world as web workers (or service workers), worker thread
 
 > **NOTE:** The Workers API in NativeScript is loosely based on the [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) and the [Web Workers Specification](https://www.w3.org/TR/workers/).
 
-[Service workers](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker) (a type of web worker) are quite popular with Progressive Web App (PWA) developers, as they allow for notifications and other non-blocking tasks. But where PWA functionality is limited, NativeScript picks up the slack.
+[Service workers](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker) (a type of web worker) are quite popular with Progressive Web App (PWA) developers, as they allow for notifications and other non-blocking tasks. But where PWA functions end, NativeScript picks up the slack.
 
 As evidenced by this NativeScript demo app, 99% of the time the single-threaded model is just fine (as running everything on the UI thread is super fast):
 
@@ -90,11 +90,13 @@ Close the thread in `my-worker.js` with `close();` (as shown above). Or terminat
 
 If the worker thread is not terminated/closed, the garbage collector will not collect and dispose of the worker instance.
 
-## When NOT to Use a Service Worker
+## When NOT to Use a Worker
 
 It's important to keep in mind that every time you spin up a new worker thread, you are adding to the resource and memory footprint of your app. This means that should you spin up too many at once or use them in the wrong situations, the **performance of your app may actually decrease**.
 
 If you think a worker thread will help you process input from a form, or displaying a chart, or many other basic app features, think again. The NativeScript framework has already been optimized for the vast majority of these scenarios.
 
-Your best bet is always to measure the functional performance of your app on a variety of both iOS and Android physical devices.
+Your best bet is always to measure the functional performance of your app on a variety of both iOS and Android physical devices during development!
+
+That being said, workers can be super useful in edge cases where performance of the main thread is lacking. The best you can do is test individual scenarios and measure which route is best for your situation.
 

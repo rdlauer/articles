@@ -1,4 +1,4 @@
-# Adding Crash Reporting to Your NativeScript App
+# Add Basic Crash Reporting to Your NativeScript App
 
 While I've personally never written a buggy line of code in my life, odds are *some* of you out there have. And what's the golden rule of open source?
 
@@ -13,6 +13,8 @@ Times have changed and numerous, far more robust, "crash reporting" services hav
 Now if you're not using *any* error-reporting mechanism, my instinct is to shame you, but in reality I want to give you a hug and let you know it's going to be ok.
 
 Today we are going to learn how to leverage Crashlytics (part of Firebase) to log and report on errors in our NativeScript apps for both iOS and Android.
+
+> **TIP:** NativeScript 5.2 came with vastly improved [error logging improvements](https://www.nativescript.org/blog/nativescript-5.2-comes-with-official-support-for-vue)!
 
 ## The Firebase Plugin
 
