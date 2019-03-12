@@ -1,4 +1,4 @@
-# The Importance of HIPAA Compliance for Mobile Health Care
+# Mobile Health Care Apps and HIPAA Compliance 
 
 To say that data integrity and security are critically important is the understatement of the decade. What was once an afterthought for desktop computing has now become a multiple billion-dollar issue for every platform and screen we use.
 
@@ -58,7 +58,9 @@ The mobile health care market (a.k.a. mHealth) is poised to become a nearly [$60
 
 As this market booms, we are seeing a dramatic increase in mobile app usage by every individual in the health care sector. At the same time, cost pressures are forcing providers to move data to the cloud...all the while HIPAA oversight (and fines!) are increasingly critical factors when it comes to the choices you have for app development and deployment.
 
-Let's summarize where we are at:
+> Read more about [securing your mobile app](https://www.progress.com/papers/kinvey-cloud-services-security-overview).
+
+*Let's summarize where we are at:*
 
 1. Mobile and desktop apps in the health care industry are booming.
 2. The mHealth market is exploding as it reaches $60 billion in just a couple of years.
@@ -110,7 +112,7 @@ With Progress Health Cloud, healthcare organizations can launch their Minimum Vi
 
 ![kinvey development cycle](kinvey-cycle.png)
 
-This is just a brief overview of what Progress Kinvey can do for you and your app developers. To learn more, visit us at [progress.com/kinvey](https://www.progress.com/kinvey) and [set up a time for a demonstration](https://www.progress.com/solutions/health-cloud/request-demo) of the services we provide.
+This is just a brief overview of what Progress Kinvey can do for you and your app developers. To learn more, visit us at [progress.com/kinvey](https://www.progress.com/kinvey) and [set up a time for a demonstration](https://www.progress.com/solutions/health-cloud/request-demo) of the Kinvey services.
 
-If you'd like to learn even more about the security features provided by Progress Kinvey, take a look at [this whitepaper](https://www.progress.com/papers/kinvey-cloud-services-security-overview).
+If you'd like to learn even more about the security features provided by Progress Kinvey, take a look at [this extensive resource](https://www.progress.com/papers/kinvey-cloud-services-security-overview).
 

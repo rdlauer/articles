@@ -6,7 +6,7 @@ Reusing skills and writing *less* code to cover *more* platforms is a clear prio
 
 Let me introduce you to a **new low code tool** from Progress for professional developers we call [Kinvey Studio](https://www.progress.com/kinvey/studio).
 
-> Looking for a quick way to learn more about Kinvey Studio? [Save your seat for our webinar](https://www.progress.com/campaigns/kinvey/webinar-kinvey-studio) on Wednesday March 21st at 2PM ET.
+> Looking for a quick way to learn more about Kinvey Studio? [Save your seat for our webinar](https://www.progress.com/campaigns/kinvey/webinar-kinvey-studio) on Thursday March 21st at 2PM ET.
 
 But first, let's take a quick trip down memory lane and examine just *how* we got to where we are today.
 
@@ -68,5 +68,5 @@ With a name like "Kinvey Studio", it should be no surprise that the product itse
 
 You're going to hear A LOT more about Kinvey Studio in the coming weeks and months. In the meantime, if you'd like to know more, I suggest the following next steps:
 
-1. [Reserve your spot for our webinar](https://www.progress.com/campaigns/kinvey/webinar-kinvey-studio) on Wednesday March 21st at 2PM ET.
+1. [Reserve your spot for our webinar](https://www.progress.com/campaigns/kinvey/webinar-kinvey-studio) on Thursday March 21st at 2PM ET.
 2. [Download a BETA version](https://www.progress.com/kinvey/studio) of Kinvey Studio and take it for a spin yourself!
