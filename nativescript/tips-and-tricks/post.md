@@ -95,6 +95,11 @@ Adding a new font to your app *might* be the easiest way to improve the look and
 
 <table><tr><td><img src="rob-lauer.jpg" style="height:60%" /></td><td><h2>Rob Lauer</h2></td></tr></table>
 
+Be careful of nesting a `<ScrollView>` or `<ListView>` inside of a `<StackLayout>`. Due to rendering issues on Android (which I do not completely understand 😅), you should generally use a `<GridLayout>` instead, like so:
+
+	<GridLayout rows="auto, *">
+		<ListView row="1" ...
+
 **Don't reinvent the wheel!** If you're trying to interface with a device API or third-party SDK, chances are someone else has already fought that battle. [Consult the NativeScript Marketplace](https://market.nativescript.org/) for a comprehensive list of plugins to save you some serious time.
 
 Once you **upgrade to the latest version** of the NativeScript CLI with `npm install -g nativescript`, be sure to *also* update your apps with [these detailed instructions](https://docs.nativescript.org/releases/upgrade-instructions).
