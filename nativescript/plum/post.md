@@ -46,7 +46,7 @@ The following gif provides a very brief overview of just some of the screens tha
 
 One of the key value props of using NativeScript is developing for iOS and Android simultaneously, and Plum is no different. While the app was constructed for iOS only in the beginning, a mere handful of UI tweaks and a few lines of CSS were needed to provide full compatibility with Android.
 
-In addition, thanks to the extensive set of plugins available on the [NativeScript Marketplace](https://market.nativescript.org/), it was incredibly easy to add complicated-seeming app functionality (such as Augmented Reality, charts, swipe-to-delete, carousel, card UIs, and so on).
+In addition, thanks to the extensive set of plugins available on the [NativeScript Marketplace](https://market.nativescript.org/), it was incredibly easy to add complicated-seeming app functionality (such as Augmented Reality, charts, swipe-to-delete, carousel, card UIs, taptic feedback, MapBox maps, and so on).
 
 > A special shout-out to [Eddy Verbruggen](https://twitter.com/eddyverbruggen) and his plugin demo app for [iOS](https://itunes.apple.com/us/app/plugins/id1281334006?mt=8) and [Android](https://play.google.com/store/apps/details?id=org.nativescript.pluginshowcase) which helped to make this possible!
 
