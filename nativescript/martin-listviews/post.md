@@ -62,7 +62,7 @@ Sometimes a demonstration is worth a thousand words. Below, you can find some co
 
 This is why mobile devices were made in the first place, remember? Pick a person from your contacts list and make a call. There is no need for fancy distractions. This is perhaps a secondary or tertiary page in your app.
 
-![Pick A Thing List GIF](https://i.imgur.com/L7uisvd.gif)
+![Pick A Thing List GIF](pick-a-thing-list.gif)
 
 It’s a classic scenario where `ListView` is the perfect choice. `RadListView` would be an overkill here and you don’t have control over how large the data set will be, so the `Repeater` isn’t a good choice. Explore the code and check it out on your phone by visiting this app on the Playground:
 [Pick A Thing Playground Sample](https://play.nativescript.org/?template=play-tsc&id=YdOubv)
@@ -71,14 +71,14 @@ It’s a classic scenario where `ListView` is the perfect choice. `RadListView` 
 
 Let’s see how we can do something like a front page news feed.
 
-![Simple Front Page ListView GIF](https://i.imgur.com/50tVCDN.gif)
+![Simple Front Page ListView GIF](simple-front-page.gif)
 
 The core modules `ListView` is still an option here and we can benefit from its performance. It also provides the multiple templates option, so we can provide featured news by having a different, bigger template for them. There is also data virtualization via the “load more items” mechanic, so if the user scrolls a bit down, we can fetch more news. There is no real need for interactivity here. The only thing that is missing is the “pull to refresh” feature and you can get it from a separate plugin like this one - [Pull To Refresh Plugin](https://market.nativescript.org/plugins/nativescript-pulltorefresh) from [Brad Martin](https://market.nativescript.org/author/bradmartin). Check out the sample in the Playground:
 [News Feed ListView Playground Sample](https://play.nativescript.org/?template=play-tsc&id=MhOMIY)
 
 Alternatively, you can opt for the `RadListView`. Depending on your template layouts, it might be a bit less performant, but it has the “pull to refresh” built in and if you plan to extend it with more features in the future, it will be much easier. In this case it’s a matter of choice. I’d say - go with `RadListView`, but keep in mind there might be a more performant option. Here is how this looks like on a device. It’s basically the same, but notice that this time we have a pull to refresh feature out of the box.
 
-![Simple Front Page RadListView GIF](https://i.imgur.com/mchfhPR.gif)
+![Simple Front Page RadListView GIF](simple-front-page-rad.gif)
 
 And here is the sample in the Playground:
 [News Feed RadListView Playground Sample](https://play.nativescript.org/?template=play-tsc&id=sNo2fG)
@@ -87,7 +87,7 @@ And here is the sample in the Playground:
 
 Let’s say we want to build an interactive storefront. We want the customer to see as many items as possible on the screen and we want to keep them on this screen as much as possible.
 
-![Storefront RadListView GIF](https://i.imgur.com/tCKi26C.gif)
+![Storefront RadListView GIF](storefront.gif)
 
 In this example, we have swipe actions, filtering, and different layouts together with different templates. This is a job for the `RadListView`. Implementing this with the other two lists is possible, but it will take you much more time and effort and in the end, the performance might not be that good. There are a lot of features bundled here, so check out the sample:
 [Storefront RadListView Playground Sample](https://play.nativescript.org/?template=play-tsc&id=uQmH4X)
@@ -96,7 +96,7 @@ In this example, we have swipe actions, filtering, and different layouts togethe
 
 App menu items are usually defined in the code of the app and you as the developer have full control over them. They are usually not that many - having a menu with a 1000 items wouldn’t be very user friendly. Moreover, menus tend to have more extravagant designs and have them changed more often.
 
-![Menu Repeater GIF](https://i.imgur.com/ehd4FwV.gif)
+![Menu Repeater GIF](menu-repeater.gif)
 
 This example displays icons on top with an app menu and a profile menu below. Using `Repeaters`, we can separate the data into three lists in three `Repeaters` and wrap them all in a single `ScrollView`. It’s a straightforward and flexible solution. There are also two different separators here, one of which has the profile information in it. Trust me, it would be very hard to implement this with a `ListView` or a `RadListView`. See the sample here:
 [Menu Playground Sample](https://play.nativescript.org/?template=play-tsc&id=rx1XbX)
