@@ -1,12 +1,16 @@
-# The Case for Microapps
+# Using a Microservices Architecture to Develop Microapps
+
+*Microapps and microservices are two distinct concepts. In this article we focus on microapps and how you can utilize a microservices architecture with a microapps platform.*
 
 Microapps is an extremely hot topic right now. But frankly many of us don't really know what a "microapp" is, nor do we understand the benefits. Is this another tech fad? Is it really something new or is it an evolution of an existing construct? Do I really *need* microapps to be successful?
+
+The concept of a "microservices architecture" commonly gets confused with microapps. Microservices are small, maintainable, and easily testable backend services. They are organized around specific business capabilities as well which, as we will see today, makes them a perfect candidate to work with microapps.
 
 Let's take a closer look at microapps and answer some questions such as:
 
 - What *exactly* is a microapp?
 - What is the business case for a microapp?
-- How can my team start creating microapps with a microapps platform?
+- How can my team start creating microapps with a platform that utilizes a microservices architecture?
 
 ## So What *is* a Microapp?
 
@@ -90,7 +94,7 @@ Your container app then contains any number of microapps. Each microapp can be c
 1. From scratch as a NativeScript app (learn about the advantages of NativeScript at [nativescript.org](https://www.nativescript.org/)).
 1. From an existing web app (yes, legacy web apps can be microapps!).
 
-Next, created for you is also a mediation layer, effectively allowing you to create and host backend services/microservices to connect to remote APIs and manage data coming from those APIs. Building on top of Progress Kinvey allows you to **connect to other backend systems** with your microapps like SAP, Salesforce, Oracle, SQL Server, and so on. You can also tie into integrations with existing **enterprise authentication providers** like Active Directory, LDAP, SAML, oAuth2, you name it.
+Next, created for you is also a mediation layer, allowing you to create and host **microservices** to connect to remote APIs and manage data coming from those APIs. Building on top of Progress Kinvey allows you to **connect to other backend systems** with your microapps like SAP, Salesforce, Oracle, SQL Server, and so on. You can also tie into integrations with existing **enterprise authentication providers** like Active Directory, LDAP, SAML, oAuth2, you name it.
 
 *The above can be distilled into the following diagram:*
 
