@@ -40,9 +40,9 @@ Another key value of NativeScript for Progress is integrating with commercial of
 
 > Read more about [What is a Microapp?](https://www.progress.com/blogs/what-is-a-microapp) if you're curious.
 
-Of course Kinvey as a mobile backend (mBaaS) is critically important as well, which is why Progress offers a full [NativeScript SDK](https://devcenter.kinvey.com/nativescript) and promotes the ability for long-time [Progress Open Edge](https://www.progress.com/openedge) customers to easily access legacy data and modernize their apps.
+Of course Kinvey as a mobile backend (mBaaS) is critically important as well, which is why Progress offers a complete [Kinvey NativeScript SDK](https://devcenter.kinvey.com/nativescript) and promotes the ability for long-time [Progress Open Edge](https://www.progress.com/openedge) customers to easily access legacy data and modernize their apps.
 
-At the end of the day, **Progress is a developer tooling company, with developer DNA**, that is providing the best (free) open source means of creating native cross-platform experiences. A positive byproduct is adding that same experience to commercial tooling that *also* benefits developers and generates revenue for the company. It's a win-win for sure.
+At the end of the day, **Progress is a developer tooling company, with developer DNA**, that is providing the best (free) open source means of creating native cross-platform experiences. A positive byproduct is adding that same experience to commercial tooling that *also* benefits developers. It's a win-win for sure.
 
 ## Developer ❤️
 

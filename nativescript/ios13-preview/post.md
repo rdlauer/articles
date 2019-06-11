@@ -1,6 +1,6 @@
 # iOS 13, Sign in with Apple, iPadOS, and ARKit 3 - All on NativeScript
 
-Last week's [Apple Worldwide Developers Conference](https://developer.apple.com/wwdc19/) (a.k.a. WWDC19, or "Dub Dub" for the cool kids 😎) brought an onslaught of product releases and announcements to Apple's ever-expanding mobility product line. While virtually all of us agree the $999 monitor stand was a low point of the event 😬, it was exciting to see the Apple's future-focused mobility strategy in action.
+Last week's [Apple Worldwide Developers Conference](https://developer.apple.com/wwdc19/) (a.k.a. WWDC19, or "Dub Dub" for the cool kids 😎) brought an onslaught of product releases and announcements to Apple's ever-expanding mobility product line. While virtually all of us agree the $999 monitor stand was a low point of the event 😬, it was exciting to see Apple's future-focused mobility strategy in action.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We don’t have to do this. We could all just not do this. <a href="https://t.co/04Y5UHykLE">pic.twitter.com/04Y5UHykLE</a></p>&mdash; Burke Holland (@burkeholland) <a href="https://twitter.com/burkeholland/status/1136473423788593153?ref_src=twsrc%5Etfw">June 6, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -23,6 +23,8 @@ The reason Apple is taking this direction with iPadOS is primarily because the u
 - There are vastly different multitasking abilities on iPad than iPhone;
 - User input with the Apple Pencil provides a completely different set of possible interactions.
 
+We should expect a further divergence in experience between iOS and iPadOS in the coming years, but for now the changes appear to be minimal.
+
 ## iOS 13
 
 Apple's predictable release schedule for iOS updates led to the least surprising announcement of them all: [iOS 13](https://developer.apple.com/ios/) is headed our way this fall.
@@ -33,18 +35,18 @@ From the NativeScript perspective, there aren't too many earth-shattering change
 
 ### Dark Mode
 
-Starting with iOS 13, end users can opt-in to a system-wide setting called [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/dark-mode/). In Dark Mode, iOS will use a dark color palette for all UI elements in your apps when available.
+Starting with iOS 13, end users can opt-in to a system-wide setting called [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/dark-mode/). In Dark Mode, iOS will use a dark color palette for all UI elements when available.
 
 ![dark mode on ios 13](dark-mode.png)
 
-For most UI components, Dark Mode will work out-of-the-box, no changes required. Assuming you have some CSS-implemented color customizations to your apps, you'll need a strategy to either automatically switch elements to a dark color scheme or allow programmatically make those changes.
+For most UI components, Dark Mode will work out-of-the-box, no changes required. Assuming you have made some color-related customizations to your UI though, you'll need a way to either automatically switch elements to a dark color scheme or be allowed to programmatically make those changes.
 
 The NativeScript team will likely approach this in a couple of different ways:
 
 1. The [core theme](https://docs.nativescript.org/ui/theme) that ships with all NativeScript apps will be updated to support Dark Mode. ([Track this GitHub issue](https://github.com/NativeScript/NativeScript/issues/7313) if you are curious about this and other planned improvements.)
 2. Either as part of a plugin or as part of the core {N} framework, an API will be exposed allowing you to identify which display mode the user is in. This will allow you to present UI elements in one color scheme or another.
 
-[Here is an early look](https://github.com/EddyVerbruggen/nativescript-dark-mode) at a possible basic API for the latter implementation:
+[Here is an early look](https://github.com/EddyVerbruggen/nativescript-dark-mode) at a possible simple API for the latter implementation:
 
 	import { isDarkModeEnabled } from "nativescript-dark-mode";
 	
@@ -74,7 +76,7 @@ It shouldn't be a surprise that "Sign in with Apple" appears to be based on OAut
 
 Of course NativeScript developers will be able to add Apple ID authentication to their apps as well later this fall. Just kidding, you can do it now! The [nativescript-apple-sign-in](https://github.com/EddyVerbruggen/nativescript-apple-sign-in) plugin is already available for folks who would like to test it out:
 
-import { signInWithApple } from "nativescript-apple-sign-in";
+	import { signInWithApple } from "nativescript-apple-sign-in";
 
 	signInWithApple({
         // note that 'scopes' don't currently work - it'll probably be fixed in an upcoming iOS 13 beta
@@ -94,7 +96,7 @@ import { signInWithApple } from "nativescript-apple-sign-in";
 
 As already mentioned, this mandatory addition to authentication provider options is inevitably going to mean a fair amount of work for app developers. When forced to talk identity management, developers tend to run away and hide. And we can't blame them.
 
-However, this is one problem we believe Progress has already solved, and that's with the [Mobile Identity Connect (MIC)](https://www.progress.com/blogs/enterprise-authentication-kinvey) feature of Progress Kinvey.
+However, this is one problem we believe Progress has already solved, and that's with the [Mobile Identity Connect (MIC)](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect) feature of [Progress Kinvey](https://www.progress.com/kinvey/).
 
 Now stay with me here, this isn't just a marketing line 😀 - MIC legitimately makes enterprise authentication far easier than rolling it out on your own (especially when you are dealing with multiple auth providers on multiple platforms, as most of us are).
 
@@ -102,7 +104,7 @@ Now stay with me here, this isn't just a marketing line 😀 - MIC legitimately 
 
 > Since "Sign in with Apple" is based on OAuth 2, this should mean full support in Mobile Identity Connect will be available this fall!
 
-If you're interested in learning more about how to easily add authentication providers to your NativeScript app, be sure to consult this article on [Enterprise Authentication Made Easier with NativeScript](https://www.nativescript.org/blog/enterprise-authentication-made-easier-with-nativescript) or [read the MIC docs in the Kinvey DevCenter](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect).
+If you're interested in learning more about how to easily add authentication providers to your NativeScript app, be sure to consult this article on [Enterprise Authentication with Kinvey](https://www.progress.com/blogs/enterprise-authentication-kinvey) or [read the MIC docs in the Kinvey DevCenter](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect).
 
 ## Summary
 
