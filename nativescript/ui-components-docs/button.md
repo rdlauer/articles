@@ -64,12 +64,7 @@
 
 ### Vue (Tab)
 
-	onTap(args: EventData) {
-	    let button = <Button>args.object;
-	
-	    this.counter++;
-	    alert("Tapped " + this.counter + " times!");
-	}
+	????
 
 ## API Reference
 
