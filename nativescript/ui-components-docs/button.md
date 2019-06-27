@@ -29,7 +29,7 @@
 | `btn-rounded-lg` | A class name that makes a button appear with large rounded corners.
 | `btn-active` | A class name that makes a button appear highlighted when tapped.
 
-Example of `class="btn btn-outline"`:
+*Example of `class="btn btn-outline"`:*
 
 ![](https://docs.nativescript.org/img/theme/btn-outline-ios.png) ![](https://docs.nativescript.org/img/theme/btn-outline-android.png)
 
