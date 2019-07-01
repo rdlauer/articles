@@ -6,7 +6,7 @@
 
 ## Usage
 
-<Button text="Primary" class="btn btn-primary"></Button>
+	<Button text="Primary" class="btn btn-primary"></Button>
 
 ## Theming
 
