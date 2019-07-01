@@ -6,17 +6,7 @@
 
 ## Usage
 
-### Core (Tab)
-
-	<Button text="Hello World" class="btn btn-primary" id="myButton" tap="onTap" />
-
-### Angular (Tab)
-
-	<Button text="Hello World" class="btn btn-primary" id="myButton" (tap)="onTap($event)"></Button>
-
-### Vue (Tab)
-
-	<Button text="Hello World" class="btn btn-primary" id="myButton" @tap="onTap" />
+<Button text="Primary" class="btn btn-primary"></Button>
 
 ## Theming
 
