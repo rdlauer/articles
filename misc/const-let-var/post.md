@@ -110,7 +110,9 @@ I hear you, I haven't actually given you any guidance up to this point. It almos
 2. Always use `let` (yes, I even use it for constants).
 3. Use `const` if you want to, knowing that it doesn't provide many explicit advantages over `let`.
 
-In fact, I would recommend if you're truly creating constants, you name the variable appropriately. Something like `const __IAMACONSTANT = "indeed i am a constant";`.
+In fact, I would recommend if you're truly creating constants, you name the variable appropriately. Something like:
+
+	const __IAMACONSTANT = "indeed i am a constant";
 
 **In summary:**
 
