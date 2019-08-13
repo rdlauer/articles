@@ -1,8 +1,8 @@
-# Step-by-Step Guide to Building a Web, Mobile, and Chat App - Part Two
+# Step-by-Step Guide to Building a Web, Mobile, and Chat App: Part Two
 
-As we covered in part one of this series, apps today are more than just web or mobile. They are more complicated than ever before, with more capabilities (and opportunities) that we could have envisioned just a few short years ago.
+As we covered in part one of this series, apps today are more than just web or mobile. They are more complicated than ever before, with more capabilities (and opportunities) than we could have envisioned even just a few short years ago.
 
-But Kinvey Studio is here to offer some clarity, and enable web and mobile developers to create those engaging experiences your users have come to expect.
+But Progress Kinvey and Kinvey Studio are here to offer some clarity, and enable web and mobile developers to create those engaging experiences your users have come to expect.
 
 So part two (that's today!) is where we dive into the web side of our car dealer app.
 
@@ -14,45 +14,59 @@ With our Kinvey Studio project initialized, it's time to start the real developm
 
 The first screen we will see in Kinvey Studio talks about "modules". What the heck is a module?
 
-IMAGE
+![modules](2-modules.png)
 
 You can think of a module as a high level view of a specific component of your app. It's effectively a folder that is a logical grouping of related pages (or views) of your app.
 
-The default "System" module contains global styling and headers/footers of your app. (We'll look at the System module in more detail later.)
+The default `System` module contains global styling and headers/footers of your app. (We'll come back to look at the `System` module in more detail later.)
 
-For now, let's create a new module called `Internal-Web`:
+For now, let's create a new module called `Internal-Web` (as this will be the internal-facing, web-based component of our app) by clicking on the "+" icon in the upper left corner of Kinvey Studio:
 
-IMAGE
+![add module](2-add-module.png)
 
 > In a real app, you'll probably get a little more granular with your module names, but this will suit this relatively simple app just fine!
 
-With the module created, we can now start creating some pages/views in our web app!
+With the module created, we can now start creating some pages/views in our web app.
 
-Click the little "+" icon to add a new view to your app:
+Click to open the `Internal-Web` module. Then click the little "+" icon to add a new view to your app:
 
-IMAGE
+![add web view](2-add-view.png)
 
-And as the title of this section states, what IS a web app without a grid!? In the "web" tab you can see the variety of web-based views that we can utilize. So let's choose the "Web Grid with ??" view, name it, and add it to our app:
+And as the title of this section states, what IS a web app without a grid!? In the "web" tab you can see the variety of web-based views that we can utilize. Let's quickly break down our options:
 
-IMAGE
+- Blank: A "blank" view is just that, an empty view that you can customize to your heart's content with any layouts and UI components you need. We will come back to this view shortly.
+- Data Grid: The basic "data grid" is a grid-based display of a data collection (using the powerful Kendo UI grid component).
+- Data Grid Form: This grid option includes the same Kendo UI grid, but also includes a more fully-featured editing window alongside the grid.
+- Data Grid Separate Form: Again, including the same Kendo UI grid, this view instead opens the editing window in a separate view????????
+- Custom Code View: ?????
 
-The first thing we will want to do is associate this view with a specific set of data from the data source we chose when we first started up this app. In our case we are going to use the ??? collection to load up a list of cars. You'll notice after the data collection is chosen, the grid in our canvas automatically updated to reflect the data found in that collection.
+So let's choose the "Data Grid Form" view, name it simply `CarList`, and add it to our app. With the view saved, you'll then get your first glimpse at the visual design canvas provided by Kinvey Studio (with some of the UI components mocked up):
 
-IMAGE
+![web canvas](2-web-canvas.png)
+
+Now this admittedly isn't the prettiest output we could image, but that's mostly because the view has no idea what the underlying data is!
+
+So the next task to do is associate this view with a specific set of data from the data source we chose when we first initiated the app. In our case we are going to use the `vehicles` collection to load up a list of cars from the view's property panel on the right:
+
+![choose vehicles collection](2-choose-collection.png)
+
+You'll notice after the data collection is chosen, the grid in our canvas automatically updated to reflect the data types found in that collection.
 
 At this point why don't we go ahead and fire up this app?
 
-Anytime you make a change in Kinvey Studio, you'll want to use the "generate" button. This will generate the meta data that powers your app, and save your app assets.
+Anytime you make a change in Kinvey Studio, you'll want to use the "generate" button. This will save your changes and *generate* the meta data that powers your app:
 
-IMAGE
+![generate app](2-generate-app.png)
 
-With your app saved, you can now deploy your app to a local web browser by clicking on the ?? button:
+With your app saved, you can now deploy it to a local web browser by clicking on the "Start Dev Server" button:
 
-IMAGE
+![start dev server](2-start-dev-server.png)
 
-Now you'll have to wait. This one-time step uses the Angular CLI to compile your app and deploy it locally. Luckily, once this is complete, you'll see how we can take advantage of automatic reloads of the app in the browser whenever we make changes.
+Now you'll have to wait a bit. This one-time step uses the Angular CLI to compile your app and deploy it to your web browser. Luckily, once this is complete, you'll see how we can take advantage of *fast automatic reloads* of the app in the browser whenever we make changes.
 
-With your app deployed to a browser, you'll first have to login. The default credentials for logging in are just admin/admin. Very secure right! This is just for development of course. When you deploy this app for real, you're in luck. Since Kinvey Studio apps are built on top of the mature mBaaS provided by Kinvey, you can also take advantage of Mobile Identity Connect (MIC).
+With your app deployed to a browser, you'll next have to login. The default credentials for logging in are just `admin/admin`. Very secure right! This is just for ease of initial development of course.
+
+When you deploy this app for real and need added security, you're in luck. Since Kinvey Studio apps are built on top of the mature mBaaS provided by Kinvey, you can also take advantage of Mobile Identity Connect (MIC).
 
 ### Sidebar: Mobile Authentication
 
@@ -75,7 +89,7 @@ Hmmm...the functionality is there, but it's a bit crowded to say the least!
 
 ## Customizing the Grid
 
-Let's now look at how we can customize the display of grid columns, and even alter how the data is displayed in the grid itself.
+Let's now look at how we can customize the display of grid columns, and even alter how the data is displayed in the grid itself without having to touch any code.
 
 Back in Kinvey Studio, click on the ???? link. This will bring up the ??? editor. Go ahead and move all items into the "excluded" columns section, making sure to leave ??? and ??? available. This will hide them from the grid view, providing a much cleaner experience.
 
@@ -85,7 +99,7 @@ Before we continue though, I'd really like to alter the display of the data in t
 
 TODO!!!!! maybe also open the app up in VS Code? also sorting/filtering
 
-With those edits in place, let's look at some of the other options provided by Kinvey Studio. In the properties pane, you can scroll through and see all of the one-click options you have to customize the grid. For now, let's focus on the options towards the bottom. We can easily add `sorting` and `filtering` options with just one click:
+With those edits in place, let's look at some of the other options provided by Kinvey Studio. In the properties pane, you can scroll through and see all of the one-click options you have to customize the grid. For now, let's focus on the options towards the bottom. We can easily add `sorting` and `filtering` options with just one click, again without touching code:
 
 IMAGE
 
@@ -121,7 +135,7 @@ You can name this collection "???". To populate the data, I've provided you some
 
 IMAGE
 
-Back in Kinvey Studio, you'll need to head to the Collections menu option and click to "Sync Collections":
+Back in Kinvey Studio, you'll need to head to the "Collections" menu option and click to "Sync Collections":
 
 IMAGE
 
@@ -135,13 +149,13 @@ IMAGE
 
 This is where the power of Kinvey Studio really shines! With a blank canvas you can drag-and-drop UI components and layouts to fully customize views before you work on the backend "plumbing" of the app. This allows for a true WYSIWYG experience.
 
-IMAGE
+IMAGE/GIF
 
 We will keep this simple for now by dragging a `Label` element and a `Pie Chart` element onto our canvas (one after the other). The result should look like this:
 
 IMAGE
 
-Next we need to associate this view with the collection we just created. In the "View's Data Sources" pane, click to add a new data source, choosing the collection we just created:
+Next we need to associate this view with the Kinvey data collection we just created. In the "View's Data Sources" pane, click to add a new data source, choosing the collection we just created:
 
 IMAGE
 
@@ -149,7 +163,9 @@ Next, click the pie chart itself in the canvas, and make sure that "Data Service
 
 IMAGE
 
-Finally, click the "Edit Chart Series" link (this will allow us to associate the specific columns of data from our collection appropriately to our app). Click to "Add Item" in this new window, and in the "Item Field" choose `???` and in the "Item Category Field" dropdown choose `???`. Save your changes, and your pie chart configuration should be complete!
+Finally, click the "Edit Chart Series" link (this will allow us to associate the specific columns of data from our collection appropriately to our app). Click to "Add Item" in this new window, and in the "Item Field" choose `???` and in the "Item Category Field" dropdown choose `???`.
+
+Save your changes, and your pie chart configuration should be complete!
 
 With those steps done, make sure you save your changes with the generate app button, head back to your browser, click on the "Dashboard" link in the navigation menu, and see your glorious chart!
 
