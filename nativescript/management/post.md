@@ -26,15 +26,17 @@ Even if you're not providing an external-facing consumer solution, you want to k
 <a name="open-source"></a>
 ## Reason 2: Open Source and Backed by a Trusted Partner
 
-[Progress](https://www.progress.com/) is the company behind NativeScript. Progress invests millions in the development of NativeScript, yet licenses it with the business-friendly [Apache 2.0 OSS license](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). **Why? What's in it for Progress?**
+[Progress](https://www.progress.com/) is the company behind NativeScript. Progress invests a lot of resources in the development of NativeScript, yet licenses it with the business-friendly [Apache 2.0 OSS license](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). **Why? What's in it for Progress?**
 
-NativeScript isn't just a side project for Progress. NativeScript is a core component of multiple solutions provided by Progress, most notably [Kinvey Studio](https://www.progress.com/kinvey/studio).
+> To learn more about why Progress supports NativeScript, consult [this article](https://www.nativescript.org/blog/why-does-progress-support-nativescript).
+
+NativeScript isn't just a side project for Progress. NativeScript is a core component of multiple solutions provided by Progress, most notably [Progress Kinvey](https://www.progress.com/kinvey). One component of Progres Kinvey is the drag-and-drop app building solution, Kinvey Studio:
 
 ![kinvey studio](kinvey-studio-web.gif)
 
-Kinvey Studio is enables professional developers to build **cross-platform mobile, web, chat, and wearable apps**, leveraging a secure and performant backend, from a shared JavaScript codebase.
+Kinvey Studio enables professional developers to build **cross-platform mobile, web, chat, and wearable apps**, leveraging a secure and performant backend, from a shared JavaScript codebase.
 
-> [Kinvey Chat](https://www.progress.com/kinvey/chat) (a key component of Kinvey Studio) [enabled a hospital to reduce the workload](https://www.progress.com/customers/doctor-shterev-hospital) of their contact center staff by 49%!
+> Did you know Gartner named Progress a **Leader** in their [2019 Magic Quadrant for Multiexperience Development Platforms](https://www.progress.com/campaigns/gartner-magic-quadrant-multiexperience-development-platforms-mxdp?utm_source=nativescriptdotorg&utm_medium=yellowstrip&utm_campaign=2019-gartner-mxdp-report)?
 
 This guarantees Progress's investment in NativeScript is not dependent on revenue created directly by NativeScript (although yes, we do offer [paid enterprise-level support](https://www.nativescript.org/enterprise)!), so you can rest assured NativeScript is here to stay.
 
@@ -43,7 +45,7 @@ This guarantees Progress's investment in NativeScript is not dependent on revenu
 
 Management cares about productivity. And today the definition of an "app" has evolved into supporting iOS, Android, and the web. Few companies have the luxury of separate teams for each platform (and when they do, they complain about aligning app features and releases across teams).
 
-This is where NativeScript shines. With our built-in [code sharing strategies for Angular](https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7) (with Vue.js support coming very soon), teams can build for multiple platforms from a single, shared JavaScript codebase.
+This is where NativeScript shines. With our built-in [code sharing strategies for Angular](https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7) and [new possibilities with Vue.js](https://www.nativescript.org/blog/code-sharing-with-nativescript-vue), teams can build for multiple platforms from a single, shared JavaScript codebase.
 
 ![multiple devices](multiple-devices.png)
 
@@ -75,6 +77,8 @@ Case in point: NativeScript provides support for [Angular](https://www.nativescr
 ![nativescript frameworks](frameworks.png)
 
 Not a framework fan? No worries! NativeScript *also* supports framework-free development with plain JavaScript or TypeScript.
+
+> The community is hard at work on integrations with [React](https://github.com/shirakaba/react-nativescript) and [Svelte](https://svelte-native.technology/)!
 
 <a name="replacement-for-native"></a>
 ## Reason 6: A Replacement for Traditional Native Development
