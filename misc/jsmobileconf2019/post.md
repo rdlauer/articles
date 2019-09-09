@@ -28,7 +28,7 @@ We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Ne
 *Here is but a small sample of the topics that may interest you most:*
 
 <style>
-.speakers td { border: 1px solid #ccc; }
+.speakers td { border: 1px solid #ccc; padding: 10px; }
 .speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
@@ -44,7 +44,7 @@ We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Ne
 <td><img src="https://jsmobileconf.com/assets/img/speakers/jenlooper.jpeg" alt="jen looper" /></td>
 <td><strong>Jen Looper</strong><br /><br /><em>Lucy in the Sky with ML: Building the Ultimate Beatles Tribute App</em></td>
 </tr>
-</table>
+</table><br />
 
 For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule).
 
@@ -95,7 +95,7 @@ We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Ne
 *Here is but a small sample of the topics that may interest you most:*
 
 <style>
-.speakers td { border: 1px solid #ccc; }
+.speakers td { border: 1px solid #ccc; padding: 10px; }
 .speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
@@ -111,7 +111,7 @@ We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Ne
 <td><img src="https://jsmobileconf.com/assets/img/speakers/carl-bergenhem.jpg" alt="carl bergenhem" /></td>
 <td><strong>Carl Bergenhem</strong><br /><br /><em>Why Every Web App Should be a PWA</em></td>
 </tr>
-</table>
+</table><br />
 
 For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule).
 
@@ -157,7 +157,7 @@ Come and meet some of the leading voices in the JavaScript community - including
 We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Netlify, a variety of Google Developer Experts, and more.
 
 <style>
-.speakers td { border: 1px solid #ccc; }
+.speakers td { border: 1px solid #ccc; padding: 10px; }
 .speakers img { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 200px; }
 </style>
 <table class="speakers">
@@ -173,7 +173,7 @@ We've lined up some amazing speakers for you from Microsoft, Adobe, Progress, Ne
 <td><img src="https://jsmobileconf.com/assets/img/speakers/jenlooper.jpeg" alt="jen looper" /></td>
 <td><strong>Jen Looper</strong><br /><br /><em>Lucy in the Sky with ML: Building the Ultimate Beatles Tribute App</em></td>
 </tr>
-</table>
+</table><br />
 
 For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileconf.com/#lgx-schedule).
 
