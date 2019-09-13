@@ -54,6 +54,8 @@ For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileco
 
 jsMobileConf will be hosted at the [Seaport Hotel & World Trade Center](https://www.seaportboston.com/). Due to space restrictions we do anticipate selling out, so [grab your tickets today](https://jsmobileconf.com/) and we will see you in Boston this November!
 
+And if you've read this far, we are happy to provide a 20% discount code: "NATIVESCRIPTBLOG"! 🍻
+
 ![jsmobileconf at Seaport Hotel & World Trade Center](seaport.png)
 
 
@@ -121,6 +123,8 @@ For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileco
 
 jsMobileConf will be hosted at the [Seaport Hotel & World Trade Center](https://www.seaportboston.com/). Due to space restrictions we do anticipate selling out, so [grab your tickets today](https://jsmobileconf.com/) and we will see you in Boston this November!
 
+And if you've read this far, we are happy to provide a 20% discount code: "TELERIKBLOG"! 🍻
+
 ![jsmobileconf at Seaport Hotel & World Trade Center](seaport.png)
 
 
@@ -182,6 +186,8 @@ For the full schedule be sure to check out [jsMobileConf.com](https://jsmobileco
 ## See You in Boston!
 
 jsMobileConf will be hosted at the [Seaport Hotel & World Trade Center](https://www.seaportboston.com/). Due to space restrictions we do anticipate selling out, so [grab your tickets today](https://jsmobileconf.com/) and we will see you in Boston this November!
+
+And if you've read this far, we are happy to provide a 20% discount code: "PROGRESSBLOG"! 🍻
 
 ![jsmobileconf at Seaport Hotel & World Trade Center](seaport.png)
 
