@@ -28,13 +28,13 @@ Oh, did we mention there are significant cash prizes?! 🤑
 
 ## Details
 
-**[Registration](https://www.uplabs.com/challenges/nativescript-uplabs-challenge) + App Submission Period:** October 7th to November 17th (6 weeks)
+**[Registration](https://www.uplabs.com/challenges/nativescript-uplabs-challenge-ac5fdcca-4e29-4e12-aa3d-0924424bdae7) + App Submission Period:** October 7th to November 17th (6 weeks)
 
 **Voting:** November 18th to November 24th Midnight PST (7 days)
 
 **Winners announced:** November 25th!
 
-> Register for the NativeScript Uplabs Challenge on [uplabs.com](https://www.uplabs.com/challenges/nativescript-uplabs-challenge).
+> Register for the NativeScript Uplabs Challenge on [uplabs.com](https://www.uplabs.com/challenges/nativescript-uplabs-challenge-ac5fdcca-4e29-4e12-aa3d-0924424bdae7).
 
 **NOTE:** There are some specific requirements for your submission. Please make sure that:
 
@@ -64,7 +64,7 @@ Take a look at the [code samples](https://market.nativescript.org/?tab=samples&f
 
 ## Prizes 🤑
 
-The winner will have their best works featured in the Uplabs newsletter and **shared with 400,000+ professionals** from around the world - including companies such as Google, Airbnb, and Facebook. 
+The winner will have their best works featured in the Uplabs newsletter and **shared with 590,000+ professionals** from around the world - including companies such as Google, Airbnb, and Facebook. 
 
 **And of course we are offering massive cash prizes for this competition!** A total of $3,000 will be delivered to the individuals/teams who provide the most amazing apps. Specifically the prize breakdown looks like this:
 
@@ -75,4 +75,4 @@ The winner will have their best works featured in the Uplabs newsletter and **sh
 
 We're looking forward to seeing what our amazing community comes up with, all while pushing the limits of the NativeScript Playground! 🚀
 
-[Sign up for the NativeScript Uplabs Challenge](https://www.uplabs.com/challenges/nativescript-uplabs-challenge) (button)
+[Sign up for the NativeScript Uplabs Challenge](https://www.uplabs.com/challenges/nativescript-uplabs-challenge-ac5fdcca-4e29-4e12-aa3d-0924424bdae7) (button)
