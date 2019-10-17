@@ -2,23 +2,25 @@
 
 Ever have the need to determine the *language* of a text input in your mobile app? While this may seem like a niche bit of functionality, if you think about it, there are numerous use cases for language detection:
 
-- Translating text between multiple languages;
-- Routing questions to a person with the appropriate language knowledge;
-- Any utility or game to help people identify common language constructs.
+- Providing a customized experience based on language, not location;
+- Identifying and translating text between languages;
+- Routing questions to a person with the appropriate language knowledge.
 
 Thankfully we can look to the cloud for an easy solution to this problem. Specifically, [Microsoft Azure](https://docs.microsoft.com/en-us/azure/).
 
-Azure provides a variety of "cognitive services" that allow your apps to interact with AI-powered algorithms in the cloud. You can quite literally allow your app to use some of its "human" senses by seeing, hearing, speaking, and interpreting input via traditional communication methods.
+> Interested in using Azure with NativeScript? Learn more at our upcoming [webinar on Thursday, November 7th](https://attendee.gotowebinar.com/register/3325827363192779779?source=blog)!
+
+Azure provides a variety of "cognitive services" that allow your apps to interact with AI-powered algorithms in the cloud. You can enable your app to use some of its "human" senses by seeing, hearing, speaking, and interpreting input via traditional communication methods.
 
 Let's take a look at how we can tap into just one of these Azure Cognitive Services APIs today: [Text Analytics](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview).
 
-> **NOTE:** Before you continue, if you don't already have a free Azure account, [create one now](https://azure.microsoft.com/en-us/free/). You'll need your subscription key and endpoint to actually do anything!
+> **NOTE:** Before you continue, if you don't already have a free Azure account, [create one now](https://azure.microsoft.com/en-us/free/). You'll need your subscription key and remote endpoint address to actually do anything!
 
 ## Create an Azure Cognitive Services Resource
 
 We need the all-important **subscription key** and **remote endpoint** to authenticate our NativeScript app with Azure. So first, you'll need to create a new *Azure Cognitive Services resource* using either the Azure Portal or the Azure CLI. This resource will enable access to the Text Analytics APIs.
 
-> **TIP:** No need to replicate the docs! Microsoft provides some simple instructions on how to do this for the [Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account) or the [Azure CLI](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account-cli).
+> **TIP:** No need to replicate the docs! Microsoft provides some simple instructions on how to do this via the [Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account) or the [Azure CLI](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account-cli).
 
 With this step complete, you should have a **remote endpoint** that looks something like this:
 
@@ -28,7 +30,7 @@ With this step complete, you should have a **remote endpoint** that looks someth
 
 	8hj3jks686l98098jhkhhu678686adfe
 	
-Don't try using either the above endpoint or key, they won't work 😉.
+Don't try using either of the above, they won't work 😉.
 
 ## English, Bulgarian, or...Esperanto?
 
@@ -38,7 +40,7 @@ With your key and endpoint in-hand, we can get to the code. The sample app I cre
 - A `Button` component for the user to tap (stop me of this is getting too complicated);
 - A `Label` component to display Azure's best guess at a language of the inputted text.
 
-Here is my final basic UI layer:
+Here is my basic UI layer:
 
 	<Page 
 		xmlns="http://schemas.nativescript.org/tns.xsd" 
@@ -46,8 +48,7 @@ Here is my final basic UI layer:
 		class="page">
 		
 	    <Page.actionBar>
-	        <ActionBar title="Azure Text Analytics" class="action-bar">
-	        </ActionBar>
+	        <ActionBar title="Azure Text Analytics" class="action-bar"></ActionBar>
 	    </Page.actionBar>
 	    
 	    <StackLayout class="p-20">
@@ -85,9 +86,9 @@ With a sassy sprinkling of SASS in my `app.scss` file to give my app a "Bootstra
 	
 	@import '~nativescript-theme-core/index';
 
-> **TIP:** If you're new to NativeScript, my favorite resources include the [NativeScript Playground tutorials](https://play.nativescript.org/) and [nslayouts.com](https://www.nslayouts.com/) to learn about native UI layouts.
+> **TIP:** If you're new to NativeScript, my favorite resources include the [NativeScript Playground tutorials](https://play.nativescript.org/) and [nslayouts.com](https://www.nslayouts.com/) to learn about native user interface layouts.
 
-**Next I want to wire up my UI layer to Azure.** I don't need any fancy Azure SDK - though there is a [JavaScript SDK](https://docs.microsoft.com/en-us/azure/javascript/) should you need to use one in the future.
+**Next I want to wire up my UI layer to Azure.** I don't need any fancy Azure SDK for this in particular - though there is a [JavaScript SDK](https://docs.microsoft.com/en-us/azure/javascript/) should you need to use one in the future.
 
 	import { Observable } from 'tns-core-modules/data/observable';
 	import { request } from 'tns-core-modules/http';
@@ -131,11 +132,13 @@ With a sassy sprinkling of SASS in my `app.scss` file to give my app a "Bootstra
 	    }
 	}
 
-Let's walk through this code really quickly.
+> **NOTE:** This example is using "core" NativeScript (the plain vanilla JavaScript/TypeScript flavor). You can also use [Angular](https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular) or [Vue.js](https://www.nativescript.org/vue) of course.
+
+Let's walk through this code:
 
 - My `onTap` method responds to a user tapping on the button.
-- The `getLanguage` method puts the entered text into an array of "documents" that Azure is anticipating.
-- With the HTTP `request` module, we can `POST` our data and receive a response from Azure!
+- The `getLanguage` method inserts the entered text into an array of `documents` that Azure is anticipating.
+- With the cross-platform HTTP `request` module, we can `POST` our data and receive a response from Azure!
 
 **Easy peasy!**
 
@@ -158,9 +161,14 @@ The resulting JSON response from the above request is going to look something li
 	   ]
 	}
 
-You can see in the `detectedLanguages` node that we've identified "English" as the most probable language.
+You can see in the `detectedLanguages` node that we've identified "English" as the most probable language. Try it for yourself with some other languages:
 
-At this point your app logic can take over and direct the user's experience in the app based on the language detected!
+- Español: "Hola Mundo"
+- Simplified Chinese: "你好，世界"
+- Bulgarian: "Здравей свят"
+- Esperanto: "Saluton mondo"
+
+At this point your app logic can take over and direct the user's experience based on the language detected!
 
 ## What's Next?
 
