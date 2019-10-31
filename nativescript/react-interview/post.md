@@ -4,9 +4,9 @@ Given that React Native has been around for quite some time (almost as long as N
 
 ![react nativescript logo](react-nativescript-logo.png)
 
-But there are some significant differences between the architectures (and developer experiences) of React Native and NativeScript, and some key advantages NativeScript brings to the table. And this all led Jamie Birch to initiate the React NativeScript project.
+But there are some significant differences between the architectures (and developer experiences) of React Native and NativeScript, and some key advantages NativeScript brings to the table. And this all led Jamie Birch to initiate the [React NativeScript](https://github.com/shirakaba/react-nativescript) project.
 
-**Why React NativeScript?** In his GitHub repo's readme, Jamie outlines some key differences between React Native and React Nativescript:
+**Why React NativeScript?** Jamie does a good job outlining some key differences between React Native and React NativeScript:
 
 ![react nativescript differences](react-ns-differences.png)
 
@@ -38,13 +38,13 @@ As for WebView-based frameworks, I haven't tried any myself, but the common argu
 
 ### What’s special about React NativeScript? What makes React NativeScript different from React Native?
 
-I like to regard it, in short, as a bridgeless alternative to React Native. You get much of the developer experience of React Native (e.g. TypeScript, Flexbox, and CSS), but with sync access to 100% of the platform APIs. Oh, and if you're from a web development background, React NativeScript's use of Webpack as its bundler is probably a welcome change to Metro.
+I like to regard it, in short, as **a bridgeless alternative to React Native**. You get much of the developer experience of React Native (e.g. TypeScript, Flexbox, and CSS), but with sync access to 100% of the platform APIs. Oh, and if you're from a web development background, React NativeScript's use of Webpack as its bundler is probably a welcome change to Metro.
 
 Anti-pitch: React Native of course still has a place in this world. It has wide platform reach, a huge ecosystem of existing libraries, and sees a lot of use in industry, to say the least.
 
 But if you are looking to work closely and frequently with native code – especially if you foresee a lot of context-switching between JS and native – then I'd really recommend giving React NativeScript a try. It was made specifically to solve React Native's pain point of native access.
 
-Have you received any feedback from the React Native team (or community) yet?
+### Have you received any feedback from the React Native team (or community) yet?
 
 To my surprise, I haven't heard anything from the React Native core team at all. There is some inquisitive interest from the community, but no real momentum yet. React NodeGUI (a React renderer for desktop application development) is a similar idea and recently took off though, so I think that with just a bit more exposure, React NativeScript has all the ingredients to snowball into something bigger.
 
@@ -54,14 +54,14 @@ My next immediate task is to publish a documentation website, as it's the last r
 
 Long-term, I'd like React NativeScript to have some form of compatibility with React Native. That is, the ability to consume React Native plugins (Stanisław Chmiela's proof-of-concept sets a precedent for this) and eventually full codebases (React Native Web is a successful example of translating from one React renderer to another – from Native to DOM – and I began a proof-of-concept to investigate translating from Native to NativeScript). Intercompatibility would allow React NativeScript to piggyback the efforts of the very large React Native community. The endgame would be a best-of-both: for React NativeScript to have access to the whole React Native ecosystem yet also be bridgeless.
 
-And at some point, I'd like a chance to actually use it to rebuild my app that posed so much friction when porting to React Native and started me on this whole project: LinguaBrowse. It's a web browser for the foreign-language internet, if curious. Or even if not curious!
+And at some point, I'd like a chance to actually use it to rebuild my app that posed so much friction when porting to React Native and started me on this whole project: [LinguaBrowse](https://birchlabs.co.uk/linguabrowse/). It's a web browser for the foreign-language internet, if curious. Or even if not curious!
 
 ### What can others in the community do to help?
 
-Now that I've built the foundation, I hope for the community to expand upon both the core codebase and the ecosystem in general. For example, it would be great if NativeScript UI plugin authors could add support for React, so I do hope to stabilise the API for this and document it fairly soon. Translations of the documentation will always be welcome. And there's an open niche for a navigation framework to be built.
+Now that I've [built the foundation](https://github.com/shirakaba/react-nativescript), I hope for the community to expand upon both the core codebase and the ecosystem in general. For example, it would be great if NativeScript UI plugin authors could add support for React, so I do hope to stabilise the API for this and document it fairly soon. Translations of the documentation will always be welcome. And there's an open niche for a navigation framework to be built.
 
 But above all, it would be great to see people simply building apps with React NativeScript. By making apps, we can determine what the library is lacking and elucidate best practices.
 
 This is the first open-source project of this scale that I've ever produced, and I've gradually come to the humbling realisation that I can't be in all places doing everything at once. I welcome any and all help in improving React NativeScript and hope to do my best in coordinating community efforts.
 
-As ever, if you have any difficulties using React NativeScript, please feel free to file an issue. And if you'd benefit more from some dialogue, we're always happy to assist in the #react channel of the NativeScript community Slack.
+As ever, if you have any difficulties using React NativeScript, please feel free to [file an issue](https://github.com/shirakaba/react-nativescript/issues). And if you'd benefit more from some dialogue, we're always happy to assist in the `#react` channel of the [NativeScript community Slack](https://www.nativescript.org/slack-invitation-form).
