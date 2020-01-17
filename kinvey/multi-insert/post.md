@@ -1,4 +1,4 @@
-# Improve Efficiency with Progress Kinvey's Multi-Insert Feature
+# New Kinvey Feature Improves Access to Legacy Data Sets from Cloud Apps
 
 Since the early days of SQL (that's about 40 years ago, but who's counting?) we've struggled to find an efficient and reliable way to insert multiple records into a database table in one stroke. Something that doesn't require an inordinate amount of code, confusing new proprietary syntax, or looping over arrays and data sets.
 
