@@ -1,4 +1,4 @@
-# First Class Kotlin Support Now Available in Progress Kinvey Android SDK
+# First Class Kotlin Support for Enterprise Java Mobile Developers
 
 When I think about [Progress Kinvey](https://www.progress.com/kinvey), I tend to skip over its standard backend capabilities and instead focus on the value-added features it provides to me, as an app developer (going above and beyond traditional serverless providers):
 
@@ -22,7 +22,7 @@ Speaking of those client SDKs, instead of providing one or two SDKs to cover "mo
 
 ## So Why Kotlin?
 
-[Kotlin](https://kotlinlang.org/) first appeared on the scene in 2011 and within a few years was widely embraced as a language evolution for Java developers. Features of Kotlin enable more legible code without any sacrifice in performance.
+[Kotlin](https://kotlinlang.org/) first appeared on the scene in 2011 and within a few years was widely embraced as a language evolution for Java developers. Features of Kotlin enable more legible code without any sacrifice in performance. This means enterprise Java mobile developers have a robust option for app development.
 
 In fact, last year, Google announced that Kotlin is now its *preferred* language for Android app development!
 
@@ -54,7 +54,7 @@ In fact, last year, Google announced that Kotlin is now its *preferred* language
 
 The [Kinvey Android SDK](https://github.com/Kinvey/android-sdk) has been with us for some time, nothing new about that. However, with the rising popularity of Kotlin, it became clear the team needed to modernize Kinvey's Java-based Android SDK to enable Kotlin developers to feel comfortable as well.
 
-With the SDK codebase migrated to Kotlin, this also meant migrating existing Android sample apps to Kotlin. As of today, there are a wide variety of Android sample apps for you to choose from:
+With the SDK codebase migrated to Kotlin, this also meant migrating existing Android sample apps to Kotlin. As of today, there are a wide variety of Android sample apps for enterprise Java mobile developers to choose from:
 
 - [github.com/KinveyApps/GeoTag-Android](https://github.com/KinveyApps/GeoTag-Android)
 - [github.com/KinveyApps/Kitchensink-Android](https://github.com/KinveyApps/Kitchensink-Android)
