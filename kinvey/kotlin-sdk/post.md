@@ -68,4 +68,4 @@ You can find the complete [Android SDK on Github](https://github.com/Kinvey/andr
 
 **What's next?** Well, we'd love to hear your feedback on the new Android SDK! Feel free to [submit a pull request](https://github.com/Kinvey/android-sdk) and/or tell us how we can improve the SDK via the [Kinvey developer forum](https://support.kinvey.com/support/discussions).
 
-And if you haven't already, be sure to sign up for your [free 30-day Progress Kinvey trial today!](https://console.kinvey.com/sign-up)
+**And if you haven't already, be sure to sign up for your [free 30-day Progress Kinvey trial today!](https://console.kinvey.com/sign-up)**
