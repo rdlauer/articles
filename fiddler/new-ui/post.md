@@ -1,6 +1,6 @@
 # Fiddler Everywhere is Getting a New Look
 
-[Fiddler](https://www.telerik.com/fiddler): you know it, you love it. Some of you have even been using it for 15+ years! Our venerable network debugging tool for desktop and web apps remains *one of the most popular products* in the Telerik portfolio for good reason: it just works.
+[Fiddler](https://www.telerik.com/fiddler): you know it, you love it. Some of you have even been using it for 15+ years! This venerable network debugging tool for desktop and web apps remains *one of the most popular products* in the [Telerik](https://www.telerik.com/) portfolio for good reason: it just works.
 
 But one of the top feature requests we have repeatedly received is to provide a compatible version for macOS and Linux. And that's precisely where [Fiddler Everywhere](https://www.telerik.com/fiddler-everywhere) comes in!
 
@@ -8,7 +8,7 @@ But one of the top feature requests we have repeatedly received is to provide a 
 
 Fiddler Everywhere is the next generation of Fiddler. It was built from the ground-up to work in a cross-platform manner for macOS, Linux, and yes of course, Windows. We've taken the most-used and most-loved features from the original Fiddler (which you may see called "Fiddler Classic"), are applying some additional polish, and actively making them available in Fiddler Everywhere.
 
-In the coming weeks and months you're going to see **a lot of activity** from the Fiddler team in relation to Fiddler Everywhere. We have some exciting plans in place for feature additions, expansions, and improvements. Today though, we'd like to specifically call out the new user experience.
+In the coming weeks and months you're going to see **a lot of activity** from the Fiddler team in relation to Fiddler Everywhere. We have some exciting plans in place for feature additions, expansions, and improvements. Today though, I'd like to specifically call out the new user experience.
 
 > You can download the latest beta of Fiddler Everywhere [right here](https://www.telerik.com/download/fiddler-everywhere). And before you ask, nope, the original Fiddler isn't going anywhere!
 
@@ -24,7 +24,7 @@ The Fiddler team is working on moving from the relatively antiquated Fiddler Eve
 
 ## New UX == New Features
 
-Of course, along with a new UX comes a variety of new and improved features. For instance, to make it easier for you to manage multiple concurrent sessions and tasks, we are introducing a tabbed interface. 📑
+Along with a new UX comes a variety of new and improved features as well. For instance, to make it easier for you to manage multiple concurrent sessions and tasks, we are introducing a tabbed interface. 📑
 
 ![fiddler everywhere tabbed ui](tabbed-ui.png)
 
