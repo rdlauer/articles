@@ -77,6 +77,8 @@ What about more complicated queries you ask? Microsoft Graph supports [OData que
 
 	/me/messages?$count=true
 
+Not bad!
+
 ## YOU get an SDK and YOU get an SDK!
 
 In typical (modern) Microsoft fashion, very few developers are left behind. [SDKs are currently available](https://docs.microsoft.com/en-us/graph/sdks/sdks-overview) for the following platforms:
@@ -100,7 +102,7 @@ Congratulations! 🎉 You've taken a single baby step towards understanding the 
 
 Maybe you're already brainstorming some solutions for solving real problems at your company. Maybe you ARE ready to build the next Sharepoint!?
 
-In any case, when you're ready to take the next step I'd suggest:
+*In any case, when you're ready to take the next step I'd suggest:*
 
 1. Using the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) to play around with some of the aforementioned sample queries.
 2. Trying out the [Microsoft Graph Quick Start](https://developer.microsoft.com/en-us/graph/quick-start) to see code from your favorite language/platform in action.
