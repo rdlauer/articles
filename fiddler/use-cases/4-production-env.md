@@ -8,11 +8,11 @@ Fiddler Everywhere is a brand new version of Fiddler. Most of what you love (and
 
 Today brings us to part four of common debugging scenarios many of us have encountered. We experience failures from remote APIs, we look for 404 and 500 errors, and, like today, are trying to replicate and resolve customer-reported issues while an app is already in production. Yikes! 😨
 
-If you're just tuning in, be sure to check out some other posts from this series:
+*If you're just tuning in, be sure to check out some other posts from this series:*
 
 - [Mocking Remote Issues](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-mocking-remote-issues)
 - [Scanning for 404 and 500 Status Codes](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-scanning-404-500-status-codes)
-- [Collaborative Debugging](NEED LINK!!!!!)
+- [Collaborative Debugging](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-collaborative-debugging)
 - Resolving an Error in Production (that's today!)
 - Diagnosing a Remote API Failure (coming soon)
 
@@ -38,34 +38,34 @@ This way we can run most of the app "in production", while loading individual sc
 
 Let's see how this works in practice:
 
-1) Open Fiddler Everywhere and toggle the **Live Traffic** option to **Capturing**:
+**1)** Open Fiddler Everywhere and toggle the **Live Traffic** option to **Capturing**:
 
 ![fiddler everywhere capture traffic](1-capturing.png)
 
-2) In your favorite browser, open the website in question and make sure all of the suspected problem assets are loaded by navigating to whichever page(s) are throwing errors. Remember, this could be JavaScript bundles, resources served by a CDN, images, or any other components of your application.
+**2)** In your favorite browser, open the website in question and make sure all of the suspected problem assets are loaded by navigating to whichever page(s) are throwing errors. Remember, this could be JavaScript bundles, resources served by a CDN, images, or any other components of your application.
 
-3) Back in Fiddler Everywhere, toggle the **Live Traffic** option to **Paused** so as to limit new requests coming into our session pane.
+**3)** Back in Fiddler Everywhere, toggle the **Live Traffic** option to **Paused** so as to limit new requests coming into our session pane.
 
 ![fiddler sessions](4-fiddler-sessions.png)
 
 *I mean, the app is using Bower as its package manager! Maybe the error we are looking for is the least of its concerns...* ☺️
 
-4) Find the specific session(s) you are interested in. In my case, I'm going to filter by **URL** to only show me the `app.js` bundle, which is a minified JavaScript file with my core app logic (a key suspect in the case): 
+**4)** Find the specific session(s) you are interested in. In my case, I'm going to filter by **URL** to only show me the `app.js` bundle, which is a minified JavaScript file with my core app logic (a key suspect in the case): 
 
 ![fiddler session filter](4-filter.png)
 
-5) Next I want to build an **Auto Responder** rule that will capture a request and do something, anything, with it. Right-click the session identified and choose **Add New Rule**.
+**5)** Next I want to build an **Auto Responder** rule that will capture a request and do something, anything, with it. Right-click the session identified and choose **Add New Rule**.
 
 ![fiddler add new rule](4-add-new-rule.png)
 
-6) Now, navigate to the **Auto Responder** tab where you'll see the session URL pre-loaded for you. Edit the rule and in the **Action** field, paste the location of the file you want to serve from your local file system. For instance:
+**6)** Now, navigate to the **Auto Responder** tab where you'll see the session URL pre-loaded for you. Edit the rule and in the **Action** field, paste the location of the file you want to serve from your local file system. For instance:
 
 - Windows: `C:\Users\myuser\Documents\app_unminified.js`
 - macOS: `/User/myuser/Documents/apps/app_unminified.js`
 
 ![fiddler auto responder](4-auto-responder.png)
 
-7) Save the rule, make sure **Enable Auto Responses** is checked, head back to your website, and reload! Fiddler Everywhere will **intercept the request** and **replace the remotely-served file** with the specified one from your own file system.
+**7)** Save the rule, make sure **Enable Auto Responses** is checked, head back to your website, and reload! Fiddler Everywhere will **intercept the request** and **replace the remotely-served file** with the specified one from your own file system.
 
 In theory, this allows you to quickly and easily substitute *any resource* with any other resource like images, videos, libraries, text, etc.
 
