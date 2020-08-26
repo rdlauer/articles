@@ -6,7 +6,7 @@ It should also be no surprise that mobile web traffic eclipsed desktop traffic a
 
 ![mobile vs desktop traffic](mobile-vs-desktop-traffic.png)
 
-Born out of this mobile-first focus was a new type of app called a [Progressive Web App (PWA)](https://en.wikipedia.org/wiki/Progressive_web_application). Expanding upon the foundations laid by the responsive web design movement, PWAs are focused on providing a progressive experience (working on any browser), responsiveness, and native-like app functionality.
+Thus born out of this mobile-first focus is a new type of app called a [Progressive Web App (PWA)](https://en.wikipedia.org/wiki/Progressive_web_application). Expanding upon the foundations laid by the responsive web design movement, PWAs are focused on providing a progressive experience (working on any browser), responsiveness, and native-like app functionality.
 
 *Some key features of PWAs include:*
 
@@ -18,13 +18,13 @@ So as we collectively march towards this PWA/responsive design/mobile-first utop
 
 <img src="lighthouse-example.gif" alt="example of lighthouse in action" style="margin:30px 0px;-webkit-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);-moz-box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);box-shadow: 0px 0px 18px -4px rgba(0,0,0,0.75);" />
 
-[Lighthouse](https://developers.google.com/web/tools/lighthouse) allows us to measure the performance, accessibility, best practices (e.g. legible text, valid tags, successful return codes), SEO status, and PWA-readiness of our web apps. By using Lighthouse, we can iterate on changes to measure their performance impact.
+[Lighthouse](https://developers.google.com/web/tools/lighthouse) allows us to measure the performance, accessibility, best practices (e.g. legible text, valid tags, successful return codes), SEO status, and PWA-readiness of our web apps. By using Lighthouse, we can quickly iterate on changes to measure their performance impact.
 
-Let's take a look at how we can take an existing website and optimize its performance with a few simple steps using our favorite web debugging tool, [Fiddler Everywhere](https://www.telerik.com/fiddler).
+Let's take a look at how we can take an existing website and optimize its performance with a few simple steps using our favorite web debugging tool, Fiddler Everywhere.
 
 ## What is Fiddler Everywhere?
 
-Fiddler Everywhere is a web debugging proxy for any browser, any device, on any platform. It's a tool used to log all HTTP/S traffic between your computer and the world, inspect/edit/reply to that traffic, compose API requests, and *fiddle* with incoming and outgoing data.
+[Fiddler Everywhere](https://www.telerik.com/fiddler) is a web debugging proxy for any browser, any device, on any platform. It's a tool used to log all HTTP/S traffic between your computer and the world, inspect/edit/reply to that traffic, compose API requests, and *fiddle* with incoming and outgoing data.
 
 You may have heard of the original Fiddler (Fiddler Classic) in the past as a robust Windows-only tool for web debugging. Fiddler Everywhere builds upon the core features of Fiddler Classic, but wraps them up with a new UX and a cross-platform shell for use on macOS, Windows, and Linux.
 
@@ -78,7 +78,7 @@ My first step would be to see if we can combine and minify some of our JavaScrip
 
 In a perfect world, I would be able to quickly combine all of my JavaScript and CSS assets into two files (e.g. `app.js` and `app.css`). Your mileage may vary depending on how many third party files you are accessing, but since nothing is real on the Internet anyway, we can at least pretend it's possible here! 😎
 
-We now need a way to effectively redirect requests for the original `.js` files to this new magical consolidated file we've created locally. This is where the Fiddler Everywhere Auto Responder rules come into play.
+We now need a way to effectively redirect requests for the original `.js` files to this new consolidated file we've created locally. This is where the Fiddler Everywhere Auto Responder rules come into play.
 
 Fiddler Everywhere's Auto Responder allows us to intercept specific requests and swap out the response with a variety of actions:
 
@@ -111,7 +111,7 @@ And then we need another rule:
 
 ☝️ this matches all other requests containing `.js` and simply drops the requests.
 
-We can use a very similar set of rules to do the same for our CSS files:
+We can use a very similar set of rules to do the same for our CSS files.
 
 ## Optimizing CSS Requests
 
@@ -148,7 +148,7 @@ Ok, with our JavaScript, CSS, and images optimized, let's see how we fare with L
 
 **But wait, there's a catch!**
 
-When you run a Lighthouse test, it downloads a JavaScript file to run its tests. So if you're blocking all requests that contain `.js` you will also prevent Lighthouse from functioning! To get around this, look for a request in the Fiddler Everywhere traffic pane where the **Host** contains `devtools`. On both Microsoft Edge and Google Chrome, this will likely be a reference to the `lighthouse_worker_module.js` file.
+When you run a Lighthouse test, it downloads a JavaScript file to run its tests. So if you're blocking all requests that contain `.js`...well...you will also prevent Lighthouse from functioning! To get around this, look for a request in the Fiddler Everywhere traffic pane where the **Host** contains `devtools`. On both Microsoft Edge and Google Chrome, this will likely be a reference to the `lighthouse_worker_module.js` file.
 
 Download that file and save it locally. Then, create one more Auto Responder rule by right-clicking the remote request to the `lighthouse_worker_module.js` file and choosing **Add Rule**. Your rule should look something like this (but with a different host and character string):
 
@@ -163,8 +163,8 @@ And...? 🥁
 
 ![npr fiddler lighthouse results](npr-lighthouse-results.png)
 
-Hey, not bad! We improved our score by 17 points with some simple optimizations. Ideally we would continue to look into how we can improve our image sizes (e.g. by using the new `.webp` format) and actually *remove* unused JavaScript and CSS (instead of just minimizing/combining). I'm willing to bet that those steps alone would get us another 10 points!
+Hey, not bad! We improved our score by 17 points with some simple optimizations. Ideally we would continue to look into how we can improve our image sizes (e.g. by using the new `.webp` format) and actually *remove unused* JavaScript and CSS (instead of just minimizing/combining). I'm willing to bet that those steps alone would net us another 10 points!
 
 ## Next Steps
 
-Of course we are merely scratching the surface on web debugging and inspection scenarios we can tackle with Fiddler Everywhere. [Grab your copy of Fiddler Everywhere today](https://www.telerik.com/fiddler) and happy debugging! 🐛
+Of course we are merely scratching the surface on web debugging and inspection scenarios we can tackle with Fiddler Everywhere. [Grab your copy of Fiddler Everywhere today](https://www.telerik.com/fiddler) and happy debugging (and optimizing)! 🐛
