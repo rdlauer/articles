@@ -93,6 +93,10 @@ The last of our UI tweaks is to add a fourth `FormField` component allowing us t
 
 We're not quite done yet. Notice the `width="25%` attribute. Make sure the other `FormField` components have the same width value, so all of our `FieldPickerSynced` components display properly. Finally, make a note of the `globalConfigKey` attribute. We'll be focusing on that value in the beginning of the next step!
 
+This additional `FormField` component will complete the UI for our select boxes:
+
+![select boxes](select-boxes.png)
+
 > **NOTE:** We are using `FieldPickerSynced` components instead of `FieldPicker` components because we want the selected values to sync with [GlobalConfig](https://airtable.com/developers/apps/api/models/GlobalConfig).
 
 Don't worry if you save `index.js` and see errors in your custom app. That's to be expected at this point!
@@ -142,13 +146,19 @@ So far we have:
 
 **Now comes the fun part!** Let's update our JavaScript code to properly render our data from the table.
 
+Our purpose here is to create an array of objects that correlate to what Chart.js needs to render a stacked bar chart. For example, based on the table data I'm using, one element of my dataset array will look like this:
+
+	{ label: 'Cat', backgroundColor: '#2d7ff9', data: [1,1,1,0] }
+
+Let's see how we get there!
+
 The `getChartData` function requires `records` from our table and the `xField` (x-axis field) to render the chart. Go ahead and add the `yField` variable here as well, so your function declaration should look like this:
 
 	function getChartData({ records, xField, yField }) {
 
-Next, we are using a Map object (a key-value pair) to store all table records associated with the x-axis column. To properly configure our chart's data sets (more on this in a bit) we will *also* store records associated with the y-axis column.
+Next, we are using a Map object (a key-value pair) to store all table records associated with the x-axis column. To properly configure our charts' datasets (more on this in a bit) we will *also* store records associated with the y-axis column.
 
-Let's add a `recordsByYValueString` variable along with an empty array to store Chart.js `dataset` objects for the chart. Your `getChartData` function should now start with these three lines of code:
+Add a `recordsByYValueString` variable along with an empty array to store Chart.js `dataset` objects for the chart. Your `getChartData` function should now start with these three lines of code:
 
 	const recordsByXValueString = new Map();
 	const recordsByYValueString = new Map();
@@ -206,7 +216,7 @@ Here is pseudo-visualization of what we want to accomplish next:
 	   |
 	   |__We create an array of numbers in `chartData` which are *counts* of x-axis values *by* y-axis value.
 
-Knowing this, let's go ahead and replace that deleted section of code with the following (we'll be sure to walk through it):
+Knowing this, let's go ahead and replace that deleted section of code with the following:
 
 	for (const [yValueString, records] of recordsByYValueString.entries()) {
 	  let chartData = [];
@@ -227,7 +237,7 @@ Knowing this, let's go ahead and replace that deleted section of code with the f
 
 We also supply the y-axis `label` and the `backgroundColor` of the stacks in our bar chart.
 
-For example, based on the table data I used at the beginning of this tutorial, one element of my `chartDatasets` array will look like this:
+Again, based on my table data, one element of my `chartDatasets` array will look like this:
 
 	{ label: 'Cat', backgroundColor: '#2d7ff9', data: [1,1,1,0] }
 
@@ -244,10 +254,10 @@ Finally, we can simplify the `data` declaration by passing the x-axis `labels` a
 
 ## Step 5: Play around with your new bar chart!
 
-When you save your changes locally, your custom app will reload automatically in the browser. Go ahead and choose the x-axis and y-axis columns using the provided select elements. Your new stacked bar chart should appear, color-coded by the "group by" selection.
+When you save your changes locally, your custom app will reload automatically in the browser. Go ahead and choose the x-axis and y-axis columns using the provided select boxes. Your new stacked bar chart should appear, color-coded by the "group by" selection.
 
 ![completed bar chart](extended-chart.png)
 
-Play around with your chart by adding/removing data from your table and swapping x- and y-axis elements.
+Play around with your chart by adding/removing data from your table and swapping x- and y-axis fields.
 
 Have fun charting with Airtable custom apps! 📊 
