@@ -196,9 +196,17 @@ See this next section of code? I want you to delete it as we no longer need it!
         points.push(records.length);
     }
 
-Adding a "group by" option ramps up the complexity of our app a bit, so we are better off starting the next section from scratch!
+Adding a "group by" option ramps up the complexity of our app a bit, so we are better off starting the next code section from scratch!
 
-Go ahead and replace the above section with the following code (we'll walk through it):
+Here is pseudo-visualization of what we want to accomplish next:
+
+	We loop over `recordsByYValueString`.
+	|
+	|__Within the loop we iterate over `recordsByXValueString`.
+	   |
+	   |__We create an array of numbers in `chartData` which are *counts* of x-axis values *by* y-axis value.
+
+Knowing this, let's go ahead and replace that deleted section of code with the following (we'll be sure to walk through it):
 
 	for (const [yValueString, records] of recordsByYValueString.entries()) {
 	  let chartData = [];
@@ -216,14 +224,6 @@ Go ahead and replace the above section with the following code (we'll walk throu
 	  chartDatasets.push({ label: yValueString, backgroundColor: bgColors[bgColorIndex], data: chartData });
 	  bgColorIndex++;
 	}
-
-Here is pseudo-visualization of what we are accomplishing with the above code:
-
-	We loop over `recordsByYValueString`.
-	|
-	|__Within the loop we iterate over `recordsByXValueString`.
-	   |
-	   |__We create an array of numbers in `chartData` which are *counts* of x-axis values *by* y-axis value.
 
 We also supply the y-axis `label` and the `backgroundColor` of the stacks in our bar chart.
 
