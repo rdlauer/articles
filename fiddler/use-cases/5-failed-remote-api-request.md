@@ -11,7 +11,7 @@ In this series, we are looking at a set of specific scenarios many of us regular
 - [Mocking Remote Issues](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-mocking-remote-issues)
 - [Scanning for 404 and 500 Status Codes](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-scanning-404-500-status-codes)
 - [Collaborative Debugging](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-collaborative-debugging)
-- Resolving an Error in Production (NEED LINK!!!!!!!!!!)
+- [Resolving an Error in Production](https://www.telerik.com/blogs/debugging-with-fiddler-everywhere-resolving-an-error-in-production)
 - Diagnosing a Remote API Failure (that's today!)
 
 > **NOTE:** Have no fear! Fiddler Classic (the original Fiddler) isn't going anywhere! You can still [download Fiddler Classic](https://www.telerik.com/download/fiddler) and use it like you always have on Windows.
