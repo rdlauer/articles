@@ -179,7 +179,7 @@ Still within the `getChartData` function, create an array of distinct x-axis val
 
 	const xLabels = [...recordsByXValueString.keys()];
 
-Then let's continue by initializing a couple of variables to help us add some color to our stacked bar chart:
+Then let's initialize a couple of variables to help us add some color to our stacked bar chart:
 
 	const bgColors = ['#2d7ff9', '#18bfff', '#ff08c2', '#f82b60', '#ff6f2c', '#fcb400', '#20c933', '#8b46ff', '#666666'];
 	let bgColorIndex = 0;
