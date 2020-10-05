@@ -148,11 +148,10 @@ The `getChartData` function requires `records` from our table and the `xField` (
 
 Next, we are using a Map object (a key-value pair) to store all table records associated with the x-axis column. To properly configure our chart's data sets (more on this in a bit) we will *also* store records associated with the y-axis column.
 
-Let's add a `recordsByYValueString` variable along with two empty arrays to track our x-axis labels and Chart.js `dataset` objects for our chart. Your `getChartData` function should now start with these four lines of code:
+Let's add a `recordsByYValueString` variable along with an empty array to store Chart.js `dataset` objects for the chart. Your `getChartData` function should now start with these three lines of code:
 
 	const recordsByXValueString = new Map();
 	const recordsByYValueString = new Map();
-	const xLabels = [];
 	const chartDatasets = [];
 
 We need to loop over all of the records in our table to determine our x-axes, y-axes, and the relationships between the two to properly display a stacked (grouped) set of data. Basically we need to determine:
@@ -161,15 +160,7 @@ We need to loop over all of the records in our table to determine our x-axes, y-
 2. The unique y-axis string values;
 3. The count of y-axis values by x-axis in order to group them.
 
-Inside our first `for` loop we are going to keep the existing code the same, but before the end of the loop, let's add the following:
-
-    if (!xLabels.includes(xValueString)) {
-      xLabels.push(xValueString);
-    }
-
-`xLabels` is a string array of our x-axis labels. We push distinct values into this array during the loop.
-
-We now want to get the string value of the y-axis (or group by) field from the table records provided:
+Inside our first `for` loop we are going to keep the existing code the same. Before the end of the loop though, we want to get the string value of the y-axis (or group by) field from the table records provided:
 
     const yValue = record.getCellValue(yField);
     const yValueString = yValue === null ? null : record.getCellValueAsString(yField);
@@ -184,7 +175,11 @@ Finally, we want to load the y values into the `recordsByYValueString` Map objec
 
 After our `for` loop is complete, we now have some data structures we can work with to populate our chart!
 
-Again within the `getChartData` function, let's continue by initializing a couple of variables to help us add some color to our stacked bar chart:
+Still within the `getChartData` function, create an array of distinct x-axis values using the `keys()` method:
+
+	const xLabels = [...recordsByXValueString.keys()];
+
+Then let's continue by initializing a couple of variables to help us add some color to our stacked bar chart:
 
 	const bgColors = ['#2d7ff9', '#18bfff', '#ff08c2', '#f82b60', '#ff6f2c', '#fcb400', '#20c933', '#8b46ff', '#666666'];
 	let bgColorIndex = 0;
