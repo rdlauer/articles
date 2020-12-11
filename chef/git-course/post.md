@@ -4,7 +4,7 @@ Ever find yourself nervously laughing along when a colleague talks about how the
 
 [Git](https://git-scm.com/) is easily the most popular version control system on the market. While previously stuck with server-based version control systems like [Subversion](https://subversion.apache.org/) or *(gasp)* Team Foundation Server, today's developer can enjoy the performance and flexibility of a *distributed* system like Git.
 
-> Want to skip the details and learn more? Check out the new (and yes free!) course on Learn Chef: [Getting Started with Git!](NEED URL)
+> Want to skip the details and learn more? Check out the new (and yes free!) course on Learn Chef: [Getting Started with Git](NEED URL).
 
 ## Advantages of Git
 
@@ -44,13 +44,13 @@ If you're confused about the difference between Git and [GitHub](https://github.
 
 GitHub is almost entirely free to use and well worth taking advantage of!
 
-> **TIP:** If you're averse to CLI tooling, GitHub also offers [GitHub Desktop](https://desktop.github.com/) for macOS and Windows.
+> **TIP:** If you're averse to command-line tooling, GitHub also offers [GitHub Desktop](https://desktop.github.com/) for macOS and Windows.
 
 ## Learn Git on Learn Chef
 
-All this brings me to an important point: there is a new course on Learn Chef called [Getting Started with Git!](NEED URL)
+All of this brings me to an important point: there is a new course on Learn Chef called [Getting Started with Git](NEED URL)!
 
-> **NOTE:** Most of the courses on Learn Chef are DevOps-focused. Getting Started with Git is the first of a new series of courses that focus on related technologies and languages. Spoiler: Ruby and YAML are on the way. 🥳
+> **NOTE:** Most of the courses on Learn Chef are DevOps-focused. Getting Started with Git is the first of a new series of courses that focus on related technologies and languages. Spoiler alert: Ruby, Powershell, and Bash are on the way! 🥳
 
 *So what's in the course?*
 
