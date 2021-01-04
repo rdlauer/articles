@@ -1,6 +1,6 @@
 # Wireless IoT for the Rest of Us
 
-When predicting the next 10 years of growth in IT markets, the famed tech analysts of our time (Gartner, Forrester, IDC, and the like) seem to strike out as often as they hit. I get it, reading the tea leaves of tech trends is not for the feint of heart.
+When predicting the next 10 years of growth in IT markets, the famed tech analysts of our time (Gartner, Forrester, IDC, and the like) seem to strike out as often as they hit. I get it, reading the tea leaves of tech trends is not for the faint of heart.
 
 However, one artifact of Gartner I'm a huge fan of is their [Hype Cycle](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle). Gartner takes us on an annual roller coaster of technology niches as they advance through early life stages:
 
@@ -54,9 +54,9 @@ You can distill the Blues hardware down to [Notecard and Notecarrier](https://bl
 	- "AL" for Lithium Polymer batteries (LiPo) or solar power
 	- "AA" for AA batteries
 	- "AE" for direct embedding
-- **Notecarrier AF:** Used with Adafruit Feather microcontrollers.
-- **Notecarrier Pi:** Used for, you guessed it, development with a Raspberry Pi.
-- **Notecarrier B:** Is a small form-factor board that doesn't come with cellular or GPS (instead relying on a Notecard for connectivity).
+- **Notecarrier AF:** Includes cellular and GPS, used with Adafruit Feather microcontrollers.
+- **Notecarrier Pi:** Includes cellular and GPS, used for development with a Raspberry Pi.
+- **Notecarrier B:** Is a small form-factor board that does *not* come with cellular or GPS antennas, so you'll have to connect your own.
 
 ![blues wireless notecarrier](notecarrier.png)
 
