@@ -1,10 +1,10 @@
-# A Git Course for the Absolute Beginner
+# Learning Git for the Absolute Beginner
 
 Ever find yourself nervously laughing along when a colleague talks about how their push was rejected, so they radically performed a `git push --force`? Or pretend to relate to their sigh of relief after executing a `git rebase` with no conflicts? If so, help is just around the corner!
 
 [Git](https://git-scm.com/) is easily the most popular version control system on the market. While previously stuck with server-based version control systems like [Subversion](https://subversion.apache.org/) or *(gasp)* Team Foundation Server, today's developer can enjoy the performance and flexibility of a *distributed* system like Git.
 
-> Want to skip the details and learn more? Check out the new (and yes free!) course on Learn Chef: [Getting Started with Git](NEED URL).
+> Want to skip the details and learn more? Check out the new (and yes free!) course on Learn Chef: [Getting Started with Git](https://learn.chef.io/courses/course-v1:chef+Git101+Perpetual/about).
 
 ## Advantages of Git
 
@@ -48,7 +48,7 @@ GitHub is almost entirely free to use and well worth taking advantage of!
 
 ## Learn Git on Learn Chef
 
-All of this brings me to an important point: there is a new course on Learn Chef called [Getting Started with Git](NEED URL)!
+All of this brings me to an important point: there is a new course on Learn Chef called [Getting Started with Git](https://learn.chef.io/courses/course-v1:chef+Git101+Perpetual/about)!
 
 > **NOTE:** Most of the courses on Learn Chef are DevOps-focused. Getting Started with Git is the first of a new series of courses that focus on related technologies and languages. Spoiler alert: Ruby, Powershell, and Bash are on the way! 🥳
 
@@ -58,4 +58,4 @@ All of this brings me to an important point: there is a new course on Learn Chef
 
 **Diving Deeper into Git** - Once you're more familiar with the basics, it's time to learn about branching (like merging branches, branching strategy, alternatives to branching, and rebasing).
 
-**Ready?** Check out [Getting Started with Git](NEED URL) now on Learn Chef! 🎓
+**Ready?** Check out [Getting Started with Git](https://learn.chef.io/courses/course-v1:chef+Git101+Perpetual/about) now on Learn Chef! 🎓
