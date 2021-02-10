@@ -8,7 +8,7 @@ Let's take a look at how we can go from unboxing our Pico to becoming productive
 
 ## Why MicroPython?
 
-As just mentioned, you can develop on the Pico MCU using either C/C++ or MicroPython. While I fully admire all of you C developers out there, I gravitate towards higher level languages like Python due to their ease of use and developer experience. The [MicroPython docs](http://docs.micropython.org/en/latest/) do a nice job of explaining:
+As just mentioned, you can develop on the Pico MCU using either C/C++ or MicroPython. While I fully admire all of you C developers out there, I gravitate towards higher level languages like Python due to their ease of use and developer experience. The [MicroPython docs](http://docs.micropython.org/en/latest/) do a nice job of explaining what it is:
 
 > MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
 
@@ -20,11 +20,19 @@ If you have previous experience working with Raspberry Pi and MicroPython, your 
 
 ![thonny ide](thonny.png)
 
-Don't get me wrong, Thonny is a super fun little IDE to work with. The problem with Thonny is that it only takes you so far. I'm missing my coding extensions, syntax autocompletion, error highlighting, and built-in terminal provided by [Visual Studio Code](https://code.visualstudio.com/).
+Don't get me wrong, Thonny is a super fun little IDE to work with. The problem with Thonny is that it only takes you so far. I'm missing my productivity extensions, syntax autocompletion, error highlighting, and built-in terminal provided by [Visual Studio Code](https://code.visualstudio.com/).
 
 I'm a big fan of meeting developers where they are (via popular languages AND tooling), so leveraging the uber-popular Visual Studio Code for developing on my Pico is where I'm going to start.
 
 ![visual studio code ide](vscode.png)
+
+Aside from the productivity improvements I get from VS Code out of the box, for Python-specific development there are a few additional extensions I highly recommend:
+
+- [MagicPython](https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython) - Advanced syntax highlighting for Python 3.
+- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) - IntelliSense on steroids for Python.
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - Linting, debugging, you name it, for Python.
+
+You can get all of these (and more) with the [Python Extension Pack](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack).
 
 ## Set Up Your Pico for MicroPython
 
@@ -218,8 +226,8 @@ If you got lost along the way, here is the complete source:
 
 Congratulations! You've taken your first baby steps with Raspberry Pi Pico and Visual Studio Code.
 
-A common next step with IoT projects is to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world.
+A common next step with IoT projects is to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world. Pump your data to the cloud and creating engaging data visualizations and dashboards.
 
-The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Actually yeah, take a look at the [NoteCard from Blues Wireless](https://blues.io/) for 10 years of global cellular for $49.
+The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Actually yeah, take a look at the [Notecard from Blues Wireless](https://blues.io/) for 10 years of global cellular for $49. *Full disclaimer: I work for Blues Wireless, but I believe what I say here!*
 
-Also, be sure to check out a tutorial by Brandon Satrom on [Adding Cellular to the Raspberry Pi Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6).
+If you want to learn more, check out another tutorial on [Adding Cellular to the Raspberry Pi Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6).
