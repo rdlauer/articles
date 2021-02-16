@@ -1,6 +1,6 @@
 # Your First Steps with Raspberry Pi Pico and Visual Studio Code
 
-The Raspberry Pi Foundation recently released their first microcontroller board, the [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/). This $4 (not a typo!) device is not only a low-cost entry into the Raspberry Pi ecosystem, it's also surprisingly useful for embedded IoT development.
+The Raspberry Pi Foundation recently released their first microcontroller board, the [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/). This $4 USD (not a typo!) device is not only a low-cost entry into the Raspberry Pi ecosystem, it's also surprisingly useful for embedded IoT development.
 
 While Raspberry Pis are best known as single board computers (e.g. the Raspberry Pi 1/2/3/4 models), the Pico was designed for use in a variety of physical computing solutions. Think in terms of controlling motors, reading sensors, [cellular connectivity](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), and even [machine learning](https://github.com/raspberrypi/pico-tflmicro). As with other Raspberry Pi hardware, it's developer-friendly and can be programmed with C/C++ and [MicroPython](https://micropython.org/) (a Python implementation for microcontrollers).
 
@@ -36,7 +36,7 @@ You can get all of these (and more) with the [Python Extension Pack](https://mar
 
 ## Set Up Your Pico for MicroPython
 
-You program your Pico's firmware by connecting it to your computer and simply dragging-and-dropping a file on to it. Pretty magical. But...MicroPython isn't supported out of the box.
+You program your Pico's firmware by holding down the `BOOTSEL` button, connecting it to your computer via USB, and dragging-and-dropping a file on to it. Pretty magical. But...MicroPython isn't supported out of the box.
 
 Thankfully the folks at Raspberry Pi have done the heavily lifting to let us install MicroPython easily.
 
@@ -92,7 +92,7 @@ Finally, to turn the LED on (where `1` == on and `0` == off):
 
 	led.value(1)
 
-Save the file and look for the "➡️ Run" command at the bottom of your VS Code window. This will run `led.py` on the Pico. You can also use the "⬆️ Upload" command to transfer the file and run the code.
+Save the file and look for the "➡️ Run" command at the bottom of your VS Code window. This will run `led.py` on the Pico. You can also use the "⬆️ Upload" command to transfer the open project in VS Code.
 
 Your Pico's LED should now be in a static "on" position:
 
@@ -124,7 +124,7 @@ Our finished circuit will look something like this:
 
 ![finished circuit](pico-finished-product.jpg)
 
-Now when looking at *why* the components are laid out the way they are, it's always helpful to consult the Raspberry Pi Pico pin layout:
+Now when looking at *why* the components are laid out the way they are, it's always helpful to consult the Raspberry Pi Pico pin layout (especially since the labels are *underneath* the board):
 
 ![pico pinout](https://www.raspberrypi.org/documentation/pico/getting-started/static/15243f1ffd3b8ee646a1708bf4c0e866/Pico-R3-Pinout.svg)
 
@@ -226,8 +226,8 @@ If you got lost along the way, here is the complete source:
 
 Congratulations! You've taken your first baby steps with Raspberry Pi Pico and Visual Studio Code.
 
-A common next step with IoT projects is to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world. Pump your data to the cloud and creating engaging data visualizations and dashboards.
+A common next step would be to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world. How about pumping your data to the cloud and creating engaging data visualizations and dashboards?
 
-The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Actually yeah, take a look at the [Notecard from Blues Wireless](https://blues.io/) for 10 years of global cellular for $49. *Full disclaimer: I work for Blues Wireless, but I believe what I say here!*
+The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Actually yeah, take a look at the [Notecard from Blues Wireless](https://blues.io/) for 10 years of global cellular for $49. *Full disclaimer: I work for Blues Wireless, but I stand behind what I say here!*
 
-If you want to learn more, check out another tutorial on [Adding Cellular to the Raspberry Pi Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6).
+If you want to learn more about cellular + Pico, check out this tutorial on [Adding Cellular to the Raspberry Pi Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6).
