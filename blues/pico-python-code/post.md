@@ -1,6 +1,6 @@
 # Your First Steps with Raspberry Pi Pico and Visual Studio Code
 
-The Raspberry Pi Foundation recently released their first microcontroller board, the [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/). This $4 USD (not a typo!) device is not only a low-cost entry into the Raspberry Pi ecosystem, it's also surprisingly useful for embedded IoT development.
+The Raspberry Pi Foundation recently released their first microcontroller board, the [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/). This \$4 USD (not a typo!) device is not only a low-cost entry into the Raspberry Pi ecosystem, it's also surprisingly useful for embedded IoT development.     
 
 While Raspberry Pis are best known as single board computers (e.g. the Raspberry Pi 1/2/3/4 models), the Pico was designed for use in a variety of physical computing solutions. Think in terms of controlling motors, reading sensors, [cellular connectivity](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), and even [machine learning](https://github.com/raspberrypi/pico-tflmicro). As with other Raspberry Pi hardware, it's developer-friendly and can be programmed with C/C++ and [MicroPython](https://micropython.org/) (a Python implementation for microcontrollers).
 
@@ -12,7 +12,7 @@ As just mentioned, you can develop on the Pico MCU using either C/C++ or MicroPy
 
 > MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
 
-And recall, we are working on a $4 MCU with minimal memory (264KB). MicroPython, being a trimmed down implementation of Python, is a nearly perfect solution for programming your Pico. The Pico port of MicroPython also includes additional modules for accessing Pico-specific hardware.
+And recall, we are working on a \$4 MCU with minimal memory (264KB). MicroPython, being a trimmed down implementation of Python, is a nearly perfect solution for programming your Pico. The Pico port of MicroPython also includes additional modules for accessing Pico-specific hardware.
 
 ## Why Visual Studio Code?
 
@@ -26,13 +26,17 @@ I'm a big fan of meeting developers where they are (via popular languages AND to
 
 ![visual studio code ide](vscode.png)
 
-Aside from the productivity improvements I get from VS Code out of the box, for Python-specific development there are a few additional extensions I highly recommend:
+Aside from the productivity improvements you get from VS Code out of the box, for Python-specific development there are a few additional extensions I highly recommend:
 
 - [MagicPython](https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython) - Advanced syntax highlighting for Python 3.
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) - IntelliSense on steroids for Python.
 - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - Linting, debugging, you name it, for Python.
 
 You can get all of these (and more) with the [Python Extension Pack](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack).
+
+Lastly I might recommend installing MicroPython locally to avoid any "missing imports" issues when linting your code in VS Code. You can use Homebrew on macOS `brew install micropython` to do so.
+
+> **NOTE:** As of this writing, Homebrew doesn't support MicroPython installation on Apple Silicon M1 Macs. Also, I couldn't find a reliable way of installing MicroPython on Windows. Sound off in the comments if you have any suggestions!
 
 ## Set Up Your Pico for MicroPython
 
@@ -80,7 +84,7 @@ Now that we know we can communicate with the Pico, let's take the next baby step
 
 The only hardware on the Pico that we can visually interact with is a tiny LED. So let's write a simple program that turns the LED on and off.
 
-In VS Code, create a new project directory and a `led.py` file in that directory (file name doesn't matter). In `led.py` we can start by adding this line:
+In VS Code, create a new project directory and a `led.py` file in that directory (file name doesn't matter). In `led.py` we can start by adding this import statement:
 
 	from machine import Pin
 
@@ -226,8 +230,8 @@ If you got lost along the way, here is the complete source:
 
 Congratulations! You've taken your first baby steps with Raspberry Pi Pico and Visual Studio Code.
 
-A common next step would be to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world. How about pumping your data to the cloud and creating engaging data visualizations and dashboards?
+A common next step would be to look at practical applications of what we've started to build here, which often means allowing your device to communicate with the world. How about pumping some sensor data (e.g. GPS location, humidity, temperature, etc) to the cloud and creating engaging data visualizations and dashboards?
 
-The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Actually yeah, take a look at the [Notecard from Blues Wireless](https://blues.io/) for 10 years of global cellular for $49. *Full disclaimer: I work for Blues Wireless, but I stand behind what I say here!*
+The easiest, cheapest, and most reliable way of doing so is with global cellular. Cheapest? Take a look at the [Notecard from Blues Wireless](https://blues.io/) for 10 years of [global cellular](https://dev.blues.io/hardware/notecard-datasheet/note-wbex-500/#cellular-service) starting at \$49. *Full disclaimer: I work for Blues Wireless, but I stand behind what I say here!*
 
 If you want to learn more about cellular + Pico, check out this tutorial on [Adding Cellular to the Raspberry Pi Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6).
