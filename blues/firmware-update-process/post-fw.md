@@ -1,12 +1,12 @@
 # Manually Update Notecard Firmware
 
-Hi folks! As you may know by now, the Q1 release from Blues Wireless includes updated firmware for your Notecard devices. While we recommend you [use Notehub to update device firmware](https://dev.blues.io/operate/notehub-walkthrough/#manage-device-firmware), some of you may want to manually update over USB. Here are some (relatively) quick instructions on how to do so.
+Hi folks! As you may know by now, the Q1 release from Blues Wireless includes updated firmware for your Notecard devices. While we recommend you [use Notehub to update device firmware](NEED LINK), some of you may want to manually update over USB. Here are some (relatively) quick instructions on how to do so.
 
 ## Prerequisites
 
-- Serial terminal emulator software (e.g. the web-based terminal available at [dev.blues.io](https://dev.blues.io/notecard-playground/)).
+- Serial terminal emulator software (e.g. the web-based terminal available at [dev.blues.io](https://dev.blues.io/notecard-playground/), [CoolTerm](https://freeware.the-meiers.org/), or [TinyTerm](https://www.censoft.com/products/tinyterm-plus-terminal-emulator.php)).
 - [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) (download the appropriate version for your OS).
-- A fresh [Notecard binary file](NEED LINK).
+- A fresh Notecard binary file (attached to this post).
 
 ## STM32CubeProgrammer Installation Notes
 
@@ -47,7 +47,7 @@ Download and extract the zip package and execute:
 
 ## Firmware Update Process
 
-Connect your Notecard device to your computer via USB. Verify that your terminal emulator (e.g. [dev.blues.io](https://dev.blues.io/notecard-playground/)) is able to connect to the device by sending the `card.version` command:
+Connect your Notecard device to your computer via USB. Verify that your terminal emulator (e.g. [dev.blues.io](https://dev.blues.io/notecard-playground/), [CoolTerm](https://freeware.the-meiers.org/), or [TinyTerm](https://www.censoft.com/products/tinyterm-plus-terminal-emulator.php)) is able to connect to the device by sending the `card.version` command:
 
 	{"req": "card.version"}
 	
