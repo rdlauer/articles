@@ -4,7 +4,7 @@ To say IoT device deployments of every shape and size are booming is a bit of an
 
 Collected data might be something minuscule: a single data point from a single sensor logged once per hour. On the other end of the spectrum consider environmental sensor data monitoring volatile compounds. Data from these sensors could be accumulated in millisecond timeframes, 24/7/365, to ensure stability.
 
-One piece of the puzzle is the collection of this data in the cloud. Another piece is tackling the ability to **derive meaningful insights** from the data. The ability to create intuitive dashboards and data visualizations is paramount. This is where customizable solutions like [Ubidots](https://ubidots.com/) come into play.
+One piece of the puzzle is the collection of this data in the cloud. Another piece is **deriving meaningful insights** from the data. The ability to create intuitive dashboards and data visualizations is paramount. This is where customizable solutions like [Ubidots](https://ubidots.com/) come into play.
 
 In this article we'll take a high level look at routing data collected from a device to a dashboard with hardware and services from [Blues Wireless](https://blues.io/) and Ubidots.
 
@@ -19,10 +19,10 @@ Where am I going with this? Let me introduce you to the [Notecard](https://blues
 The Notecard is a developer-focused device-to-cloud data pump built to address key pain points experienced today with cellular IoT:
 
 - It's developer-friendly. 🤗
-- Pricing is predictable (and affordable). 🤑
+- Pricing is predictable (and affordable, starting at $49 for 10 years and 500MB of data). 🤑
 - Provisioning is automatic and security is baked-in. 🔐
 
-For just a moment let's hone in on the "developer-friendly" aspect. Traditional cellular IoT platforms rely on using the arcane AT command syntax, such as:
+For just a moment let's hone in on the "developer-friendly" aspect. Traditional cellular IoT platforms rely on using arcane AT command syntax, such as:
 
 	AT+CSQ
 	AT+CREG=1
@@ -31,7 +31,7 @@ For just a moment let's hone in on the "developer-friendly" aspect. Traditional 
 
 ...OR do a 180 degree pivot and abstract the complexity away to such an extent that individual use cases are nearly impossible to implement.
 
-How does the Notecard solve this? JSON!
+How does the Notecard solve this? **JSON!**
 
 All commands to and from the Notecard are pure JSON, opening the door to developers of all types. For example, should we want to send sensor data in an event (i.e. "note") from Notecard to the cloud, this is how it might be composed:
 
@@ -43,7 +43,9 @@ All commands to and from the Notecard are pure JSON, opening the door to develop
 	    }
 	}
 
-> Curious to know more about Notecard in action? Check out the [Blues Wireless developer portal](https://dev.blues.io/).
+A `req` is a request and the `body` of the request is an object containing temperature and humidity values.
+
+> Curious to know more about the Notecard? Check out the [Blues Wireless developer portal](https://dev.blues.io/).
 
 ## From Cloud to Route
 
@@ -77,11 +79,11 @@ Ubidots is a cloud service which provides data collection, analysis, and visuali
   <source src="https://ubidots.com/_nuxt/videos/out.70f9c29.mp4" type="video/mp4" />
 </video>
 
-With data streaming through from a Notehub route to Ubidots, we're able to add visualizations to better understand what our devices are telling us.
+With data streaming from a Notehub route to Ubidots, we're able to add visualizations to better understand what our devices are telling us.
 
-The intuitive interface of Ubidots allows you to quickly add one of many pre-defined data visualization templates.
+The intuitive interface of Ubidots allows you to quickly add one of many pre-defined data visualization widgets.
 
-![ubidots templates](ubidots-templates.png)
+![ubidots widgets](ubidots-templates.png)
 
 Case in point: I spent all of about three minutes creating a histogram to show the frequency of temperature ranges over a given time period along with a thermometer to show the most recent reading:
 
@@ -89,10 +91,12 @@ Case in point: I spent all of about three minutes creating a histogram to show t
 
 ## Next Steps
 
-Adding engaging data visualizations for your IoT-generated data can make sense for more use cases than running an industrial sensor pulling in MBs of data every day. Take your next step with the Notecard and Ubidots by:
+Adding engaging data visualizations for your IoT-generated data can make sense for more use cases than running an industrial sensor pulling in MBs of data every day. Even much smaller implementations can find value in these visual dashboards.
+
+Take your next step with the Notecard and Ubidots by:
 
 1. Reading over the [Ubidots routing tutorial](https://dev.blues.io/build/tutorials/route-tutorial/ubidots/) in the Blues Wireless developer portal.
-2. Grab your own [Notecard Developer Kit](https://shop.blues.io/collections/development-kits) (and go through the tutorial for real!).
-3. [Sign up with Ubidots](https://ubidots.com/) and create some amazing dataviz dashboards.
+2. Grabbing your own [Notecard Developer Kit](https://shop.blues.io/collections/development-kits) (and go through the tutorial for real!).
+3. [Signing up with Ubidots](https://ubidots.com/) and creating some amazing dataviz dashboards.
 
 > And if you've made it this far, we're happy to offer a discount code for your Notecard Developer Kit! [Just use this link](https://shop.blues.io/discount/5JM00D2M3SA2_BLOG) for 10% off.
