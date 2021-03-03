@@ -1,6 +1,6 @@
 # Manually Update Notecard Firmware
 
-Hi folks! As you may know by now, the Q1 release from Blues Wireless includes updated firmware for your Notecard devices. While we recommend you [use Notehub to update device firmware](NEED LINK), some of you may want to manually update over USB. Here are some (relatively) quick instructions on how to do so.
+Hi folks! As you may know by now, the Q1 release from Blues Wireless includes updated firmware for your Notecard devices. While we recommend you use [Notehub](https://notehub.io/) to update device firmware, some of you may want to manually update over USB. Here are some (relatively) quick instructions on how to do so.
 
 ## Prerequisites
 
