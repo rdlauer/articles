@@ -95,8 +95,8 @@ Assuming that we are starting with a base Raspberry Pi 4, our first step is to u
 	
 Next, we need create a new directory on the RPi to hold our app assets:
 
-	mkdir /Documents/apps/pibird
-	cd /Documents/apps/pibird
+	mkdir Documents/apps/pibird
+	cd Documents/apps/pibird
 	
 Download the TensorFlow Lite model and label map (the `birds-model.tflite` and `birds-label.txt` files) [from this GitHub repository](https://github.com/rdlauer/pibird) and drop them in the `pibird` directory.
 
@@ -110,25 +110,7 @@ Our directory structure should look something like this:
 		birds-model.tflite
 		/images
 
-## Install Prerequisites
-
-At this point I highly recommend setting up a new [virtual environment](https://docs.python.org/3/tutorial/venv.html). This will prevent conflicts between versions of Python libraries that may already be installed.
-
-If not already available, install `virtualenv` with:
-
-	sudo pip3 install virtualenv
-	
-Create the `bird-env` virtual environment:
-
-	python3 -m venv bird-env
-	
-You should now have a new directory within `pibird` called `bird-env`. This will store all of the packages for this environment.
-
-Activate the virtual environment with:
-
-	source bird-env/bin/activate
-	
-> **NOTE:** You'll need to issue this `source` command every time you open a new terminal window.
+## Prerequisites
 	
 ### Install TensorFlow Lite
 
@@ -182,8 +164,6 @@ The Notecard uses I2C for communicating with our Raspberry Pi. First, make sure 
 
 If prompted, reboot your RPi and meet us back here.
 
-> **NOTE:** Remember to run the `source` command in your terminal to reconnect to your virtual environment if you had to reboot!
-
 Next, install the `i2c-tools` package, so you can confirm connections to I2C devices:
 
 	sudo apt-get install -y i2c-tools
@@ -227,6 +207,7 @@ And with that, a few final imports in `bird.py`:
 
 	import numpy as np
 	from PIL import Image
+	import time
 	import keys
 	
 Hey what's that `keys` import above? There are three sensitive pieces of information we'll be dealing with later:
@@ -263,7 +244,7 @@ With all of the packages properly installed, your `bird.py` file should start lo
 
 With these prerequisites installed, we can proceed with the next step: writing the codez!
 
-> **NOTE:** Want to skip writing code and go directly to the [hardware assembly](LINK)? Check out [this GitHub repository](https://github.com/rdlauer/pibird) for the full source.
+> **NOTE:** If you're more of a copy-paste developer like me, check out [this GitHub repository](https://github.com/rdlauer/pibird) for the full Python source.
 
 ### Activate Camera with a PIR Sensor
 
@@ -280,7 +261,7 @@ In `bird.py` initialize our PIR sensor with:
 	pir_sensor = digitalio.DigitalInOut(board.D18)
 	pir_sensor.direction = digitalio.Direction.INPUT
 
-Then we can create a `main` function that checks for the `boolean` value returned by the sensor:
+Then we can create a `main` function that checks for the `boolean` value returned by the sensor (and runs in an infinite loop):
 
 	def main():
 	    """ check to see if PIR sensor has been triggered """
@@ -288,6 +269,9 @@ Then we can create a `main` function that checks for the `boolean` value returne
 	        check_for_bird()
 	
 	    time.sleep(30)  # only check for motion every 30 seconds!
+	
+	while True:
+	    main()
 
 ### Take a Picture (it'll last longer) and Analyze
 
