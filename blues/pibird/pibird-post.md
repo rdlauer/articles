@@ -12,7 +12,7 @@ You've likely [seen similar applications](https://coral.ai/projects/bird-feeder/
 
 For many of us, once we leave the friendly confines of our dwelling our WiFi signals drop. In my case, my bird feeder is well outside the range of not only WiFi, but also electricity (and as much as I'd love to run a 100-foot extension cord through my yard, I think I'll pass).
 
-So in this case by remote, I mean REMOTE. We will need a solution that provides both **cellular connectivity** and battery power (backed up by solar).
+So in this case by remote, I mean REMOTE. We will need a solution that provides both **cellular connectivity** and **battery power** (backed up by solar).
 
 *We are going to build a remote ML-powered birding solution that is a:*
 
@@ -30,7 +30,7 @@ Wait.
 
 I know what you're thinking. "A solar-powered RPi 4? Why not just strap a laptop to a tree with a bungee cord?" Valid argument. The RPi 4 is not exactly a power-sipping IoT device. This tutorial is meant to be a proof-of-concept and a relatively simple entry point to ML, so let's have fun with it.
 
-> **SPOILER:** The next iteration is going to pivot to using a Raspberry Pi Pico and focus on power optimization, ML model refinement, and a more sustainable solution. [Stay tuned!](NEED LINK)
+> **SPOILER:** The next iteration is going to pivot to using a Raspberry Pi Pico and focus on power optimization, ML model refinement, and a more sustainable solution. [Stay tuned!](https://www.hackster.io/rob-lauer/projects)
 
 ## Machine Learning with TensorFlow Lite
 
@@ -98,7 +98,7 @@ Next, we need create a new directory on the RPi to hold our app assets:
 	mkdir /Documents/apps/pibird
 	cd /Documents/apps/pibird
 	
-Download the TensorFlow Lite model and label map (the `birds-model.tflite` and `birds-label.txt` files) [from this GitHub repository](NEED LINK) and drop them in the `pibird` directory.
+Download the TensorFlow Lite model and label map (the `birds-model.tflite` and `birds-label.txt` files) [from this GitHub repository](https://github.com/rdlauer/pibird) and drop them in the `pibird` directory.
 
 Finally, create a new file called `bird.py` and a directory called `images` to store captured photos.
 
@@ -188,11 +188,11 @@ Next, install the `i2c-tools` package, so you can confirm connections to I2C dev
 
 	sudo apt-get install -y i2c-tools
 
-Ensure the Notecard is detected by our RPi by running:
+Later on after the Notecarrier Pi HAT is set up, we can ensure the Notecard is detected by our RPi by running:
 
 	sudo i2cdetect -y 1
 	
-You should see `17` in the output provided. This means the Notecard responded at `0x17`, which is the I2C address the Notecard uses.
+We should see `17` in the output provided. This means the Notecard responded at `0x17`, which is the I2C address the Notecard uses.
 
 	pi@raspberrypi:~ $ sudo i2cdetect -y 1
 	     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -263,7 +263,7 @@ With all of the packages properly installed, your `bird.py` file should start lo
 
 With these prerequisites installed, we can proceed with the next step: writing the codez!
 
-> **NOTE:** Want to skip writing code and go directly to the [hardware assembly](LINK)? Check out [this GitHub repository](LINK) for the full source.
+> **NOTE:** Want to skip writing code and go directly to the [hardware assembly](LINK)? Check out [this GitHub repository](https://github.com/rdlauer/pibird) for the full source.
 
 ### Activate Camera with a PIR Sensor
 
@@ -300,7 +300,7 @@ We also want to specify where in our filesystem we want the captured image to be
 
 	path_to_image = "images/bird.jpg"
 
-While we're at it, let's specify the location of the ML model and label map used to map the results from the model to an actual bird name (you should have downloaded these from the [GitHub repo](NEED LINK)):
+While we're at it, let's specify the location of the ML model and label map used to map the results from the model to an actual bird name (you should have downloaded these from the [GitHub repo](https://github.com/rdlauer/pibird)):
 
 	path_to_labels = "birds-label.txt"
 	path_to_model = "birds-model.tflite"
@@ -420,7 +420,7 @@ This function is building a JSON object with a request to add a new note (an "ev
 The body of the JSON object we are sending to Notehub will look like this:
 
 	{
-	    "bird": "Black-capped Chicadee",
+	    "bird": "Black-capped Chickadee",
 	    "from": "+1260XXXXXX",
 	    "prob": "91.0",
 	    "to": "+1608XXXXXX"
@@ -430,7 +430,7 @@ The body of the JSON object we are sending to Notehub will look like this:
 
 Next up let's see how we configure our cloud provider to not only store birds we've seen at our feeder, but also to *route* that data to another provider (in our case, Twilio for SMS).
 
-> **REMINDER:** If you missed any steps above, you can always [consult this GitHub repository](NEED LINK) for a completed version of the project.
+> **REMINDER:** If you missed any steps above, you can always [consult this GitHub repository](https://github.com/rdlauer/pibird) for a completed version of the project.
 
 ### Configure Notehub
 
@@ -567,7 +567,7 @@ While I wasn't anticipating this would be a 24/7/365 solution, I did want to pro
 
 A reasonably-priced option turned out to be the Awclub ABS Plastic Junction Box. Secured by six bolts and rubber stripping, it's a nice plastic case providing just enough security from the elements.
 
-After drilling a small hole in the bottom for the solar panel's USB cable, we can thread the camera and PIR sensor wiring through a gap in the seam (avoiding more drilling while still providing just enough weatherproofing for my needs!)
+After drilling a small hole in the bottom for the solar panel's USB cable, we can thread the camera and PIR sensor wiring through a gap in the seam (avoiding more drilling while still providing just enough weatherproofing for my needs!). Using some double-sided tape we can securely attach the PIR sensor and camera to the feeder.
 
 **And we're done!**
 
@@ -581,7 +581,7 @@ While this was a fun project to build, in practice the results are not quite per
 
 ![text message result](text-msg.png)
 
-However, it was fantastic to see data coming through from the Notecard to Notehub and getting a text message that allowed me to sprint to the feeder and (usually) see that same bird.
+However, it was fantastic to see data coming through from the Notecard to Notehub and getting a text message that allowed me to sprint to the feeder and (sometimes) see that same bird.
 
 ## What's Next?
 
