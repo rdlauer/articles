@@ -575,9 +575,9 @@ After drilling a small hole in the bottom for the solar panel's USB cable, we ca
 
 ## Remote Birding in Action
 
-By starting our program with `python3 bird.py`, the project is ready to roll out!
+By starting our program with `python3 bird.py` (which you'll want to do *prior* to mounting it outside!), the project is ready to roll out.
 
-While this was a fun project to build, in practice the results are not quite perfect. I really don't think a red junglefowl just showed up at my feeder.
+While this was a fun project to build, in practice the results are not quite perfect. I really don't think a Red junglefowl (gallus gallus) just showed up at my feeder.
 
 ![text message result](text-msg.png)
 
