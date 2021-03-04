@@ -270,6 +270,7 @@ Then we can create a `main` function that checks for the `boolean` value returne
 	
 	    time.sleep(30)  # only check for motion every 30 seconds!
 	
+	# make sure this loop remains at the bottom of your script
 	while True:
 	    main()
 
