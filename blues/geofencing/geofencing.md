@@ -300,8 +300,6 @@ Before we put it into action, let's see how we finish hooking up Notecard to Not
 
 ### Cloud Part I: Notehub
 
-Recall that [notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) is the Notecard-optimized service that enables synchronization of data between our Notecard devices and cloud applications.
-
 While we already went over Notehub and it's role in our project, the high level workflow bears repeating:
 
 1. GPS data is **gathered and processed** on the Notecard.
