@@ -62,15 +62,15 @@ It's licensed under Apache-2.0 👍, but also contains most known birds on the p
 
 The next relative unknown for this project is how we are going to add wireless cellular connectivity.
 
-I chose to tackle this with the Notecard from [Blues Wireless](https://blues.io/). The [Notecard](https://blues.io/products/) is a cellular and GPS-enabled device-to-cloud data-pump that comes with 500 MB of data and 10 years of cellular service starting at \$49. No activation charges, no monthly fees.
+I chose to tackle this with the Notecard from [Blues Wireless](https://blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project). The [Notecard](https://blues.io/products/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) is a cellular and GPS-enabled device-to-cloud data-pump that comes with 500 MB of data and 10 years of cellular service starting at \$49. No activation charges, no monthly fees.
 
 ![notecard from blues wireless](notecard.png)
 
-The Notecard itself is a tiny 30mm x 34mm SoM and ships ready to embed in a project via its m.2 connector. But to make things even easier, Blues Wireless also provides a series of expansion boards (Notecarriers). For this project, I used the [Notecarrier-PI](https://shop.blues.io/products/raspberry-pi-starter-kit), a Pi HAT with pass-through headers.
+The Notecard itself is a tiny 30mm x 34mm SoM and ships ready to embed in a project via its m.2 connector. But to make things even easier, Blues Wireless also provides a series of expansion boards (Notecarriers). For this project, I used the [Notecarrier-PI](https://shop.blues.io/products/raspberry-pi-starter-kit?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), a Pi HAT with pass-through headers.
 
 ![notecarrier-pi from blues wireless](notecarrier.png)
 
-The Notecard comes preconfigured to securely communicate with [Notehub.io](https://notehub.io/), the Blues Wireless service that enables secure device-to-cloud data flow. Notecards are assigned to a project in Notehub, which then syncs data in those projects for routing to your cloud of choice.
+The Notecard comes preconfigured to securely communicate with [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), the Blues Wireless service that enables secure device-to-cloud data flow. Notecards are assigned to a project in Notehub, which then syncs data in those projects for routing to your cloud of choice.
 
 The Notecard is an IoT developer's dream come true due to the baked-in security, automatic provisioning, and developer-friendly programming model.
 
@@ -419,11 +419,11 @@ Next up let's see how we configure our cloud provider to not only store birds we
 
 ### Configure Notehub
 
-Recall that [notehub.io](https://notehub.io/) is the Notecard-optimized service that enables synchronization of data between the cloud and your Notecard devices.
+Recall that [notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) is the Notecard-optimized service that enables synchronization of data between the cloud and your Notecard devices.
 
 ![notehub projects](notehub.png)
 
-[Notehub routes](https://dev.blues.io/build/tutorials/route-tutorial/initialstate/) allow you to route (and optionally transform) data to your cloud provider. If you're already invested in AWS, Azure, or GCP (or even IoT platforms like ThingSpeak, InitialState, or Ubidots), Notehub can quickly and securely route your data where you want it.
+[Notehub routes](https://dev.blues.io/build/tutorials/route-tutorial/initialstate/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) allow you to route (and optionally transform) data to your cloud provider. If you're already invested in AWS, Azure, or GCP (or even IoT platforms like ThingSpeak, InitialState, or Ubidots), Notehub can quickly and securely route your data where you want it.
 
 To get going with a free Notehub account:
 
@@ -443,7 +443,7 @@ The power of Notehub certainly doesn't end there. In fact, my favorite feature o
 
 In our case, every time a bird is logged in Notehub, we'd like to be notified via SMS. Twilio is one of the easiest ways to integrate SMS messaging, so let's start there.
 
-> **NOTE:** You can alternatively follow a much more detailed version of the following guide on the [Blues Wireless developer portal](https://dev.blues.io/build/routing-guides/twilio-route/).
+> **NOTE:** You can alternatively follow a much more detailed version of the following guide on the [Blues Wireless developer portal](https://dev.blues.io/build/routing-guides/twilio-route/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
 
 If you don't have one already, create a new (free) [Twilio account](https://www.twilio.com/try-twilio). You'll then need to set up a **Verified Caller ID** number. This is required in order to send SMS messages.
 
