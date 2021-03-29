@@ -63,6 +63,8 @@ The one downside of the Raspberry Pi Pico is the lack of labels on the top of th
 
 ![raspberry pi pico pinout](pico-pinout.png)
 
+*Pico pinout provided by the [Rasperry Pi Foundation](https://www.raspberrypi.org/).*
+
 Next up is the LCD module. I really like using the 1602A LCD because it has a pre-soldered backpack making I2C and power connections a snap.
 
 Connect `GND` and `VCC` on the LCD to the appropriate spots on your breadboard's power rail. The Pico can only supply 3.3V out, but the LCD works best (brightest) with 5V. So, while you *can* connect the LCD to the same power rail that the Pico is powering, the screen will be fairly dim.
@@ -175,11 +177,11 @@ Next up, let's configure this Notecard to speak with Notehub (recall that Notehu
 	req = {"req": "hub.set"}
 	req["product"] = PRODUCTUID
 	req["mode"] = "periodic"
-	req["inbound"] = 120
-	req["outbound"] = 15
+	req["inbound"] = 720
+	req["outbound"] = 20
 	rsp = card.Transaction(req)
 
-**What's going on here?** We are creating a `hub.set` request to set some Notecard <-> Notehub syncing parameters. We are setting the `ProductUID` and defining a `periodic` cellular connectivity mode. The `inbound` parameter means the Notecard will connect to Notehub once every 120 minutes to check for any data it needs to download. More importantly for us, the `outbound` parameter tells Notecard to send collected data to Notehub every 15 minutes (but only if there is data to send).
+**What's going on here?** We are creating a `hub.set` request to set some Notecard <-> Notehub syncing parameters. We are setting the `ProductUID` and defining a `periodic` cellular connectivity mode. The `inbound` parameter means the Notecard will connect to Notehub once every 720 minutes to check for any data it needs to download. More importantly for us, the `outbound` parameter tells Notecard to send collected data to Notehub every 20 minutes (but only if there is data to send).
 
 We can now set up the appropriate GPS mode on the Notecard. Since our program relies on a continuous stream of GPS data, we'll want to use `continuous` mode.
 
@@ -279,7 +281,6 @@ There is a lot going on in these functions, so let's focus on the important part
 	    """ uploads the note/event to notehub.io """
 	    req = {"req": "note.add"}
 	    req["file"] = "bars.qo"
-	    req["start"] = True
 	    req["body"] = {"lat": lat, "lon": lon, "bars": bars}
 	    rsp = card.Transaction(req)
 	    lcd_msg("NOTE SENT!")
