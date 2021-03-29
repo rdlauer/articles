@@ -1,22 +1,16 @@
 # Create a Cellular Heatmap with Raspberry Pi Pico and GPS Geofencing
 
-Collectively we are gathering *a lot* of sensor data with our IoT projects. How much? Well, [IDC is predicting](https://www.idc.com/getdoc.jsp?containerId=prAP46737220) more than 55 *billion* IoT devices will be in the field by 2025, capturing upwards of 73 *zettabytes* (that's 80,000,000,000,000 GB) of data 🤯.
+A heatmap overlaid on satellite imagery is one of the more tantalizing means of displaying map-based data. Considering my newfound love for the Raspberry Pi Pico, and having seen how easy it can be to [add cellular connectivity to the Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), why not combine these loves in a new project?
 
-So...we should probably think of something to do with all of this data!
-
-Broader adoption of IoT solutions is going to hinge upon the creation of useful data dashboards and visualizations, much like what we are going to build today: a heatmap made up of map points acquired with cellular and GPS data.
+Today we are going to build a cellular- and GPS-enabled IoT solution that collects cell signal strength and location data at defined intervals, stored in the cloud, with a web app to display said data in a heatmap.
 
 ![completed web app](completed-web.jpg)
 
 *A "heatmap" is a visual representation of data where values are translated into colors.*
 
-A heatmap overlaid on satellite imagery is one of the more tantalizing means of displaying map-based data. Considering my newfound love for the Raspberry Pi Pico, and having seen how easy it can be to [add cellular connectivity to the Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), why not combine these loves in a new project?
-
 If you'd like a quick two-minute overview of the project, check out this video:
 
 https://www.youtube.com/watch?v=oEFy60qA7Ao
-
-Today we are going to build a cellular- and GPS-enabled IoT solution that collects cell signal strength and location data at defined intervals, stored in the cloud, with a web app to display said data in a heatmap.
 
 *Specifically we will be developing with:*
 
@@ -25,7 +19,7 @@ Today we are going to build a cellular- and GPS-enabled IoT solution that collec
 3. 1602 LCD module (optional, for displaying in-action status updates).
 4. [Google Cloud Platform](https://cloud.google.com/) (for cloud functions, storage, and maps)
 
-> **TIP:** If Google Cloud Platform is a turnoff, you can absolutely swap in your cloud provider of choice for most of the functions we cover. 🤗
+> **TIP:** If Google Cloud Platform is a turnoff, you can absolutely swap in your cloud provider of choice for most of the functionality covered. 🤗
 
 So at the highest level we are:
 
@@ -39,41 +33,27 @@ In this guide, we will cover each of these sections in full detail.
 
 If our goal is to collect cell signal strength AND location data at defined intervals, we need a hardware solution that can handle both *while also* providing geofencing capabilities. All the while being aware that GPS can be very power-hungry.
 
-> "Geofencing" is a term used to describe a virtual perimeter around a real-world area.
-
 In our case, we want to measure cell signals in a series of geofenced areas that we will create and measure on-the-fly.
 
-We can handle this with the Notecard from [Blues Wireless](https://blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project). The [Notecard](https://blues.io/products/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) is a cellular and GPS device-to-cloud data pump that comes with 500 MB of data and 10 years of service for \$49. No activation charges, no monthly fees.
+We can handle this with the [Notecard](https://blues.io/products/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) from Blues Wireless. The  Notecard is a cellular and GPS device-to-cloud data pump that comes with 500 MB of data and 10 years of service for \$49. No activation charges, no monthly fees.
 
 ![cellular notecard from blues wireless](notecard.png)
 
 To make things even easier, Blues Wireless also provides a series of expansion boards (called Notecarriers) to host the Notecard. For this project, we will use the [Notecarrier-A](https://shop.blues.io/products/carr-al?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), a board with pre-soldered female headers allowing access to all the pins on the Notecard edge connector.
 
-![notecarrier-a from blues wireless](notecarrier.png)
-
 *Now here is the really important part:*
 
 The Notecard ships preconfigured to communicate with [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), the Blues Wireless service that enables secure device-to-cloud data flow. Notecards are assigned to a project in Notehub, which then routes data to your cloud of choice (in our case, that'll be Google Cloud Platform).
 
-The Notecard is an IoT developer's dream come true due to the baked-in security, automatic provisioning, and developer-friendly programming model. Plus, all commands to/from the Notecard are just JSON! Should we want to send data in an event (a.k.a. "note") from Notecard to the cloud, this is how it might be composed:
-
-	{
-	    "req":"note.add",
-	    "body":{
-	        "temp":35.5,
-	        "humid":56.23
-	    }
-	}
+![notecard notehub diagram](notecard-notehub-diagram.png)
 
 ## Let's Build! 🏗️
 
-Thankfully, the hardware requirements for this project are relatively minimal. I chose to add an LCD module as it's a great visual aid to notify me that GPS data is being acquired as I'm accumulating data. It's not critical for the project though, so you can remove it if need-be.
-
-*Here's a quick look at what we are going to build:*
+Here's a quick look at what we are going to build:
 
 ![completed project](project-complete.jpg)
 
-Our Raspberry Pi Pico can supply all the power our Notecarrier needs. We use jumper wires to connect `3V3(OUT)` and `GND` on the Pico to a power rail on the breadboard. Next, connect the power rail to `BATT` and `GND` on the Notecarrier.
+Our Raspberry Pi Pico can supply all the power our Notecarrier needs. Use jumper wires to connect `3V3(OUT)` and `GND` on the Pico to a power rail on the breadboard. Next, connect the power rail to `BATT` and `GND` on the Notecarrier.
 
 We'll be using the I2C bus for communication between devices, so we can connect `SCL` (the clock line) and `SDA` (the data line) pins on the Notecarrier to any open I2C headers on the Pico (I used pins 4 and 5 which place the Notecarrier on I2C1).
 
@@ -85,7 +65,7 @@ The one downside of the Raspberry Pi Pico is the lack of labels on the top of th
 
 Next up is the LCD module. I really like using the 1602A LCD because it has a pre-soldered backpack making I2C and power connections a snap.
 
-Connect `GND` and `VCC` on the LCD to the appropriate spots on your breadboard's power rail. Here's where it gets a little tricky. The Pico can only supply 3.3V out, but the LCD works best (brightest) with 5V. So, while you *can* connect the LCD to the same power rail that the Pico is powering, the screen will be fairly dim.
+Connect `GND` and `VCC` on the LCD to the appropriate spots on your breadboard's power rail. The Pico can only supply 3.3V out, but the LCD works best (brightest) with 5V. So, while you *can* connect the LCD to the same power rail that the Pico is powering, the screen will be fairly dim.
 
 ![project lcd connection](project-lcd.jpg)
 
@@ -101,28 +81,21 @@ Finally, the LCD is going to use the same I2C bus as the Notecarrier. Connect `S
 
 ## Let's Write Some (Micro)Python! 🐍
 
-With our physical hardware configured properly, it's time to program our Pico. The Raspberry Pi Pico features the RP2040 microcontroller (designed by Raspberry Pi themselves). With its low price ($4 USD), dual-core processor (Arm Cortex-M0+), and developer experience, the Pico has recently become my favorite MCU.
+With our physical hardware configured properly, it's time to program our Pico with some MicroPython.
+
+> **TIP:** Want to skip the step-by-step code writing exercise? You can always [view this repository](https://github.com/rdlauer/notecard-heatmap) with the completed assets.
 
 ### Set Up Your Pico for MicroPython
 
 The Pico supports MicroPython, just not out of the box. So if you haven't already, you'll need to flash your Pico's firmware.
 
-To install MicroPython, just follow the instructions provided under "Getting Started with MicroPython" in the [Raspberry Pi docs](https://www.raspberrypi.org/documentation/rp2040/getting-started/#getting-started-with-micropython):
-
-1. Download the provided MicroPython UF2 file.
-2. Push and hold the `BOOTSEL` button and plug the Pico into your computer.
-3. Browse drives and look for "RPI-RP2".
-4. Drop the downloaded UF2 file onto "RPI-RP2".
-
-Your Pico will automatically reboot and you'll have access to MicroPython.
+To install MicroPython, just follow the instructions provided under "Getting Started with MicroPython" in the [Raspberry Pi docs](https://www.raspberrypi.org/documentation/rp2040/getting-started/#getting-started-with-micropython).
 
 ### Start Your IDE
 
-> **TIP:** Want to skip the step-by-step code writing exercise? You can always [view this repository](https://github.com/rdlauer/notecard-heatmap) with the completed assets.
-
 Boot up your favorite code editor. I gravitate towards [Visual Studio Code and the Pico-Go extension](https://dev.to/blues/your-first-steps-with-raspberry-pi-pico-and-visual-studio-code-4jbd), but [Thonny](https://thonny.org/) is a great little IDE as well.
 
-Create two files: `main.py` and `keys.py`. You can probably guess that `main` will store our application logic (only a bit more than 100 lines!) and `keys` will store sensitive data that we don't want to commit to public source control.
+Create two files: `main.py` and `keys.py`. You can probably guess that `main` will store our application logic and `keys` will store sensitive data that we don't want to commit to public source control.
 
 Our `keys.py` file is only going to store one key, and that's the Notecard's `ProductUID`. This associates our Notecard with our cloud-based Notehub project. We'll come back to this in a bit, but for now, just add this line:
 
@@ -139,10 +112,10 @@ Next, download `lcd_api.py` and `machine_i2c_lcd.py` from the [completed project
 Our completed file and folder structure on the Pico should look like this:
 
 	/lib
-		/notecard
-			card.py
-			env.py
-			...
+	  /notecard
+	    card.py
+	    env.py
+	    ...
 	keys.py
 	lcd_api.py
 	machine_i2c_lcd.py
@@ -163,7 +136,7 @@ Create two variables that will hold constants for the app:
 	GEOFENCE_METERS = 50
 	PRODUCTUID = keys.PRODUCTUID
 
-The `GEOFENCE_METERS` variable tells our program how far from the center of our geofence circle we should be before attempting to capture a new set of data. With this value, we are traveling 50 meters before acquiring a new set of coordinates and cell signal strength.
+The `GEOFENCE_METERS` variable tells our program how far from the center of our geofence circle we should be before capturing a new set of coordinates.
 
 In theory this will allow us to create a heatmap that includes touching or overlapping geofenced areas, something like this:
 
@@ -173,7 +146,7 @@ In theory this will allow us to create a heatmap that includes touching or overl
 
 Next we need to initialize the I2C bus, our LCD module, and the Notecard.
 
-Since I used pins 2 and 3 for I2C (which correspond to the I2C1 bus), I can initialize I2C with:
+Since I used GPIO pins 2 and 3 for I2C (which correspond to the I2C1 bus), I can initialize I2C with:
 
 	i2c = I2C(1, sda=Pin(2), scl=Pin(3))
 
@@ -186,7 +159,7 @@ Finally, we initialize the LCD (2 rows with 16 characters on each row):
 	lcd = I2cLcd(i2c, lcd_i2c_addr, 2, 16)
 	lcd.clear()
 
-Next we'll want to setup our Notecard. The note-python library comes with a handy `OpenI2C` method that does the dirty work for us:
+Next we'll want to set up our Notecard. The note-python library comes with a handy `OpenI2C` method that does the dirty work for us:
 
 	card = notecard.OpenI2C(i2c, 0, 0, debug=True)
 	print("Successfully Connected to Notecard!")
@@ -208,7 +181,7 @@ Next up, let's configure this Notecard to speak with Notehub (recall that Notehu
 
 **What's going on here?** We are creating a `hub.set` request to set some Notecard <-> Notehub syncing parameters. We are setting the `ProductUID` and defining a `periodic` cellular connectivity mode. The `inbound` parameter means the Notecard will connect to Notehub once every 120 minutes to check for any data it needs to download. More importantly for us, the `outbound` parameter tells Notecard to send collected data to Notehub every 15 minutes (but only if there is data to send).
 
-We can now set up the appropriate GPS mode on the Notecard. Recall that GPS is really power hungry, but since our program relies on a continuous stream of GPS data, we need to use `continuous` mode.
+We can now set up the appropriate GPS mode on the Notecard. Since our program relies on a continuous stream of GPS data, we'll want to use `continuous` mode.
 
 	req = {"req": "card.location.mode", "mode": "continuous"}
 	rsp = card.Transaction(req)
@@ -296,9 +269,9 @@ Continuing forward, when GPS is active we are ready to set our first geofence! W
 There is a lot going on in these functions, so let's focus on the important parts:
 
 1. We are setting a new geofence using the provided lat/lng coordinates with the `set_geofence` function, which uses the Notecard's [card.location.mode](https://dev.blues.io/reference/complete-api-reference/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project#card-location-mode) API.
-2. We double check that GPS is still active (can never be too careful!) and see if the `max` value is >= to our `GEOFENCE_METERS` value. `max` is the approximate distance between the center of the current geofence and our current location, in meters.
+2. We double check that GPS is still active (can never be too careful!) and see if the `max` value is >= to our `GEOFENCE_METERS` value. `max` is the approximate distance between the center of the geofence and our current location.
 3. We get the cell signal strength in the `get_cell_bars` function (see below) and send data to Notehub with the `add_note` function (also below).
-4. Finally, we set a new geofence by calling `track_location` again with the updated lat/lng coordinates.
+4. Finally, we set a new geofence by calling `track_location` with the updated lat/lng coordinates.
 
 *Here are the two remaining functions referenced above:*
 
@@ -317,9 +290,7 @@ There is a lot going on in these functions, so let's focus on the important part
 	    rsp = card.Transaction(req)
 	    return rsp["count"]
 
-> **TIP:** FYI the Blues Wireless Developer Portal provides thorough documentation of [all the Notecard APIs](https://dev.blues.io/reference/complete-api-reference/introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
-
-In `add_note`, a note/event is created on the Notecard and queued for delivery to Notehub. We need to specify a name of the notefile, and in this case we are using `bars.qo` ("qo" = outgoing queue). This file name will be important as we transition our work to the cloud.
+> **TIP:** The Blues Wireless Developer Portal provides thorough documentation of [all the Notecard APIs](https://dev.blues.io/reference/complete-api-reference/introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
 
 **And that's it!** The program on our Pico should be 100% complete and ready to start gathering data.
 
@@ -338,8 +309,6 @@ While we already went over Notehub and it's role in our project, the high level 
 3. Notehub **routes** this data to our cloud of choice.
 
 ![notecard notehub diagram](notecard-notehub-diagram.png)
-
-> **NOTE:** Notehub supports routing to virtually any cloud application including AWS, Azure, Google Cloud, ThingWorx, Ubidots, Twilio, InitialState, ThingSpeak, or any generic RESTful API.
 
 Let's look at how we configure Notehub in a few simple steps.
 
@@ -377,7 +346,7 @@ Create a **new project**, naming it whatever you'd like:
 
 #### Cloud Firestore
 
-Firestore is used for storing, querying, and syncing data. I like Firestore as it's a fast and relatively easy-to-use NoSQL database. There are certainly other options you could use, like Firebase's Realtime Database and the GCP Cloud SQL relational databases.
+Firestore is used for storing, querying, and syncing data. It's a fast and relatively easy-to-use NoSQL database. There are certainly other options you could use though, like Firebase's Realtime Database and the GCP Cloud SQL relational databases.
 
 Navigate to the **Firestore** menu item (not to be confused with **Filestore**!).
 
@@ -387,7 +356,7 @@ Assuming this is the first time you've created a Firestore instance, you'll be p
 
 Choose a geo location close to you and create your database.
 
-Lastly, you'll be prompted to create your first collection (or "table" for you relational db folks). Name your collection something memorable (I'm using "mapdata").
+Lastly, you'll be prompted to create your first collection (or "table" for you relational db folks). Name your collection something memorable (e.g. "mapdata").
 
 ![gcp new collection](gcp-new-collection.png)
 
@@ -395,7 +364,7 @@ NoSQL databases, you either love 'em or hate 'em! One big advantage of NoSQL dat
 
 #### Cloud Functions
 
-Google Cloud Functions are serverless functions you write (in virtually any language) that are hosted and executed in Google's cloud. This provides a great way for us to send JSON data from Notehub to GCP.
+Google Cloud Functions are serverless functions you write (in almost any language) that are hosted and executed in Google's cloud. This provides a great way for us to send JSON data from Notehub to GCP.
 
 Navigate to the **Cloud Functions** menu item and create your first function.
 
@@ -405,7 +374,7 @@ Name it whatever you like and leave all of the defaults as-is, except to check "
 
 Copy that "Trigger URL" as you'll need it later.
 
-On the next page, you may have to enable "Cloud Build API". You then can choose the language runtime. Since we started in MicroPython on the Pico, we might as well be consistent and choose Python 3.8. This will populate two files automatically, `main.py` and `requirements.txt`.
+On the next page, you may have to enable "Cloud Build API". You then can choose the language runtime. Since we started in MicroPython on the Pico, we might as well be consistent and choose Python. This will populate two files automatically, `main.py` and `requirements.txt`.
 
 By default, Python cloud functions have access to numerous [pre-installed packages](https://cloud.google.com/functions/docs/writing/specifying-dependencies-python#pre-installed_packages). In our case, ironically the one missing is `google-cloud-firestore`. Open up `requirements.txt` and add:
 
@@ -421,7 +390,7 @@ Next, in `main.py` we are going to replace the default function with one super s
 	  db.collection(u'mapdata').document().set(request_json)
 	  return '', 200
 
-**What's happening here?** The `request` parameter is literally going to be the JSON payload we send from Notehub. We'll cover this in more detail in a bit, but here is an example payload Notehub will send:
+**What's happening here?** The `request` parameter is literally going to be the JSON payload we send from Notehub. Here is an example payload Notehub will send:
 
 	{
 	  "bars": 1,
@@ -458,7 +427,7 @@ To enable access to Google Maps, you'll need to create a new API key. Navigate t
 
 ### Cloud Part III: Back to Notehub
 
-Remember the "Trigger URL" for your Cloud Function? Great, because we need to head back to Notehub to create a **route** for our data.
+Remember the "Trigger URL" for your Cloud Function? Great, because we need to head back to Notehub to create a **route** for our data to travel from Notehub to GCP.
 
 Navigate to the **Routes** menu option and click on **Add Route**.
 
@@ -466,13 +435,11 @@ Provide a name for your route and choose "Google Cloud Function" as the **Route 
 
 ![notehub route configuration](notehub-route-1.png)
 
-Under **Notefiles** choose "Select Notefiles". In the field provided, enter `bars.qo` (or whatever the note file name you specified in `main.py` on your Pico). We do this because we *only* want notes sent to GCP that are directly relevant to the data we want to display.
+Under **Notefiles** choose "Select Notefiles". In the field provided, enter `bars.qo` (or whatever the note file name you specified in `main.py` on your Pico). We do this because we *only* want notes sent to GCP that are relevant to the data we want to display.
 
-Next, we are going to use JSONata to create an expression that will allow us to format and process our JSON on the fly.
+Next, we are going to use [JSONata](https://jsonata.org/) to create an expression that will allow us to format and process our JSON on the fly.
 
-> **TIP:** If you're not familiar with [JSONata](https://jsonata.org/), it's a standard that allows you to transform JSON objects.
-
-The full JSON sent as part of the note contains extra data that we don't need to send along to GCP:
+Why? The full JSON sent as part of the note contains extra data that we don't need to send along to GCP:
 
 	{
 	    "event": "dbfb2474-4a4a-4d3d-a171-b122be5f1f",
@@ -502,10 +469,6 @@ This is where JSONata comes in handy. The **JSONata Expression** will be this:
 
 	{"bars":body.bars, "lat":body.lat, "lon":body.lon, "location": where_location}
 
-We are taking `bars`, `lat`, and `lon` from the `body` of the note file, and `where_location` from the root. The latter value is meta data associated with notes sent with GPS data.
-
-Finally, you can choose to **Rate Limit** your requests. This is useful in scenarios when devices are pumping data more quickly than you anticipate, thus running up your cloud charges!
-
 Make sure your route is enabled and save the changes.
 
 ![notehub route configuration](notehub-route-2.png)
@@ -521,8 +484,6 @@ Last up is creating the web app to display our heatmap with Google Maps.
 ## Displaying our Heatmap on the Web 🔥 
 
 Let's wrap up our project by architecting a relatively simple React web app that will use Google Maps to generate a heatmap of our cell signal data.
-
-> **NOTE:** Just like GCP is not a strict dependency for this solution, using React and Google Maps is not required. Vue.js, Svelte, jQuery, or no framework are equally relevant choices. Likewise you could use an alternative map provider like [Mapbox](https://www.mapbox.com/).
 
 Again, you can find all of this code [in the GitHub repository](https://github.com/rdlauer/notecard-heatmap/tree/main/web) if you want to skip the narrative!
 
@@ -552,9 +513,9 @@ In the interest of space (and time) we aren't going to cover every single aspect
 
 ### Firebase?
 
-Right. Here is an example of the Firebase vs Google Cloud Platform confusion. As noted above, both Firebase and GCP offer access to Firestore. The APIs for accessing Firestore are in the Firebase SDK.
+Right. `yarn add firebase` is an example of the Firebase vs Google Cloud Platform confusion. As noted above, both Firebase and GCP offer access to Firestore. The APIs for accessing Firestore are in the Firebase SDK.
 
-Why is this important? Well, we are going to use the Firebase SDK to access our data from Firestore. For example, to pull in all of the data from our `mapdata` collection, we use this code in the `Map.js` component:
+We are going to use the Firebase SDK to access our data from Firestore. For example, to pull in all of the data from our `mapdata` collection, we use this code in the `Map.js` component:
 
 	let mapData = db.collection('mapdata');
 	let allPoints = await mapData.get();
@@ -604,7 +565,7 @@ We can also tweak the display of the heatmap points by supplying `options` to th
 
 ### Running the Web App
 
-With our web app built, we can:
+With our web app built, in our terminal we can:
 
 - Install dependencies with `yarn install`.
 - Run the app with `yarn start`.
@@ -630,8 +591,8 @@ If you run into any issues gathering GPS data, be patient, as GPS can be very fi
 Take note of these "gotchas" when working with GPS:
 
 1. Regardless of the `mode` you are using, the GPS module will only be activated when it's moving.
-2. The GPS module will also only activate *after* the cellular modem has acquired a signal. It can take 2-3 minutes before a reliable signal is acquired.
-3. The Notecarrier-A (used in this project) has a relatively weak GPS antenna compared to the [other Notecarriers](https://shop.blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) offered by Blues Wireless (which can also use active external GPS antennas).
+2. The GPS module will only activate itself *after* the cellular modem has acquired a signal. It can take 2-3 minutes before a reliable signal is acquired.
+3. The Notecarrier-A (used in this project) has a relatively weak GPS antenna compared to the [other Notecarriers](https://shop.blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) (which can also use active external GPS antennas).
 
 ## Next Steps
 
