@@ -1,4 +1,4 @@
-# Create a Cellular Heatmap with Raspberry Pi Pico and GPS Geofencing
+# Create a Cellular Signal Heatmap with Raspberry Pi Pico and GPS
 
 A heatmap overlaid on satellite imagery is one of the more tantalizing means of displaying map-based data. Considering my newfound love for the Raspberry Pi Pico, and having seen how easy it can be to [add cellular connectivity to the Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), why not combine these loves in a new project?
 
@@ -8,9 +8,9 @@ Today we are going to build a cellular- and GPS-enabled IoT solution that collec
 
 *A "heatmap" is a visual representation of data where values are translated into colors.*
 
-If you'd like a quick two-minute overview of the project, check out this video:
+If you'd like a quick 1.5 minute overview of the project, check out this video:
 
-https://www.youtube.com/watch?v=oEFy60qA7Ao
+https://youtu.be/aFaDIDqyjCE
 
 *Specifically we will be developing with:*
 
@@ -29,13 +29,11 @@ In this guide, we will cover each of these sections in full detail.
 
 **Ready? Let's get started!**
 
-## GPS, Cellular, and Geofencing 🗺️
+## Position Data with GPS and Cellular 🗺️
 
-If our goal is to collect cell signal strength AND location data at defined intervals, we need a hardware solution that can handle both *while also* providing geofencing capabilities. All the while being aware that GPS can be very power-hungry.
+If our goal is to collect cell signal strength AND location data at periodic intervals, ideally we want a hardware solution that can handle both simultaneously. All the while being aware that GPS can be very power-hungry.
 
-In our case, we want to measure cell signals in a series of geofenced areas that we will create and measure on-the-fly.
-
-We can handle this with the [Notecard](https://blues.io/products/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) from Blues Wireless. The  Notecard is a cellular and GPS device-to-cloud data pump that comes with 500 MB of data and 10 years of service for \$49. No activation charges, no monthly fees.
+We can handle this with the [Notecard](https://blues.io/products/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project) from Blues Wireless. The  Notecard is a low power cellular and GPS device-to-cloud data pump that comes with 500 MB of data and 10 years of service for \$49. No activation charges, no monthly fees.
 
 ![cellular notecard from blues wireless](notecard.png)
 
@@ -43,7 +41,7 @@ To make things even easier, Blues Wireless also provides a series of expansion b
 
 *Now here is the really important part:*
 
-The Notecard ships preconfigured to communicate with [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), the Blues Wireless service that enables secure device-to-cloud data flow. Notecards are assigned to a project in Notehub, which then routes data to your cloud of choice (in our case, that'll be Google Cloud Platform).
+The Notecard ships preconfigured to communicate with [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project), the Blues Wireless service that enables secure device-to-cloud data flow. Notecards are assigned to a project in Notehub, which then **routes data to your cloud of choice** (in our case, that'll be Google Cloud Platform).
 
 ![notecard notehub diagram](notecard-notehub-diagram.png)
 
@@ -63,7 +61,7 @@ The one downside of the Raspberry Pi Pico is the lack of labels on the top of th
 
 ![raspberry pi pico pinout](pico-pinout.png)
 
-*Pico pinout provided by the [Rasperry Pi Foundation](https://www.raspberrypi.org/).*
+*Image source: [Rasperry Pi Foundation](https://www.raspberrypi.org/)*
 
 Next up is the LCD module. I really like using the 1602A LCD because it has a pre-soldered backpack making I2C and power connections a snap.
 
@@ -133,16 +131,9 @@ Open up `main.py` and add the following import statements to the top of the file
 	import keys
 	import notecard
 
-Create two variables that will hold constants for the app:
+Create a variable that will hold the Notehub `ProductUID` from `keys.py`:
 
-	GEOFENCE_METERS = 50
 	PRODUCTUID = keys.PRODUCTUID
-
-The `GEOFENCE_METERS` variable tells our program how far from the center of our geofence circle we should be before capturing a new set of coordinates.
-
-In theory this will allow us to create a heatmap that includes touching or overlapping geofenced areas, something like this:
-
-![overlapped geofences](geofence-overlap.png)
 
 ### Initialize Our Components
 
@@ -178,25 +169,26 @@ Next up, let's configure this Notecard to speak with Notehub (recall that Notehu
 	req["product"] = PRODUCTUID
 	req["mode"] = "periodic"
 	req["inbound"] = 720
-	req["outbound"] = 20
+	req["outbound"] = 15
 	rsp = card.Transaction(req)
 
-**What's going on here?** We are creating a `hub.set` request to set some Notecard <-> Notehub syncing parameters. We are setting the `ProductUID` and defining a `periodic` cellular connectivity mode. The `inbound` parameter means the Notecard will connect to Notehub once every 720 minutes to check for any data it needs to download. More importantly for us, the `outbound` parameter tells Notecard to send collected data to Notehub every 20 minutes (but only if there is data to send).
+**What's going on here?** We are creating a `hub.set` request to set some Notecard <-> Notehub syncing parameters. We are setting the `ProductUID` and defining a `periodic` cellular connectivity mode. The `inbound` parameter means the Notecard will connect to Notehub once every 720 minutes to check for any data it needs to download. More importantly for us, the `outbound` parameter tells Notecard to send collected data to Notehub every 15 minutes (but only if there is data to send).
 
-We can now set up the appropriate GPS mode on the Notecard. Since our program relies on a continuous stream of GPS data, we'll want to use `continuous` mode.
+> **NOTE:** Your GPS signal will be interrupted when the Notecard syncs to Notehub, so you can extend the `outbound` value to avoid interruptions.
+
+We can now set the appropriate GPS mode on the Notecard. Since our program relies on a regular stream of GPS data, we'll want to use `continuous` mode:
 
 	req = {"req": "card.location.mode", "mode": "continuous"}
 	rsp = card.Transaction(req)
-
-> **NOTE:** The Notecard provides the option of a `continuous` mode for both cellular and GPS, but you can't use them both in that mode simultaneously.
+	sleep(60) # optional delay to give gps time to acquire signal
 
 Finally, we need a boolean variable that tells us whether or not GPS is active and receiving latitude and longitude coordinates:
 
 	is_gps_active = False
 
-### Functions for Days
+### Supporting Functions
 
-At the bottom of `main.py` we need to add a `while` loop and associated function that will keep checking to see if GPS is active:
+At the bottom of `main.py` we need to add a `while` loop and associated function that will check to see if GPS is active:
 
 	def check_gps(rsp):
 	    """ checks if gps module is active with location """
@@ -235,11 +227,10 @@ If GPS is active, we display a message on the LCD module with the `lcd_msg` func
 	    print("*****" + msg + "*****")
 	    sleep(0.5)
 
-Continuing forward, when GPS is active we are ready to set our first geofence! We set the geofence AND continue tracking our location with the `track_location` and `set_geofence` functions:
+Continuing forward, when GPS is active we are ready to start tracking our location with the `track_location` function:
 
 	def track_location(lat, lon):
-	    """ if gps is active and location has changed significantly, create a note in notehub """
-	    set_geofence(lat, lon)
+	    """ if gps is active and location has changed, create a note in notehub """
 	    loc_changed = False
 	
 	    while not loc_changed:
@@ -247,33 +238,26 @@ Continuing forward, when GPS is active we are ready to set our first geofence! W
 	        rsp = card.Transaction(req)
 	
 	        # double check that gps is still active!
-	        if check_gps(rsp) and rsp["max"] >= GEOFENCE_METERS:
+	        if check_gps(rsp) and rsp["lat"] != lat and rsp["lon"] != lon:
 	            loc_changed = True
 	            lcd_msg("GPS LOC CHANGED")
 	            new_lat = rsp["lat"]
 	            new_lon = rsp["lon"]
-	            # get the current cell signal measure
 	            bars = get_cell_bars()
 	            add_note(new_lat, new_lon, bars)
-	            # reset and start tracking location again!
+	            sleep(10)
+	            # start tracking location again!
 	            track_location(new_lat, new_lon)
 	        else:
 	            lcd_msg("NO GPS CHANGE")
-	            sleep(5)
-	            
-	def set_geofence(lat, lon):
-	    """ sets a new geofence with center point on provided lat/lon """
-	    req = {"req": "card.location.mode", "mode": "continuous", "minutes": 0,
-	           "lat": lat, "lon": lon, "max": GEOFENCE_METERS}
-	    rsp = card.Transaction(req)
-	    lcd_msg("GEOFENCE SET")
+	            sleep(10)
 
 There is a lot going on in these functions, so let's focus on the important parts:
 
-1. We are setting a new geofence using the provided lat/lng coordinates with the `set_geofence` function, which uses the Notecard's [card.location.mode](https://dev.blues.io/reference/complete-api-reference/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project#card-location-mode) API.
-2. We double check that GPS is still active (can never be too careful!) and see if the `max` value is >= to our `GEOFENCE_METERS` value. `max` is the approximate distance between the center of the geofence and our current location.
-3. We get the cell signal strength in the `get_cell_bars` function (see below) and send data to Notehub with the `add_note` function (also below).
-4. Finally, we set a new geofence by calling `track_location` with the updated lat/lng coordinates.
+1. We double check that GPS is still active (can never be too careful!).
+2. We check to see if our lat/lng coordinates have changed.
+3. We get the cell signal strength in the `get_cell_bars` function (see below) and queue data to Notehub with the `add_note` function (also below).
+4. Finally, we start tracking our location again by calling `track_location` with the updated lat/lng coordinates.
 
 *Here are the two remaining functions referenced above:*
 
@@ -283,7 +267,7 @@ There is a lot going on in these functions, so let's focus on the important part
 	    req["file"] = "bars.qo"
 	    req["body"] = {"lat": lat, "lon": lon, "bars": bars}
 	    rsp = card.Transaction(req)
-	    lcd_msg("NOTE SENT!")
+	    lcd_msg("NOTE SAVED")
 	
 	def get_cell_bars():
 	    """ gets the cell signal strength from card.wireless """
@@ -295,35 +279,11 @@ There is a lot going on in these functions, so let's focus on the important part
 
 **And that's it!** The program on our Pico should be 100% complete and ready to start gathering data.
 
-Before we put it into action, let's see how we finish hooking up Notecard to Notehub and what we then can do with our gathered GPS data.
+Before we put it into action, let's see how we finish syncing Notecard with Notehub and what we then can do with our gathered GPS data.
 
 ## Pumping Data to the Cloud ☁️
 
-### Cloud Part I: Notehub
-
-While we already went over Notehub and it's role in our project, the high level workflow bears repeating:
-
-1. GPS data is **gathered and processed** on the Notecard.
-2. Notecard **sends** this data to Notehub over cellular.
-3. Notehub **routes** this data to our cloud of choice.
-
-![notecard notehub diagram](notecard-notehub-diagram.png)
-
-Let's look at how we configure Notehub in a few simple steps.
-
-1. Create your free account on [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
-2. Using the **New Project** card, give your project a name and `ProductUID`.
-3. Copy that `ProductUID` and paste it in `keys.py` on your Pico.
-
-![notehub projectuid](notehub-projectuid.png)
-
-**Done? Great!** When the program runs, Notecard will automatically associate itself with this Notehub project. Any notes (events) sent to Notecard will travel over cellular and show up in the **Events** panel when received:
-
-![notehub events](notehub-events.png)
-
-The last thing we need to create in Notehub is a new **route**. However, we are going to wait to create the route until after our Google Cloud Platform instance is set up.
-
-### Cloud Part II: Google Cloud Platform
+### Cloud Part I: Google Cloud Platform
 
 Google Cloud Platform (GCP) is Google's answer to Amazon's AWS and Microsoft's Azure. Providing a comparable set of features, GCP is an intriguing third option of big cloud providers. Personally I find AWS and Azure to be more powerful, but GCP more user-friendly. Your mileage may vary.
 
@@ -345,7 +305,7 @@ Create a **new project**, naming it whatever you'd like:
 
 #### Cloud Firestore
 
-Firestore is used for storing, querying, and syncing data. It's a fast and relatively easy-to-use NoSQL database. There are certainly other options you could use though, like Firebase's Realtime Database and the GCP Cloud SQL relational databases.
+Firestore is used for storing, querying, and syncing data. It's a fast and relatively easy-to-use NoSQL database.
 
 Navigate to the **Firestore** menu item (not to be confused with **Filestore**!).
 
@@ -371,7 +331,7 @@ Name it whatever you like and leave all of the defaults as-is, except to check "
 
 ![gcp add cloud function](gcp-new-function.png)
 
-Copy that "Trigger URL" as you'll need it later.
+*Copy that "Trigger URL" as you'll need it later.*
 
 On the next page, you may have to enable "Cloud Build API". You then can choose the language runtime. Since we started in MicroPython on the Pico, we might as well be consistent and choose Python. This will populate two files automatically, `main.py` and `requirements.txt`.
 
@@ -408,7 +368,7 @@ Be sure to change the "Entry Point" to be the same name as the function, `add_da
 
 ![gcp cloud function](gcp-cloud-function.png)
 
-If you so desire, you can test the function and paste in the example JSON payload listed above. If you navigate back to Firestore, you should see your test data appear like magic. 
+If you so desire, you can test the function by pasting in the example JSON payload provided above. If you navigate back to Firestore, you should see your test data appear like magic. 
 
 ![gcp test data in firestore](gcp-firestore-test-data.png)
 
@@ -416,17 +376,37 @@ If you so desire, you can test the function and paste in the example JSON payloa
 
 While we are still in the GCP console, let's take a moment to enable access to Google Maps.
 
-Scroll all the way down to the **Google Maps Platform** menu option.
-
-Select and enable the **Maps JavaScript API**:
+Scroll all the way down to the **Google Maps Platform** menu option. Select and enable the **Maps JavaScript API**:
 
 ![gcp google maps api](gcp-map-install.png)
 
 To enable access to Google Maps, you'll need to create a new API key. Navigate to the **APIs & Services > Credentials** menu option. Choose **Create Credentials** at the top of the screen and select **API Key**. You'll need this key for when you configure access to Google Maps in the web app later on.
 
-### Cloud Part III: Back to Notehub
+### Cloud Part II: Notehub
 
-Remember the "Trigger URL" for your Cloud Function? Great, because we need to head back to Notehub to create a **route** for our data to travel from Notehub to GCP.
+While we already went over Notehub and its role in our project, the high level workflow bears repeating:
+
+1. GPS data is **gathered and processed** on the Notecard.
+2. Notecard **sends** this data to Notehub over cellular.
+3. Notehub **routes** this data to our cloud of choice.
+
+![notecard notehub diagram](notecard-notehub-diagram.png)
+
+Let's look at how we configure Notehub in a few simple steps.
+
+1. Create your free account on [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
+2. Using the **New Project** card, give your project a name and `ProductUID`.
+3. Copy that `ProductUID` and paste it in `keys.py` on your Pico.
+
+![notehub projectuid](notehub-projectuid.png)
+
+**Done? Great!** When the program runs, Notecard will automatically associate itself with this Notehub project. Any notes (events) sent to Notecard will travel over cellular and show up in the **Events** panel when received:
+
+![notehub events](notehub-events.png)
+
+#### Route Data to Firestore
+
+Remember the "Trigger URL" for your Cloud Function? Great, because we need to now create a **route** for our data to travel from Notehub to GCP.
 
 Navigate to the **Routes** menu option and click on **Add Route**.
 
@@ -438,7 +418,7 @@ Under **Notefiles** choose "Select Notefiles". In the field provided, enter `bar
 
 Next, we are going to use [JSONata](https://jsonata.org/) to create an expression that will allow us to format and process our JSON on the fly.
 
-Why? The full JSON sent as part of the note contains extra data that we don't need to send along to GCP:
+Why? The full JSON sent as part of the note contains meta data that we don't necessarily want to send along to GCP:
 
 	{
 	    "event": "dbfb2474-4a4a-4d3d-a171-b122be5f1f",
@@ -488,7 +468,7 @@ Again, you can find all of this code [in the GitHub repository](https://github.c
 
 ### Initializing the React App
 
-The defacto means of starting a new React app is by using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app). This CLI is a great way to bootstrap a new app. To install, use:
+The defacto means of starting a new React app is by using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app). This CLI is a great way to bootstrap a new app. To install, use this command in your terminal:
 
 	npx create-react-app map-app
 	cd map-app
@@ -508,7 +488,7 @@ Our React app has three components:
 - `MapContainer.js` loads the Google Maps script and provides a host container for...
 - `Map.js` which shows our map.
 
-In the interest of space (and time) we aren't going to cover every single aspect of the web app (especially since the full source is [available here](https://github.com/rdlauer/notecard-heatmap/tree/main/web)). However, we should cover a few critical aspects.
+In the interest of space (and time) we aren't going to cover every aspect of the web app (especially since the full source is [available here](https://github.com/rdlauer/notecard-heatmap/tree/main/web)). However, we should cover a few critical aspects.
 
 ### Firebase?
 
@@ -523,7 +503,7 @@ We are going to use the Firebase SDK to access our data from Firestore. For exam
 
 Our `MapContainer.js` component is the host of our map. Why do we have to use separate components? Welcome to asynchronous JavaScript land!
 
-`MapContainer.js` loads the Google Maps script. But you can't use it until it's loaded, right? Luckily for us, the `react-google-maps/api` library exposes `LoadScript` which plays a key part in lazy-loading `Map.js`:
+`MapContainer.js` loads the Google Maps script. But you can't use it until it's loaded, right? Thankfully the `react-google-maps/api` library exposes `LoadScript` which plays a key part in lazy-loading `Map.js`:
 
 	<LoadScript
 		googleMapsApiKey={getGoogleMapsKey}
@@ -549,14 +529,14 @@ Finally, our `Map.js` component exposes the core Google Map, allowing us to set 
 
 The `data` property of the `HeatmapLayer` is an array of all the returned data points from Firestore.
 
-A single object in the array is made up of a `location` (lat/lng coordinates) and a `weight` integer (signal strength). The higher the weight, the more intense the heatmap color.
+A single object in the array is made up of a `location` (lat/lng coordinates) and a `weight` integer (cellular signal strength). The higher the weight, the more intense the heatmap color.
 
 	let point = {
 	  location: new google.maps.LatLng(doc.get('lat'), doc.get('lon')),
 	  weight: doc.get('bars'),
 	};
 
-We can also tweak the display of the heatmap points by supplying `options` to the `HeatmapLayer` element. In our case, we can specify the `radius`, or how far we want our heatmap colors to spread around a point.
+We can also tweak the display of the heatmap by supplying `options` to the `HeatmapLayer` element. We specify the `radius`, or how far we want our heatmap colors to spread around a point.
 
 	const options = {
 	  radius: 40,
@@ -564,7 +544,7 @@ We can also tweak the display of the heatmap points by supplying `options` to th
 
 ### Running the Web App
 
-With our web app built, in our terminal we can:
+With our web app built, back in the terminal we can:
 
 - Install dependencies with `yarn install`.
 - Run the app with `yarn start`.
@@ -595,14 +575,14 @@ Take note of these "gotchas" when working with GPS:
 
 ## Next Steps
 
-Did you make it this far with me? If so, congrats as there is A LOT to comprehend when building out a full solution containing components from device to cloud to web.
+Congrats on making it this far as there is A LOT to comprehend when building out a full solution containing components from device to cloud to web.
 
-Even if you just skimmed through, I hope it was evident how easily we can now take on-device sensor data and utilize a modern cellular/GPS device to efficiently move data to our cloud application of choice.
+Even if you just skimmed through, I hope it was evident how easily we can now take on-device data and utilize a modern cellular/GPS device to efficiently move data to our cloud application of choice.
 
 **Want some next steps?**
 
-1. Check out the extensive developer documentation at [dev.blues.io](https://dev.blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
-2. Grab your first Notecard or Notecarrier Dev Kit (and [take 10% off with this link](https://shop.blues.io/discount/5JM00D2M3SA2_BLOG?utm_source=hackster&utm_medium=web&utm_campaign=featured-project)).
+1. Grab your first Notecard or Notecarrier Dev Kit (and [take 10% off with this link](https://shop.blues.io/discount/5JM00D2M3SA2_BLOG?utm_source=hackster&utm_medium=web&utm_campaign=featured-project)).
+2. Check out the extensive developer documentation at [dev.blues.io](https://dev.blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project).
 3. Build your own cellular- and GPS-enabled solution and [tell us about it](https://twitter.com/blueswireless).
 
 Happy hacking...and mapping! 🔥🗺️

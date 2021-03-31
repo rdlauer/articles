@@ -1,4 +1,4 @@
-# Create a Google Map Heatmap with Cellular and GPS Geofencing
+# Create a Google Map Heatmap with Cellular and GPS Data
 
 A heatmap overlaid on satellite imagery is one of the more tantalizing means of displaying map-based data. Considering my newfound love for the Raspberry Pi Pico, and having seen how easy it can be to [add cellular connectivity to the Pico](https://www.hackster.io/brandonsatrom/adding-cellular-to-the-raspberry-pi-pico-b8a4b6), why not combine these loves in a new project?
 
@@ -13,9 +13,9 @@ In this tutorial, we are going to build a cellular- and GPS-enabled IoT solution
 3. 1602 LCD module (for displaying in-action status updates).
 4. [Google Cloud Platform](https://cloud.google.com/) (for cloud functions, storage, and maps)
 
-If you'd like a quick two-minute overview of the project, check out this video:
+If you'd like a quick 1.5 minute overview of the project, check out this video:
 
-https://www.youtube.com/watch?v=oEFy60qA7Ao
+https://youtu.be/aFaDIDqyjCE
 
 The final result on the web will look something like this:
 
