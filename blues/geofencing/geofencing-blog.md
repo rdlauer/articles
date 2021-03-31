@@ -21,4 +21,4 @@ The final result on the web will look something like this:
 
 ![completed web app](completed-web.jpg)
 
-**Ready? Get started over at [hackster.io](NEED LINK)!**
+**Ready? Get started over at [hackster.io](https://www.hackster.io/rob-lauer/cellular-signal-heatmap-with-raspberry-pi-pico-and-gps-1e16df)!**
