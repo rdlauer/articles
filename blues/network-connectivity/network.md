@@ -2,7 +2,7 @@
 
 Let's face it. When it comes to connectivity, we IoT developers are spoiled by a virtual cornucopia of networking options. Granted, "spoiled" is a positive spin on the situation, as others may also classify it as "overwhelming". From modern cellular protocols like NB-IoT and LTE-M, to other LPWAN options like LoRa, to Wi-Fi and Ethernet and the venerable BLE, options are as plentiful as they are confusing.
 
-What was once an obvious choice may now be more nuanced. For example, in an office setting, Wi-Fi is often the default choice due to its low cost and broad availability. But what happens when power is lost? If your IoT solution is key to a critical system like HVAC, fire suppression, or security, you may need a connectivity option separate from the building's infrastructure.
+What was once an obvious choice may now be more nuanced. For example, in an office setting, Wi-Fi is often the default choice due to its low cost and broad availability. But what happens when power is lost? If your IoT solution is key to a critical system like HVAC, fire suppression, or security, you may need a connectivity option separate from the building's infrastructure. In addition, outdoor and mobile applications may obviate the ability to use more common connectivity methods like Wi-Fi or Ethernet.
 
 Since every IoT application has its own unique requirements, let's step through common connectivity options at a high level, outline pros and cons, and see which option (or combination thereof) is right for you.
 
@@ -20,31 +20,31 @@ With this breadth of options we can find ourselves paralyzed by too many options
 
 **Power Efficiency**
 
-*Is my hardware connected to a consistent and reliable power source? Or is it off-grid and connected to solar or battery? What happens if power is cut completely...can I maintain operations in a no-power scenario?*
+*Is my hardware connected to a consistent and reliable power source? Or is it off-grid and connected to solar or battery? How long must the device last on battery power?*
 
-**High Availability**
+**Continuous Availability**
 
-*Am I using a mature connectivity option with broad, global support? Is my local Internet gateway reliable enough for my solution? How does my system recover from network instability?*
+*Is it ok if my device shuts down completely in the event of a local power failure...or should it continue to record (and even send) data white on a backup power source? How does my system recover from network instability?*
 
 **Data Throughput and Latency**
 
-*How much data am I pushing/pulling, and how frequently? Does my solution require low latency between the device, the cloud, and beyond?*
+*How much data am I pushing/pulling, and how frequently? Does my solution require low latency between the device, the cloud, and beyond? Is it ok if the data arrives to the cloud at hourly or daily intervals (or immediately when an anomalous event occurs)?*
 
 **End User Experience**
 
-*How is my solution deployed in the field? Is it a consumer-installable product that requires setup by a non-technical user? What connectivity option provides the most "turnkey" style of installation?*
+*How is my solution deployed in the field? Is it a consumer-installable product that requires setup by a non-technical user? Is it ok if the wireless setup requires an installer or someone familiar with network configuration, or does the device need to "just work" when powered on?*
 
 ## tl;dr
 
 As we start to dive into various network connectivity options, we'll soon see there is no silver bullet. However, if you want an overgeneralization of the network options we are about to cover, this table might help:
 
-|   | Range | No/Low Power | Availability | Bandwidth | Low Latency | End User XP |
-|---|:-----:|:------------:|:------------:|:---------:|:-----------:|:-----------:|
-| Ethernet     | 🔴 | 🔴 | 🟢 | 🟢 | 🟢 | 🔴 |
-| Wi-Fi        | 🟡 | 🔴 | 🟢 | 🟢 | 🟢 | 🟡 |
-| Cellular IoT | 🟢 | 🟢 | 🟢 | 🟡 | 🔴 | 🟢 |
-| LoRa         | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🟢 |
-| BLE          | 🔴 | 🟢 | 🟡 | 🔴 | 🟢 | 🔴 |
+|   | Long<br />Range | Low<br />Power | Continuous<br />Availability | High<br />Bandwidth | Low<br />Latency | "Just Works"<br />Setup |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Ethernet     | 🔴 | 🔴 | 🔴 | 🟢 | 🟢 | 🔴 |
+| Wi-Fi        | 🟡 | 🔴 | 🔴 | 🟢 | 🟢 | 🟡 |
+| Cellular IoT | 🟢 | 🟢 | 🟢 | 🟡 | 🔴 | 🔴 |
+| LoRa         | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🟡 |
+| BLE          | 🔴 | 🟢 | 🟡 | 🔴 | 🟢 | 🟡 |
 
 It's worth reading on though, because the story doesn't end here. There are nuanced differences to be aware of, and a *combination* of connectivity options may actually be the right choice for your project.
 
@@ -101,7 +101,7 @@ Wi-Fi for IoT has a flag-bearer in the [802.11ah](https://en.wikipedia.org/wiki/
 
 ## Cellular (LTE-M and NB-IoT)
 
-The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.org/wiki/LTE-M) and [NB-IoT](https://en.wikipedia.org/wiki/Narrowband_IoT). At a high level, LTE-M is the faster of the two and compatible with existing LTE infrastructure. NB-IoT has a wider range, but requires hardware upgrades on your nearest cell towers.
+The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.org/wiki/LTE-M) and [NB-IoT](https://en.wikipedia.org/wiki/Narrowband_IoT). At a high level, LTE-M is the faster of the two and compatible with existing LTE infrastructure. NB-IoT has a wider theoretical range, but requires upgrades to the equipment at your nearest cell towers. And unlike LTE-M, it doesn’t support devices that are in motion (i.e. no tower "handoff") and requires that devices are pre-configured with the proper frequency band.
 
 ![blues wireless notecard](notecard.jpg)
 
@@ -111,22 +111,23 @@ The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.
 
 **NB-IoT** was designed specifically for IoT implementations. It provides long range access, consumes little power, and is known for its reliability and improved indoor penetration. NB-IoT operates on 4G networks (but not on the LTE bands) making it widely available in many countries. The downside? NB-IoT data throughput is less than LTE-M (60KB down and 30KB up).
 
-### When is Cellular (LTE-M and NB-IoT) a Good Choice?
+It's worth mentioning two other cellular standards as well, namely **GSM** and **LTE Cat 1**. GSM provides 2G/3G coverage for much of the world that has relatively low investment in cellular infrastructure. LTE Cat 1 is more ubiquitous than LTE-M, has a higher bandwidth ceiling (10 MB down, 5MB up), but has a significantly higher rates of power consumption.
+
+### When is Cellular a Good Choice?
 
 - When uptime is essential. Cellular networks are ubiquitous and reliable.
 - When seamless global coverage is required.
-- When data security is critical. In the case of the Notecard (pictured above), data is passed through cellular and VPN tunnels, not the Internet.
+- When data security is critical. By working with cellular providers and custom APNs, the data doesn't need to traverse across the Internet and can go directly from the carrier to your cloud provider.
 - When utilizing location detection (especially when combined with on-board GPS).
 - When in a low power/no power scenario:
 	- Cellular add-ons can consume < 8mA of current.
 	- Cellular networks are still available should local power go out.
 - When the physical deployment location is unpredictable.
-- When a turnkey end user setup experience is required.
 
 ### When is it Not?
 
 - When the solution requires high bandwidth or low latency (e.g. streaming video).
-- When you need to utilize VoLTE for audio/speech transmission.
+- When you need to utilize VoLTE for audio/speech transmission (if not on LTE-M).
 
 ## LoRa and LoRaWAN
 
@@ -138,7 +139,7 @@ The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.
 
 In ideal conditions, LoRa devices can communicate with LoRaWAN gateways 5km to 15km away. In practice, physical obstacles (trees, buildings, etc) can disrupt data transmission. LoRa requires an adequate network of physical gateways to be effective as well. Some cities, such as Amsterdam, are investing in LoRaWAN, making it an intriguing option in some urban settings.
 
-> **NOTE:** While other LPWAN technologies like [SigFox](https://www.sigfox.com/en) and [Ingenu](https://www.ingenu.com/) aren't covered in this article, they are worth investigating on their own.
+> **NOTE:** While other LPWAN technologies like [SigFox](https://www.sigfox.com/en) and [Ingenu](https://www.ingenu.com/) aren't covered in this article, you may find them worth investigating.
 
 ### When is LoRa a Good Choice?
 
@@ -149,12 +150,13 @@ In ideal conditions, LoRa devices can communicate with LoRaWAN gateways 5km to 1
 
 ### When is it Not?
 
-- When even medium bandwidth is required (data is sent in very small chunks of 51-241 bytes).
+- When you need a uniform global solution. LoRa operates on different frequency bands in different regions (unlike cellular, Wi-Fi, and BLE which are "globally harmonized").
+- When even medium bandwidth is required (data is sent in small chunks of 51-241 bytes and country-specific regulations limit how often data can be sent upstream or downstream each day).
 - When your deployment is outside of the EU.
 
 ## Bluetooth Low Energy
 
-[Bluetooth Low Energy (BLE)](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) is a wireless local networking technology allowing for device-to-device communication without a direct Internet gateway. BLE is not compatible with traditional Bluetooth, but does offer a similar range of communication (~100m at best) while consuming far less power.
+[Bluetooth Low Energy (BLE)](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) is a wireless local networking technology allowing for device-to-device communication without a direct Internet gateway. BLE is not compatible with traditional Bluetooth, but does offer a similar range of communication (theoretically ~100m) while consuming far less power.
 
 ![example ble module](ble.jpg)
 
@@ -165,13 +167,12 @@ BLE is not a protocol one would use to connect a device directly to the cloud or
 ### When is BLE a Good Choice?
 
 - When low power is critical (BLE can use deep sleep modes between transactions).
-- When communicating between devices at close range (ideally < 100m), and in low latency scenarios (~3ms).
+- When communicating between devices at close range (ideally < 20m), and in low latency scenarios (~3ms).
 
 ### When is it Not?
 
 - When reliability is a must. BLE can be unreliable and difficult to configure.
 - When long distance communication is required.
-- When security is critical (signals are comparatively open to interception and attack).
 
 ## Using a Fallback Connection
 
@@ -185,10 +186,28 @@ Imagine a situation where Wi-Fi is available and reliable, but if the power goes
 
 These are some of the more common scenarios we are encountering: when IoT deployments need to maintain a network connection regardless of their physical location and power availability.
 
+## Why Notecard can Change the Story
+
+If cellular is going to act as the primary mechanism for network connectivity or even as a "fallback", we need a solution with an improved developer experience, lower cost, and turnkey deployment.
+
+This is where the [Notecard from Blues Wireless](https://blues.io/products/) comes into play. The  Notecard is a low power cellular and GPS device-to-cloud data pump that comes with 500 MB of data and 10 years of service for \$49. No activation charges, no monthly fees.
+
+![cellular notecard from blues wireless](notecard.png)
+
+To host the Notecard, Blues Wireless provides a series of optional expansion boards called [Notecarriers](https://blues.io/products/#notecarrier). In addition, the Notecard ships preconfigured to communicate with [Notehub.io](https://notehub.io/), the Blues Wireless service that enables secure device-to-cloud data flow.
+
+Not to mention, Notecard speaks the language of developers (JSON); gone are the days of archaic AT command syntax!
+
+Since Notecards include an embedded SIM that arrives pre-provisioned, the end user (and developer) setup experience is seamless, turning that "Just Works" from 🔴 to 🟢:
+
+|   | Long<br />Range | Low<br />Power | Continuous<br />Availability | High<br />Bandwidth | Low<br />Latency | "Just Works"<br />Setup |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Blues Wireless Notecard | 🟢 | 🟢 | 🟢 | 🟡 | 🔴 | 🟢 |
+
 ## Summary
 
 Choosing between network connectivity options for your next IoT project depends largely on the requirements of your devices and what the end goal is. Ultimately, your decision comes down to the inevitable tradeoffs between power, bandwidth, and coverage.
 
-In the right scenario, LoRa and LoRaWAN can be fantastic. Wi-Fi or Ethernet may be a no-brainer. Likewise, modern cellular protocols have finally made global connectivity a reality for IoT solutions.
+In the right scenario, LoRa and LoRaWAN can be fantastic. Wi-Fi or Ethernet may be a no-brainer. Likewise, modern cellular solutions like Notecard have finally made global connectivity a reality for the IoT.
 
 Learn more about how the Notecard from Blues Wireless is [making cellular IoT a better choice](https://blues.io/products/) for developers.
