@@ -1,20 +1,18 @@
-# IoT Network Connectivity - A Comparison of Modern Technologies
-
 # Comparing LoRa, Cellular, Wi-Fi, and Other Relevant IoT Connectivity Options
 
 Let's face it. When it comes to connectivity, we IoT developers are spoiled by a virtual cornucopia of networking options. Granted, "spoiled" is a positive spin on the situation, as others may also classify it as "overwhelming". From modern cellular protocols like NB-IoT and LTE-M, to other LPWAN options like LoRa, to Wi-Fi and Ethernet and the venerable BLE, options are as plentiful as they are confusing.
 
 What was once an obvious choice may now be more nuanced. For example, in an office setting, Wi-Fi is often the default choice due to its low cost and broad availability. But what happens when power is lost? If your IoT solution is key to a critical system like HVAC, fire suppression, or security, you may need a connectivity option separate from the building's infrastructure.
 
-Since every IoT application has its own unique requirements, let's step through each connectivity option at a high level, outline pros and cons, and see which option (or combination thereof) is right for you.
+Since every IoT application has its own unique requirements, let's step through common connectivity options at a high level, outline pros and cons, and see which option (or combination thereof) is right for you.
 
 ![iot connectivity usage](connectivity-options.png)
 
 *Image source [IoT Analytics](https://iot-analytics.com/state-of-the-iot-2020-12-billion-iot-connections-surpassing-non-iot-for-the-first-time/).*
 
-## Key Considerations
+## The Paradox of Choice
 
-With this breadth of options we can quickly find ourselves paralyzed by a paradox of choice. Let's narrow our focus of analysis to specific deployment-related considerations and see how each connectivity option satisfies common requirements such as:
+With this breadth of options we can find ourselves paralyzed by too many options with no clear path forward for our use case. Let's shift our focus of analysis to specific deployment-related considerations and see how each connectivity option satisfies common requirements such as:
 
 **Communication Range**
 
@@ -22,7 +20,7 @@ With this breadth of options we can quickly find ourselves paralyzed by a parado
 
 **Power Efficiency**
 
-*Is my hardware connected to a consistent and reliable power source? Or is it off-grid and connected to solar or battery? What happens if power is cut completely...can I maintain connectivity in a no-power scenario?*
+*Is my hardware connected to a consistent and reliable power source? Or is it off-grid and connected to solar or battery? What happens if power is cut completely...can I maintain operations in a no-power scenario?*
 
 **High Availability**
 
@@ -34,7 +32,7 @@ With this breadth of options we can quickly find ourselves paralyzed by a parado
 
 **End User Experience**
 
-*How is my solution deployed in the field? Is it a consumer-installable product that requires non-technical setup? What connectivity option provides the most "turnkey" style of installation?*
+*How is my solution deployed in the field? Is it a consumer-installable product that requires setup by a non-technical user? What connectivity option provides the most "turnkey" style of installation?*
 
 ## tl;dr
 
@@ -60,13 +58,13 @@ I'm going to go out on a limb and assume you *don't* need a functional explanati
 
 The beloved backbone of our Internet is every IoT developer's connectivity dream in terms of bandwidth, speed, and reliability. However, as seen in the image above, adding an RJ45 connector on an Ethernet module adds considerable physical bulk (and power consumption).
 
-### When Does Wired Ethernet Win?
+### When is Ethernet a Good Choice?
 
 - When indoor deployments provide easy access to reliable wired Ethernet.
 - When the solution requires high bandwidth or low latency (e.g. streaming video).
 - When RF interference is an issue, as Ethernet cable shielding can withstand most interference.
 
-### When Does Wired Ethernet Lose?
+### When is it Not?
 
 - When there are physical environment issues:
 	- Ethernet add-on modules add considerable bulk to an enclosure.
@@ -88,14 +86,15 @@ Today's Wi-Fi routers have come a long way in terms of speed, reliability, and (
 
 Wi-Fi for IoT has a flag-bearer in the [802.11ah](https://en.wikipedia.org/wiki/IEEE_802.11ah) standard with its low power consumption and ability for connected devices to share signals (making it a potential Bluetooth killer). However, we are still likely years away from mainstream routers supporting this standard.
 
-### When Does Wi-Fi Win?
+### When is Wi-Fi a Good Choice?
 
 - Like Ethernet, when the solution requires high bandwidth or low latency (e.g. streaming video).
 - When there is ample Wi-Fi coverage without the need for switching access points.
 
-### When Does Wi-Fi Lose?
+### When is it Not?
 
 - When deployment is handled by non-technical users. Wi-Fi configuration can be tedious and home routers unreliable.
+- When collecting sensitive data and you prefer not to join devices to unmanaged Wi-Fi networks and send data over the Internet.
 - When in a low power/no power scenario:
 	- Typical Wi-Fi module power consumption is ~50-200 mA (depending on the standard).
 	- A Wi-Fi router cannot function without power.
@@ -112,7 +111,7 @@ The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.
 
 **NB-IoT** was designed specifically for IoT implementations. It provides long range access, consumes little power, and is known for its reliability and improved indoor penetration. NB-IoT operates on 4G networks (but not on the LTE bands) making it widely available in many countries. The downside? NB-IoT data throughput is less than LTE-M (60KB down and 30KB up).
 
-### When Does Cellular IoT Win?
+### When is Cellular (LTE-M and NB-IoT) a Good Choice?
 
 - When uptime is essential. Cellular networks are ubiquitous and reliable.
 - When seamless global coverage is required.
@@ -124,10 +123,10 @@ The two most popular cellular IoT technologies are [LTE-M](https://en.wikipedia.
 - When the physical deployment location is unpredictable.
 - When a turnkey end user setup experience is required.
 
-### When Does Cellular IoT Lose?
+### When is it Not?
 
 - When the solution requires high bandwidth or low latency (e.g. streaming video).
-- When trying to support VoLTE for audio/speech transmission.
+- When you need to utilize VoLTE for audio/speech transmission.
 
 ## LoRa and LoRaWAN
 
@@ -141,14 +140,14 @@ In ideal conditions, LoRa devices can communicate with LoRaWAN gateways 5km to 1
 
 > **NOTE:** While other LPWAN technologies like [SigFox](https://www.sigfox.com/en) and [Ingenu](https://www.ingenu.com/) aren't covered in this article, they are worth investigating on their own.
 
-### When Does LoRa Win?
+### When is LoRa a Good Choice?
 
 - When security is a necessity (uses AES CCM encryption by default).
 - When it's widely available (e.g. deployments in the EU).
 - When, like NB-IoT, you're trying to hit the sweet spot of low power and wide range deployments.
 - When low power is critical (data rates can be modulated for ideal battery conservation).
 
-### When Does LoRa Lose?
+### When is it Not?
 
 - When even medium bandwidth is required (data is sent in very small chunks of 51-241 bytes).
 - When your deployment is outside of the EU.
@@ -163,12 +162,12 @@ In ideal conditions, LoRa devices can communicate with LoRaWAN gateways 5km to 1
 
 BLE is not a protocol one would use to connect a device directly to the cloud or a remote server. However, it's a reasonable option in scenarios when device-to-device communication is a requirement.
 
-### When Does BLE Win?
+### When is BLE a Good Choice?
 
 - When low power is critical (BLE can use deep sleep modes between transactions).
 - When communicating between devices at close range (ideally < 100m), and in low latency scenarios (~3ms).
 
-### When Does BLE Lose?
+### When is it Not?
 
 - When reliability is a must. BLE can be unreliable and difficult to configure.
 - When long distance communication is required.
