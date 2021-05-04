@@ -2,7 +2,7 @@
 
 To say we live in a wirelessly connected world feels like a bit of a cliche. Many of us start our days checking smartphones, accessorizing with wearables, and telling Alexa to "play top songs by Nickelback". Ok, maybe not so much that last one.
 
-The tin cans and wire of days gone by have been replaced by communication protocols like WiFi, Bluetooth, and cellular to provide us seamless connectivity from home to work to anywhere.
+The tin cans and wire of days gone by have been replaced by communication protocols like WiFi, Bluetooth, and cellular to provide us seamless connectivity from home to work to...anywhere!
 
 ![blues wireless notecard in the desert](1-notecard-desert.jpg)
 
