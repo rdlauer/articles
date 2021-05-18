@@ -81,7 +81,7 @@ Businesses love the Notecard for its straightforward pricing: **$49 for 10 years
 
 Developers love the Notecard for its microcontroller- and single-board computer-agnostic approach (bring your own MCU or SBC!), its open source libraries for [Python](https://github.com/blues/note-python), [C/C++](https://github.com/blues/note-c), and [Arduino](https://github.com/blues/note-arduino), and its friendly JSON-in and JSON-out request/response interface.
 
-*An example of adding a "note", or an event, with the Notecard API:*
+*An example of adding a "note", or an event, with the [Notecard API](https://dev.blues.io/reference/complete-api-reference/introduction/):*
 
 ```
 {
