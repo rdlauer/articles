@@ -1,6 +1,8 @@
-# Tips and Tricks for Optimizing Raspberry Pi Power Consumption
+# Optimizing Raspberry Pi Power Consumption
 
-*Let's learn how to optimize the power consumption of a Raspberry Pi 4 to make it a candidate SBC for remote off-grid monitoring.*
+*Tips and tricks for optimizing the power consumption of a Raspberry Pi to make it a candidate for off-grid remote monitoring.*
+
+_Title image credit [@vishnumaiea](https://unsplash.com/@vishnumaiea) on Unsplash._
 
 When the Raspberry Pi single-board computer was [first announced back in 2012](https://raspberrytips.com/raspberry-pi-history/), I doubt few people were considering the utility of a Pi in a truly off-grid setting, especially considering the state of battery technology at the time.
 
@@ -10,7 +12,7 @@ Fast forward to today. While we haven't exactly made at-home nuclear reactors a 
 
 ## Why Raspberry Pi?
 
-There are numerous microcontrollers or even stripped-down SBCs like the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/) that are more energy efficient options than a full Raspberry Pi 4. But that efficiency comes with a cost of its own in terms of reductions in features and functionality.
+There are numerous microcontrollers or even stripped-down SBCs like the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/) that are more energy efficient options than a full Raspberry Pi 4. But that efficiency comes with a cost of its own in terms of a reduction in features and functionality.
 
 ![raspberry pi power consumption](rpi-power.png)
 
@@ -118,8 +120,6 @@ Please note that you may not see power savings in certain scenarios. For example
 
 **Power Saved? Approximately 10mA.**
 
-Now we are digging into the nitty gritty!
-
 We can disable the on-board LEDs on the Pi by again editing the `/boot/config.txt` file, adding the following, and rebooting:
 
 ```
@@ -139,7 +139,7 @@ dtparam=eth_led1=4
 
 ### Making Changes Permanent (or Resetting to Default)
 
-Any changes made to your `/boot/config.txt` file will persist after reboots. If you'd like to issue the USB, HDMI, Wi-Fi, and Bluetooth disabling commands at boot, edit your `.bashrc` file and add those commands.
+Any changes made to your `/boot/config.txt` file will persist after a reboot. If you'd like to issue the USB, HDMI, Wi-Fi, and Bluetooth disabling commands upon boot, edit your `.bashrc` file and add those commands.
 
 Likewise, deleting the changes you made to `/boot/config.txt` and rebooting will reset your Raspberry Pi back to its default state.
 

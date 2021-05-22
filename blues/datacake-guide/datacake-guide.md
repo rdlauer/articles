@@ -1,6 +1,6 @@
 # Visualizing the IoT with Datacake and the Blues Wireless Notecard
 
-*Datacake is a low-code IoT platform that seamlessly integrates with Notehub.io. Learn more about how to route your Notecard data to Datacake.*
+*Datacake is a low-code IoT platform that seamlessly integrates with Notehub.io. Learn more about how to rout Notecard data to Datacake.*
 
 The wave of self-described "low code" development solutions has come (and mostly gone) without much fanfare. While there have been some successes, generally speaking, **developers require control above any desire to cut corners**.
 

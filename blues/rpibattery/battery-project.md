@@ -1,26 +1,28 @@
-# Is the Raspberry Pi a Practical Solution for Remote Monitoring?
+# Optimizing a Raspberry Pi for Off-Grid Power Consumption
+
+*Let's dive into how we can use a set of power-optimizing strategies on a Raspberry Pi and turn it into an off-grid IoT solution.*
 
 I'm hoping a good portion of you saw the recent [Explaining Computers video](https://youtu.be/lPyDtuzYE5s) comparing various Raspberry Pi models and how long they last on a 12V lead acid battery versus a USB battery pack. If not, it's worth a watch!
 
 This inspired me to think more about how useful a Raspberry Pi 4 Model B could *really* be in a remote, battery-powered setting. I mean it's tempting, right? When developing on a single-board computer (SBC) you get access to the full Python language and all of its libraries. There is a file system that can handle whatever you throw at it (within reason). Virtually anything you want to run on a generic Linux distribution can run on a Pi.
 
-But...the Raspberry Pi 4 wasn't necessarily designed to run off-grid. That's what the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/) and [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/) are for after all.
+But...the Raspberry Pi 4 wasn't necessarily designed to run off-grid. That's more what the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/) and [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/) are for after all.
 
 ![raspberry pi power consumption](rpi-power.png)
 
 However, there are scenarios where, whether it's out of convenience or necessity, using a Raspberry Pi to its fullest extent in the wilds is worth trying.
 
-In this project, I want to measure how long a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) will last on a USB power bank in a real world setting as it gathers sensor data and relays it to the cloud. I also want to **run a comparison** between a stock Raspberry Pi configuration and a Pi optimized with a set of [power-optimizing strategies](NEEDLINK).
+In this project, I want to measure how long a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) will last on a USB power bank in a real world setting as it gathers sensor data and relays it to the cloud. I also want to **run a comparison** between a stock Raspberry Pi and a Pi configured with a set of [power-optimizing strategies](https://blues.io//blog/tips-tricks-optimizing-raspberry-pi-power/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi).
 
 *I'll tackle this with:*
 
 - Raspberry Pi 4 Model B (of course)
 - The largest (affordable) battery pack I could find (a 30,000 mAh beast)
-- The [Blues Wireless Notecard](https://blues.io/) (for remote cellular and an onboard temperature sensor)
+- The [Blues Wireless Notecard](https://blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi) (for remote cellular and an onboard temperature sensor)
 
 If you'd like to see a short video summary of the project (and maybe watch me get electrocuted), you can check it out on YouTube:
 
-VIDEO
+INSERT VIDEO HERE
 
 ## My Power Consumption Hypothesis
 
@@ -28,9 +30,9 @@ Let's start with the estimated power consumption of a Raspberry Pi 4 Model B. Ac
 
 To supply power, the ROMOSS 30,000mAh USB power bank fit the bill. Its capacity is ridiculous, it offers pass-through charging (important if you were to add a solar array), and in my opinion, incredibly inexpensive.
 
-IMAGE OF ROMOSS
+![romoss battery pack](romoss-battery-pack.jpg)
 
-The only other piece of hardware is the Blues Wireless Notecard for cellular data access. In terms of power consumption, looking at the [Notecard datasheet](https://dev.blues.io/hardware/notecard-datasheet/note-wbex-500/#power-information) we see:
+The only other piece of hardware is the Blues Wireless Notecard for cellular data access. In terms of power consumption, looking at the [Notecard datasheet](https://dev.blues.io/hardware/notecard-datasheet/note-wbex-500/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi#power-information) we see:
 
 > The Notecard typically sits in an **~8mA idle mode** waiting for a request from the host MCU, however the Notecard current draw increases to the ~250mA range when the modem is active.
 
@@ -62,27 +64,17 @@ It also includes an onboard temperature sensor and **consumes a mere 8mA when id
 
 The Notecard is a tiny 30mm x 34mm SoM and ships ready to embed in a project via an M.2 edge connector. To make prototyping easier, Blues Wireless also provides a series of expansion boards called Notecarriers. For example, the Notecarrier-Pi acts as a **host HAT** for the Notecard. It provides an interface between the Raspberry Pi and the Notecard.
 
-*The beauty of the Notecard can be boiled down to:*
-
-1. 🧑‍💻 The **simplicity** of the API (JSON in and JSON out).
-2. 🤝 The **agnostic nature** of full SBC and MCU compatibility.
-3. 💰 The **pricing** ($49 for 10 years and 500MB of data).
-4. 🔐 The **baked-in security model** with encrypted traffic traveling through VPN tunnels.
-5. ⚡️ The **power-sipping 8mA** when idle.
-
-You can get started with the Notecard and a Raspberry Pi with the [Raspberry Pi Starter Kit](https://shop.blues.io/products/raspberry-pi-starter-kit).
+You can get started with the Notecard and a Raspberry Pi with the [Raspberry Pi Starter Kit](https://shop.blues.io/products/raspberry-pi-starter-kit?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi).
 
 ## Project Setup
 
 Since I am accessorizing my Raspberry Pi with only the Notecard/Notecarrier-Pi HAT and a USB battery pack, the hardware setup is quite simple.
 
-IMAGE OF HARDWARE
+![notecarrier pi and raspberry pi](rpi-and-notecarrier.jpg)
 
-To make this as real-world as possible, I'm going to write a Python script that samples temperature data from the Notecard and relays it to the cloud at five minute intervals.
+To make this as real-world as possible, I wrote a short Python script that samples temperature data from the Notecard and relays it to the cloud at five minute intervals.
 
-The data will be delivered to the [Blues Wireless cloud service, Notehub.io](https://blues.io/services/) (but only if there is data pending), and **routing** the data to a cloud-based dashboard provider.
-
-By using a *periodic* mode of cellular connectivity, we help to reduce the battery draw that would exist with a continuous cellular connection.
+The data will be delivered to the [Blues Wireless cloud service, Notehub.io](https://blues.io/services/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi) (but only if there is data pending), and **route the data to a cloud dashboard**.
 
 The completed Python script is [available here on GitHub](https://github.com/rdlauer/pibattery). Let's walk through the important sections here:
 
@@ -104,6 +96,8 @@ rsp = hub.set(nCard,
               mode="periodic",
               outbound=5)
 ```
+
+By using a `periodic` mode of cellular connectivity, we help to reduce the battery draw that would exist with a continuous cellular connection.
 
 ### Gather Sensor Data
 
@@ -130,17 +124,21 @@ And we're ready to go! ⚡️
 
 With my project running I decided to add a simple cloud-based dashboard to visualize this data we are sending. One of the advantages of using Notehub is its **built-in routing capabilities**.
 
-I used Datacake as my cloud dashboard provider as it's easy to securely deliver data to and then create an engaging dashboard report. After following the [Datacake routing guide on the Blues Wireless Developer Portal](https://dev.blues.io/build/tutorials/route-tutorial/datacake/), I was able to create a chart showing the gathered temperature data over time:
+I used [Datacake](https://datacake.co/low-code-iot-platform) as my cloud dashboard provider as it's easy to securely deliver data to and then create an engaging dashboard report. After following the [Datacake routing guide on the Blues Wireless Developer Portal](https://dev.blues.io/build/tutorials/route-tutorial/datacake/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi), I was able to create a chart showing the gathered temperature data over time:
 
 ![datacake dashboard with notecard data](blog-datacake-dashboard.png)
 
 ## Drumroll Please! (Unoptimized Version)
 
-Recall how I estimated that we'd see about **30 hours of run time**? Well, with this remotely-functioning Raspberry Pi running off of a 30,000 mAh battery pack, I started receiving data in Notehub at:
+Recall how I estimated we'd see about **30 hours of run time**? By measuring the current I could immediately see that I was likely to crush that estimate with a lower-than-expected 520mA draw:
+
+![unoptimized power draw](unoptimized.jpg)
+
+I then started receiving data in Notehub at:
 
 ![unoptimized starting date/time](blog-from-unoptimized.png)
 
-...and the last proof of life from the Raspberry Pi was at:
+...with the last proof of life from the Raspberry Pi at:
 
 ![unoptimized ending date/time](blog-to-unoptimized.png)
 
@@ -150,23 +148,27 @@ That's about **41 hours**, not bad.
 
 ## Drumroll Please (Optimized Version)
 
-Once I completed a full battery cycle with the stock configuration of the Raspberry Pi OS, I implemented the configuration changes documented in this [guide on power optimizing a Raspberry Pi](NEEDLINK).
-
-After disabling the USB controller, HDMI output, LEDs, Wi-Fi, Bluetooth, and so on, I re-ran the entire test from scratch.
+Once I completed a full battery cycle with the stock configuration of the Raspberry Pi OS, I implemented the configuration changes documented in this [guide on power optimizing a Raspberry Pi](https://blues.io//blog/tips-tricks-optimizing-raspberry-pi-power/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=battery-raspberry-pi). After disabling the USB controller, HDMI output, LEDs, Wi-Fi, Bluetooth, and so on, I re-ran the entire test from scratch.
 
 *And the results?* 🧐
 
-Starting on:
+I saw an immediate reduction in power draw:
+
+![optimized power draw](optimized.jpg)
+
+And, after restarting the process, I started receiving fresh data in Notehub on:
 
 ![optimized starting date/time](blog-from-optimized.png)
 
-...I consistently received signals from the Raspberry Pi until:
+...which consistently sent data until:
 
 ![optimized ending date/time](blog-to-optimized.png)
 
-Leading to a total of **44 hours** (a 7% improvement)!
+Leading to a total of **44 hours** (a ~7% improvement)!
 
-## What's Your Remote RPi Use Case?
+## What's Your Remote Pi Use Case?
+
+So was the question, "Is the Raspberry Pi a Practical Solution for Remote Monitoring?" answered? I'd say it depends on your situation! For short term deployments, scenarios where battery swaps are realistic, or even if you supplement with solar, using a Raspberry Pi off-grid can be a legitimate option.
 
 Hopefully this has inspired some of you to use your Raspberry Pi in more remote settings than you might normally consider.
 
