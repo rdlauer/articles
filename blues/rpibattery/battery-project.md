@@ -164,7 +164,7 @@ And, after restarting the process, I started receiving fresh data in Notehub on:
 
 ![optimized ending date/time](blog-to-optimized.png)
 
-Leading to a total of **44 hours** (a ~7% improvement)!
+Leading to a total of about **49 hours** (a ~17% improvement)!
 
 ## What's Your Remote Pi Use Case?
 
