@@ -103,31 +103,33 @@ Learn more about how Blues Wireless is making cellular IoT adoption easier for b
 
 # The Advantages of Cellular IoT
 
-IoT developers and the businesses that support them have a vested interest in using the best network connectivity option available (both from the developer experience *and* expense angles). For many, Wi-Fi has been an obvious choice when high bandwidth is a requirement. While for others building stationary solutions with easy access to wired Ethernet, that connection method is equally a no-brainer.
+IoT developers and the businesses that support them have a vested interest in using the best network connectivity option available (both from the developer experience _and_ expense angles). For many, Wi-Fi has been an obvious choice when high bandwidth is a requirement. While for others building stationary solutions with easy access to wired Ethernet, that connection method is equally a given.
 
-The rest of us, though, may be building IoT solutions that:
+The rest of us, though, may be actively implementing IoT solutions that:
 
 - are in-motion or occasionally mobile,
 - are deployed globally,
 - require a redundant offsite network gateway,
 - or need a reliable and secure connection.
 
-Building on top of decades of global infrastructure, cellular should be a top consideration when it comes to [picking the best network connectivity option](/blog/network-connectivity/).
+Building on top of decades of global infrastructure, cellular should be a top
+consideration when it comes to [picking the best IoT network connectivity
+option](/blog/network-connectivity/).
 
 ![person holding onto cell tower](2-cell-tower.jpg)
 
-*Image credit [@jacksloop](https://unsplash.com/@jacksloop) on Unsplash.*
+_Image credit [@jacksloop](https://unsplash.com/@jacksloop) on Unsplash._
 
 In this blog series we are demystifying cellular and taking a critical look at four key topics related to wireless in the Internet of Things:
 
-- [What is Cellular IoT?](NEED LINK)
+- [What is Cellular IoT?](/blog/what-is-cellular-iot/)
 - The Advantages of Cellular IoT (that's today)
 - Common Use Cases for Cellular IoT (coming soon!)
 - Cellular IoT Network and Infrastructure Redundancy (coming soon!)
 
 ## Cellular IoT Benefits
 
-Let's cut to the chase. The advantages of utilizing cellular connectivity with the Internet of Things are numerous:
+The advantages of utilizing cellular connectivity with the Internet of Things are extensive:
 
 - **Coverage:** Cellular networks are ubiquitous, mature, and reliable.
 - **Global Reach:** There is no other network technology with the reach of cellular.
@@ -137,15 +139,15 @@ Let's cut to the chase. The advantages of utilizing cellular connectivity with t
 
 When it comes to security, coverage, and usability, it's hard to compete with cellular.
 
-*Let's dive into some of these benefits:*
+_Let's dive into some of these benefits:_
 
 ### Global Cellular Coverage
 
 For global IoT deployments, cellular connectivity is widely considered the most logical and reliable connection option. There is no need to build new infrastructure nor add additional network gateways to support remote deployments. You're simply connecting to the cell towers that are already in place.
 
-Cellular *roaming* is another consideration. Are you providing a solution that may either be deployed to an unknown spot in the world or move between regions? As cellular IoT projects move from geolocation to geolocation, your cellular provider must have agreements with partner carriers to facilitate seamless connectivity across regions without having to change SIMs.
+Cellular _roaming_ is another consideration. Are you providing a solution that may either be deployed to an unknown spot in the world or move between regions? As cellular IoT projects move from location to location, your cellular provider must have agreements with partner carriers to facilitate seamless connectivity across regions without having to change SIMs.
 
-Example: The [Notecard](https://blues.io/products/) from Blues Wireless [connects to 135 (and counting) countries globally](https://dev.blues.io/hardware/notecard-datasheet/note-wbex-500/#cellular-service) on LTE-M, NB-IoT, and Cat-1 networks. Where these standards are not available, coverage is supplemented by UMTS/HSPA+ and GSM/GPRS/EDGE.
+**Example:** The [Notecard](https://blues.io/products/) from Blues Wireless [connects to 135 (and counting) countries globally](https://dev.blues.io/hardware/notecard-datasheet/note-wbex-500/#cellular-service) on LTE-M, NB-IoT, and Cat-1 networks. Where these standards are not available, coverage is supplemented by UMTS/HSPA+ and GSM/GPRS/EDGE.
 
 ### Cellular Security
 
@@ -169,7 +171,7 @@ Case in point, the Notecard was designed from day one to focus on [low-power sce
 
 The advantages of cellular IoT are clear. Unmatched global coverage, embedded device security, "it just works" installation, and exceedingly low power requirements make it an obvious choice for the IoT.
 
-Learn more about how Blues Wireless is making cellular IoT adoption easier for businesses AND developers with the [Notecard and Notecarrier](https://blues.io/products/) (and read the next post in this series on [Common Use Cases for Cellular IoT](NEED LINK)).
+Learn more about how Blues Wireless is making cellular IoT adoption easier for businesses AND developers with the [Notecard and Notecarrier](https://blues.io/products/)] (and read the next post in this series on [Common Use Cases for Cellular IoT](NEED LINK)).
 
 --------------------------------------------------------------------------------
 
