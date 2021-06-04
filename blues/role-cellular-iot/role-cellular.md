@@ -177,60 +177,66 @@ Learn more about how Blues Wireless is making cellular IoT adoption easier for b
 
 # Common Use Cases for Cellular IoT
 
-If you've been following along in [this blog series](NEED LINK), you've learned what cellular IoT really is and read some advantages for using cellular in your IoT solutions.
+*Title image credit [@jxk](https://unsplash.com/@jxk) on Unsplash.*
 
-But what are some examples of those solutions? Who is using cellular IoT today? There are many valid (and obvious) use cases for cellular IoT, but at the same time there are scenarios where cellular isn't normally considered and should be.
+If you've been following along in our blog series, you have learned [what cellular IoT really is](NEEDLINK) and read about some [advantages for using cellular](NEEDLINK) in your IoT projects.
 
-In this blog series we are demystifying cellular and taking a critical look at four key topics related to wireless in the Internet of Things:
+But what are some tangible examples of those solutions? Who is using cellular in production IoT projects today? There are many valid (and obvious) use cases for cellular IoT, and yet there are additional scenarios where cellular isn't normally considered (but should be!).
 
-- [What is Cellular IoT?](NEED LINK)
-- [The Advantages of Cellular IoT](NEED LINK)
+In this blog series we are demystifying cellular and taking a critical look at four key topics related to wireless connectivity in the Internet of Things:
+
+- [What is Cellular IoT?](NEEDLINK)
+- [The Advantages of Cellular IoT](NEEDLINK)
 - Common Use Cases for Cellular IoT (that's today)
 - Cellular IoT Network and Infrastructure Redundancy (coming soon!)
 
-## Monitoring Critical Systems
+## Monitoring of Critical Systems
 
-Imagine power is cut (either purposefully or due to a local power outage). Is your system monitoring critical systems that still need to report on collected data? The answer is likely a resounding "YES!" if you're monitoring security, smoke, fire, or any other systems that require 24/7/365 uptime. Therefore, relying on a network outside of your infrastructure can be a critical necessity.
+Imagine power is cut, either purposefully or due to a local power outage. Is your (now battery-powered) system monitoring a critical system that needs to maintain active reporting of data? Maybe you are monitoring:
+
+- Physical security (e.g. intrusion detection)
+- Presence of smoke, fire, or water
+- HVAC system function
+
+These implementations generally require 24/7/365 uptime, and so does your network access. Therefore, relying on a network outside of your internal infrastructure should be a key requirement.
 
 ## Global, Remote, and Outdoor Deployments
 
-Cellular networks are ubiquitous to the extent that they are the only networking option that can be considered truly "global". Whether you are tracking assets from country to country or deploying solutions that are stationary but in unpredictable locations, cellular is the only viable option.
+Cellular networks are ubiquitous to the extent that they are the only networking option that can be considered truly "global". Whether you are tracking assets from country to country, deploying solutions that are stationary but in unpredictable locations, or installing outside the range of Wi-Fi, cellular is the only viable option.
 
 ![IoT in agriculture](3-field-iot.jpg)
 
-*Image credit [@jxk](https://unsplash.com/@jxk) on Unsplash.*
-
-Likewise, IoT solutions deployed in rural or agricultural settings that only have 2G access often rely on cellular for connectivity.
+*IoT solutions deployed in rural or agricultural settings that only have 2G access often rely on cellular for connectivity.*
 
 ## Smart Cities
 
 While some cities have tried to set up their own public Wi-Fi networks (with varying degrees of success), most rely upon cellular for their "smart city" initiatives.
 
-A great example of this is utility meters. Normally installed inside or attached to the outside of a home or office, gas, electrical, and water meters need to be read on a regular basis in order to provide the most accurate billing statements. **Cellular provides the best choice for cities** who want to both automate the collection of this data and provide real time access, from city center to the distant suburbs.
+A great example of this is utility meters. Normally installed inside or attached to the outside of a home or office; gas, electrical, and water meter values need to be measured on a regular basis in order to provide the accurate billing statements. **Cellular provides the best choice for municipalities** who want to both automate the collection of this data and provide real time access, from city center to the distant suburbs.
 
 ## "It Just Works" Deployment
 
-When's the last time you bought a device and then had to figure out how to connect it to your home's Wi-Fi network? Now imagine yourself a non-technical user who doesn't know the SSID or even the password for your Wi-Fi router.
+When's the last time you bought a device and then had to figure out how to connect it to your home Wi-Fi network? Now imagine yourself a non-technical user who doesn't know the SSID or even the password for your Wi-Fi router.
 
-Cellular allows for pre-provisioned network access that "just works" when the end user turns on the device. Numerous consumer-installed IoT sensor-detection devices like smoke, fire, radon, and carbon monoxide can take advantage of providing a friction-free end user experience.
+Cellular allows for pre-provisioned network access that "just works" when the end user turns on the device. Numerous consumer-installed IoT devices like smoke, fire, radon, and carbon monoxide can take advantage of providing a friction-free end user installation experience.
 
 ## Cellular as a Fallback
 
-This is not all to say that other connectivity options are "bad". In fact, there are numerous scenarios where Wi-Fi or LoRa make more sense than cellular. This brings up another valid use case for cellular though: as a fallback solution.
+Everything we have referenced so far is not making a case *against* other connectivity options. In fact, there are numerous scenarios where Wi-Fi or LoRa make more sense than cellular. This brings up another valid use case for cellular though: as a fallback solution.
 
-What happens if your local network gateway is disabled due to either a power failure or hardware issue? If a Wi-Fi router decides to stop working in the middle of the night, can your deployment recover? Cellular can be enabled as a failsafe network option to ensure no lapses in connectivity.
+What happens if your local network gateway is disabled due to either a power failure or hardware issue? If a Wi-Fi router decides to stop working in the middle of the night, can your deployment gracefully recover? Cellular can be enabled as a failsafe network backup to ensure no lapses in connectivity.
 
 ## The Notecard for All of the Above
 
-The [Notecard from Blues Wireless](https://blues.io/products/) provides wireless connectivity for IoT projects of all types. It checks all the boxes we've referenced above, [and then some](https://dev.blues.io/).
+The [Notecard from Blues Wireless](https://blues.io/products/) provides wireless cellular connectivity for IoT projects of all types. It checks all the boxes we've mentioned, and then some.
 
 ![blues wireless notecard](notecard.png)
 
-As a secure device-to-cloud data-pump that comes with 500 MB of data and 10 years of cellular service, the Notecard is a 30mm x 34mm SoM and ships ready to embed in a project via its M.2 edge connector. To make prototyping IoT projects easier, Blues Wireless provides a series of expansion boards to host the Notecard called [Notecarriers](https://blues.io/products/#notecarrier).
+The Notecard is a secure device-to-cloud data-pump that comes with 500 MB of data and 10 years of cellular service. The SoM itself measures 30mm x 34mm SoM and ships ready to embed in a project via its M.2 edge connector. To make prototyping IoT projects easier, Blues Wireless provides a series of expansion boards to host the Notecard called [Notecarriers](https://blues.io/products/#notecarrier).
 
 ## Summary
 
-Cellular IoT is often the best choice for a wide range of IoT applications, especially those in varied indoor and outdoor settings. From smart cities with their remotely-monitored lights and parking meters, to critical system monitoring, even to self-driving cars and beyond, the reliability, security, and ubiquity of cellular connections make it the most logical choice for IoT solutions of all types
+Cellular IoT is often the best choice for a wide range of IoT applications, especially those in varied and unpredictable settings. From smart cities with their remotely-monitored lights and parking meters, to critical system monitoring, even to self-driving cars and beyond, the reliability, security, and ubiquity of cellular connections make it the most logical choice for IoT solutions of all types
 
 Learn more about how Blues Wireless is making cellular IoT adoption easier for businesses AND developers with the [Notecard and Notecarrier](https://blues.io/products/) (and read the next post in this series on [Cellular IoT Network and Infrastructure Redundancy](NEED LINK)).
 
