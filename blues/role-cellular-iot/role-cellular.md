@@ -179,7 +179,7 @@ Learn more about how Blues Wireless is making cellular IoT adoption easier for b
 
 *Title image credit [@jxk](https://unsplash.com/@jxk) on Unsplash.*
 
-If you've been following along in our blog series, you have learned [what cellular IoT really is](NEEDLINK) and read about some [advantages for using cellular](NEEDLINK) in your IoT projects.
+If you've been following along in our blog series, you have learned **what cellular IoT really is** and read about some **advantages for using cellular** in your IoT projects.
 
 But what are some tangible examples of those solutions? Who is using cellular in production IoT projects today? There are many valid (and obvious) use cases for cellular IoT, and yet there are additional scenarios where cellular isn't normally considered (but should be!).
 
