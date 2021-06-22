@@ -244,28 +244,30 @@ Learn more about how Blues Wireless is making cellular IoT adoption easier for b
 
 # Cellular IoT Network and Infrastructure Redundancy
 
-If you've been following along [in this blog series](NEED LINK), you've seen how cellular connectivity can be ideal for IoT solutions in logistics, manufacturing, security, asset tracking, and other industries.
+*Title image credit [@alinnnaaaa](https://unsplash.com/@alinnnaaaa) on Unsplash.*
 
-Cellular IoT devices can send and receive data from virtually anywhere in the world, utilizing an infrastructure that has been built up over decades.
+If you've been following along in this blog series, you've seen how cellular connectivity can be ideal for IoT solutions in logistics, manufacturing, security, asset tracking, among a myriad other industries. You've also learned what "cellular IoT" really means, and some of its associated advantages.
 
-![data dashboard](4-dashboard.jpg)
+Today we want to take a brief look at another de facto advantage of cellular, and that is the utilization of an underlying infrastructure that has been built up over decades.
 
-*Image credit [@lukechesser](https://unsplash.com/@lukechesser) on Unsplash.*
+*An overlapping, interconnected mesh of connectivity if you will:*
 
-Today we are going to tackle the topic of *redundancy* in relation to cellular IoT network connectivity. How prepared are you for all possible remote deployment scenarios for the lifespan of your IoT device?
+![network connection mesh](4-mesh.jpg)
+
+Specifically, we are going to look the topic of *redundancy* and its relation to cellular IoT. How prepared are you for all possible remote deployment scenarios for the lifespan of your IoT deployments? Are you banking on a tried-and-true connectivity method?
 
 In this blog series we are demystifying cellular and taking a critical look at four key topics related to wireless in the Internet of Things:
 
-- [What is Cellular IoT?](NEED LINK)
-- [The Advantages of Cellular IoT](NEED LINK)
-- [Common Use Cases for Cellular IoT](NEED LINK)
+- [What is Cellular IoT?](/blog/what-is-cellular-iot/)
+- [The Advantages of Cellular IoT](/blog/advantages-of-cellular-iot/)
+- [Common Use Cases for Cellular IoT](/blog/use-cases-cellular-iot/)
 - Cellular IoT Network and Infrastructure Redundancy (that's today)
 
 ## Why Redundancy is Critical for the IoT
 
-What *does* happen if your device loses its network connection? Can it still perform the tasks that it was built to do? Does data accumulate in storage until the device is full and then it fails?
+What *does* happen if your device loses network connectivity? Can it still perform the tasks that it was built to do? Or does data accumulate in storage until the device is full, and then it fails hard?
 
-Regardless of the *why* of a failure, your end user is less likely to blame their Wi-Fi router and more likely to blame you, the device provider, for not being able to account for all outage scenarios.
+Regardless of the *why* of a failure, **your end users are less likely to blame their Wi-Fi routers and more likely to blame you**, the device provider, for not being able to account for all outage scenarios.
 
 This is why **redundancy is a critical component** of proper cellular IoT deployments. With a contingency plan for every predictable failure point, you can maximize availability and reduce the impact of negative network issues. Even if you're banking on Wi-Fi, wired Ethernet, or LoRaWAN, cellular can (and should) be a key consideration when crafting a fallback, or redundant, network solution.
 
@@ -273,13 +275,13 @@ Redundancy is important with the devices themselves, yes, but it's just as impor
 
 ## Cellular Network Redundancy
 
-Many cellular IoT providers offer SIM cards that are limited to a single mobile network operator in a single geographic area. What if your SIM card is limited to a specific network in a single country only? How do you deploy to rural areas with coverage on another network, not to mention other countries entirely?
+Many cellular IoT providers offer SIM cards that are limited to a single mobile network operator in a single geographic area. If this is the case, how do you deploy to rural areas with coverage on another network, not to mention other countries entirely?
 
-A proper cellular IoT company will offer solutions that work with highly-regarded cellular providers and their first class partners in neighboring regions. When you can't predict the country of deployment, or if the solution itself is meant to travel between geographic regions, a seamless handoff of signal from network-to-network is critical.
+A proper cellular IoT company will offer solutions that work with highly-regarded providers and their first class partners in neighboring regions. When you can't predict the country of deployment, or if the solution itself is meant to travel between geographic regions, a seamless reconnection from network-to-network is critical.
 
 It's also important to factor in which wireless standards your IoT module is using. If you're moving from a region with primarily GSM support to LTE, for example, will your solution gracefully recover?
 
-Case in point, the [Blues Wireless Notecard](https://blues.io/products/) provides cellular IoT connectivity in a low-power fashion using LTE-M, NB-IoT, and Cat-1 technologies. In global regions without access to these standards, coverage is available via UMTS/HSPA+ and GSM/GPRS/EDGE.
+Case in point, the [Blues Wireless Notecard](/products/) provides cellular IoT connectivity in a low-power fashion using LTE-M, NB-IoT, and CAT-1 technologies. In global regions without access to these standards, coverage is also available via UMTS/HSPA+ and GSM/GPRS/EDGE.
 
 ## Cellular Infrastructure Redundancy
 
@@ -288,6 +290,8 @@ If you consider a traditional Wi-Fi or wired Ethernet deployment, your network r
 Cellular, on the other hand, has a massive advantage in terms of overlapping tower coverage. If access to one cell tower is lost, there is a high probability of another tower taking over (albeit with possibly a weaker signal, but a signal nonetheless).
 
 ![overlapping signal map example](4-overlapping.png)
+
+*Image credit [Seyid Yagmur](https://stackoverflow.com/questions/41257230/google-maps-android-api-circle-bound).*
 
 With this method of overlapping cell tower zones, your devices will always have a fallback connection should a centralized access point go down.
 
@@ -302,11 +306,11 @@ Cellular holds numerous security-related advantages for those of us building in 
 - Cell network firewalls can **limit device connectivity** to only core functions.
 - Device manufacturers can provide a **VPN tunnel** from device to cloud without exposing it to a public Internet connection.
 
-This is where the Blues Wireless Notecard shines. The Notecard comes pre-provisioned to securely communicate with the Blues Wireless cloud service, Notehub.io. Traffic to/from the Notecard travels through VPN tunnels and is **never exposed to the public Internet**.
+This is where the Blues Wireless Notecard shines. The Notecard comes pre-provisioned to securely communicate with the [Blues Wireless cloud service, Notehub.io](/services/). Traffic to/from the Notecard travels through VPN tunnels and is **never exposed to the public Internet**.
 
 ## Summary
 
 Using an IoT connectivity option with redundant capabilities in terms of network, infrastructure, and security is paramount. Cellular IoT is the best choice for a wide range of IoT applications, and the baked-in advantages provided by utilizing an existing mature network can't be understated.
 
-Learn more about how Blues Wireless is making cellular IoT adoption easier for businesses AND developers with the [Notecard and Notecarrier](https://blues.io/products/).
+Learn more about how Blues Wireless is making cellular IoT adoption easier for businesses AND developers with the [Notecard and Notecarrier](/products/).
 
