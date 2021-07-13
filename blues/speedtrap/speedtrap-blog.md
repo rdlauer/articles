@@ -16,4 +16,4 @@ I built a portable "speed trap" that uses a machine learning model from [Edge Im
 
 ![final speed trap deployment](speed-trap-final.jpg)
 
-**Ready? View the complete tutorial over at [hackster.io](NEED LINK)!**
+**Ready? View the complete tutorial over at [hackster.io](https://www.hackster.io/rob-lauer/busted-create-an-ml-powered-speed-trap-b1e5d1)!**
