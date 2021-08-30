@@ -8,9 +8,9 @@ Case in point, the [Notecard](/products/) provides cost-effective and low-power 
 
 Whether you're a hobbyist spinning up a fun backyard project or a business looking to scale with cellular, the Notecard is an equally valid solution. The same goes with providing that "last mile" of cloud connectivity with [Notehub.io](/services/). With Notehub.io you can securely route sensor data from the Notecard to your cloud application of choice.
 
-IMAGE OF FLOW
+![blues wireless data flow](blues-flow.jpg)
 
-But "filling the gap" can also mean providing products and services that extend *beyond* what you likely think of as our core product set of cellular communications.
+But "filling the gap" can also mean providing products and services that extend *beyond* what you likely think of as our core product set, that likely being cellular communications!
 
 ## Introducing the Swan
 
@@ -26,13 +26,13 @@ Based on the STM32 from STMicroelectronics, the Swan works like any other Feathe
 
 ## The Swan Notecarriers
 
-We are also making it easier to use the Swan and Notecard with two new Notecarrier options:
+We are also making it easy to use the Swan and Notecard together with two new Notecarrier options:
 
 - The [Notecarrier-AF Swan Kit](shop.blues) includes a Notecarrier-AF with a pre-seated Swan and pre-soldered headers.
 - The [Swan + Notecarrier-A](shop.blues) includes the bare MCU without headers and a base Notecarrier board.
 
-These allow for seamless access of the Swan feature set, along with the traditional Notecard integration you've come to expect from our line of [Notecarriers](link).
+These allow for seamless access of the Swan feature set, along with the traditional Notecard integration you've come to expect from our line of [Notecarriers](https://shop.blues.io/collections/notecarrier).
 
 ## Available Today
 
-[Available now for $25](shopify) on the Blues Wireless store, we're excited to see what you build with the Swan!
+[Available now for $25](shop.blues), we're excited to see what you build with the Swan!
