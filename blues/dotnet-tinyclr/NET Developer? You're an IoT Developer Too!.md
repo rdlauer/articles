@@ -12,6 +12,13 @@ Lo and behold, I learned about a couple of frameworks geared towards this scenar
 
 Before we look more closely at these tiny .NET frameworks, let's take a short step back and better define the concepts of "embedded development" and "IoT".
 
+- [What is Embedded Development and the IoT?]()
+- [The Tiniest .NET Frameworks]()
+- [The "Tiny" Hardware]()
+- [Getting Started with TinyCLR OS]()
+- [Adding IoT to the Mix]()
+- [Next Steps]()
+
 ## What is Embedded Development and the IoT?
 
 Embedded programming is the concept of writing code for incredibly small computers (a.k.a. microcontrollers) that communicate with sensors (e.g. temperature, gas, humidity) or power servo motors that in turn control other devices. In the embedded space, we often talk about programming "firmware", which is essentially semi-permanent software loaded into non-volatile memory on a device (it's not **soft**ware or **hard**ware, it's **firm**ware!).
@@ -44,7 +51,7 @@ Both nanoFramework and TinyCLR are free frameworks for building .NET application
 
 For .NET developers, this opens up an entire new world of embedded development. We can use the tools (Visual Studio) and languages (C#) that we've been using for years, all without worrying about the low-level hardware issues that can easily confound even the most dedicated embedded engineer.
 
-It does come with a catch though. Neither nanoFramework nor TinyCLR provide access to the full .NET Common Language Runtime (CLR), and they only provide a subset of the .NET base class libraries and APIs.
+It does come with a catch though. Neither nanoFramework nor TinyCLR provide access to the full .NET Common Language Runtime (CLR), and they only provide a subset of the .NET base class libraries and APIs. This is primarily because of the memory constraints on these microcontrollers.
 
 What about the differences between nanoFramework and TinyCLR? At a high level they boil down down to the following:
 
@@ -76,7 +83,7 @@ Let's walk through some (relatively) simple steps to get the TinyCLR OS loaded o
 
 ### Installing the TinyCLR OS
 
-Our first step is to install the latest version of the TinyCLR OS on the device. TinyCLR OS it includes the .NET CLR which converts your compiled C# into instructions for the microcontroller. It's also used for interacting with Visual Studio (critical for loading the program onto the device and debugging).
+Our first step is to install the latest version of the TinyCLR OS on the device. TinyCLR OS includes the .NET CLR which converts your compiled C# into instructions for the microcontroller. It's also used for interacting with Visual Studio (critical for loading the program onto the device and debugging).
 
 Connect your FEZ Feather to your Windows PC via a USB-C cable:
 
@@ -188,6 +195,8 @@ The Notecarrier acts as a *bridge* between your MCU and the Notecard. It include
 Here is the FEZ Feather wired up to a Notecard + Notecarrier, ready to send data to the cloud over cellular!
 
 ![fez feather and notecard](fez-notecard.jpg)
+
+The white board you see is called a breadboard, and is used to quickly create connections between the MCU and the Notecarrier.
 
 If you're following along at home, here are the connections being made with those jumper wires:
 
