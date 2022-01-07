@@ -23,7 +23,7 @@ Before we look more closely at these tiny .NET frameworks, let's take a short st
 
 Embedded programming is the concept of writing code for incredibly small computers (a.k.a. microcontrollers) that communicate with sensors (e.g. temperature, gas, humidity) or power servo motors that in turn control other devices. In the embedded space, we often talk about programming "firmware", which is essentially semi-permanent software loaded into non-volatile memory on a device (it's not **soft**ware or **hard**ware, it's **firm**ware!).
 
-*An example programmable microcontroller from Blues Wireless, the Feather-compatible [Swan](https://blues.io/products/swan/):*
+*An example programmable microcontroller from Blues Wireless, the Feather-compatible [Swan](https://blues.io/products/swan/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot):*
 
 ![blues wireless feather-compatible swan mcu](swan_iso.jpg)
 
@@ -127,32 +127,30 @@ Next, we're going to perform the "Hello World!" of embedded programming: blinkin
 
 Start by replacing *everything* in `Program.cs` with the following code. Have no fear, we'll walk through what's happening in this code:
 
-```
-using GHIElectronics.TinyCLR.Devices.Gpio;
-using GHIElectronics.TinyCLR.Pins;
-using System.Threading;
-
-namespace TinyCLRApplication
-{
-    class Program
-    {
-        static void Main()
-        {
-            var LED = GpioController.GetDefault().OpenPin(SC20100.GpioPin.PE11);
-            LED.SetDriveMode(GpioPinDriveMode.Output);
-
-            while (true)
-            {
-                LED.Write(GpioPinValue.High);
-                Thread.Sleep(100);
-
-                LED.Write(GpioPinValue.Low);
-                Thread.Sleep(100);
-            }
-        }
-    }
-}
-```
+	using GHIElectronics.TinyCLR.Devices.Gpio;
+	using GHIElectronics.TinyCLR.Pins;
+	using System.Threading;
+	
+	namespace TinyCLRApplication
+	{
+	    class Program
+	    {
+	        static void Main()
+	        {
+	            var LED = GpioController.GetDefault().OpenPin(SC20100.GpioPin.PE11);
+	            LED.SetDriveMode(GpioPinDriveMode.Output);
+	
+	            while (true)
+	            {
+	                LED.Write(GpioPinValue.High);
+	                Thread.Sleep(100);
+	
+	                LED.Write(GpioPinValue.Low);
+	                Thread.Sleep(100);
+	            }
+	        }
+	    }
+	}
 
 *So what exactly is happening in this code?*
 
@@ -182,13 +180,13 @@ It's also important to consider not only the raw technical ability of communicat
 
 ### Introducing the Blues Wireless Notecard
 
-Cellular has traditionally scared developers due to its archaic AT command syntax (it's an awful developer experience) and likewise businesses have been afraid of the price (per-device monthly plans add up fast). So the key to cellular success lies in a tiny pre-paid device-to-cloud data pump called a [Notecard](https://blues.io/products/notecard/).
+Cellular has traditionally scared developers due to its archaic AT command syntax (it's an awful developer experience) and likewise businesses have been afraid of the price (per-device monthly plans add up fast). So the key to cellular success lies in a tiny pre-paid device-to-cloud data pump called a [Notecard](https://blues.io/products/notecard/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot).
 
 ![blues wireless cellular notecard](notecard-nbgl.png)
 
 With both cellular and GPS capabilities (and 10 years + 500 MB of data included) the Notecard is a no-brainer for when you want to start pushing data to the cloud over LTE-M, NB-IoT, or Cat-1 cellular.
 
-But what about that strange M.2 edge connector at the bottom of the Notecard? How do you use this with the microcontroller we just programmed? The answer comes in the form of the [Notecarrier](https://blues.io/products/notecarrier/):
+But what about that strange M.2 edge connector at the bottom of the Notecard? How do you use this with the microcontroller we just programmed? The answer comes in the form of the [Notecarrier](https://blues.io/products/notecarrier/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot):
 
 ![blues wireless notecarrier-al](notecarrier.png)
 
@@ -211,23 +209,19 @@ To me, the real beauty of the Notecard comes from its developer experience. Ever
 
 For example, here is an API command that will tell you the current GPS location of a Notecard:
 
-```
-{"req": "card.location"}
-```
+	{"req": "card.location"}
 
 And an example response from the Notecard:
 
-```
-{
-  "status": "GPS updated (58 sec, 41dB SNR, 9 sats) {gps-active}
-            {gps-signal} {gps-sats} {gps}",
-  "mode":   "periodic",
-  "lat":    42.577600,
-  "lon":    -70.871340,
-  "time":   1598554399,
-  "max":    25
-}
-```
+	{
+	  "status": "GPS updated (58 sec, 41dB SNR, 9 sats) {gps-active}
+	            {gps-signal} {gps-sats} {gps}",
+	  "mode":   "periodic",
+	  "lat":    42.577600,
+	  "lon":    -70.871340,
+	  "time":   1598554399,
+	  "max":    25
+	}
 
 ### Adding Wireless Capabilities
 
@@ -235,54 +229,52 @@ Knowing all of this, let's see how easy it can be to send a small packet of data
 
 Once again, you can remove everything in your `Program.cs` file and replace it with the following:
 
-```
-using Bytewizer.TinyCLR.Drivers.Blues.Notecard;
-using GHIElectronics.TinyCLR.Devices.I2c;
-using GHIElectronics.TinyCLR.Pins;
-using System.Diagnostics;
+	using Bytewizer.TinyCLR.Drivers.Blues.Notecard;
+	using GHIElectronics.TinyCLR.Devices.I2c;
+	using GHIElectronics.TinyCLR.Pins;
+	using System.Diagnostics;
+	
+	namespace TinyCLRApplication
+	{
+	    class Program
+	    {
+	        static void Main()
+	        {
+	            // setup I2C bus for Fez Feather
+	            var controller = I2cController.FromName(SC20100.I2cBus.I2c1);
+	            var notecard = new NotecardController(controller);
+	
+	            // associate this Notecard with a Notehub.io project
+	            var request1 = new JsonRequest("hub.set");
+	            request1.Add("product", "com.blues.me:some_project"); // replace this with your product uid!
+	
+	            var results1 = notecard.Request(request1);
+	            if (results1.IsSuccess)
+	                Debug.WriteLine(results1.Response);
+	
+	            // create a mock JSON body object
+	            var body = new JsonObject();
+	            body.Add("temp", 35.5);
+	            body.Add("humid", 56.23);
+	
+	            // create a "note" with the JSON body from above
+	            var request2 = new JsonRequest("note.add");
+	            request2.Add("body", body);
+	            request2.Add("sync", true);
+	
+	            var results2 = notecard.Request(request2);
+	
+	            if (results2.IsSuccess)
+	                Debug.WriteLine(results2.Response);
+	        }
+	    }
+	}
 
-namespace TinyCLRApplication
-{
-    class Program
-    {
-        static void Main()
-        {
-            // setup I2C bus for Fez Feather
-            var controller = I2cController.FromName(SC20100.I2cBus.I2c1);
-            var notecard = new NotecardController(controller);
+If you look carefully, you can see that to program the Notecard, we are simply building JSON objects that correlate to commands available in the [Notecard API](https://dev.blues.io/reference/notecard-api/introduction/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot):
 
-            // associate this Notecard with a Notehub.io project
-            var request1 = new JsonRequest("hub.set");
-            request1.Add("product", "com.blues.me:some_project"); // replace this with your product uid!
-
-            var results1 = notecard.Request(request1);
-            if (results1.IsSuccess)
-                Debug.WriteLine(results1.Response);
-
-            // create a mock JSON body object
-            var body = new JsonObject();
-            body.Add("temp", 35.5);
-            body.Add("humid", 56.23);
-
-            // create a "note" with the JSON body from above
-            var request2 = new JsonRequest("note.add");
-            request2.Add("body", body);
-            request2.Add("sync", true);
-
-            var results2 = notecard.Request(request2);
-
-            if (results2.IsSuccess)
-                Debug.WriteLine(results2.Response);
-        }
-    }
-}
-```
-
-If you look carefully, you can see that to program the Notecard, we are simply building JSON objects that correlate to commands available in the [Notecard API](https://dev.blues.io/reference/notecard-api/introduction/):
-
-- The [hub.set](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-set) request associates the Notecard with a project on Notehub.io (more on [Notehub](https://blues.io/services/) in the next section!).
+- The [hub.set](https://dev.blues.io/reference/notecard-api/hub-requests/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot#hub-set) request associates the Notecard with a project on Notehub.io (more on [Notehub](https://blues.io/services/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot) in the next section!).
 - We are creating a JSON object that stores some mock temperature and humidity data.
-- We are sending this data (a [Note](https://dev.blues.io/reference/glossary/#note) in Blues Wireless speak) to the cloud with a [note.add](https://dev.blues.io/reference/notecard-api/note-requests/#note-add) request.
+- We are sending this data (a [Note](https://dev.blues.io/reference/glossary/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot#note) in Blues Wireless speak) to the cloud with a [note.add](https://dev.blues.io/reference/notecard-api/note-requests/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot#note-add) request.
 
 Before running this program, there is one more NuGet package to include:
 
@@ -298,7 +290,7 @@ Yes, I got ahead of myself. We started pushing data to the cloud without fully u
 
 We first need to understand that a **key benefit of the Notecard is security**. The device itself lives off of the public Internet. It's a cellular data pump, meaning it needs to connect to *secure proxy* to deliver data over the Internet.
 
-This is where [Notehub](https://blues.io/services/) comes into play. Notehub is a thin cloud service that securely receives and syncs data with virtually any cloud (think AWS, Azure, Google Cloud, or even your own custom MQTT or RESTful endpoint).
+This is where [Notehub](https://blues.io/services/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot) comes into play. Notehub is a thin cloud service that securely receives and syncs data with virtually any cloud (think AWS, Azure, Google Cloud, or even your own custom MQTT or RESTful endpoint).
 
 To start, we can simply see this mock data appear in Notehub, ready to be routed to its final home on a big cloud ☁️:
 
@@ -310,16 +302,16 @@ Since Notehub is not the final resting place of our data, naturally we will want
 
 ![notecard data in microsoft azure](notecard-azure.png)
 
-To do so, you can follow the [in-depth routing tutorial for Azure](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/azure/) that walks through building your own cloud-based dashboard using data delivered with the Notecard.
+To do so, you can follow the [in-depth routing tutorial for Azure](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/azure/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot) that walks through building your own cloud-based dashboard using data delivered with the Notecard.
 
-Finally, while it's outside the scope of this article, as data is being passed to Azure you can [alter and optimize your JSON payloads with JSONata](https://dev.blues.io/notecard/notecard-guides/jsonata-1-2-3/) on-the-fly. Using JSONata you can write server-side functions that can alter data to conform to whatever structures your endpoint is expecting.
+Finally, while it's outside the scope of this article, as data is being passed to Azure you can [alter and optimize your JSON payloads with JSONata](https://dev.blues.io/notecard/notecard-guides/jsonata-1-2-3/?utm_source=telerik&utm_medium=web&utm_content=dotnetiot) on-the-fly. Using JSONata you can write server-side functions that can alter data to conform to whatever structures your endpoint is expecting.
 
 ## Next Steps
 
 If this has piqued your curiosity, I highly recommend taking the following steps in your C# IoT journey:
 
 - Read more about what the [.NET nanoFramework](https://www.nanoframework.net/) and [TinyCLR](https://www.ghielectronics.com/tinyclr/) have to offer to .NET developers.
-- If you want to follow this tutorial, grab your own [FEZ Feather](https://www.ghielectronics.com/sitcore/sbc/), [Notecard](https://shop.blues.io/collections/notecard/products/note-nbgl-500), and [Notecarrier-AL](https://shop.blues.io/products/carr-al).
-- If you want to tinker with cloud connectivity with Python on a Raspberry Pi or by writing some Arduino, check out the [Blues Wireless starter kits](https://shop.blues.io/collections/development-kits).
+- If you want to follow this tutorial, grab your own [FEZ Feather](https://www.ghielectronics.com/sitcore/sbc/), [Notecard](https://shop.blues.io/collections/notecard/products/note-nbgl-500?utm_source=telerik&utm_medium=web&utm_content=dotnetiot), and [Notecarrier-AL](https://shop.blues.io/products/carr-al?utm_source=telerik&utm_medium=web&utm_content=dotnetiot).
+- If you want to tinker with cloud connectivity with Python on a Raspberry Pi or by writing some Arduino, check out the [Blues Wireless starter kits](https://shop.blues.io/collections/development-kits?utm_source=telerik&utm_medium=web&utm_content=dotnetiot).
 
 Happy hacking with C# and the IoT! 👩‍💻
