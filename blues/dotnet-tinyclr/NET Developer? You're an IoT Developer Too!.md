@@ -12,12 +12,12 @@ Lo and behold, I learned about a couple of frameworks geared towards this scenar
 
 Before we look more closely at these tiny .NET frameworks, let's take a short step back and better define the concepts of "embedded development" and "IoT".
 
-- [What is Embedded Development and the IoT?](NEED LINK)
-- [The Tiniest .NET Frameworks](NEED LINK)
-- [The "Tiny" Hardware](NEED LINK)
-- [Getting Started with TinyCLR OS](NEED LINK)
-- [Adding IoT to the Mix](NEED LINK)
-- [Next Steps](NEED LINK)
+- [What is Embedded Development and the IoT?](#what-is-embedded-development-and-the-iot)
+- [The Tiniest .NET Frameworks](#the-tiniest-net-frameworks)
+- [The "Tiny" Hardware](#the-tiny-hardware)
+- [Getting Started with TinyCLR OS](#getting-started-with-tinyclr-os)
+- [Adding IoT to the Mix](#adding-iot-to-the-mix)
+- [Next Steps](#next-steps)
 
 ## What is Embedded Development and the IoT?
 
