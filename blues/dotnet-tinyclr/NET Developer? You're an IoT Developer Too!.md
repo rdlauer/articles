@@ -12,12 +12,12 @@ Lo and behold, I learned about a couple of frameworks geared towards this scenar
 
 Before we look more closely at these tiny .NET frameworks, let's take a short step back and better define the concepts of "embedded development" and "IoT".
 
-- [What is Embedded Development and the IoT?]()
-- [The Tiniest .NET Frameworks]()
-- [The "Tiny" Hardware]()
-- [Getting Started with TinyCLR OS]()
-- [Adding IoT to the Mix]()
-- [Next Steps]()
+- [What is Embedded Development and the IoT?](NEED LINK)
+- [The Tiniest .NET Frameworks](NEED LINK)
+- [The "Tiny" Hardware](NEED LINK)
+- [Getting Started with TinyCLR OS](NEED LINK)
+- [Adding IoT to the Mix](NEED LINK)
+- [Next Steps](NEED LINK)
 
 ## What is Embedded Development and the IoT?
 
@@ -51,7 +51,7 @@ Both nanoFramework and TinyCLR are free frameworks for building .NET application
 
 For .NET developers, this opens up an entire new world of embedded development. We can use the tools (Visual Studio) and languages (C#) that we've been using for years, all without worrying about the low-level hardware issues that can easily confound even the most dedicated embedded engineer.
 
-It does come with a catch though. Neither nanoFramework nor TinyCLR provide access to the full .NET Common Language Runtime (CLR), and they only provide a subset of the .NET base class libraries and APIs. This is primarily because of the memory constraints on these microcontrollers.
+It does come with a catch though. Neither nanoFramework nor TinyCLR provide access to the full .NET Common Language Runtime (CLR), and they only provide a subset of the .NET base class libraries and APIs. This is primarily because of the memory constraints on these microcontrollers. Specifically for TinyCLR, you can find a [list of limitations in their docs](https://docs.ghielectronics.com/software/tinyclr/limitations.html).
 
 What about the differences between nanoFramework and TinyCLR? At a high level they boil down down to the following:
 
@@ -71,7 +71,7 @@ While I did some experimentation with both platforms, as an IoT and embedded eng
 
 ## The "Tiny" Hardware
 
-As just mentioned, TinyCLR OS only runs on microcontrollers (MCUs) provided by GHI Electronics. Therefore, my MCU of choice is for this exercise is the [FEZ Feather](https://www.ghielectronics.com/sitcore/sbc/):
+As just mentioned, TinyCLR OS only runs on microcontrollers (MCUs) provided by GHI Electronics. My MCU of choice is for this exercise is the [FEZ Feather](https://www.ghielectronics.com/sitcore/sbc/):
 
 ![fez feather mcu](fez-feather.png)
 
@@ -178,6 +178,8 @@ Now that you're (relatively) comfortable with building a simple C# app for deplo
 
 While some embedded systems can get away with storing data on an SD card for later retrieval, it's far more useful to actively transmit data as it comes in. Wi-Fi, LoRa, and Bluetooth are common technologies used in the IoT, but there is no more ubiquitous global solution for remotely transmitting data than cellular.
 
+It's also important to consider not only the raw technical ability of communicating over cellular, but also how you then get this data to a cloud endpoint, such as Microsoft Azure.
+
 ### Introducing the Blues Wireless Notecard
 
 Cellular has traditionally scared developers due to its archaic AT command syntax (it's an awful developer experience) and likewise businesses have been afraid of the price (per-device monthly plans add up fast). So the key to cellular success lies in a tiny pre-paid device-to-cloud data pump called a [Notecard](https://blues.io/products/notecard/).
@@ -200,8 +202,8 @@ The white board you see is called a breadboard, and is used to quickly create co
 
 If you're following along at home, here are the connections being made with those jumper wires:
 
-- Supplying power to the Notecarrier via the `V+` and `GND` pins.
-- Communicating over I2C by connecting the `SCL` and `SDA` pins.
+- Supplying power to the Notecarrier from the FEZ via the `V+` and `GND` pins (the black/blue and orange/red wires).
+- Communicating over I2C by connecting the `SCL` and `SDA` pins (the longer orange and green wires).
 
 ### All JSON, All the Time
 
@@ -278,7 +280,7 @@ namespace TinyCLRApplication
 
 If you look carefully, you can see that to program the Notecard, we are simply building JSON objects that correlate to commands available in the [Notecard API](https://dev.blues.io/reference/notecard-api/introduction/):
 
-- The [hub.set](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-set) request associates the Notecard with a project on Notehub.io (more on [Notehub](https://blues.io/services/) next!).
+- The [hub.set](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-set) request associates the Notecard with a project on Notehub.io (more on [Notehub](https://blues.io/services/) in the next section!).
 - We are creating a JSON object that stores some mock temperature and humidity data.
 - We are sending this data (a [Note](https://dev.blues.io/reference/glossary/#note) in Blues Wireless speak) to the cloud with a [note.add](https://dev.blues.io/reference/notecard-api/note-requests/#note-add) request.
 
@@ -290,19 +292,27 @@ Go ahead and click **Start** or hit **F5** in VS to build and deploy your cellul
 
 In the debug output, you should see `{"total":1}` which is the Notecard telling you that there is a single event being sent to the cloud.
 
-### To the Cloud and Beyond
+### To the Cloud
 
-A key benefit of the Notecard is security. The device itself lives off of the public Internet. It's a cellular data pump, meaning it needs a *secure proxy* to deliver data over the Internet.
+Yes, I got ahead of myself. We started pushing data to the cloud without fully understanding *where* in the cloud the data was going!
 
-This is where [Notehub](https://blues.io/services/) comes into play. Notehub is a thin cloud service that securely receives and transmits data to virtually any cloud endpoint (think AWS, Azure, Google Cloud, and so on).
+We first need to understand that a **key benefit of the Notecard is security**. The device itself lives off of the public Internet. It's a cellular data pump, meaning it needs to connect to *secure proxy* to deliver data over the Internet.
 
-While it's outside the scope of this article, you can [alter and optimize your JSON payloads with JSONata](https://dev.blues.io/notecard/notecard-guides/jsonata-1-2-3/) on Notehub, and [route data to your endpoint of choice](https://dev.blues.io/start/tutorials/route-tutorial/).
+This is where [Notehub](https://blues.io/services/) comes into play. Notehub is a thin cloud service that securely receives and syncs data with virtually any cloud (think AWS, Azure, Google Cloud, or even your own custom MQTT or RESTful endpoint).
 
-In our case, we can simply see this mock data appear in Notehub, ready to be routed to its final home on a big cloud ☁️:
+To start, we can simply see this mock data appear in Notehub, ready to be routed to its final home on a big cloud ☁️:
 
 ![our mock data in notehub](event-in-notehub.png)
 
-**Success!** 🥳
+### Routing Data to Azure
+
+Since Notehub is not the final resting place of our data, naturally we will want to automatically sync this data with a big cloud such as Azure.
+
+![notecard data in microsoft azure](notecard-azure.png)
+
+To do so, you can follow the [in-depth routing tutorial for Azure](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/azure/) that walks through building your own cloud-based dashboard using data delivered with the Notecard.
+
+Finally, while it's outside the scope of this article, as data is being passed to Azure you can [alter and optimize your JSON payloads with JSONata](https://dev.blues.io/notecard/notecard-guides/jsonata-1-2-3/) on-the-fly. Using JSONata you can write server-side functions that can alter data to conform to whatever structures your endpoint is expecting.
 
 ## Next Steps
 
