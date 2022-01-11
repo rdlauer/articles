@@ -1,4 +1,4 @@
-# Global Cellular GPS Asset Tracking for Dummies
+# Global Cellular/GPS Asset Tracking for Dummies
 
 "If you don't know where you are going, you'll end up someplace else." - Yogi Berra.
 
@@ -8,11 +8,11 @@ One of the more intriguing use cases to be born out of the IoT is the ability to
 
 But what if you don't know where to start? Or what if you don't want to invest serious 💰💰💰 in a fully decked-out tracker? Well, have I got a tutorial for you!
 
-I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to (almost) every continent. I tracked its location with a cloud-based dashboard and even tweaked some settings on the trackers themselves after I had sent them on their journey. NEED TO SEE ABOUT THIS
+I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to (almost) every continent. I tracked its location with a cloud-based dashboard and even updated some settings on the trackers themselves **after** I had sent them on their journey.
 
-Let's dive into the hardware used, the low-code tracker configuration steps, and the cloud dashboard built to monitor this little tracker and its amazing journey around the globe 🌍.
+Let's dive into the hardware used, the low-code tracker configuration steps, and the cloud dashboard built to monitor this little tracker and its amazing voyage around the globe 🌍.
 
-## Minimizing Required Hardware
+## Minimal Required Hardware
 
 When speccing out this project, I wanted to double down on the low cost hardware angle. There are plenty of off-the-shelf asset tracking systems out there, but the prices are generally too high for a minimalist asset tracking solution.
 
@@ -23,13 +23,13 @@ Therefore, I started with the following requirements:
 1. Low-power hardware (it's a long journey, can't have a power hog)
 1. Cheap and reliable GPS and cellular antennas
 1. Reasonably-sized (and priced) LiPo battery
-1. Preferably avoid using a host microcontroller (to save on power and cost)
+1. Avoid using a host microcontroller (to save on power and cost)
 
 ### GPS and Cellular in One
 
-We all know the old adage: kill two birds with one stone. How violent! So how about kill three birds with one stone? Wait, still violent.
+We all know the old adage: kill two birds with one stone. How violent! So how about kill three birds with one stone? Wait, still violent. Let's knock out three requirements (cellular, GPS, and low-power) with one piece of hardware.
 
-The core of my asset tracker is the [Notecard from Blues Wireless](https://blues.io/products/notecard/). The Notecard is a device-to-cloud data pump with an onboard cellular and GPS module that, by default, is **low power** to the tune of ~8mA when idle. The Notecard ships with an embedded SIM and 10 years + 500 MB of data included.
+The core of my asset tracker is the [Notecard from Blues Wireless](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). The Notecard is a device-to-cloud data pump with an onboard cellular and GPS module that, by default, is **low power** to the tune of ~8mA when idle. The Notecard ships with an embedded SIM and 10 years + 500 MB of data included.
 
 How about global connectivity? [137 countries and counting.](https://dev.blues.io/hardware/notecard-datasheet/note-nbgl-500/#cellular-service) Should be more than enough for this trip.
 
@@ -39,7 +39,7 @@ But I can't drop a Notecard in a box by itself and send it around the world (yet
 
 ### Finding the Right Antennas
 
-Ever do a search for "cellular antenna" on Digikey? Good luck my friend! Luckily Blues Wireless also provides the [Notecarrier](https://blues.io/products/notecarrier/), which is a line of development boards meant to act as a bridge between a Notecard and your MCU or Raspberry Pi-compatible single-board computer.
+Ever do a search for "cellular antenna" on Digikey? Good luck my friend! Luckily Blues Wireless also provides [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_content=globaltracker), which are a line of development boards that act as a bridge between a Notecard and your MCU or Raspberry Pi-compatible single-board computer.
 
 *There are two main advantages to using the Notecarrier for this project:*
 
@@ -52,9 +52,9 @@ Ever do a search for "cellular antenna" on Digikey? Good luck my friend! Luckily
 
 In this day of supply chain issues and shipping delays, not to mention the fact that I had to send this tracker to nearly every corner of the globe, I needed to craft a very power-wise solution (the last thing I needed was to have the tracker go offline in the middle of the Atlantic).
 
-Again, the Notecard becomes invaluable here due to its [low-power hardware and power-conscious firmware](https://dev.blues.io/notecard/notecard-walkthrough/low-power-design/) (its default settings are very battery-aware). Just as important was picking the right battery. I went with a [fairly beefy 6600 mAh Lithium Polymer battery](https://www.adafruit.com/product/353) from Adafruit, just to be safe.
+Again, the Notecard becomes invaluable here due to its [low-power hardware and power-conscious firmware](https://dev.blues.io/notecard/notecard-walkthrough/low-power-design/?utm_source=hackster&utm_medium=web&utm_content=globaltracker) (its default settings are very battery-aware). Just as important was picking the right battery. I went with a [fairly beefy 6600 mAh Lithium Polymer battery](https://www.adafruit.com/product/353) from Adafruit, just to be safe.
 
-> **NOTE:** Every country has their own unique laws and restrictions when it comes to shipping lithium-based batteries. As long as they are actively powering something (as is the case with a tracker) you should be fine, but you will want to check with local regulations to be sure.
+> **NOTE:** Every country has their own unique laws and restrictions when it comes to shipping lithium batteries. As long as they are actively powering something (as is the case with a tracker) you should be fine, but you will want to check with local regulations to be sure.
 
 **Done and done!** The tracker is starting to come together:
 
@@ -64,13 +64,13 @@ Again, the Notecard becomes invaluable here due to its [low-power hardware and p
 
 With so many low-power host MCUs available to choose from...I actually chose no host at all!
 
-A key advantage of using the Notecard as an asset tracker is the ability to configure the Notecard firmware directly with JSON commands using the [Notecard API](https://dev.blues.io/reference/notecard-api/introduction/). The Notecard even ships with an on-board temperature sensor and a `card.voltage` API call to read the battery voltage, rendering the need of a host MCU to almost zero.
+A key advantage of using the Notecard as an asset tracker is the ability to configure the Notecard firmware directly with JSON commands using the [Notecard API](https://dev.blues.io/reference/notecard-api/introduction/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). The Notecard even ships with an on-board temperature sensor and a `card.voltage` API request to read the battery voltage, rendering the need of a host MCU to almost zero.
 
 ## Low-Code Tracker Configuration
 
 As just mentioned, **the way you program the Notecard API is with JSON**. Everything into and out of the Notecard is pure JSON. Gone are the days of those archaic AT commands for configuring a cellular modem.
 
-With my hardware assembled, it was time to program the tracker itself. Using the in-browser REPL provided at dev.blues.io (which utilizes the Web Serial API in a very engaging manner), I plugged in my Notecarrier with a Micro USB cable and issued my first command to verify connectivity:
+With my hardware assembled, it was time to program the tracker itself. Using the in-browser REPL provided at dev.blues.io (which utilizes the Web Serial API in a very engaging manner), I plugged in my Notecarrier with a Micro USB cable and issued my first command to verify connectivity and retrieve basic details about the Notecard:
 
 The request:
 
@@ -101,11 +101,11 @@ The response:
 }
 ```
 
-Now let's look at the steps involved to program the tracker:
+**Now let's look at the steps involved to program the tracker:**
 
-### Sync Notecard with a Cloud Project
+### Step 1: Assign Notecard to a Cloud Project
 
-Data sent from the Notecard is routed through [Notehub.io](https://notehub.io/) (a cloud service provided by Blues Wireless). More on Notehub in the next section, but my first config step was to issue a command to the Notecard to tell it which Notehub project it should to connect to:
+Data sent from the Notecard is securely routed through [Notehub.io](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_content=globaltracker) (a cloud service provided by Blues Wireless). More on Notehub in the next section, but my first config step was to issue a command to the Notecard to tell it which Notehub project it should to connect to:
 
 ```
 {
@@ -123,7 +123,9 @@ Data sent from the Notecard is routed through [Notehub.io](https://notehub.io/) 
 - `mode` defines the `periodic` or `continuous` cellular connection
 - `voutbound` and `vinbound` determine the cadence of syncing with the cloud based on the measured battery voltage (i.e. perform an outbound sync of data every 180 minutes when the voltage reads "high")
 
-Now those `voutbound` and `vinbound` parameters are really important, especially in low-power scenarios. We therefore need to tell the Notecard which *type* of power supply its using, so it knows which voltage thresholds to compare it to:
+### Step 2: Tell Notecard the Type of Battery
+
+Now those `voutbound` and `vinbound` parameters above are really important, especially in low-power scenarios. We therefore need to tell the Notecard which *type* of power supply its using, so it knows which voltage thresholds to compare it to:
 
 ```
 {
@@ -132,9 +134,11 @@ Now those `voutbound` and `vinbound` parameters are really important, especially
 }
 ```
 
-> Check out the complete [Low Power Guide](https://dev.blues.io/notecard/notecard-walkthrough/low-power-design/) provided by Blues Wireless.
+> Check out the complete [Low Power Guide](https://dev.blues.io/notecard/notecard-walkthrough/low-power-design/?utm_source=hackster&utm_medium=web&utm_content=globaltracker) provided by Blues Wireless.
 
-Next, I configured the GPS module on the Notecard to attempt to ascertain its current location with the [card.location.mode API](https://dev.blues.io/reference/notecard-api/card-requests/#card-location-mode) (awfully important for tracking positioning!):
+### Step 3: Sample the GPS Location
+
+Next, I configured the GPS module on the Notecard to attempt to ascertain its current location with the [card.location.mode API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_content=globaltracker#card-location-mode) (awfully important for tracking positioning!):
 
 ```
 {
@@ -146,7 +150,9 @@ Next, I configured the GPS module on the Notecard to attempt to ascertain its cu
 
 You'll notice the same `mode` options as the `hub.set` request above. In addition, the `vseconds` parameter attempts a GPS position fix at a cadence that maps to same battery voltage above.
 
-Finally, I needed to **start tracking** with the [card.location.track API](https://dev.blues.io/reference/notecard-api/card-requests/#card-location-track):
+### Step 4: Start Gathering Tracking Events
+
+Finally, I needed to **start tracking** with the [card.location.track API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_content=globaltracker#card-location-track):
 
 ```
 {
@@ -162,17 +168,17 @@ Finally, I needed to **start tracking** with the [card.location.track API](https
 
 - Immediately enable tracking with the `"start":true` parameter;
 - Send a "heartbeat" every 12 hours (indicating that it's still alive, even if no motion is detected);
-- Optionally specify the name of the [Notefile](https://dev.blues.io/reference/glossary/#notefile) in which tracking events are stored (e.g. `_track.qo`)
+- Optionally specify the name of the [Notefile](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_content=globaltracker#notefile) in which tracking events are stored (e.g. `_track.qo`)
 
 > **NOTE:** To preserve power, the Notecard will only turn on its GPS module if it detects movement using the onboard accelerometer. You may change the sensitivity of the onboard accelerometer with the card.motion.mode API's `sensitivity` parameter.
 
-**And that's it!** You may also want to consult the [list of advanced configurations](https://dev.blues.io/notecard/notecard-guides/asset-tracking/#advanced-tracker-configurations) for configuring a GPS asset tracker on the Blues Wireless developer portal.
+**And that's it!** You may also want to consult the [list of advanced configurations](https://dev.blues.io/notecard/notecard-guides/asset-tracking/?utm_source=hackster&utm_medium=web&utm_content=globaltracker#advanced-tracker-configurations) for configuring a GPS asset tracker on the Blues Wireless developer portal.
 
-## Send Data to the Cloud
+## Sending Tracking Data to the Cloud
 
-With the Notecard tracker properly configured, it's ready to start collecting location data at regular intervals. But where is that data going to go? To the cloud of course! ☁️
+With the Notecard tracker properly configured, it's ready to start collecting GPS location data at regular intervals. But where is that data going to go? To the cloud of course! ☁️
 
-The Notecard ships pre-configured to securely communicate with the aforementioned [Blues Wireless cloud service, Notehub.io](https://blues.io/services/). Notehub allows for secure routing of data (data is transferred via private VPN tunnels **off the public Internet** 🔐). This data can then be routed to any big cloud, IoT platform, or your own RESTful endpoint.
+The Notecard ships pre-configured to securely communicate with the aforementioned [Blues Wireless cloud service, Notehub.io](https://blues.io/services/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). Notehub allows for secure routing of data (data is transferred via private VPN tunnels **off the public Internet** 🔐). This data can then be routed to any big cloud, IoT platform, or your own RESTful endpoint.
 
 ![blues wireless notehub aws azure google route](logo-cloud.png)
 
@@ -220,11 +226,11 @@ As the Notecard starts tracking data, I saw it appearing under the **Events** ta
 
 ![blues wireless notehub cellular data tracking events](notehub-data.png)
 
-## Securely Routing Tracking Data
+## Securely Routing Tracking Data to Ubidots
 
-A key value of Notehub is its ability to *route* accumulated data to any cloud. We accomplish this using [Notehub Routes](https://dev.blues.io/start/tutorials/route-tutorial/). A route not only allows us to securely transfer data, but we can also utilize JSONata to optimize and customize our data payload _before_ it's delivered to our cloud provider.
+A key value of Notehub is its ability to *route* accumulated data to any cloud. We accomplish this using [Notehub Routes](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). A route not only allows us to securely transfer data, but we can also utilize JSONata to optimize and customize our data payload _before_ it's delivered to our cloud provider.
 
-> **TIP:** If you're new to JSONata, check out this [JSONata 1-2-3 guide](https://dev.blues.io/notecard/notecard-guides/jsonata-1-2-3/).
+> **TIP:** If you're new to JSONata, check out this [JSONata 1-2-3 guide](https://dev.blues.io/guides-and-tutorials/notecard-guides/jsonata-1-2-3/?utm_source=hackster&utm_medium=web&utm_content=globaltracker).
 
 For example, as you'll see in the next section, I used [Ubidots](https://ubidots.com/) as my cloud dashboard provider. Configuring this route from Notehub to Ubidots was as simple as supplying an endpoint URL, an authentication token, and then optimizing the tracking data sent from the Notecard with a JSONata expression:
 
@@ -239,13 +245,23 @@ For example, as you'll see in the next section, I used [Ubidots](https://ubidots
 
 This expression shows off just some of the power of JSONata. If you look closely, you'll see that if the `where_lat` and `where_lon` params are unavailable (the GPS-derived position) it falls back on `tower_lat` and `tower_lon` (the cell tower location).
 
-## Building a Cloud Dashboard
+## Building a Cloud Dashboard in Ubidots
 
 Ubidots is a great option for quickly creating powerful IoT dashboards. With numerous built-in widgets like maps, dials, charts, gauges, and tables, it's easy to point-and-click your way to an engaging solution.
 
-Blues Wireless [provides a tutorial for routing data to Ubidots](https://dev.blues.io/start/tutorials/route-tutorial/ubidots/) and creating your own basic dashboard. For this global asset tracker project, I ended up building a dashboard with a wide variety of widgets, providing me a quite nice looking UI:
+Blues Wireless [provides a tutorial for routing data to Ubidots](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/ubidots/?utm_source=hackster&utm_medium=web&utm_content=globaltracker) and creating your own basic dashboard. For this global asset tracker project, I ended up building a dashboard with a wide variety of widgets, providing me a quite nice looking UI:
 
 ![blues wireless notecard with ubidots dashboard](ubidots-dashboard.png)
+
+## Updating Settings On-the-Fly
+
+Yet another advantage of using the Notecard with Notehub.io is the ability to use [environment variables](https://dev.blues.io/guides-and-tutorials/notecard-guides/understanding-environment-variables/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). These are key/value pairs of arbitrary data that allow you to manage device state remotely.
+
+For instance, you could set up an environment variable that specified the frequency at which you gathered sensor or location data. If you wanted to change that setting later, instead of recalling all of your devices and reprogramming firmware, you could set a new environment variable value in Notehub!
+
+![setting up environment variables in notehub](environment-variables.png)
+
+In this tracking project, I used some of the [reserved system environment variables](https://dev.blues.io/guides-and-tutorials/notecard-guides/understanding-environment-variables/?utm_source=hackster&utm_medium=web&utm_content=globaltracker#reserved-environment-variables) to override defaults when needed (e.g. there were a few times when I wanted to enable `continuous` cellular mode and retrieve data closer to real time).
 
 ## Around the World and Back Again
 
@@ -253,27 +269,29 @@ With the hardware assembled, Notecard configurations complete, data routed to (a
 
 *And where did it stop along the way?*
 
-In **Mexico** we learned what happens when the Notecard is in a rural setting and can't connect to a cell tower for a lengthy amount of time. (Actually everything worked fine and location updates were stored offline for relay to the cloud once connectivity was reestablished!)
+In **Mexico** we learned what happens when the Notecard is in a rural setting and can't connect to a cell tower for a lengthy amount of time. (Actually everything worked fine and location updates were stored offline for a cloud sync once connectivity was reestablished!)
 
-**Colombia** provided a quick stop at the Ubidots home office!
+**Colombia** provided a quick stop at the Ubidots home office:
 
 ![blues wireless notecard asset tracker in ubidots office](ubidots-office.jpg)
 
-In **Denmark** my good friend Sebastian took it on a journey around the city (and with him on a short trip to **London**!).
+In **Denmark** my good friend Sebastian took it on a journey around the city (and with him on a short trip to **London**!):
 
 ![blues wireless notecard in london](sebastian.jpg)
 
-It was then off to **Zambia** where another good friend shared an ice cold brew with the Notecard before experiencing the joy of trying to ship electronics through the local DHL and FedEx outlets.
+It was then off to **Zambia** where a friend shared an ice cold brew with the Notecard before experiencing the joy of trying to ship electronics through the local DHL and FedEx outlets.
 
-Next it was off to India for ???
+Next it was off to **India** for a holiday trip from Bengaluru to Goa with a friend and former co-worker:
 
-> Note that the embedded SIM in the Notecard does not offer connectivity in India. However, there is an external SIM slot on the Notecarrier and a [guide to enable usage of the external SIM](https://dev.blues.io/notecard/notecard-guides/using-external-sim-cards/).
+![blues wireless notecard in india](jonathan.jpg)
 
-And finally Australia...
+> Note that the embedded SIM in the Notecard does not offer connectivity in India. However, there is an external SIM slot on the Notecarrier and a [guide to enable usage of the external SIM](https://dev.blues.io/notecard/notecard-guides/using-external-sim-cards/?utm_source=hackster&utm_medium=web&utm_content=globaltracker).
 
-When it was all said and done, here is the final (global) map of this tracker's journey around the world:
+And finally **Australia** where the last of my remote friends received the tracker on the Gold Coast.
 
-IMAGE
+When it was all said and done, here is the map of this tracker's journey around the world as provided by Ubidots:
+
+![notecard around the world](around-the-world.png)
 
 ## Next Steps
 
@@ -281,6 +299,6 @@ Hopefully you've seen how easy it really can be to create a low-cost, low-code, 
 
 Looking for any next steps?
 
-1. Grab your own [Blues Wireless starter kit](https://shop.blues.io/collections/development-kits);
-2. Consult the [full Asset Tracker guide](https://dev.blues.io/notecard/notecard-guides/asset-tracking/);
+1. Grab your own [Blues Wireless starter kit](https://shop.blues.io/collections/development-kits?utm_source=hackster&utm_medium=web&utm_content=globaltracker);
+2. Consult the [full Asset Tracker guide](https://dev.blues.io/notecard/notecard-guides/asset-tracking/?utm_source=hackster&utm_medium=web&utm_content=globaltracker);
 3. Enjoy watching your own little tracker travel the globe!
