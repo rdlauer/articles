@@ -8,7 +8,7 @@ One of the more intriguing use cases to be born out of the IoT is the ability to
 
 But what if you don't know where to start? Or what if you don't want to invest serious 💰💰💰 in a fully decked-out tracker? Well, have I got a tutorial for you!
 
-I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to (almost) every continent. I tracked its location with a cloud-based dashboard and even updated some settings on the trackers themselves **after** I had sent them on their journey.
+I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to almost every continent. I tracked its location with a cloud-based dashboard from Ubidots, and even updated some settings on the trackers themselves **after** I had sent them on their journey.
 
 Let's dive into the hardware used, the low-code tracker configuration steps, and the cloud dashboard built to monitor this little tracker and its amazing voyage around the globe 🌍.
 
