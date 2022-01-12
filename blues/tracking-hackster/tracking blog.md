@@ -1,8 +1,8 @@
-# Global Cellular/GPS Asset Tracking for Dummies
+# Sending a Cellular/GPS Tracker Around the World (Literally)
 
-*Learn how to build a low-cost and low-code asset tracking solution with global cellular and GPS.*
+*Learn how to build a low-cost and low-code asset tracking solution with global cellular and GPS in this Hackster project.*
 
-One of the more intriguing use cases to be born out of the IoT is the ability to actively monitor the location and condition of, well, *anything*. Whether you are monitoring the temperature, humidity, and fall detection of a critical vaccine shipment or tracking your location on a cross-country road trip, using off-the-shelf sensors with cellular and GPS modules has made asset tracking easier than ever.
+One of the more intriguing use cases to be born out of the IoT is the ability to actively monitor the location and condition of, well, *anything*. Whether you are monitoring the temperature, humidity, and fall detection of a critical vaccine shipment, or tracking your location on a cross-country road trip, using off-the-shelf sensors with cellular and GPS modules has made asset tracking easier than ever.
 
 But what if you don't know where to start? Or what if you don't want to invest serious 💰💰💰 in a fully decked-out tracker?
 

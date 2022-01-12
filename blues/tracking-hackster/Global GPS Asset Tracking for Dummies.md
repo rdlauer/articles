@@ -1,14 +1,16 @@
-# Global Cellular/GPS Asset Tracking for Dummies
+# Sending a Cellular/GPS Tracker Around the World (Literally)
 
 "If you don't know where you are going, you'll end up someplace else." - Yogi Berra.
 
 *I couldn't agree with you any more Yogi!*
 
-One of the more intriguing use cases to be born out of the IoT is the ability to actively monitor the location and condition of, well, *anything*. Whether you are monitoring the temperature, humidity, and fall detection of a critical vaccine shipment or tracking your location on a cross-country road trip, using off-the-shelf sensors with cellular and GPS modules has made asset tracking easier than ever.
+One of the more intriguing use cases to be born out of the IoT is the ability to actively monitor the location and condition of, well, *anything*. Whether you are monitoring the temperature, humidity, and fall detection of a critical vaccine shipment, or tracking your location on a cross-country road trip, using off-the-shelf sensors with cellular and GPS modules has made asset tracking easier than ever.
 
 But what if you don't know where to start? Or what if you don't want to invest serious 💰💰💰 in a fully decked-out tracker? Well, have I got a tutorial for you!
 
 I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to almost every continent. I tracked its location with a cloud-based dashboard from Ubidots, and even updated some settings on the trackers themselves **after** I had sent them on their journey.
+
+![map of the tracker journey](tracker-journey.gif)
 
 Let's dive into the hardware used, the low-code tracker configuration steps, and the cloud dashboard built to monitor this little tracker and its amazing voyage around the globe 🌍.
 
@@ -70,7 +72,7 @@ A key advantage of using the Notecard as an asset tracker is the ability to conf
 
 As just mentioned, **the way you program the Notecard API is with JSON**. Everything into and out of the Notecard is pure JSON. Gone are the days of those archaic AT commands for configuring a cellular modem.
 
-With my hardware assembled, it was time to program the tracker itself. Using the in-browser REPL provided at dev.blues.io (which utilizes the Web Serial API in a very engaging manner), I plugged in my Notecarrier with a Micro USB cable and issued my first command to verify connectivity and retrieve basic details about the Notecard:
+With my hardware assembled, it was time to program the tracker itself. Using the in-browser REPL provided at [dev.blues.io](https://dev.blues.io/?utm_source=hackster&utm_medium=web&utm_content=globaltracker) (which utilizes the [Web Serial API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API) in a very engaging manner), I plugged in my Notecarrier with a Micro USB cable and issued my first command to verify connectivity and retrieve basic details about the Notecard:
 
 The request:
 
@@ -125,7 +127,7 @@ Data sent from the Notecard is securely routed through [Notehub.io](https://note
 
 ### Step 2: Tell Notecard the Type of Battery
 
-Now those `voutbound` and `vinbound` parameters above are really important, especially in low-power scenarios. We therefore need to tell the Notecard which *type* of power supply its using, so it knows which voltage thresholds to compare it to:
+Those `voutbound` and `vinbound` parameters above are really important, especially in low-power scenarios. We therefore need to tell the Notecard which *type* of power supply it's using, so it knows which voltage thresholds to compare it to:
 
 ```
 {
@@ -257,7 +259,7 @@ Blues Wireless [provides a tutorial for routing data to Ubidots](https://dev.blu
 
 Yet another advantage of using the Notecard with Notehub.io is the ability to use [environment variables](https://dev.blues.io/guides-and-tutorials/notecard-guides/understanding-environment-variables/?utm_source=hackster&utm_medium=web&utm_content=globaltracker). These are key/value pairs of arbitrary data that allow you to manage device state remotely.
 
-For instance, you could set up an environment variable that specified the frequency at which you gathered sensor or location data. If you wanted to change that setting later, instead of recalling all of your devices and reprogramming firmware, you could set a new environment variable value in Notehub!
+For instance, you could set up an environment variable that specifies the frequency at which it gathers sensor or location data. If you wanted to change that setting later, instead of recalling all of your devices and reprogramming firmware, you could set a new environment variable value in Notehub!
 
 ![setting up environment variables in notehub](environment-variables.png)
 
