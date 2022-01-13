@@ -10,7 +10,7 @@ But what if you don't know where to start? Or what if you don't want to invest s
 
 I built a low-cost (< $100 USD) cellular- and GPS-enabled tracking system and sent it, literally, around the world to almost every continent. I tracked its location with a cloud-based dashboard from Ubidots, and even updated some settings on the trackers themselves **after** I had sent them on their journey.
 
-![map of the tracker journey](tracker-journey.gif)
+![map of the tracker journey](tracker-journey-wings.gif)
 
 Let's dive into the hardware used, the low-code tracker configuration steps, and the cloud dashboard built to monitor this little tracker and its amazing voyage around the globe 🌍.
 
