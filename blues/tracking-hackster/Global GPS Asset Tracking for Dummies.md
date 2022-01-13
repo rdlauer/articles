@@ -1,5 +1,7 @@
 # Sending a Cellular/GPS Tracker Around the World (Literally)
 
+*Learn how to build a low-cost (and low-code) GPS + Cellular enabled IoT asset tracker that can span the entire globe.*
+
 "If you don't know where you are going, you'll end up someplace else." - Yogi Berra.
 
 *I couldn't agree with you any more Yogi!*
@@ -62,7 +64,7 @@ Again, the Notecard becomes invaluable here due to its [low-power hardware and p
 
 ![notecard notecarrier and adafruit lipo battery](battery.jpg)
 
-### Picking a Host Microcontroller
+### Picking a Host Microcontroller (or not)
 
 With so many low-power host MCUs available to choose from...I actually chose no host at all!
 
@@ -218,7 +220,6 @@ For example, the `_track.qo` file that stores each tracking "event" on my Noteca
     "tower_location": "Lusaka",
     "tower_timezone": "Africa/Lusaka",
     "tower_id": "645,1,22131,9382"
-    }
 }
 ```
 
