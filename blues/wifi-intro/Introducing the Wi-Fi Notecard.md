@@ -21,13 +21,13 @@ Let's see how the Wi-Fi Notecard can help.
 
 While there is no shortage of Wi-Fi modules available for IoT developers, the Wi-Fi Notecard differentiates itself in five key ways:
 
-### It's Swappable with the Cellular Notecard
+### It's swappable with the Cellular Notecard
 
-If you're working on an IoT deployment that has mixed access to Wi-Fi and cellular, the Wi-Fi Notecard is fully hardware-interchangeable with the Cellular Notecard on any Notecarrier. This allows you to use different connectivity methods on the same PCB design.
+If you're working on an IoT deployment that has mixed access to Wi-Fi and cellular, the Wi-Fi Notecard is fully hardware-interchangeable with the Cellular Notecard on any Notecarrier. This allows you to use different connectivity methods on the same PCB design with the same antennas.
 
 ![wi-fi notecard dimensions](notecard_wifi_measurements.png)
 
-### It Maintains Notecard API Compatibility
+### It maintains Notecard API compatibility
 
 Building off of the "swappable" nature of the Wi-Fi Notecard, you can continue to use the same [Notecard APIs](https://dev.blues.io/reference/notecard-api/introduction/) you've been using with the Cellular Notecard (the exception being any Wi-Fi or cellular/GPS-specific requests and responses!).
 
@@ -40,17 +40,17 @@ Building off of the "swappable" nature of the Wi-Fi Notecard, you can continue t
 	  "sync": true
 	}
 
-### It Provides Secure Communications from Device-to-Cloud
+### It provides secure communications from device-to-cloud
 
-The Wi-Fi Notecard provides end-to-end security from your device, to Notehub.io, and beyond to your cloud using TLS and optional [encryption of your data](https://dev.blues.io/guides-and-tutorials/notecard-guides/encrypting-data-with-the-notecard/).
+The Wi-Fi Notecard and Notehub.io provide end-to-end data security: from your device, to Notehub.io, and to your cloud using TLS. You can also [optionally encrypt your data](https://dev.blues.io/guides-and-tutorials/notecard-guides/encrypting-data-with-the-notecard/).
 
-### It's a Low-Power Wi-Fi Module
+### It's a low-power Wi-Fi module
 
 Like the cellular Notecard, the Wi-Fi Notecard is low-power by default, to the tune of ~8uA when idle. Network connectivity over Wi-Fi is not maintained continuously (unless you specify it to be), meaning your device doesn't have to sustain a network connection, thus saving power.
 
 > Note that the Wi-Fi Notecard only connects to 2.4GHz access points (another power-saving feature).
 
-### It's Easy to Setup
+### It's easy to set up
 
 One of the advantages of the cellular Notecard is its zero-friction getting started experience, free from device provisioning and certificate management. We've also made the Wi-Fi Notecard setup experience as easy as possible by providing both an API to connect to a Wi-Fi access point (via [card.wifi]()):
 
@@ -66,7 +66,7 @@ One of the advantages of the cellular Notecard is its zero-friction getting star
 
 ## Get Your Wi-Fi Notecard
 
-We welcome you to accelerate your IoT solution with the new Wi-Fi Notecard. Buy yours today on the [Blues Wireless store]().
+We welcome you to accelerate your IoT solution with the new Wi-Fi Notecard. Buy yours today on the [Blues Wireless store]() and follow along with our [quickstart experience]().
 
 Happy Hacking...on Wi-Fi! 👩‍💻
 
