@@ -15,7 +15,7 @@ Cellular is the most ubiquitous (and secure) network connectivity option availab
 
 Let's see how the Wi-Fi Notecard can help.
 
-> Be sure to consult the [Wi-Fi Notecard datasheet]() for more technical details.
+> Be sure to consult the [Wi-Fi Notecard datasheet](https://dev.blues.io/hardware/notecard-datasheet/note-wifi/) for additional technical details.
 
 ## What the Wi-Fi Notecard Provides
 
@@ -52,7 +52,7 @@ Like the cellular Notecard, the Wi-Fi Notecard is low-power by default, to the t
 
 ### It's easy to set up
 
-One of the advantages of the cellular Notecard is its zero-friction getting started experience, free from device provisioning and certificate management. We've also made the Wi-Fi Notecard setup experience as easy as possible by providing both an API to connect to a Wi-Fi access point (via [card.wifi]()):
+One of the advantages of the cellular Notecard is its zero-friction getting started experience, free from device provisioning and certificate management. We've also made the Wi-Fi Notecard setup experience as easy as possible by providing both an API to connect to a Wi-Fi access point (via [card.wifi](https://dev.blues.io/reference/notecard-api/card-requests/#card-wifi)):
 
 	{
 	  "req":"card.wifi",
@@ -66,7 +66,7 @@ One of the advantages of the cellular Notecard is its zero-friction getting star
 
 ## Get Your Wi-Fi Notecard
 
-We welcome you to accelerate your IoT solution with the new Wi-Fi Notecard. Buy yours today on the [Blues Wireless store]() and follow along with our [quickstart experience]().
+We welcome you to accelerate your IoT solution with the new Wi-Fi Notecard. Buy yours today on the [Blues Wireless store](https://shop.blues.io/) and follow along with our [quickstart experience](https://dev.blues.io/quickstart/notecard-quickstart/).
 
 Happy Hacking...on Wi-Fi! 👩‍💻
 
