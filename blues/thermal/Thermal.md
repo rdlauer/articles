@@ -6,7 +6,7 @@ In the two Machine Learning projects I've published here on Hackster/Electromake
 
 This, in essence, is what I tried to accomplish in this project.
 
-VIDEO
+INCLUDE VIDEO HERE
 
 I created an **anomaly detection ML model** with [Edge Impulse](https://edgeimpulse.com/) that processes thermal images to detect unknown states of thermal readings and relays collected data to the cloud with the [Blues Wireless Notecard](https://blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=thermal).
 
