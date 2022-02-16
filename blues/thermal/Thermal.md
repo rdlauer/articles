@@ -1,6 +1,6 @@
 # Thermal Image Anomaly Detection with TinyML
 
-When I say "anomaly detection" you may instantly imagine an overtly complicated process, something exclusive to deep learning algorithms and indecipherable coding. In reality, the concept of uncovering anomalous behavior in a system is really just the act of *identifying an unclassified or uncertain state*.
+When I say "anomaly detection" you may imagine an overly complicated process, something exclusive to deep learning algorithms and indecipherable coding. In reality, the concept of uncovering anomalous behavior in a system is really just the act of *identifying an unclassified or uncertain state*.
 
 In the two Machine Learning projects I've published here on Hackster/Electromaker (an [ML speed trap](https://www.hackster.io/rob-lauer/busted-create-an-ml-powered-speed-trap-b1e5d1) and [remote birding](https://www.hackster.io/rob-lauer/remote-birding-with-tensorflow-lite-and-raspberry-pi-8c4fcc)), I've created ML models with different data inputs, and asked them to generate inferences based on the *known* data provided. But what happens when I ask the model to create an inference about something it *doesn't know*?
 
@@ -10,7 +10,7 @@ INCLUDE VIDEO HERE
 
 I created an **anomaly detection ML model** with [Edge Impulse](https://edgeimpulse.com/) that processes thermal images to detect unknown states of thermal readings and relays collected data to the cloud with the [Blues Wireless Notecard](https://blues.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=thermal).
 
-While I built this around my home heating system, in an industry setting this type of solution could be used to monitor virtually any type of heat-producing equipment.
+While I built this around my home heating system, this type of solution could be used to monitor virtually any type of heat-producing equipment.
 
 ![thermal image video compilation](thermal-video-sm.gif)
 
@@ -120,7 +120,7 @@ A fantastic "feature explorer" also helps you to identify any mislabelled images
 
 ![edge impulse feature explorer](ei-feature-explorer.png)
 
-And *that's* all it took for me to initialize and train a TinyML model with Edge Impulse!
+And that's all it took for me to initialize and train a TinyML model with Edge Impulse!
 
 Next up, I needed to configure the Raspberry Pi Zero, install a few requisite software packages, download the ML model, and get to writing some Python to wire it all up!
 
