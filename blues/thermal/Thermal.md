@@ -386,7 +386,7 @@ By extending the existing code provided in `main.py`, I created a conditional st
 
 Again, you may [follow the provided Twilio routing guide](https://dev.blues.io/guides-and-tutorials/routing-references/twilio-route/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=thermal) for more information on sending SMS messages via Notehub.
 
-## Conclusion (and Thanks!)
+## Conclusion (and Thanks! 🙏)
 
 As an employee of Blues Wireless, I may appear biased at time when writing about how easy to use our products are. The thing is, I'm not lying or stretching the truth. **The Notecard just works.**
 
@@ -400,4 +400,4 @@ All that being said, if you're looking for some next steps...
 - Take a look at the [Edge Impulse getting started resources](https://docs.edgeimpulse.com/docs).
 - [Browse other Hackster projects](https://www.hackster.io/blues-wireless) that use the Notecard in edge scenarios.
 
-Happy hacking! 👩‍💻
+**Happy hacking!** 👩‍💻
