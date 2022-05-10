@@ -1,6 +1,6 @@
 # Next-Level ML & IoT Workshop with Hammer of Blues (Wireless)
 
-With in-person developer events back in style (I didn't just jinx it did I? 😬), it's time to release the culmination of two years of pent-up creative energy. What is likely the greatest piece of workshop hardware ever created, I'd like to introduce you to the Hammer of Blues:
+With in-person developer events back in style (I didn't just jinx it did I? 😬), it's time to release two years of our pent-up creative energy! Likely (in my opinion) the greatest piece of workshop hardware ever created, I'd like to introduce you to the Hammer of Blues:
 
 ![the hammer of blues](blues-hammer.gif)
 
@@ -10,7 +10,7 @@ Available exclusively to attendees of upcoming in-person workshops run by [Blues
 
 _Thor Ragnarok_
 
-The beauty of this board is not just in the variety of sensors provided, but the fact that you can build projects that tap into a variety of high-value IoT use cases. In our workshops, we walk folks through building machine learning models with [Edge Impulse](https://edgeimpulse.com/) and learn how to use the [Cellular Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=hammer) to send generated inferences (the output of your ML model) and accumulated sensor data to the cloud.
+The beauty of this board is not just the variety of sensors provided (or the form factor 🔨), but the fact that you can build practical projects that tap into a variety of high-value IoT use cases. In our workshops, we walk folks through building machine learning models with [Edge Impulse](https://edgeimpulse.com/) and learn how to use the [Cellular Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=hammer) to send generated inferences (the output of ML models) and accumulated sensor data to the cloud.
 
 ![hammer of blues chop ml inference](chop.png)
 
@@ -20,23 +20,23 @@ While we look forward to seeing many of you at an upcoming event like [NDC Copen
 
 Let's start with a list of sensors and components involved with the creation of the Hammer of Blues:
 
-What's a genuine piece of workshop hardware without an [OLED display](https://smile.amazon.com/gp/product/B08L7QW7SR/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&th=1)? Adding interactive behavior frankly requires some kind of on-device feedback, so we've included an OLED display...
+What's a genuine piece of workshop hardware without an [OLED display](https://smile.amazon.com/gp/product/B08L7QW7SR/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&th=1)? Adding interactive behavior requires some kind of on-device feedback, so we've included a small display...
 
 ![blues hammer oled](oled.jpg)
 
-...and NeoPixels on the back for some extra pizazz:
+...and NeoPixels on the back for some extra visual feedback (and pizazz 🎉):
 
 ![blues hammer neopixels](hammer-neopixels.gif)
 
-What's the first thing you want to do with any hammer? Well, you probably want to swing it, so we've included an [Adafruit LIS3DH accelerometer](https://www.adafruit.com/product/2809) for tracking movement.
+What's the first thing you want to do with a hammer? Well, you probably want to swing it, so we've included an [Adafruit LIS3DH accelerometer](https://www.adafruit.com/product/2809) for tracking movement. The LIS3DH also includes two Qwiic ports for adding even more peripherals:
 
 ![adafruit lis3dh accelerometer](lis3dh.jpg)
 
-Included is a [BME280](https://smile.amazon.com/gp/product/B07V5CL3L8/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1) for measuring temperature, humidity, and pressure. Two different push buttons are available as well ([one a "toggle" switch](https://smile.amazon.com/gp/product/B01E38OS7K/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) and the other [a momentary button switch](https://smile.amazon.com/gp/product/B07F8GBWGG/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1)).
+Also included is a [BME280](https://smile.amazon.com/gp/product/B07V5CL3L8/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1) for measuring temperature, humidity, and pressure. Two different push buttons are available as well ([one a "toggle" switch](https://smile.amazon.com/gp/product/B01E38OS7K/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) and the other [a momentary button switch](https://smile.amazon.com/gp/product/B07F8GBWGG/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1)).
 
 ![bme280 and button](bme280-button.jpg)
 
-To annoy your pets, partner, and/or kids we've also included a [buzzer](https://smile.amazon.com/gp/product/B07MPYWVGD/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1)! To add additional interactivity options there is an [IR transmitter and receiver](https://smile.amazon.com/gp/product/B0816P2545/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) at the top.
+To annoy your pets, partner, and/or kids we've also included a [buzzer](https://smile.amazon.com/gp/product/B07MPYWVGD/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1). To add additional interactivity options there is an [IR transmitter and receiver](https://smile.amazon.com/gp/product/B0816P2545/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) at the top.
 
 ![buzzer and ir](buzzer-ir.jpg)
 
@@ -44,7 +44,7 @@ What's the IoT without the "I"? The Hammer of Blues is nothing without the [Blue
 
 ![blues hammer notecard and notecarrier](notecard-notecarrier.jpg)
 
-The Notecard provides **prepaid global cellular connectivity** including 500MB of data and 10 years of service across 130+ countries. The Notecarrier-B allows you to easily utilize the M.2 edge connector on the Notecard for accessing all the pins on the Notecard.
+The Notecard provides **prepaid global cellular connectivity** including 500MB of data and 10 years of service across 130+ countries. The Notecarrier-B allows you to easily utilize the M.2 edge connector on the Notecard and access all the pins on the Notecard.
 
 Finally, tying it all together is the most extensible Feather-compatible MCU on the market, the [Feather-compatible Swan](https://blues.io/products/swan/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=hammer), at the base of the handle:
 
@@ -52,7 +52,7 @@ Finally, tying it all together is the most extensible Feather-compatible MCU on 
 
 ## Assembling Your Own Hammer
 
-Like every prototype I've ever put together, building a Hammer of Blues prototype is going to get a little messy. And possibly resemble a bowl of spaghetti.
+Like every prototype I've ever put together, building a Hammer of Blues prototype is going to get a little messy. And possibly resemble a bowl of spaghetti:
 
 ![prototype hammer of blues](hammer-proto.jpg)
 
@@ -238,7 +238,7 @@ void loop() {
 }
 ```
 
-In [the aforementioned repository](https://github.com/blues/hammer-of-blues), you'll see a sneak peek of some of the other projects we walk folks through during the workshop, including the Edge Impulse gesture recognition ML solution that tracks "chops", "waves", and "idle" activities.
+In [the full Hammer of Blues repository](https://github.com/blues/hammer-of-blues), you'll see a sneak peek of some of the other projects we walk folks through during the workshop, including the Edge Impulse gesture recognition ML solution that tracks "chops", "waves", and "idle" motions.
 
 ![hammer captured data edge impulse](captured-data.png)
  
