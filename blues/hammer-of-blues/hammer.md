@@ -1,6 +1,6 @@
 # Next-Level ML & IoT Workshop with Hammer of Blues (Wireless)
 
-With in-person developer events back in style (I didn't just jinx it did I? 😬), it's time to release two years of our pent-up creative energy! Likely (in my opinion) the greatest piece of workshop hardware ever created, I'd like to introduce you to the Hammer of Blues:
+With in-person developer events back in style (I didn't just jinx it did I? 😬), it's time to release two years of our pent-up creative energy! I'd like to introduce you to the Hammer of Blues, likely (in my opinion) the greatest piece of workshop hardware ever created:
 
 ![the hammer of blues](blues-hammer.gif)
 
@@ -10,7 +10,7 @@ Available exclusively to attendees of upcoming in-person workshops run by [Blues
 
 _Thor Ragnarok_
 
-The beauty of this board is not just the variety of sensors provided (or the form factor 🔨), but the fact that you can build practical projects that tap into a variety of high-value IoT use cases. In our workshops, we walk folks through building machine learning models with [Edge Impulse](https://edgeimpulse.com/) and learn how to use the [Cellular Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=hammer) to send generated inferences (the output of ML models) and accumulated sensor data to the cloud.
+The beauty of this board is not just the variety of sensors provided (or the form factor 🔨), but the fact that you can build practical projects that tap into a variety of high-value IoT use cases. In our workshops, we walk folks through building machine learning models with [Edge Impulse](https://edgeimpulse.com/) and how to use the [Cellular Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=hammer) to send generated inferences (the output of ML models) and sensor data to the cloud.
 
 ![hammer of blues chop ml inference](chop.png)
 
@@ -52,7 +52,7 @@ Finally, tying it all together is the most extensible Feather-compatible MCU on 
 
 ## Assembling Your Own Hammer
 
-Like every prototype I've ever put together, building a Hammer of Blues prototype is going to get a little messy. And possibly resemble a bowl of spaghetti:
+Like every prototype I've ever put together, building a Hammer of Blues prototype is going to get a little messy. Yes, it may resemble a bowl of spaghetti:
 
 ![prototype hammer of blues](hammer-proto.jpg)
 
