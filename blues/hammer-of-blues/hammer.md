@@ -63,7 +63,7 @@ However, the [Hammer of Blues repository on GitHub](https://github.com/blues/ham
 - The IR transmitter is on `digital pin 13` and the receiver is on `digital pin 9`.
 - The buzzer is on `analog pin 0`, NeoPixels on `analog pin 1`, the momentary push button on `analog pin 2`, and the remaining button on `analog pin 3`.
 
-To *really* finish off the Hammer of Blues, you'll want the gorgeous custom PCB! We provide all of the schematics here on GitHub. !!!TODO!!!!
+To *really* finish off the Hammer of Blues, you'll want the gorgeous custom PCB! We provide [all of the schematics on GitHub](https://github.com/blues/hammer-of-blues/tree/main/hardware).
 
 ![hammer of blues pcb](hammer-pcb.png)
 
