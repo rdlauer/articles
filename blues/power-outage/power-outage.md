@@ -2,9 +2,9 @@
 
 It's estimated that [nearly 90% of the world's homes](https://www.who.int/news/item/21-05-2019-more-people-have-access-to-electricity-than-ever-before-but-world-is-falling-short-of-sustainable-energy-goals) have access to electricity, meaning nearly 90% of us inevitably become extremely annoyed when our power goes out. 😖
 
-While most of the time it _is_ merely an annoyance, losing power (especially when we aren't aware of it) can lead to disastrous outcomes. This could mean anything from loss of equipment from current surges when power is restored, to lives literally being on the line in critical care settings.
+While most of the time it _is_ merely an annoyance, losing power (especially when we aren't aware of it) can lead to disastrous outcomes. This could mean anything from loss of equipment due to current surges when power is restored, to lives literally being on the line in critical care settings.
 
-In this project, we're going to walk through how to build what I believe is the **simplest global cellular-enabled power outage detector**, complete with an instant SMS notification powered by Twilio.
+In this project, we're going to walk through how to build what I believe is the **simplest globally-available, cellular-enabled, power outage detector**, complete with instant SMS notifications powered by Twilio.
 
 ![notecard twilio sms power outage](sms-power-out.png)
 
@@ -20,7 +20,7 @@ We'll also need a small LiPo battery with a JST connector (any capacity will do)
 
 ## Why Cellular? And Why Notecard? 📶
 
-When a power outage occurs, we can't rely on local networking hardware to be up (like Wi-Fi). Generally speaking, cellular is the only reliable option in this scenario.
+When a power outage occurs, we can't rely on local networking hardware to be up and running (e.g. Wi-Fi). Cellular is the only reliable option in this scenario.
 
 The Blues Wireless Notecard comes in both [Wi-Fi](https://blues.io/products/wifi-notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) and [Cellular](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) varieties. The [cellular models work globally](https://dev.blues.io/hardware/notecard-datasheet/note-nbgl-500/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#cellular-service) on LTE-M, NB-IoT, and Cat-1protocols and are different from traditional cellular modules as they come **prepaid with 500MB of data and 10 years of global cellular service**.
 
@@ -36,7 +36,7 @@ You simply power on the Notecard, use one of the commands from the [JSON-based N
 
 ## Let's Build a Power Outage Detector 🛠
 
-As mentioned, we will be using the Notecard along with a Notecarrier-A. [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) are development boards that allow you to easily prototype an IoT solution with the Notecard. The Notecarrier-A provides onboard antennas, JST connectors, Qwiic connectors for peripherals, and exposes access to all the pins on the Notecard if needed.
+As mentioned, we will be using the Notecard along with a Notecarrier-A. [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) are development boards that allow you to easily prototype an IoT solution with the Notecard. The Notecarrier-A provides onboard antennas, JST connectors, Qwiic connectors for peripherals, and exposes access to all the pins on the Notecard.
 
 To begin, we simply slot the Notecard into the M.2 edge connector on the Notecarrier-A:
 
@@ -52,11 +52,11 @@ Next, we need to run a short jumper wire to connect `VUSB` to `AUX1` on the Note
 
 ![notecard usb aux connector](notecard-usb-aux.jpg)
 
-Connect the LiPo battery to the Notecarrier via the `LIPO` JST connector. Another advantage of the Notecarrier is that it will continually maintain a charge on the connected LiPo battery while it's powered over USB.
+Connect the LiPo battery to the Notecarrier via the `LIPO` JST connector. Another advantage of the Notecarrier is that it will continually maintain a charge on the connected LiPo battery while it's powered over USB:
 
 ![notecard lipo connector](notecard-lipo.jpg)
 
-Finally, the Notecarrier can be connected to a wall socket you want to monitor via the micro USB cable.
+Finally, the Notecarrier can be connected to a wall socket you want to monitor, via the micro USB cable.
 
 ## Let's Set Up the Notecard 👩‍💻
 
@@ -100,9 +100,9 @@ This Notehub project is where we will see incoming data from the Notecard, and e
 
 ![notehub projects](notehub-projects.png)
 
-Each Notehub account comes with 5,000 [consumption credits](TODO) which equate to Notecard events (e.g. one power outage = one event, so you can likely use Notehub for free, forever!).
+Each Notehub account comes with 5,000 [consumption credits](TODO) which are only deducted when an event is routed out of a Notehub project (or if you use the [Notehub API](https://dev.blues.io/reference/notehub-api/api-introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) to pull data out of a project). For many scenarios this means you can likely use Notehub for free, forever!
 
-Every month you'll get topped-up to 5,000 events for free, can purchase more if you need them, and get 5,000 additional one-time consumption credits with the purchase of each Notecard.
+Every month you'll get topped-up to 5,000 events for free, can purchase more if you need them, and you get 5,000 additional one-time consumption credits with the purchase of each Notecard.
 
 With the Notehub project created, we'll need to save the unique identifier (the [ProductUID](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#productuid)) of the project, like:
 
@@ -130,7 +130,7 @@ In mere seconds, we can return to our Notehub project and see that the Notecard 
 
 ![notehub connected device](notehub-device.png)
 
-**Now we get to the good stuff!** We can use a [new feature of the card.aux API](TODO) to enable autonomous reporting of state changes on the AUX pins with this command:
+**Now we get to the good stuff!** We can use a [new feature of the card.aux API](https://dev.blues.io/notecard/notecard-walkthrough/advanced-notecard-configuration/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#using-aux-gpio-mode) to enable autonomous reporting of state changes on the AUX pins with this command:
 
 ```
 {
@@ -187,7 +187,7 @@ Our next step is to **set up SMS messaging** to get a text message within second
 https://api.twilio.com/2010-04-01/Accounts/[twilio_account_sid]/Messages.json
 ```
 
-**Important!** Instead of reinventing the wheel here, you can [follow the extensive Twilio SMS routing guide provided by Blues Wireless](https://dev.blues.io/guides-and-tutorials/routing-references/twilio-route/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) to enable access to Twilio's messaging APIs.
+**Important!** Instead of reinventing the wheel here, please [follow the extensive Twilio SMS routing guide provided by Blues Wireless](https://dev.blues.io/guides-and-tutorials/routing-references/twilio-route/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) to enable access to Twilio's messaging APIs.
 
 _Take your time going through that guide, we'll wait here until you are finished._
 
@@ -195,7 +195,7 @@ _Take your time going through that guide, we'll wait here until you are finished
 
 **Done? Great!** As you saw in that guide, there are a couple of small customizations we can make to the Notehub route to alter the SMS message that gets sent.
 
-First, let's make sure we _only_ get notified when those `power-outage.qo` Notes come into Notehub. To do so, make sure to enter `power-outage.qo` in the field provided when configuring the Notehub route:
+First, let's make sure we _only_ get notified when those `power-outage.qo` events are sent to Notehub. To do so, make sure to enter `power-outage.qo` in the field provided when configuring the Notehub route:
 
 ![notehub route notefiles](notehub-route-notefiles.png)
 
@@ -205,7 +205,7 @@ Second, Notehub allows you to use [JSONata](https://dev.blues.io/guides-and-tuto
 "&Body=" & (body.state.low ? "Your power is out! 🚫🔌" : "Your power is back on! ⚡🔌") & "&From=+15551234567&To=+15551234567&"
 ```
 
-The `Body` is the body of the text message (using a ternary operator in JSONata to determine the message to send). `From` and `To` are my Twilio phone number and personal phone number, respectively.
+The `Body` is the body of the text message (using a ternary operator in JSONata to determine which short message to send). `From` and `To` are my Twilio phone number and personal phone number, respectively.
 
 This is applied in the **Data** section of the Notehub route:
 
@@ -226,7 +226,7 @@ All you need to get started is:
 - [Cellular Notecard](https://shop.blues.io/collections/notecard?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage)
 - [Notecarrier-A](https://shop.blues.io/products/carr-al?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage)
 - [LiPo battery](https://shop.blues.io/collections/accessories/products/5-000-mah-lipo-battery?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) (any LiPo will do)
-- micro USB cable (with a wall socket adapter)
+- Micro USB cable (with a wall socket adapter)
 
 Now if you've actually read this entire writeup, we owe you a discount code! Feel free to **take 10% off** your order of a Notecard + Notecarrier-A with [this discount code](https://shop.blues.io/discount/POWER_OUTAGE_10).
 
