@@ -1,10 +1,10 @@
 # Cellular-Enabled Power Outage Detector w/ SMS Notifications
 
-It's estimated that [nearly 90% of the world's homes](https://www.who.int/news/item/21-05-2019-more-people-have-access-to-electricity-than-ever-before-but-world-is-falling-short-of-sustainable-energy-goals) have access to electricity, meaning nearly 90% of us inevitably become extremely annoyed when our power goes out. 😖
+It's estimated that [nearly 90% of the world's homes](https://www.who.int/news/item/21-05-2019-more-people-have-access-to-electricity-than-ever-before-but-world-is-falling-short-of-sustainable-energy-goals) have access to electricity, meaning nearly 90% of us inevitably become annoyed when our power goes out. 😖
 
-While most of the time it _is_ merely an annoyance, losing power (especially when we aren't aware of it) can lead to disastrous outcomes. This could mean anything from loss of equipment due to current surges when power is restored, to lives literally being on the line in critical care settings.
+While most of the time it _is_ merely an annoyance, losing power (especially when we aren't aware of it while away or asleep) can lead to disastrous outcomes. This could mean anything from equipment loss due to current surges when power is restored, to lives literally being on the line in critical care settings.
 
-In this project, we're going to walk through how to build what I believe is the **simplest globally-available, cellular-enabled, power outage detector**, complete with instant SMS notifications powered by Twilio.
+In this project, we're going to walk through how to build what I believe is the **simplest globally-available, cellular-enabled power outage detector**, complete with instant SMS notifications powered by Twilio.
 
 ![notecard twilio sms power outage](sms-power-out.png)
 
@@ -22,7 +22,7 @@ We'll also need a small LiPo battery with a JST connector (any capacity will do)
 
 When a power outage occurs, we can't rely on local networking hardware to be up and running (e.g. Wi-Fi). Cellular is the only reliable option in this scenario.
 
-The Blues Wireless Notecard comes in both [Wi-Fi](https://blues.io/products/wifi-notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) and [Cellular](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) varieties. The [cellular models work globally](https://dev.blues.io/hardware/notecard-datasheet/note-nbgl-500/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#cellular-service) on LTE-M, NB-IoT, and Cat-1protocols and are different from traditional cellular modules as they come **prepaid with 500MB of data and 10 years of global cellular service**.
+The Blues Wireless Notecard comes in both [Wi-Fi](https://blues.io/products/wifi-notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) and [Cellular](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) varieties. The [cellular models work globally](https://dev.blues.io/hardware/notecard-datasheet/note-nbgl-500/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#cellular-service) on LTE-M, NB-IoT, and Cat-1protocols and are different from traditional cellular IoT offerings as they come **prepaid with 500MB of data and 10 years of global cellular service**.
 
 ![notecard diagram](notecard-nbgl.png)
 
@@ -36,7 +36,7 @@ You simply power on the Notecard, use one of the commands from the [JSON-based N
 
 ## Let's Build a Power Outage Detector 🛠
 
-As mentioned, we will be using the Notecard along with a Notecarrier-A. [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) are development boards that allow you to easily prototype an IoT solution with the Notecard. The Notecarrier-A provides onboard antennas, JST connectors, Qwiic connectors for peripherals, and exposes access to all the pins on the Notecard.
+As mentioned, we will be using the Notecard along with a Notecarrier-A. [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) are development boards that allow you to easily prototype an IoT solution with the Notecard. The Notecarrier-A provides onboard antennas, JST connectors, Qwiic connectors for peripherals, and exposes all the pins on the Notecard.
 
 To begin, we simply slot the Notecard into the M.2 edge connector on the Notecarrier-A:
 
@@ -52,7 +52,7 @@ Next, we need to run a short jumper wire to connect `VUSB` to `AUX1` on the Note
 
 ![notecard usb aux connector](notecard-usb-aux.jpg)
 
-Connect the LiPo battery to the Notecarrier via the `LIPO` JST connector. Another advantage of the Notecarrier is that it will continually maintain a charge on the connected LiPo battery while it's powered over USB:
+Connect the LiPo battery to the Notecarrier via the `LIPO` JST connector. Another advantage of the Notecarrier is that it will maintain a charge on the connected LiPo battery while it's powered over USB:
 
 ![notecard lipo connector](notecard-lipo.jpg)
 
@@ -100,14 +100,10 @@ This Notehub project is where we will see incoming data from the Notecard, and e
 
 ![notehub projects](notehub-projects.png)
 
-Each Notehub account comes with 5,000 [consumption credits](TODO) which are only deducted when an event is routed out of a Notehub project (or if you use the [Notehub API](https://dev.blues.io/reference/notehub-api/api-introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) to pull data out of a project). For many scenarios this means you can likely use Notehub for free, forever!
-
-Every month you'll get topped-up to 5,000 events for free, can purchase more if you need them, and you get 5,000 additional one-time consumption credits with the purchase of each Notecard.
-
 With the Notehub project created, we'll need to save the unique identifier (the [ProductUID](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#productuid)) of the project, like:
 
 ```
-com.company.name:power_outage
+com.your-company.your-name:power_outage
 ```
 
 Next, head back to the in-browser terminal to associate this Notecard with the Notehub project we just created. To do so we use the [hub.set API](https://dev.blues.io/reference/notecard-api/hub-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage#hub-set):
@@ -163,7 +159,7 @@ Simply unplug the micro USB cable from the Notecarrier-A. The LiPo battery will 
 
 ![notehub power outage event](notehub-event.png)
 
-This is great! 👍 In the provided JSON, we're seeing the `AUX1` pin state is `low`, meaning USB power has been lost:
+This is great! 👍 In the provided JSON, we're seeing the `AUX1` pin state in the array is `low`, meaning USB power has been lost:
 
 ```
 {"state":[{"low":true},{},{},{}]}
@@ -175,7 +171,7 @@ We can also **plug the Notecarrier back in** to see what a state change event lo
 {"power":true,"state":[{"high":true},{},{},{}]}
 ```
 
-Seeing this power outage data show up in Notehub, while nice, doesn't really help us to take any action (yet).
+Seeing this power outage data show up in Notehub, while nice, doesn't really help us to take any action though (yet!).
 
 Our next step is to **set up SMS messaging** to get a text message within seconds of a power outage. This is accomplished with the _routing_ feature of Notehub.
 
@@ -211,7 +207,7 @@ This is applied in the **Data** section of the Notehub route:
 
 ![notehub route jsonata transform](notehub-route-jsonata.png)
 
-With the Notehub route configured, it's time to test our setup (yes, again!) and this time we should now get a text message within moments of **disconnecting AND reconnecting** USB power from the Notecarrier:
+With the Notehub route configured, it's time to again test our setup and this time we should now get a text message within moments of **disconnecting AND reconnecting** USB power from the Notecarrier:
 
 ![sms text notification power outage](sms-power-out-on.png)
 
@@ -228,6 +224,6 @@ All you need to get started is:
 - [LiPo battery](https://shop.blues.io/collections/accessories/products/5-000-mah-lipo-battery?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=power-outage) (any LiPo will do)
 - Micro USB cable (with a wall socket adapter)
 
-Now if you've actually read this entire writeup, we owe you a discount code! Feel free to **take 10% off** your order of a Notecard + Notecarrier-A with [this discount code](https://shop.blues.io/discount/POWER_OUTAGE_10).
+Now if you've actually read this entire writeup, we owe you a discount! Feel free to **take 10% off** your order of a Notecard + Notecarrier-A with [this discount code](https://shop.blues.io/discount/POWER_OUTAGE_10).
 
 Happy Hacking! 👩‍💻🔌💡
