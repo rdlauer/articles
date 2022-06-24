@@ -1,4 +1,4 @@
-# Use Cell and Wi-Fi Triangulation to Achieve Pin-Point Location Data, without GPS
+# Use Cell and Wi-Fi Triangulation to Achieve Pin-Point Locations, without GPS
 
 Many IoT solutions include one basic requirement: to know precisely _where_ they are in the world.
 
@@ -139,6 +139,4 @@ Which, again, when plotted on a map, comes shockingly close to landing on my hou
 
 While GPS is the defacto standard for identifying the precise location of an IoT device, the Notecard's triangulation capabilities provide options when either GPS isn't available or when low-power requirements are dictated.
 
-tl;dr Wi-Fi triangulation FTW!
-
-Happy Hacking! 🧑‍💻
+Wi-Fi triangulation FTW! 📍🗺
