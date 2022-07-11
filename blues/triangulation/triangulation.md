@@ -143,6 +143,6 @@ Which, again, when plotted on a map, comes shockingly close to landing on my hou
 
 ## Summary
 
-While GPS is the defacto standard for identifying the precise location of an IoT device, the Notecard's triangulation capabilities provide options when either GPS isn't available, low-power requirements are dictated, or when one or more Wi-Fi access points are available.
+While GPS is the de facto standard for identifying the precise location of an IoT device, the Notecard's triangulation capabilities provide options when either GPS isn't available, low-power requirements are dictated, or when one or more Wi-Fi access points are available.
 
 Wi-Fi triangulation FTW! 📍🗺
