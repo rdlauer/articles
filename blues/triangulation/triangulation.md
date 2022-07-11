@@ -1,4 +1,4 @@
-# Use Cell and Wi-Fi Triangulation to Achieve Pin-Point Locations, without GPS
+# Use Cellular and Wi-Fi Triangulation to Achieve Pin-Point Locations, without GPS
 
 Many IoT solutions include one basic requirement: to know precisely _where_ they are in the world.
 
@@ -7,10 +7,10 @@ Many IoT solutions include one basic requirement: to know precisely _where_ they
 While ascertaining location is usually handled with a GNSS/GPS module, there are scenarios where GPS is not reliable or practical. In fact, I'll give you three exact scenarios:
 
 1. Indoor deployments where getting a GPS satellite fix is impossible.
-2. Using a physical enclosure that prevents a GPS fix.
+2. Use of a physical enclosure that prevents a GPS fix.
 3. Low-power solutions that can't afford the power drain of GPS.
 
-Here at Blues Wireless, when we talk about gathering lat/lon coordinates, we usually refer people to the onboard GPS capabilities of the Cellular Notecard. However, today I want to look more closely at a lesser-known capability of the Notecard: cell tower and Wi-Fi triangulation.
+Here at Blues Wireless, when we talk about gathering lat/lon coordinates, we usually refer people to the onboard GPS capabilities of the [Cellular Notecard](/products/notecard/). However, today I want to look more closely at a lesser-known capability of the Notecard: [cell tower and Wi-Fi triangulation](https://dev.blues.io/notecard/notecard-walkthrough/time-and-location-requests/#using-cell-tower-and-wi-fi-triangulation).
 
 ## Triangulation
 
@@ -18,7 +18,7 @@ If you've taken basic trigonometry or geometry courses, you already know that tr
 
 ![cell tower triangulation example](cell-triangulation.png)
 
-The Notecard provides built-in capabilities of utilizing triangulation in a couple of different ways, depending on your solutions' needs, in the form of cell tower triangulation, Wi-Fi triangulation, or both!
+The Notecard provides built-in capabilities of utilizing triangulation in a couple of different ways, in the form of cell tower triangulation, Wi-Fi triangulation, or both!
 
 ## Cell Tower Triangulation
 
@@ -34,13 +34,13 @@ If you're experienced with the Cellular Notecard, you've likely noticed the `tow
 "tower_id": "310,410,17169,77315594",
 ```
 
-The `tower_lat` and `tower_lon` values are an approximate location of the **single cell tower** this Notecard was connected to at the given `tower_when` timestamp. While this is a nice (rough) location, it's not useful on its own when trying to determine a more precise location of the device.
+The `tower_lat` and `tower_lon` values are an approximate location of the **single cell tower** this Notecard was connected to at the given `tower_when` timestamp. While this is a nice (rough) location, it's not useful on its own when trying to determine a precise location of the device.
 
-For example, here is the position of the cell tower relative to my house:
+For example, here is the approximate position of the cell tower relative to me:
 
 ![single cell tower location with notecard](triangulation-single-cell-tower.png)
 
-In scenarios where GPS is unusable, performing **cell tower triangulation** with the Notecard can provide a slight improvement, thanks to the magic of the [card.triangulation]() API.
+In scenarios where GPS is unusable, performing **cell tower triangulation** with the Notecard can provide a slight improvement, thanks to the magic of the [card.triangulate](https://dev.blues.io/reference/notecard-api/card-requests/#card-triangulate) API.
 
 To enable cell tower triangulation on a Cellular Notecard, simply issue this request:
 
@@ -67,7 +67,7 @@ Here is my updated location, based on cell tower triangulation:
 
 ![cell tower triangulation with notecard](triangulation-cell-towers.png)
 
-As you can see, the actual location has improved a little, but it's still not  great.
+As you can see, the actual location has improved a little, but it's still not  great (yet will improve as more cell towers are visible!).
 
 > **NOTE:** It's important to know that cell tower triangulation comes with a non-trivial power penalty because the modem scan for nearby cell towers can take almost as long as an entire sync. Triangulation also only occurs during a connection to Notehub and there is no way to "re-triangulate" during a `continuous` Notehub session.
 
@@ -77,9 +77,9 @@ Let's see if we can improve our location accuracy by adding Wi-Fi triangulation!
 
 If your host MCU has an onboard Wi-Fi module, you can perform a Wi-Fi access point (AP) scan and send this data to the Notecard to perform Wi-Fi triangulation. This allows for vastly improved location accuracy.
 
-> Using the Wi-Fi Notecard? See below for information on how Wi-Fi triangulation is used with this Notecard!
+> Using the [Wi-Fi Notecard](/products/wifi-notecard/)? See below for information on how Wi-Fi triangulation is used with this Notecard!
 
-The format of the `card.triangulation` call is a little different when using Wi-Fi triangulation. Note that you can use `cell`, `wifi`, or both with `wifi,cell` when enabling triangulation!
+The format of the `card.triangulate` call is a little different when using Wi-Fi triangulation. Note that you can use `cell`, `wifi`, or both with `wifi,cell` when enabling triangulation!
 
 ```
 {
@@ -91,9 +91,15 @@ The format of the `card.triangulation` call is a little different when using Wi-
 
 What's that scary-looking `text` field? It's a newline-terminated list of Wi-Fi access points that follows a pattern similar to the [ESP32's AT+CWLAP command output](https://docs.espressif.com/projects/esp-at/en/latest/esp32/AT_Command_Set/Wi-Fi_AT_Commands.html#id17).
 
-If you're comfortable to issuing AT commands to your host MCU, you can simply send `AT+CWLAP` and format the response per the above requirements. However, not many of us are so comfortable with that, which is why we provide ????
+If you're comfortable issuing AT commands to your host MCU, you can send `AT+CWLAP` and format the response per the above requirements. However, not many of us are so cozy with AT syntax, which is why we provide the 
+[Notecard Auxiliary Wi-Fi Arduino library](https://github.com/blues/notecard-aux-wifi) 
+for an easier way of programmatically pulling a list of Wi-Fi access points with 
+your Wi-Fi enabled host MCU, and sending them to the Notecard in one command:
 
-TODO based on Zak's upcoming instructions
+```
+// Update Notecard Triangulation Data
+aux_wifi.updateTriangulationData();
+```
 
 How much better are my results when using Wi-Fi triangulation? Well the only access point my ESP32 was able to find is my own home router. However, even with just that one AP, here are the results:
 
@@ -111,7 +117,7 @@ Which becomes amazingly accurate when displayed on a map!
 
 ![wi-fi triangulation with notecard](triangulation-cell-wifi.png)
 
-Wi-Fi triangulation becomes even more valuable when you realize the power requirements are minimal, and it adds only 1-2 seconds to the sync time with Notehub. I would go so far as to say **Wi-Fi triangulation is almost as good as GPS in many scenarios**.
+Wi-Fi triangulation becomes **even more valuable** when you realize the power requirements are minimal, and it adds only 1-2 seconds to the sync time with Notehub. I would go so far as to say **Wi-Fi triangulation is almost as good as GPS in many scenarios**.
 
 ## Triangulation with Wi-Fi Notecard
 
@@ -137,6 +143,6 @@ Which, again, when plotted on a map, comes shockingly close to landing on my hou
 
 ## Summary
 
-While GPS is the defacto standard for identifying the precise location of an IoT device, the Notecard's triangulation capabilities provide options when either GPS isn't available or when low-power requirements are dictated.
+While GPS is the defacto standard for identifying the precise location of an IoT device, the Notecard's triangulation capabilities provide options when either GPS isn't available, low-power requirements are dictated, or when one or more Wi-Fi access points are available.
 
 Wi-Fi triangulation FTW! 📍🗺
