@@ -8,7 +8,7 @@ Today we’re excited to introduce you to the newest Adafruit Feather-compatible
 
 More than just a new revision of our first Feather-compatible Notecarrier (the Notecarrier-AF), we re-imagined the Notecarrier-F from the ground up. We spoke with many of you to learn how you were using the AF and learned how we could best improve the design, layout, and performance of this new Notecarrier.
 
-> New to Blues and curious about what a Notecarrier even is? In short, Notecarriers are companion project accelerator boards designed to make it easy to prototype and deploy IoT solutions with the [Blues Wireless Notecard](/products/notecard/). Learn more about Notecarriers [here](/products/notecarrier/).
+> New to Blues Wireless and curious about what a Notecarrier even *is*? In short, Notecarriers are carrier boards designed to make it easy to prototype and deploy wireless IoT solutions with the [Blues Wireless Notecard](/products/notecard/). Learn more about Notecarriers [here](/products/notecarrier/).
 
 ## Notecarrier-F Features and Benefits
 
