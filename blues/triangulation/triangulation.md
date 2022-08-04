@@ -77,9 +77,9 @@ As you can see, the actual location has improved significantly, and will only im
 
 ## Wi-Fi Triangulation
 
-If your host MCU has an onboard Wi-Fi module, you can perform a Wi-Fi access point (AP) scan and send this data to the Notecard to perform Wi-Fi triangulation.
+If your host MCU has an onboard Wi-Fi module (like the ESP32), you can perform a Wi-Fi access point (AP) scan and send this data to the Notecard to perform Wi-Fi triangulation.
 
-> **NOTE:** Wi-Fi triangulation is an experimental, technical preview feature that is free 
+> **NOTE:** Wi-Fi triangulation is an experimental, technical preview feature from Blues Wireless that is free 
 for use today, but may use [Consumption Credits](https://blues.io/pricing/) in 
 the future.
 
@@ -95,6 +95,8 @@ The format of the `card.triangulate` call is a little different when using Wi-Fi
 
 What's that scary-looking `text` field? It's a newline-terminated list of Wi-Fi access points that follows a pattern similar to the [ESP32's AT+CWLAP command output](https://docs.espressif.com/projects/esp-at/en/latest/esp32/AT_Command_Set/Wi-Fi_AT_Commands.html#id17).
 
+### Deriving Access Point Data with Arduino
+
 If you're comfortable issuing AT commands to your host MCU, you can send `AT+CWLAP` and format the response per the above requirements. However, not many of us are so cozy with AT syntax, which is why we provide the 
 [Notecard Auxiliary Wi-Fi Arduino library](https://github.com/blues/notecard-aux-wifi) 
 for an easier way of programmatically pulling a list of Wi-Fi access points with 
@@ -105,7 +107,52 @@ your Wi-Fi enabled host MCU, and sending them to the Notecard in one command:
 aux_wifi.updateTriangulationData();
 ```
 
-> Using the [Wi-Fi Notecard](/products/wifi-notecard/)? See below for information on how Wi-Fi triangulation is used automatically with this Notecard!
+### Deriving Access Point Data with CircuitPython
+
+Developing with [CircuitPython](https://circuitpython.org/)? Here is an example function that uses the built-in `wifi` library to gather the same WAP data when used with an ESP32 MCU:
+
+```
+import wifi
+import binascii
+
+def get_wifi_access_points():
+    """ returns a set of visible access points, corresponds to esp32 AT+CWLAP format """
+    # https://docs.espressif.com/projects/esp-at/en/latest/esp32/AT_Command_Set/Wi-Fi_AT_Commands.html#cmd-lap
+
+    all_wifi_aps = ""
+    
+    for network in wifi.radio.start_scanning_networks():
+        
+        wifi_ap = "+CWLAP:("
+        
+        if wifi.AuthMode.ENTERPRISE in network.authmode:
+            wifi_ap += "5"
+        elif wifi.AuthMode.PSK in network.authmode:
+            wifi_ap += "6"
+        elif wifi.AuthMode.WPA3 in network.authmode:
+            wifi_ap += "6"
+        elif wifi.AuthMode.WPA2 in network.authmode:
+            wifi_ap += "3"
+        elif wifi.AuthMode.WPA in network.authmode:
+            wifi_ap += "2"
+        elif wifi.AuthMode.WEP in network.authmode:
+            wifi_ap += "1"
+        else:
+            wifi_ap += "0"
+            
+        bssid = binascii.hexlify(network.bssid).decode("ascii")
+        bssid = ':'.join(bssid[i:i+2] for i in range(0,12,2))
+            
+        wifi_ap = wifi_ap + ",\"" + str(network.ssid) + "\"," + str(network.rssi) + ",\"" + bssid + "\"," + str(network.channel) + ")\n"
+        
+        all_wifi_aps += wifi_ap
+        
+    wifi.radio.stop_scanning_networks()
+    
+    return all_wifi_aps
+```
+
+### Wi-Fi Triangulation in Action
 
 How different are my results when using Wi-Fi triangulation? Well the only access point my ESP32 was able to find was my own router. However, even with just that one AP, here are the results:
 
@@ -125,9 +172,11 @@ Which becomes amazingly accurate when displayed on a map!
 
 Wi-Fi triangulation becomes **even more valuable** when you realize the power requirements are minimal, and it adds only 1-2 seconds to the sync time with Notehub.
 
+Be sure to consult the developer documentation on [Cell Tower and Wi-Fi Triangulation](https://dev.blues.io/notecard/notecard-walkthrough/time-and-location-requests/#using-cell-tower-and-wi-fi-triangulation) as there are additional settings in Notehub that you may want to change, depending on how you use triangulation in your solution.
+
 ## Triangulation with Wi-Fi Notecard
 
-Up until now, all of these instructions have revolved around using the Cellular Notecard. What about if you're using the Wi-Fi Notecard (which doesn't have an onboard GNSS/GPS module)?
+Up until now, all of these instructions have revolved around using the Cellular Notecard. What about if you're using the [Wi-Fi Notecard](/products/wifi-notecard/) (which doesn't have an onboard GNSS/GPS module)?
 
 Luckily enough, Wi-Fi triangulation is enabled on the Wi-Fi Notecard by default, no configuration changes required!
 
@@ -149,6 +198,6 @@ Which, again, when plotted on a map, comes shockingly close to landing on my loc
 
 ## Summary
 
-While GPS is the de facto standard for identifying the precise location of an IoT device, and should be the first option when gathering location data, the Notecard's triangulation capabilities provide options when GPS isn't available.
+While GPS is the de facto standard for identifying the precise location of an IoT device, and should always be the first option when gathering location data, the Notecard's triangulation capabilities provide options when GPS isn't available.
 
 Happy Mapping with the Notecard and Notehub! 📍🗺
