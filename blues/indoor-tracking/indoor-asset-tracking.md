@@ -1,18 +1,18 @@
 # Indoor Asset Tracking using Wi-Fi Triangulation
 
-In the IoT, when someone says "asset tracking", you likely think of monitoring the state and location of a package, container, or vehicle. Usually this involves one or more environmental sensors to track temperature, humidity, or atmospheric pressure. Maybe an accelerometer to track motion and sudden movements.
+In the IoT, when someone says "asset tracking", you likely think of monitoring the state and location of a package, container, or vehicle. Usually this involves one or more environmental sensors to track temperature, humidity, or atmospheric pressure. It may also include an accelerometer to track motion and sudden movements.
 
-Of course, asset tracking also involves **tracking a location** in a physical space. This is typically performed with GNSS/GPS which is far and away the most consistent and reliable means of ascertaining a physical location outdoors.
+Of course, asset tracking also involves **monitoring location** in a physical space. This is typically performed with GNSS/GPS which is far and away the most consistent and reliable means of ascertaining a physical location outdoors.
 
 ![where am i](where-am-i.gif)
 
-However, what if the device enclosure prevents you from getting GPS data due to a physical barrier? What if trying to get a GPS satellite fix consumes too much power? Or (and here's the real kicker) what if your goal is to **track an asset indoors**?
+However, what if the device enclosure prevents you from acquiring GPS location due to a physical barrier? What if trying to get a GPS satellite fix consumes too much power? Or (and here's the real kicker) what if your goal is to **track an asset indoors**?
 
-Have no fear, I've got a solution for you today! Well, at least a proof-of-concept 😅.
+Well have I got a solution for you today! At least a proof-of-concept 😅.
 
 By using our old friend from trigonometry and geometry classes (triangulation), we can build a fully-functional **indoor asset tracking solution** built upon on the [Blues Wireless Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking).
 
-We can also tap into a commonly used sensor to measure altitude, giving us the ability to ascertain the building floor and provide true "3D asset tracking" with x/y/z positioning.
+We can also tap into a commonly used sensor to measure altitude, giving us the ability to ascertain the building floor and provide "3D" asset tracking.
 
 **Ready to dive in?** Let's start with the high level requirements of this indoor tracking solution.
 
@@ -24,15 +24,15 @@ You may already know that triangulation is the process of determining a location
 
 ![cell tower triangulation example](cell-triangulation.png)
 
-In this project, the Notecard is going to allow us to use both GPS _or_ triangulation to accurately ascertain a device's position.
+In this project, the Notecard is going to allow us to use GPS _and_ triangulation to accurately ascertain a device's position.
 
 ## Requirement: Use Altitude to Track Floor
 
 Tracking an asset on a 2D map is so last year 😊.
 
-We can easily use data from a BME280 sensor to calculate a reasonably accurate altitude. What you may not know is, those altitude readings are based on a standard sea level pressure measure of 1013.25 hPa.
+We can use data from a BME280 sensor to calculate a reasonably accurate altitude. What you may not know is, those altitude readings are commonly based on a standard sea level pressure measure of 1013.25 hPa.
 
-Wouldn't it be cooler to **actively query the sea level pressure** for a known location *before* asking the sensor to calculate the altitude? This provides for a much more accurate reading, letting us roughly calculate the floor of the building we are on.
+Wouldn't it be cooler to **actively query the sea level pressure** for a known location *before* asking the sensor to calculate the altitude? This provides for a more accurate reading, letting us roughly calculate the floor of the building we are on.
 
 ## Requirement: Device-to-Cloud Data Pump
 
@@ -42,7 +42,7 @@ The [Notecard is a prepaid cellular system-on-module](https://blues.io/iot-conne
 
 ![blues wireless notecard](notecard-nbgl.png)
 
-Even though the Notecard is a cellular device, you actually have to program the modem with archaic AT commands. The [Notecard API is all JSON](https://dev.blues.io/reference/notecard-api/introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking), all the time. For instance, say you wanted to query the last known location on the Notecard, you'd use the [card.location API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#card-location):
+Even though the Notecard is a cellular device, you don't have to program the modem with archaic AT commands. The [Notecard API is all JSON](https://dev.blues.io/reference/notecard-api/introduction/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking), all the time. For instance, say you wanted to query the last known location on the Notecard, you'd use the [card.location API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#card-location):
 
 ```
 // Request
@@ -82,11 +82,11 @@ For gathering environmental data and calculating altitude, I'm including the ven
 
 ![bme280 sensor](bme280.jpg)
 
-For a host microcontroller, I went with the [ESP32-S2 Feather](https://learn.adafruit.com/adafruit-esp32-s2-feather). I chose this MCU primarily because of its onboard Wi-Fi module and support for CircuitPython. Even though we aren't using Wi-Fi for connectivity, we _can_ use it to gather public Wi-Fi access point data.
+For a host microcontroller, I went with the [ESP32-S2 Feather](https://learn.adafruit.com/adafruit-esp32-s2-feather). I chose this MCU primarily because of its onboard Wi-Fi module and support for CircuitPython. Even though we can't use Wi-Fi for connectivity (since it's a moving system and won't be able to log in to the changing Wi-Fi APs), we _will_ use it to gather public Wi-Fi access point data.
 
 ![esp32-s2 feather](esp32-s2.jpg)
 
-So how do we bring all the pieces together? That's what the new [Blues Wireless Notecarrier-F](NEED LINK) is for!
+So how do we bring all the pieces together? That's what the new [Blues Wireless Notecarrier-F](TODO) is for!
 
 [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking) are carrier boards that allow you to quickly prototype IoT solutions that use the Notecard. The Notecarrier-F is a great option for Feather-compatible MCUs and provides two Qwiic ports for adding peripherals (like the BME280) and JST connectors for connecting LiPo batteries.
 
@@ -104,7 +104,7 @@ I'm an unabashed Python fan, so [CircuitPython](https://circuitpython.org/) was 
 
 *So let's write some CircuitPython firmware!*
 
-> **NOTE:** The full CircuitPython source code is available in [this Github repository](https://github.com/rdlauer/indoor-tracker-circuitpython).
+> **NOTE:** The full CircuitPython source code for this project is available in [this Github repository](https://github.com/rdlauer/indoor-tracker-circuitpython).
 
 ### Python Libraries and Imports
 
@@ -165,7 +165,7 @@ req["mode"] = "periodic"
 rsp = card.Transaction(req)
 ```
 
-Finally, we enable *motion tracking* on the Notecard, which will let us ascertain the location of the device only if it has moved (as opposed to sampling at a regular time interval, even if the device is stationary, unnecessarily consuming power).
+Finally, we enable *motion tracking* on the Notecard, which will let us ascertain the location of the device only if it has moved (as opposed to sampling at a timed interval, even if the device is stationary, unnecessarily consuming power).
 
 ```
 # enable motion tracking on Notecard
@@ -230,7 +230,7 @@ Again, since this is an indoor deployment, we will rarely get a valid GPS locati
 
 ### Set Up Wi-Fi Triangulation
 
-Did you know that our smartphones are constantly gathering data about available Wi-Fi access points, combining that data with lat/lon coordinates, and shipping the data to Apple and Google? Welcome to yet another questionable privacy practice by these big tech companies!
+Did you know that our smartphones are constantly gathering data about available Wi-Fi access points, combining that data with lat/lon coordinates, and shipping the data to Apple and Google? Welcome to yet another questionable privacy practice by big tech!
 
 On the bright side, it also allows us to utilize a capability of Notehub to [gather positioning data from nearby Wi-Fi access points](https://dev.blues.io/notecard/notecard-walkthrough/time-and-location-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#using-cell-tower-and-wi-fi-triangulation).
 
@@ -303,9 +303,6 @@ def send_sensor_data(using_gps, using_wifi):
     # first get the updated sea level pressure
     sl_pressure = utils.get_sea_level_pressure(card, lat_def, lon_def)
 
-    if sl_pressure <= 0:
-        sl_pressure = 1013.25
-
     bme280.sea_level_pressure = sl_pressure
     sleep(1)
 
@@ -328,12 +325,6 @@ def send_sensor_data(using_gps, using_wifi):
     med_humidity = utils.get_median(humidity_list)
     med_pressure = utils.get_median(pressure_list)
     med_altitude = utils.get_median(altitude_list)
-
-    print("Temperature: %0.1f C" % med_temp)
-    print("Humidity: %0.1f %%" % med_humidity)
-    print("Pressure: %0.3f hPa" % med_pressure)
-    print("Altitude = %0.2f meters" % med_altitude)
-    print("Sea Level Pressure = %0.3f hPa" % sl_pressure)
 
     note_body["temperature"] = med_temp
     note_body["humidity"] = med_humidity
