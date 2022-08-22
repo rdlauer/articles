@@ -14,7 +14,7 @@ More than just a revision of our previous Feather-compatible Notecarrier (the No
 
 Aside from just *looking* amazing, the Notecarrier-F provides significant enhancements and new features for Feather microcontroller users.
 
-> Be sure to consult the [Notecarrier-F datasheet](TODO) for additional technical details.
+> Be sure to consult the [Notecarrier-F datasheet](https://dev.blues.io/hardware/notecarrier-datasheet/notecarrier-f/) for additional technical details.
 
 1) We redesigned the electrical system to be **far more power efficient** than the Notecarrier-AF and consume only ~15uA when idle (nearly matching the Notecard's idle consumption of ~8uA).
 
@@ -42,9 +42,9 @@ Aside from just *looking* amazing, the Notecarrier-F provides significant enhanc
 
 The Notecarrier-F is available TODAY in the Blues Wireless store! You can pick it up in one of the following configurations:
 
-- [Cellular & Wi-Fi Starter Kit for Feather (Swan)](TODO)
-- [Feather Starter Kit for Swan](TODO)
-- [Feather Starter Kit for ESP32](TODO)
-- [Standalone Notecarrier-F](TODO)
+- [Cellular & Wi-Fi Starter Kit for Feather (Swan)](https://shop.blues.io/products/cellular-and-wifi-feather-kit)
+- [Feather Starter Kit for Swan](https://shop.blues.io/products/notecarrier-swan)
+- [Feather Starter Kit for ESP32](https://shop.blues.io/products/feather-starter-kit)
+- [Standalone Notecarrier-F](https://shop.blues.io/products/notecarrier-f)
 
 If you have any questions about the Notecarrier-F please [reach out on the Blues Wireless community forum](https://discuss.blues.io/).
