@@ -2,7 +2,7 @@
 
 *Meet the new Adafruit Feather-compatible Notecarrier.*
 
-We’re excited to introduce you to the newest Adafruit Feather-compatible product in the Blues Wireless portfolio, the [Notecarrier-F](TODO).
+We’re excited to introduce you to the newest Adafruit Feather-compatible product in the Blues Wireless portfolio, the [Notecarrier-F](https://blues.io/products/notecarrier/notecarrier-f/).
 
 ![blues wireless notecarrier-f](notecarrier-f.jpg)
 
