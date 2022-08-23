@@ -2,15 +2,15 @@
 
 In the IoT, when someone says "asset tracking", you likely think of monitoring the state and location of a package, container, or vehicle. Usually this involves one or more environmental sensors to track temperature, humidity, or atmospheric pressure. It may also include an accelerometer to track motion and sudden movements.
 
-Of course, asset tracking also involves **monitoring location** in a physical space. This is typically performed with GNSS/GPS which is far and away the most consistent and reliable means of ascertaining a physical location outdoors.
+Of course, asset tracking also involves **monitoring location** in a physical space. This is typically performed with GNSS/GPS, which is far and away the most consistent and reliable means of ascertaining a physical location outdoors.
 
 ![where am i](where-am-i.gif)
 
 However, what if the device enclosure prevents you from acquiring GPS location due to a physical barrier? What if trying to get a GPS satellite fix consumes too much power? Or (and here's the real kicker) what if your goal is to **track an asset indoors**?
 
-Well have I got a solution for you today! At least a proof-of-concept 😅.
+Well have I got a solution for you today! At least a proof-of-concept solution 😅.
 
-By using our old friend from trigonometry and geometry classes (triangulation), we can build a fully-functional **indoor asset tracking solution** built upon on the [Blues Wireless Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking).
+By using our old friend *triangulation* from trigonometry and geometry, we can build a fully-functional **indoor asset tracking solution** built upon on the [Blues Wireless Notecard](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking).
 
 We can also tap into a commonly used sensor to measure altitude, giving us the ability to ascertain the building floor and provide "3D" asset tracking.
 
@@ -20,11 +20,11 @@ We can also tap into a commonly used sensor to measure altitude, giving us the a
 
 GPS should *always* be the first choice when attempting to ascertain physical location. But it's good to have a backup in case getting a GPS satellite fix fails (which can often be the case inside a building).
 
-You may already know that triangulation is the process of determining a location by forming triangles to a point of interest, from a series of other known points.
+You may already know that triangulation is the process of determining a location by forming overlapping diagrams on a common point of interest, from a series of other known points.
 
 ![cell tower triangulation example](cell-triangulation.png)
 
-In this project, the Notecard is going to allow us to use GPS _and_ triangulation to accurately ascertain a device's position.
+In this project, the Notecard is going to allow us to use both GPS _and_ triangulation to accurately ascertain a device's position.
 
 ## Requirement: Use Altitude to Track Floor
 
@@ -32,11 +32,11 @@ Tracking an asset on a 2D map is so last year 😊.
 
 We can use data from a BME280 sensor to calculate a reasonably accurate altitude. What you may not know is, those altitude readings are commonly based on a standard sea level pressure measure of 1013.25 hPa.
 
-Wouldn't it be cooler to **actively query the sea level pressure** for a known location *before* asking the sensor to calculate the altitude? This provides for a more accurate reading, letting us roughly calculate the floor of the building we are on.
+Wouldn't it be cooler to **actively query the sea level pressure** for a known location *before* asking the sensor to calculate the altitude? This would provide a more accurate reading, letting us roughly calculate the floor of the building we are on.
 
 ## Requirement: Device-to-Cloud Data Pump
 
-We need a means of syncing our gathered location and altitude data to the cloud. I already gave away our secret component: the Blues Wireless Notecard.
+We need a means of syncing our gathered location and altitude data to the cloud. And yeah, I already gave away our secret component: the Blues Wireless Notecard.
 
 The [Notecard is a prepaid cellular system-on-module](https://blues.io/iot-connectivity-firmware-for-engineers/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking), especially useful for low bandwidth cellular IoT communications. It comes preloaded with 500MB of data and 10 years of global cellular service, starting at $49 USD.
 
@@ -62,9 +62,9 @@ Even more importantly, security and cloud integration is turnkey. The Notecard c
 
 Notehub is _also_ our secret sauce when it comes to providing location data via triangulation. As we'll see later on, when we supply known Wi-Fi access point data to Notehub and enable the [card.triangulate API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#card-triangulate), Notehub can actually look up shockingly accurate location data.
 
-## Requirement: Power-Conscious
+## Requirement: Low Power
 
-Any IoT solution that is battery-powered has to be power-conscious. Thankfully the Notecard is low-power by default (to the tune of ~8uA when idle) and includes an on-board accelerometer, which allows us to calculate an asset's location only when it has detected motion!
+Any IoT solution that is battery-powered has to be power-conscious. Thankfully the Notecard is low power by default (to the tune of ~8uA when idle) and includes an on-board accelerometer, which allows us to calculate an asset's location only when it has detected motion!
 
 *With all of these requirements in mind, let's assemble our hardware.*
 
@@ -86,7 +86,7 @@ For a host microcontroller, I went with the [ESP32-S2 Feather](https://learn.ada
 
 ![esp32-s2 feather](esp32-s2.jpg)
 
-So how do we bring all the pieces together? That's what the new [Blues Wireless Notecarrier-F](TODO) is for!
+So how do we bring all the pieces together? That's what the new [Blues Wireless Notecarrier-F](https://blues.io/products/notecarrier/notecarrier-f/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking) is for!
 
 [Notecarriers](https://blues.io/products/notecarrier/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking) are carrier boards that allow you to quickly prototype IoT solutions that use the Notecard. The Notecarrier-F is a great option for Feather-compatible MCUs and provides two Qwiic ports for adding peripherals (like the BME280) and JST connectors for connecting LiPo batteries.
 
@@ -351,7 +351,7 @@ def send_sensor_data(using_gps, using_wifi):
     rsp = card.Transaction(req)
 ```
  
-Take note (yes, pun intended) of the final request in this method, [note.add](https://dev.blues.io/reference/notecard-api/note-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#note-add). A ["Note"](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#note) is simply a JSON object that includes arbitrary data you want to send to the cloud.
+Take Note (yes, pun intended) of the final request in this method, [note.add](https://dev.blues.io/reference/notecard-api/note-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#note-add). A ["Note"](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=indoor-asset-tracking#note) is simply a JSON object that includes arbitrary data you want to send to the cloud.
 
 In this case, we are sending the following data elements in the `body` of our Note:
 
