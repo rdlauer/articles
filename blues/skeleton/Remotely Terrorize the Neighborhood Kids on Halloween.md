@@ -16,7 +16,7 @@ Ideally we want to activate the skeleton by replacing the footpad action with a 
 
 Since this IoT deployment will be outdoors, a reasonable connectivity option is cellular, specifically the [prepaid cellular Notecard from Blues Wireless](https://blues.io/products/notecard/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton). To minimize cost, we will use a new Notecard feature to **set the state of a Notecard AUX pin** to toggle the relay switch, removing the need for a host MCU at the skeleton.
 
-In summary, we will **remotely trigger an AWS Lambda function**, the **Lambda function will call an API to send an event** to the Cellular Notecard attached to the skeleton, and then, **SURPRISE!**
+In summary we will **remotely trigger an AWS Lambda function**, the **Lambda function will call an API to send an event** to the Cellular Notecard attached to the skeleton, and then, **SURPRISE!**
 
 ![from cloud to skeleton](cloud-to-skeleton.png)
 
@@ -32,7 +32,7 @@ Let's start with what needs doing in the cloud to make this project a reality.
 
 [Blues Wireless Notehub](https://blues.io/products/notehub/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton) is a thin cloud service that is effectively a secure router between the Notecard and your cloud app (which today will be AWS, but can be any cloud service).
 
-The bonus of using Notehub with the Notecard is the Notecard literally knows to how communicate with Notehub as soon as it's powered on. The Notecard is extremely secure as it doesn't have a public IP address and communicates with Notehub through private VPN tunnels.
+The benefit of this pairing is the Notecard literally knows to how communicate with Notehub as soon as it's powered on. The Notecard is extremely secure as it doesn't have a public IP address and communicates with Notehub through private VPN tunnels.
 
 After [setting up a free account](https://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton) and a new project in Notehub, we are going to use a feature of [Notehub's API](https://dev.blues.io/guides-and-tutorials/using-the-notehub-api/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton) to remotely configure a setting on the Notecard to toggle the relay switch.
 
@@ -48,7 +48,7 @@ _Find your Notecard's DeviceUID in Notehub (available after connecting with a hu
 
 ### AWS Lambda Function
 
-Switching gears into AWS, let's write the Lambda function itself, in Python (because why not):
+Switching gears into AWS, let's write the Lambda function in Python (because why not):
 
 ```
 import requests
@@ -76,7 +76,7 @@ Specifically, we are setting the `_aux_gpio_set` environment variable to:
 ,,low,,1000,1665941585,60
 ```
 
-While at first a bit odd, this tells the Notecard to pulse the `AUX3` pin `LOW` for 1000 ms, valid from the UNIX epoch time of 1665941585 for 60 seconds. The empty spaces between the commas are where you could specify the states of the other AUX pins, 1, 2, or 4.
+While at first a bit odd, this tells the Notecard to pulse the `AUX3` pin `LOW` for 1000 ms, valid from the current UNIX epoch time for 60 seconds. The empty spaces between the commas are where you could specify the states of the other AUX pins, 1, 2, or 4.
 
 > Please consult the [full AUX mode docs](https://dev.blues.io/notecard/notecard-walkthrough/advanced-notecard-configuration/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton#using-environment-variables-to-set-and-monitor-aux-gpios) provided by Blues Wireless for additional details.
 
@@ -92,13 +92,13 @@ Since our skeleton doesn't have a host MCU, we need to configure its Notecard to
 
 However, we haven't properly introduced the Notecard yet!
 
-The Notecard provides an easy path to low-power cellular IoT through a prepaid system-on-module (including 500MB of data and 10 years of global service) AND its paired cloud service, Notehub. The Notecard starts at \$49. No monthly fees, unless you plan on routing more than 5,000 events per month (then pricing starts at $0.00075/event).
+The Notecard provides an easy path to low-power cellular IoT through a prepaid system-on-module (including 500MB of data and 10 years of global service) AND its paired cloud service, Notehub. The Notecard starts at $49. No monthly fees, unless you plan on routing more than 5,000 events per month (then pricing starts at $0.00075/event).
 
 ![notecard](notecard-nbgl.png)
 
 With the Notecard, gone are the days of archaic AT commands to manage your cellular modem. **The Notecard is all JSON, all the time.**
 
-For example, want to access the onboard GPS module to get your Notecard's location? Just use the [card.location API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton#card-location) like so:
+For example, if you want to access the onboard GPS module to get your Notecard's location, just use the [card.location API](https://dev.blues.io/reference/notecard-api/card-requests/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton#card-location) like so:
 
 ```
 # Request
@@ -122,7 +122,7 @@ First, we want to configure the Skeleton Notecard to associate with our Notehub 
 {"req":"hub.set","product":"<your-product-uid>","mode":"continuous","sync":true}
 ```
 
-We then need to tell the Skeleton Notecard to **listen for AUX GPIO changes** with a `card.aux` request (in this case, set `AUX3` `HIGH` and listen for changes):
+We then need to tell the Skeleton Notecard to **listen for AUX GPIO changes** with a `card.aux` request (in this case, set `AUX3` `HIGH`):
 
 ```
 {"req":"card.aux","mode": "gpio","state": [{},{},{"high": true},{}]}
@@ -132,18 +132,20 @@ We then need to tell the Skeleton Notecard to **listen for AUX GPIO changes** wi
 
 Next, we need to connect the old footpad connector on the skeleton to a custom Notecarrier board that hosts the Skeleton Notecard.
 
+_Ignore the extra relay connection, it's not actually in use..._
+
 ![custom notecarrier board with relay](notecarrier-relay.jpg)
 
 This "relay carrier" allows you to control any normal outlet or high voltage product from anywhere. The carrier comes with two relays that are rated at a max of 220V@10Amp allowing you to control any electric appliance rated at under 2000 watts.
 
-The design is open source and [available here on GitHub](https://github.com/rdlauer/jump-scare-skeleton/tree/main/e21-relay/e21-poc).
+The design of the relay carrier is open source and [available here on GitHub](https://github.com/rdlauer/jump-scare-skeleton/tree/main/e21-relay/e21-poc).
 
 ### Skeleton in Action
 
 Now, if we hit the public URL of the Lambda function, the appropriate environment variable will get set to:
 
 ```
-,,low,,1000,1665941585,60
+,,low,,1000,<current UNIX epoch time>,60
 ```
 
 ...and the skeleton should jump!
@@ -154,7 +156,7 @@ But let's take the next step by building out another IoT solution that lets us p
 
 ## Configuring the Button Host
 
-Using the STM32-based Blues Wireless Swan as our "button host" MCU, we can wire up a simple push button.
+Using the [STM32-based Blues Wireless Swan](https://blues.io/products/swan/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton) as our "button host" MCU, we can wire up a simple push button.
 
 ![swan and push button wiring](swan-button.jpg)
 
@@ -197,7 +199,7 @@ Next, we want to wire up another Notecard and its carrier board (this time the [
 
 ![swan and notecard notecarrier](swan-notecard.jpg)
 
-We can make some code updates to the `setup()` method by associating the Notecard with our Notehub project (the `product` arg below which is the ProductUID of the Notehub project):
+Make some code updates to the `setup()` method by associating the Notecard with our Notehub project (the `product` arg below which is the ProductUID of the Notehub project):
 
 ```
 J *req = NoteNewRequest("hub.set");
@@ -207,7 +209,7 @@ JAddBoolToObject(req, "sync", true);
 notecard.sendRequest(req);
 ```
 
-But where is the JSON? This code snippet uses the note-arduino library which makes it easier to produce the following JSON for the Notecard:
+But where is the JSON? This code snippet uses the [note-arduino library](https://dev.blues.io/tools-and-sdks/libraries/arduino-library/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton) which makes it easier to produce the following JSON for the Notecard:
 
 ```
 {
@@ -220,7 +222,7 @@ But where is the JSON? This code snippet uses the note-arduino library which mak
 
 > **NOTE:** You'll want to consult the full sketch, which is available in [this GitHub repository](https://github.com/rdlauer/jump-scare-skeleton/).
 
-When the push button is pressed, we want to send an event (a.k.a. a Note) to our Notehub project. We can do this in the `loop()` method:
+When the push button is pressed, we want to send an event (a.k.a. a [Note](https://dev.blues.io/reference/glossary/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton#note)) to our Notehub project. We can do this in the `loop()` method:
 
 ```
 J *req = NoteNewRequest("note.add");
@@ -267,9 +269,9 @@ EMBED VIDEO
 
 To summarize, here are the steps we took to make this work:
 
-1. We wired up a simple push button to our host MCU.
-2. We wired a Notecard to our MCU and sent an event/note to Notehub when the button was pressed.
-3. Notehub routed that event to a Lambda function.
+1. (Optional) We wired up a simple push button to our host MCU.
+2. (Optional) We wired a Notecard to our MCU and sent an event/note to Notehub when the button was pressed.
+3. (Optional) Notehub routed that event to a Lambda function.
 4. The Lambda function used the Notehub API to set an environment variable on the Skeleton Notecard.
 5. The Skeleton Notecard toggled the relay switch to elicit Halloween scares!
 
