@@ -1,6 +1,6 @@
 # Hack-o-ween with Blues
 
-When you work within a distributed team, like the ones we have here at Blues Wireless, it's important to get together in-person every once in a while (primarily to continue some heated shuffleboard rivalries!).
+When you work within a distributed team like the ones we have here at Blues Wireless, it's important to get together in-person every once in a while (primarily to continue some heated shuffleboard rivalries!).
 
 ![blues devrel team playing shuffleboard](shuffleboard.jpg)
 
@@ -8,15 +8,17 @@ But also to fail miserably at word-find team-building activities:
 
 ![team building](team-building.jpg)
 
-Recently the Developer Experience and Cloud Services teams of Blues Wireless met up in Boston to recap, review, and set the stage for 2023. We also hosted a one-day internal hackathon to see what sorts of connected projects we could build in a relatively short amount of time.
+Recently the Developer Experience and Cloud Services teams of Blues Wireless met up in Boston to recap, review, and set the stage for 2023. We also hosted a one-day internal hackathon to see what sorts of connected projects we could build in a single day.
 
-While it's one thing to hear the pain points that customers tell us about, it's another thing to *experience* those pain points yourself - especially in a time-constrained hackathon setting!
+While it's one thing to *hear* the pain points that customers tell us about, it's another thing to *experience* those pain points yourself - especially in a time-constrained hackathon setting!
 
 ![hackathon developers](hackathon-teams.jpg)
 
 ## The Hackathon Projects
 
-Teams of 2-4 built nine amazing projects, all using the Swan MCU, Notecard, and Notecarrier in creative ways (with a surprising number using [Edge Impulse](https://edgeimpulse.com/) to build TinyML models!).
+Teams of 2-4 built nine amazing projects using the Swan MCU, Notecard, and Notecarrier in creative ways (with a surprising number using [Edge Impulse](https://edgeimpulse.com/) to integrate Machine Learning capabilities).
+
+*And those projects?*
 
 1) 🫣 A Machine Learning-based fall detection and alerting system (inspired by [this Hackster project](https://www.hackster.io/naveenbskumar/fall-detection-system-with-edge-impulse-and-blues-wireless-a4dbba)).
 
