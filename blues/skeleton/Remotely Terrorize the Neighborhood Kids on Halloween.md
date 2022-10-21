@@ -8,7 +8,7 @@ In this project, I'll show you how to remotely trigger a jump-scare skeleton wit
 
 ## The Very Scary Skeleton
 
-This jump-scare skeleton lets you to trigger the action via detected motion or a footpad. Unfortunately the motion-triggering is a little *too* sensitive, often ruining the opportunity for a real surprise when kids are inspecting _what's in the bag_.
+This jump-scare skeleton lets you to trigger its "jump" action via detected motion or a footpad. Unfortunately the motion-triggering is a little *too* sensitive, often ruining the opportunity for a real surprise when kids are inspecting _what's in the bag_.
 
 ![skeleton in a bag](skeleton-bag.jpg)
 
@@ -76,7 +76,7 @@ Specifically, we are setting the `_aux_gpio_set` environment variable to:
 ,,low,,1000,1665941585,60
 ```
 
-While at first a bit odd, this tells the Notecard to pulse the `AUX3` pin `LOW` for 1000 ms, valid from the current UNIX epoch time for 60 seconds. The empty spaces between the commas are where you could specify the states of the other AUX pins, 1, 2, or 4.
+While at first a bit odd, this tells the Notecard to pulse the `AUX3` pin `LOW` for 1000 ms (after which it will return to `HIGH`), valid from the current UNIX epoch time for 60 seconds. The empty spaces between the commas are where you could specify the states of the other AUX pins, 1, 2, or 4.
 
 > Please consult the [full AUX mode docs](https://dev.blues.io/notecard/notecard-walkthrough/advanced-notecard-configuration/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=skeleton#using-environment-variables-to-set-and-monitor-aux-gpios) provided by Blues Wireless for additional details.
 
