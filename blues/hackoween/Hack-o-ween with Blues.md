@@ -10,7 +10,7 @@ But also to fail miserably at word-find team-building activities:
 
 Recently the Developer Experience and Cloud Services teams of Blues Wireless met up in Boston to recap, review, and set the stage for 2023. We also hosted a one-day internal hackathon to see what sorts of connected projects we could build in a single day.
 
-While it's one thing to *hear* the pain points that customers tell us about, it's another thing to *experience* those pain points yourself - especially in a time-constrained hackathon setting!
+While it's one thing to *hear* the joys and pains that customers tell us about, it's another thing to *experience* those joys and pains yourself - especially in a time-constrained hackathon setting!
 
 ![hackathon developers](hackathon-teams.jpg)
 
@@ -42,7 +42,7 @@ VIDEO
 
 9) 😁 A high-powered ML-based face detection system powered by the Jetson Nano.
 
-These projects also inspired another ["jump-scare" skeleton tutorial on Hackster](TODO). Just in time to scare your neighborhood kids on Halloween! 👻
+These projects also inspired another ["jump-scare" skeleton tutorial on Hackster](https://www.hackster.io/rob-lauer/remotely-terrorize-the-neighborhood-kids-on-halloween-6b9f41). Just in time to scare your neighborhood kids on Halloween! 👻
 
 > **Look like fun?** Blues Wireless is growing [and hiring](https://jobs.lever.co/BluesInc)!
 
