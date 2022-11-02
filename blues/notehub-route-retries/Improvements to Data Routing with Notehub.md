@@ -65,3 +65,7 @@ If the routing of an event fails for any reason, you may wish to have Notehub **
 With this option enabled, Notehub will attempt to retry routing a failed route three times: after 5 seconds, after 1 minute, and after 5 minutes.
 
 > Please note that each attempt at routing an event consumes one [consumption credit](https://blues.io/pricing/), regardless of whether it's the first attempt or a retry.
+
+## Summary
+
+We hope these new routing capabilities make it easier for you to manage your cloud data when using the Notecard and Notehub. If you have any feedback, or run into any issues, please [reach out in our forum](https://discuss.blues.io/) and let us know.
