@@ -1,14 +1,14 @@
 # ID Chicken Eggs with Thermal Images, ML, and Cellular IoT
 
-One thing they don't tell you about raising chickens in the frozen tundra of Wisconsin is how you're routinely putting your life on the line just to go check for eggs.
+One thing they don't tell you about raising chickens in the frozen tundra of Wisconsin, is how you're routinely putting your life on the line just to go check for eggs.
 
 Case in point:
 
-VIDEO TODO
+https://youtu.be/wR5-HWqkqco
 
-Now as much as I'm willing to sacrifice my own children in the name of looking for an egg, I'd prefer to **create an ML + IoT solution that can do it for me!** And maybe save a child along the way.
+As much as I'm willing to sacrifice my own children in the name of looking for an egg, I'd prefer to **create an ML + IoT solution that can do it for me!** And maybe save a child along the way.
 
-In this two-part project, we will walk through how to create a Machine Learning-based IoT solution to detect the presence of a chicken egg 🐣 using images provided by a thermal IR camera 🔥, relaying those inferences to the cloud using a cellular module 📶, and sending an SMS notification 📲.
+In this two-part project, we will walk through how to create a Machine Learning-based IoT solution to detect the presence of a chicken egg 🐣 using images provided by a thermal IR camera 🔥, relaying those inferences to the cloud using a cellular module 📶, and sending an SMS notification if an egg is detected 📲.
 
 ![project workflow](workflow-banner.jpg)
 
@@ -19,11 +19,11 @@ Part one (today) covers the hardware, wiring, and firmware needed to capture a t
 - Using an [STM32-based Swan MCU](https://shop.blues.io/collections/swan/products/swan) (but any modern MCU will do);
 - Hooking the Swan up to a MLX90640 thermal IR camera;
 - Displaying thermal images on a ILI9341 TFT display;
-- Saving "screen captures" to an SD card (as lossy PNGs);
+- Saving "screen captures" to an SD card (as PNGs) to use to train our ML model;
 - Using a 7-segment display to show an active count of images;
 - Relaying image counts to the cloud with a cellular system-on-module, the [Blues Wireless Notecard](https://blues.io/products/notecard/).
 
-Part two (coming soon) is going to focus on what we do with these collected images. We will create an **image classification Machine Learning model with Edge Impulse** based on the thermal images. We will also cover how to perform inferencing with the model on the Swan to identify eggs AND use the Notecard to send any "positive" egg identification notifications to us via SMS (using Twilio).
+Part two (coming soon) is going to focus on what we do with these collected images. We will create an **image classification Machine Learning model with Edge Impulse** based on the saved thermal images. We will also cover how to perform inferencing with the model on the Swan to identify eggs AND use the Notecard to send any "positive" egg identification notifications to us via SMS (using Twilio).
 
 🏁 **Let's get started!** 🏁
 
@@ -43,11 +43,13 @@ The 7-segment display on the HT16K33 backpack communicates over I2C, so aside fr
 
 ![7 segment display wiring](7seg-wiring.jpg)
 
-The SD breakout board and the ILI9341 TFT display both utilize SPI, which for us just means **a lot more wiring**:
+The SD breakout board and the ILI9341 TFT display both utilize SPI, which for us just means **a lot more wiring**. The pins you connect to on your MCU may differ from these images. I'm using some arbitrary GPIO pins on the Swan that will be configured in the firmware later on:
 
 ![sd and tft module wiring](sd-tft-swan-wiring.jpg)
 
-> **NOTE:** The TFT display is reversed to show off the pin labels on the underside and it uses GPIO pins on the Swan that need to be configured in firmware before we use the display.
+> **NOTE:** The TFT display above is flipped and reversed to show off the pin labels on the underside.
+
+While not pictured, the **device is line-powered** via a simple Micro-USB wall charger connected to the host MCU. You could also power it via a large-ish LiPo battery if desired.
 
 ## Cellular IoT FTW
 
@@ -63,7 +65,7 @@ Your data doesn't live longterm on Notehub though. A primary value of Notehub is
 
 ![notehub data flow](notehub-flow.png)
 
-At the bottom of the Notecard you may notice it uses an M.2 edge connector. The easiest way to prototype with the Notecard is to use a carrier board called a [Notecarrier](https://blues.io/products/notecarrier/). Today we are using one option, the [Notecarrier-B](https://shop.blues.io/products/carr-b):
+At the bottom of the Notecard you may notice it uses an M.2 edge connector. The easiest way to prototype with the Notecard is to use a carrier board called a [Notecarrier](https://blues.io/products/notecarrier/) which makes it easy to access pins on the Notecard. Today we are using one option, the [Notecarrier-B](https://shop.blues.io/products/carr-b):
 
 ![blues wireless notecarrier-b](carr-b-measurements.png)
 
@@ -99,17 +101,15 @@ Assuming we now have our development tooling configured and are able to upload a
 
 ## Display a Thermal Image on a TFT Display
 
-The first firmware task I want to accomplish is to display data from the MLX90640 thermal camera on the attached TFT display.
+The first firmware task I want to tackle is to display data from the MLX90640 thermal camera on the attached TFT display. This will let us not only see an active thermal image, but also to **take a screen capture of the display** (the saved images will form the basis of our ML model training).
 
-Now if we were using Python on a Raspberry Pi, this step would be so simple that it kind of makes me cry. Unfortunately there are a few additional hoops we have to jump through in Arduino/C land.
-
-> **NOTE:** Before going any further, please know that the full source code for this project is available here on GitHub.
+> **NOTE:** Before going any further, please know that the full source code for this project is [available here on GitHub](https://github.com/rdlauer/chicken-egg-arduino/tree/main/chicken-images).
 
 Our first step is to configure the TFT_eSPI library to utilize the pins to which we have connected the display.
 
 This is all accomplished in the `User_Setup.h` file that will appear after you have installed/built the TFT_eSPI library. [Here is a link to that file](https://github.com/Bodmer/TFT_eSPI/blob/master/User_Setup.h) on GitHub for reference.
 
-Long story short, we can enable some processor-specific optimizations (e.g. uncomment this `define` for the STM32):
+Long story short, we can enable some processor-specific optimizations (e.g. like this `define` for the STM32):
 
 ```
 // Define STM32 to invoke optimised processor support (only for STM32)
@@ -147,7 +147,7 @@ Display.setRotation(2);
 Display.fillScreen(C_BLACK);
 ```
 
-> **DISCLAIMER:** I'm going to get really "hand wavy" with a lot of these code samples, since the full, functional source code is available here on GitHub.
+> **DISCLAIMER:** I'm going to get really "hand wavy" with a lot of these code samples, since the full, functional source code is [available here on GitHub](https://github.com/rdlauer/chicken-egg-arduino/tree/main/chicken-images).
 
 In our `loop()` method, we want to continually read data from the thermal camera and update the "range" of temperatures to show on the TFT display.
 
@@ -232,18 +232,32 @@ At this point, the firmware should be functioning well enough to actively displa
 
 ## Save Image as PNG on SD Card
 
-The next step is to effectively take a "screen capture" of the TFT display and save that image to the SD card.
+The next step is to take regular "screen captures" of the TFT display and save those images to the SD card.
 
-First of all, why PNG and not a bitmap (BMP)? Two reasons:
+Why? We need to create and store as many images as possible, as we will use those images to train our [image classification model with Edge Impulse](https://docs.edgeimpulse.com/docs/tutorials/image-classification). This model, when complete, will perform a simple task: it will be able to tell the difference between an empty nest and one with an egg in it.
+
+*Why PNG and not a bitmap (BMP) image? Two reasons:*
 
 1. While BMPs are easy to write to a file system, they are lossless and therefore quite large.
 2. Edge Impulse only supports PNG and JPG image types for model generation.
 
-Also, in part two we want to embed a thermal image in the SMS we send, which is far easier to do if the image is smaller.
+Also, we will eventually **embed a thermal image in the SMS notifications** we send, which is far easier to do if the image is smaller.
 
 > **NOTE:** In my testing, I found the BMP images saved to be ~85KB versus the lossy PNG images which were about ~8KB!
 
-In our `loop()` method, you'll see we aren't grabbing a screenshot every loop, but rather only when our `period` lapses (which when debugging I set to 1 minute):
+In our `loop()` method, you'll see we aren't grabbing a screenshot every loop, but rather only when our `period` lapses (which when debugging I set to 1 minute, but when deployed I will change to every 15 minutes):
+
+```
+// how often do you want to save a PNG image to SD?
+#ifdef IS_DEBUG
+const unsigned long period = 1000 * 60 * 1;
+#else
+const unsigned long period = 1000 * 60 * 15;
+#endif
+```
+
+...and...
+
 
 ```
   if (currentMillis - startMillis >= period)
@@ -257,20 +271,20 @@ In our `loop()` method, you'll see we aren't grabbing a screenshot every loop, b
     ...
 ```
 
-What's different about the `drawPicture()` method this time? When writing a PNG to the SD card, we need to **enable interpolation**, because we are getting data from the display as RGB565 (big endian) format by default, but the [PNGenc library](https://github.com/bitbank2/PNGenc) we are using expects little-endian format.
+What's different about the `drawPicture()` method this time? This time we are passing `true` instead of `false`. When writing a PNG to the SD card, we need to **enable interpolation** due to the way the [PNGenc library](https://github.com/bitbank2/PNGenc) expects its inputs.
 
-With interpolation (left) vs without interpolation (right):
+PNGenc output with interpolation (left) vs without interpolation (right):
 
 ![interpolation issue](pixel-interpolation.png)
 
-Finally, writing the PNG file involves a lot of code I frankly barely understand! Except for:
+Finally, writing the PNG file involves a lot of code I barely understand! Except for:
 
 ```
 uint16_t WIDTH = 240;
 uint16_t HEIGHT = 184;
 ```
 
-...which sets the width and height of the captured area (in our case we don't want to save the legend).
+...which sets the width and height of the captured area (because in our case we don't want to save the legend).
 
 We also don't want to overwrite any previously written PNG files on the SD card, so here's a short and sweet code block to guarantee unique sequential file names:
 
@@ -300,6 +314,8 @@ I'm also going to set up the Notecard to **send an event to the cloud every time
 
 ## Update 7 Segment Display Value
 
+The 7 segment display is optional, but I like it as it provides a clear visual of the total number of images captured and saved to the SD card.
+
 To use the 7-segment HT16K33 backpack, we use the [Adafruit LED Backpack](https://github.com/adafruit/Adafruit_LED_Backpack) library and initialize it with one line of code in our `setup()` method, passing in the I2C address:
 
 ```
@@ -319,9 +335,11 @@ matrix.writeDisplay();
 
 Since the chicken coop is outside the range of Wi-Fi, cellular is the only realistic option we have for cloud connectivity. Plus, the [Notecard's JSON-based API](https://dev.blues.io/reference/notecard-api/introduction/) makes it simple to establish and maintain a cellular connection (and to sync data with the cloud).
 
+At this stage, the Notecard is only useful to let us know (remotely) that images are being captured and saved on the device. In part two though, Notehub becomes a critical component in [sending SMS notifications with Twilio](https://dev.blues.io/guides-and-tutorials/twilio-sms-guide/).
+
 To make the most out of the Notecard, we are using the [note-arduino library provided by Blues Wireless](https://dev.blues.io/tools-and-sdks/libraries/arduino-library/).
 
-To properly use the Notecard and it's accompanying cloud service Notehub, we need to associate the Notecard with a project on Notehub.
+To properly use the Notecard and its accompanying cloud service Notehub, we need to associate the Notecard with a project on Notehub.
 
 To do so, we are going to use the Notecard's [hub.set API](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-set). Here is how that's done with `note-arduino`:
 
@@ -332,7 +350,7 @@ JAddStringToObject(req, "mode", "continuous");
 notecard.sendRequest(req);
 ```
 
-We can also explicitly tell the Notecard to *initiate a sync with Notehub* via a call to [hub.sync](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-sync):
+We can also explicitly tell the Notecard to *initiate a sync over cellular with Notehub* via a call to [hub.sync](https://dev.blues.io/reference/notecard-api/hub-requests/#hub-sync):
 
 ```
 req = notecard.newRequest("hub.sync");
@@ -356,8 +374,6 @@ The `centerTemp` is the recorded temperature of the very center point of the the
 This data appears in Notehub over time as distinct events that are periodically synced. Here is an example of some of the events logged from this prototype deployment in action:
 
 ![notehub events](notehub-events.png)
-
-Right now this is only useful to let us know that images are being captured and saved on the device. In part two though, Notehub becomes a critical component in [sending SMS notifications with Twilio](https://dev.blues.io/guides-and-tutorials/twilio-sms-guide/).
 
 > **NOTE:** Creating a new Notehub account is free. Every calendar month you are provided with 5,000 "consumption credits" (1 credit == 1 event routed OUT of Notehub...inbound data is free). You can purchase more credits if needed.
 
@@ -390,7 +406,7 @@ We've only just begun!
 Here is what you'll find in the dramatic conclusion of this chicken egg ML IoT saga:
 
 1. Using the saved series of PNG images, we will **build an image classification model** with [Edge Impulse](https://edgeimpulse.com/).
-2. We will **deploy the model** to the Swan MCU.
-3. Using the Edge Impulse runtime, we will write a sketch to **generate inferences on new thermal images** to check to for the presence of eggs.
+2. We will **deploy the model** to the host Swan MCU.
+3. Using the Edge Impulse runtime, we will write a sketch to **generate inferences on new thermal images** to check for the presence of eggs.
 4. If an egg is detected, we will **upload the image and send an SMS notification** with Twilio, thanks to the power of the Notecard and Notehub!
 
