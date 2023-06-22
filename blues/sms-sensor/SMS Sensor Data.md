@@ -46,7 +46,7 @@ Finally, to add connectivity to this project, we are using the aforementioned Bl
 
 *The NBGL Notecard from Blues.*
 
-The assembled project hardware should look something like the following picture, with LiPo battery and a Micro USB cable attached to the Notecarrier allowing us to communicate with the Notecard via the [REPL provided at dev.blues.io](https://dev.blues.io/notecard-playground/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data).
+The assembled project hardware should look something like the following picture, with LiPo battery and a Micro USB cable attached to the Notecarrier allowing us to communicate with the Notecard via the [terminal provided at dev.blues.io](https://dev.blues.io/notecard-playground/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data).
 
 ![assembled hardware](hardware.png)
 
@@ -98,7 +98,7 @@ The Notecard communicates with the cloud "off the public Internet", using the [B
 
 *Blues Notehub dashboard.*
 
-Notehub is _also_ key to this project (and free to use for most applications). Aside from acting as a secure proxy for receiving data from Notecard, it enables cloud connectivity with providers like Twilio, [among many others](https://dev.blues.io/notehub/notehub-walkthrough/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data#routing-data-with-notehub) via an extensive routing system.
+Notehub is _also_ key to this project (and free to use for [most applications](https://blues.io/pricing/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data)). Aside from acting as a secure proxy for receiving data from Notecard, it enables cloud connectivity with providers like Twilio, [among many others](https://dev.blues.io/notehub/notehub-walkthrough/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data#routing-data-with-notehub) via an extensive routing system.
 
 ## Configuring the Notecard and Notehub
 
@@ -114,7 +114,7 @@ Assuming your Notecard + Notecarrier + Sensor are fully assembled - and you can 
 
 While the Notecard knows where to go when it's powered-on (it automatically knows to use a private APN to communicate with Notehub), it does need you to tell it which Notehub project it should use.
 
-Head to [notehub.io](ttps://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data) and set up a new project (again, Notehub is free to use for most projects). You'll need to copy the `ProductUID`, which is a globally-unique identifier for your project:
+Head to [notehub.io](ttps://notehub.io/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data) and set up a new project. You'll need to copy the `ProductUID`, which is a globally-unique identifier for your project:
 
 ![notehub productuid](notehub-productuid.png)
 
@@ -135,7 +135,7 @@ By using the `hub.set` API, you can tell the Notecard that it should sync any pe
 }
 ```
 
-Again, you can send this JSON request to your Notecard using the [REPL provided at dev.blues.io](https://dev.blues.io/notecard-playground/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data).
+Again, you can send this JSON request to your Notecard using the [terminal provided at dev.blues.io](https://dev.blues.io/notecard-playground/?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data).
 
 ### Place the Notecard in "AUX Track Mode"
 
@@ -320,7 +320,7 @@ Finally, send an SMS with the word `report` to your Twilio phone number, and wai
 
 *Notecard event data...via SMS!*
 
-**Having trouble?** Be sure to check your Notehub project's list of Events to make sure data is being sent successfully from your Notecard to the cloud. Also, utilize the "live logs" feature of the Twilio console to debug any issues with your Twilio Function
+**Having trouble?** Be sure to check your Notehub project's list of Events to make sure data is being sent successfully from your Notecard to the cloud. Also, utilize the "live logs" feature of the Twilio console to debug any issues with your Twilio Function.
 
 ## Next Step: Real-Time Data
 
@@ -332,6 +332,6 @@ Reach out on the [Blues community forum](https://discuss.blues.io/?utm_source=ha
 
 Hopefully you've seen how easy it can be to create a simple reporting system that uses SMS to report on sensor data from the cloud.
 
-This combination of the **Notehub API** and **Twilio Functions** allows you to customize your server-side logic and effectively retrieve any data from any device (or even from fleets of devices as you scale). Imagine sending an SMS like `report gas device-123` which would be parsed inside a Twilio Function to return specific data (e.g. gas readings) from a specific device (e.g. one with an ID of `device-123`). The options are really are endless.
+This combination of the **Notehub API** and **Twilio Functions** allows you to customize your server-side logic and effectively retrieve any data from any device (or even from fleets of devices as you scale). Imagine sending an SMS like `report gas device-123` which would be parsed inside a Twilio Function to return specific data (e.g. gas readings) from a specific device (e.g. one with an ID of `device-123`).
 
 Ready to go? Grab your own [Blues Starter Kit](https://shop.blues.io/collections/blues-starter-kits?utm_source=hackster&utm_medium=web&utm_campaign=featured-project&utm_content=blues-sms-sensor-data)...and happy hacking! 🧑‍💻
