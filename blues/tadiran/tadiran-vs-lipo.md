@@ -15,13 +15,13 @@ In this article, we will perform a high-level comparison of Tadiran (i.e. Li-SOC
 
 ## What is a Tadiran Battery?
 
-[Tadiran](https://tadiranbat.com/) is the brand name of a type of Lithium Thionyl Chloride (Li-SOCl<sub>2</sub>) battery. Tadiran Li-SOCl<sub>2</sub> batteries are known for their **long shelf-life** (up to 40 years in optimal conditions), relatively **high voltage** (3.6 V), **low self-discharge rates** (~0.7% per year), and the ability to operate in **extreme temperature ranges** (-80°C to 125°C).
+[Tadiran](https://tadiranbat.com/) is the brand name of a type of Lithium Thionyl Chloride (Li-SOCl<sub>2</sub>) battery. Tadiran Li-SOCl<sub>2</sub> batteries are known for their **long shelf-life** (up to 40 years in optimal conditions), relatively **high voltage** (3.6V), **low self-discharge rates** (~0.7% per year), and the ability to operate in **extreme temperature ranges** (-80°C to 125°C).
 
 *Yes, Tadiran likes to acknowledge these "extreme" capabilities in their marketing materials!*
 
 ![tadiran extreme conditions](tadiran-extreme.png)
 
-> NOTE: While known for their Li-SOCl<sub>2</sub> batteries, Tadiran does offer Li-ion batteries as well. However, for the purposes of this article, we are going to focus only on their Li-SOCl<sub>2</sub> batteries.
+> NOTE: While known for their Li-SOCl<sub>2</sub> batteries, Tadiran does offer Li-ion batteries as well. However, for the purposes of this article we are going to focus only on their Li-SOCl<sub>2</sub> batteries.
 
 While Li-SOCl<sub>2</sub> Tadirans are **not rechargeable**, they are often used in low-power, long-life applications such as remote monitoring systems, smart meters, asset tracking, and IoT deployments in relatively harsh environmental conditions.
 
@@ -43,7 +43,7 @@ Li-SOCl<sub>2</sub> Tadirans shine in scenarios where a long shelf-life, low sel
 
 *The Tadiran PlusesPulse series of Li-SOCl<sub>2</sub> batteries.*
 
-However, Li-SOCl<sub>2</sub> batteries are not without their limitations. Since they are not rechargeable, once they are depleted they must be manually replaced. Therefore, they aren't suitable for applications that require frequent charging and discharging, or in remote scenarios where solar/wind/hydro power is readily available for recharging purposes. Likewise, Tadirans are not inexpensive! Li-SOCl<sub>2</sub> Tadiran batteries often cost considerably more than LiPo batteries when comparing $ per amp hour (though the total cost of ownership may vary, depending on the use case).
+However, Li-SOCl<sub>2</sub> batteries are not without their limitations. Since they are not rechargeable, once they are depleted they must be manually replaced. Therefore, they aren't suitable for high-power applications that discharge rapidly, nor in remote scenarios where solar/wind/hydro power is readily available for recharging purposes. Likewise, Tadirans are not inexpensive! Li-SOCl<sub>2</sub> Tadiran batteries often cost considerably more than LiPo batteries when comparing $ per amp hour (though the total cost of ownership may vary, depending on the use case).
 
 ### Common IoT Applications for Li-SOCl<sub>2</sub> Tadiran Batteries
 
@@ -53,9 +53,9 @@ Thanks to their unique properties, Li-SOCl<sub>2</sub> Tadiran batteries are oft
 
 - **Emergency Devices:** Devices like fire/smoke detectors and alarm systems often use these batteries due to their long shelf-life.
 
-- **Edge Computing Devices:** Devices deployed in remote or difficult-to-access locations often use Tadrian batteries due to their high energy density and long operational life.
+- **Edge Computing Devices:** Devices deployed in remote or difficult-to-access locations may want to use Tadrian batteries due to their high energy density and long operational life.
 
-When it comes to integrating with the [Blues Notecard](https://blues.io/products/notecard/), [this Tadiran](https://shop.blues.io/collections/accessories/products/tadiran-lithium-battery) is ideal for the high current pulses the Notecard may require when used in a region that requires access to a GSM network:
+When it comes to integrating with the [Blues Notecard](https://blues.io/products/notecard/), [this specific Tadiran](https://shop.blues.io/collections/accessories/products/tadiran-lithium-battery) is ideal for the high current pulses the Notecard requires when used in a region that requires access to a GSM network:
 
 ![tadiran blues](tadiran-blues.webp)
 
@@ -73,7 +73,7 @@ Lithium Polymer (LiPo) batteries are a type of rechargeable battery that utilize
 
 ### How do LiPo Batteries Work?
 
-LiPo batteries work on the same fundamental principles as other lithium-ion batteries. They move lithium ions from the negative electrode (anode) to the positive electrode (cathode) during discharge - and move them back while charging. The anode in a LiPo battery is typically made of a type of lithium compound (like lithium cobalt oxide), which can readily give up lithium ions.
+LiPo batteries work on the same fundamental principles as other lithium-ion batteries. They move lithium ions from the negative electrode (anode) to the positive electrode (cathode) during discharge - and move them back while charging. The anode in a LiPo battery is typically made of a type of lithium compound (e.g. lithium cobalt oxide), which can readily give up lithium ions.
 
 ![lipo battery structure](lipo-battery-structure.webp)
 
@@ -87,13 +87,15 @@ Like other lithium-ion batteries, LiPo batteries have a **high energy density**,
 
 *LiPo batteries can be manufactured in virtually any shape or size. Image credit [lipolbattery.com](https://www.lipolbattery.com/Novel-LiPo-Battery.html).*
 
-LiPo batteries are no silver bullet though - they do have some downsides! Care must be taken not to over-charge or over-discharge them, as this can significantly reduce their lifespan (or even cause them to catch fire). It's important to note that most devices using LiPo batteries include safety circuits to prevent these issues from happening. Finally, while LiPo batteries can be recharged many times, each charge and discharge cycle *slightly* reduces their capacity. After numerous cycles, the capacity may be significantly reduced, at which point the battery will need to be replaced.
+LiPo batteries are no silver bullet though - they do have some disadvantages! Care must be taken not to over-charge or over-discharge them, as this can significantly reduce their lifespan, or even cause them to catch fire. But it's important to note that most devices using LiPo batteries include safety circuits to prevent these issues from happening.
+
+Finally, while LiPo batteries can be recharged many times, each charge and discharge cycle *slightly* reduces their capacity. After numerous cycles, the maximum capacity will be significantly reduced, at which point the battery may need to be replaced.
 
 ### Common IoT Applications for LiPo Batteries
 
-While there is plenty of overlap between LiPo and Li-SOCl<sub>2</sub> Tadiran batteries in terms of use cases, lower-power and more cost-sensitive applications tend towards using LiPo battery technology:
+While there is plenty of overlap between LiPo and Li-SOCl<sub>2</sub> Tadiran batteries in terms of use cases, lower-power and more cost-sensitive applications tend to use LiPo battery technology:
 
-- **Remote Monitoring Systems:** Remote systems for weather monitoring, wildlife tracking, and other environmental sensors often use LiPo batteries for their longevity, ability to be recharged, and operating in somewhat unpredictable conditions (but less "extreme" conditions than a Tadiran).
+- **Remote Monitoring Systems:** Remote systems for weather monitoring, wildlife tracking, and other environmental sensors often use LiPo batteries for their longevity, ability to be recharged, and operation in somewhat unpredictable conditions (but less "extreme" conditions than a Tadiran).
 
 - **Smart Agriculture:** In smart farming, sensors and devices are used for monitoring soil moisture, weather conditions, and livestock tracking. These devices often use LiPo batteries because they can provide low-cost reliable operation for an extended period.
 
@@ -107,27 +109,27 @@ The answer, as you may expect, is: "it depends on your use case!". Which of the 
 
 When comparing the operating temperature ranges of Tadiran and LiPo batteries, **Tadiran batteries have a clear advantage** of -80°C to 125°C. Their Li-SOCl<sub>2</sub> chemistry enables them to perform well in extreme temperatures, making them suitable for applications in harsh environments.
 
-While LiPo batteries have a more limited temperature range (-20°C to +60°C) compared to Tadiran batteries, they still offer a wide operating range suitable for most consumer electronics and portable devices.
+While LiPo batteries have a more limited temperature range (-20°C to +60°C) compared to Tadiran batteries, they still offer a wide operating range suitable for many implementations.
 
 ✅ Tadiran Li-SOCl<sub>2</sub> ⛔️ LiPo
 
 ### Longevity (Self-Discharge Rate)
 
-The self-discharge rate of a battery refers to the percentage of charge it loses over time when not in use. This is an important factor to consider, especially for applications requiring long periods of inactivity. **Tadiran batteries offer an extremely low self-discharge rate** (~0.7% per year) while LiPo batteries self-discharge at a rate around 5% per month when not in use.
+The self-discharge rate of a battery refers to the percentage of charge it loses over time when not in use. This is an important factor to consider, especially for applications requiring long periods of inactivity. **Tadiran batteries offer an extremely low self-discharge rate** (~0.7% per year) while LiPo batteries self-discharge at a rate of up to 5% per month when not in use.
 
 ✅ Tadiran Li-SOCl<sub>2</sub> ⛔️ LiPo
 
 ### Flexibility
 
-The unique composition of LiPo batteries allows them to be not only lightweight (which is critical for many solutions) but also flexible and able to be shaped to virtually any custom size or shape. Tadirans, on the other hand, are limited to very specific shapes (though with their high voltages, may consume less physical space in an enclosure).
+The unique composition of LiPo batteries allows them to be not only lightweight (which is critical for many solutions) but also flexible and able to be shaped into virtually any size or shape. Tadirans, on the other hand, are limited to very specific shapes (though considering their higher voltages, may consume less physical space in an enclosure depending on the power requirements).
 
 ⛔️ Tadiran Li-SOCl<sub>2</sub> ✅ LiPo
 
 ### Cost
 
-Comparing the cost of Tadiran Li-SOCl<sub>2</sub> batteries and LiPo batteries can be complex because the true cost of a battery can depend on many different factors. You need to factor in its capacity along with recharge cycles/total power delivered, and the specifics by manufacturer/model (not to mention quantity purchased!).
+Comparing the cost of Tadiran Li-SOCl<sub>2</sub> batteries and LiPo batteries can be complex because the true cost of a battery depends on many different factors. You need to factor in its capacity along with recharge cycles/total power delivered, and the specifics by manufacturer/model (not to mention quantity purchased!).
 
-In general, Tadiran Li-SOCl<sub>2</sub> batteries are considered "specialty batteries" that aren't as widely available. They tend to be more expensive than LiPo batteries, as they possess unique properties noted previously. When comparing total energy delivered between Tadiran and LiPo batteries, **LiPo tends to come out ahead when it comes to total cost of ownership**.
+In general, Tadiran Li-SOCl<sub>2</sub> batteries are considered "specialty batteries" that aren't as widely available. They tend to be more expensive than LiPo batteries, as they possess the unique properties noted previously. When comparing total energy delivered between Tadiran and LiPo batteries, **LiPo tends to come out ahead when it comes to total cost of ownership**.
 
 > **WARNING:** Please note that the specifics can vary, and for an accurate and up-to-date comparison, you would need to look at the prices from various suppliers or directly from the manufacturers.
 
@@ -143,8 +145,8 @@ Generally speaking, alkalines are the "worst of both worlds" in comparison with 
 
 ## Conclusion
 
-When choosing between Tadiran Li-SOCl<sub>2</sub> and LiPo batteries for a embedded device or IoT application, it is crucial to consider factors such as energy density, operating temperature range, self-discharge rate, and the specific requirements of your application.
+When choosing between Tadiran Li-SOCl<sub>2</sub> and LiPo batteries for an embedded device or IoT application, it is crucial to consider factors such as energy density, operating temperature range, self-discharge rate, and the specific requirements of your application.
 
-Tadiran batteries excel in low-power, long-life applications, and extreme temperature environments, while LiPo batteries are ideal for lower-cost deployments, scenarios where they may be recharged, and devices requiring custom battery shapes.
+Tadiran batteries excel in low-power, long-life applications, and in extreme temperature environments, while LiPo batteries are ideal for lower-cost deployments, scenarios where they may be recharged, and devices requiring custom battery shapes.
 
-If you need help determining the best battery tech for your individual solution, feel free to reach out to use via the [Blues community forum](https://discuss.blues.io/). 🔋
+If you need help determining the best battery tech for your individual solution, feel free to reach out via the [Blues community forum](https://discuss.blues.io/). 🔋
