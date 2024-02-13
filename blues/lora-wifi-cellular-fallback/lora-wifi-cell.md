@@ -1,40 +1,40 @@
 # Building a LoRaWAN -> Wi-Fi -> Cellular Fallback IoT Device
 
-As ubiquitous as cellular networks, public Wi-Fi access points, and even LoRaWAN gateways are becoming, there is still no "one size fits all" when it comes to IoT deployments. Unfortunately when designing a product, we are often forced to pick a single Radio Access Technology (RAT), like one of the above, before any other work can start.
+As ubiquitous as cellular networks, public Wi-Fi access points, and even LoRaWAN gateways are becoming, there is still no "one size fits all" when it comes to wireless IoT deployments. Unfortunately when designing a product, we are often forced to pick a single Radio Access Technology (RAT), like one of the above, before any other work can start.
 
 Why is this a problem?
 
-1. We have to **design the product** (e.g. PCB, enclosure) around the form factor of a specific RAT component.
+1. We have to **design the product** (e.g. PCB, physical enclosure) around the form factor of a specific RAT component.
 2. We have to choose the **right battery technology** to optimize performance with that RAT.
-3. We have to **program firmware** that targets a specific RAT.
+3. And most importantly, we have to **program firmware** that targets a specific RAT.
 
 At the end of the day, I might argue that we shouldn't have to care about whether we are using LoRa or Cellular or Wi-Fi or Zigbee...we just want to get the dang thing connected!
 
 ## Wireless Harmonization with Blues
 
-This is why the [Blues Notecard](https://shop.blues.com/collections/notecard) is such a breath of fresh air. By using a single API and building around one form factor, you can design your product without fear of switching from Cellular, to Wi-Fi, to LoRa (and back again). You can even deploy the same product with different RATs, without changing a single line of code.
+This is why the [Blues Notecard](https://shop.blues.com/collections/notecard) is such a breath of fresh air. By using a [single JSON-based API](https://dev.blues.io/api-reference/notecard-api/introduction/) and building around one form factor, you can design your product without fear of switching from Cellular, to Wi-Fi, to LoRa (and back again). You can even **deploy the same product with different RATs**, without changing a single line of code.
 
 ![all blues notecards](notecards.png)
 
 ## But Let's Get Crazy
 
-Now there's the freedom of picking ONE of Cellular, Wi-Fi, or LoRa. **But what if I want to use them all!?**
+There's the freedom of picking ONE of Cellular, Wi-Fi, or LoRa, **but what if I want to use them all!?**
 
-Today I want to show you a possibly ridiculous scenario where we build a single product that has the ability to:
+Today I want to show you a scenario where we build a single product that has the ability to:
 
 1. Start by trying to connect to the cloud via LoRa/LoRaWAN.
 2. If LoRa fails, try using Wi-Fi.
-3. And if both fail? Fallback to Cellular
+3. And if both fail? Fallback to Cellular.
 
 ## The Project Hardware
 
-> I want to be doubly clear that even though I'm using a Raspberry Pi with Python for this example, you can 100% accomplish the same thing using any ESP32, STM32, or Nordic (and so on) host with C or Arduino. **It's the same API commands!**
+> I want to be doubly clear that even though I'm using a Raspberry Pi with Python for this example, you can 100% accomplish the same thing using any ESP32, STM32, or Nordic (and so on) host with Arduino/C. **It's the same API commands!**
 
 We are going to be using the following hardware:
 
 1. [Blues Notecard LoRa](https://shop.blues.com/collections/notecard/products/notecard-lora) (automatically connects to an available [The Things Network](https://www.thethingsnetwork.org/) gateway).
 2. [Blues Notecard Cell+WiFi](https://shop.blues.com/collections/notecard/products/notecard-cell-wifi) (prepaid cellular and Wi-Fi on one board).
-3. [Blues Notecarrier Pi Hat](https://shop.blues.com/products/carr-pi) (two of these, used as carrier boards for the Notecards).
+3. [Blues Notecarrier Pi Hat](https://shop.blues.com/products/carr-pi) (two of these, each used as a carrier boards for the above Notecards).
 4. Raspberry Pi 5 (also works with the 4B and the Zero!).
 
 The Notecard slots into the Notecarrier:
@@ -53,7 +53,7 @@ And the Notecarriers can even stack on top of each other on the Pi:
 
 The Notecard is, by default, a [low power](https://dev.blues.io/notecard/notecard-walkthrough/low-power-design/) and "occasionally connected" device. With ~1MB of user-addressable flash on the Notecards, you can store A LOT of data before the Notecard needs to sync its data with the cloud. This allows battery-powered, asset tracking, and condition monitoring solutions that can't be continuously connected.
 
-The Notecard also doesn't work as a drop-in replacement for Wi-Fi. It's a low-bandwidth device that lets you sent individual JSON-based events (or [Notes](https://dev.blues.io/api-reference/glossary/#note) in Blues lingo) that contain key-value pairs. For example:
+To be clear, the Notecard isn't meant to be a drop-in replacement for Wi-Fi. It's a low-bandwidth device that lets you send individual JSON-based events (or [Notes](https://dev.blues.io/api-reference/glossary/#note) in Blues lingo) that contain key-value pairs. For example:
 
 ```
 {
@@ -81,23 +81,25 @@ The Notecard also doesn't work as a drop-in replacement for Wi-Fi. It's a low-ba
 
 The Notecard also knows exactly where to go as soon as it's powered up. You don't have to manage security or rotate keys with the Notecard, everything is handled for you and data is streamed securely from the device to the cloud.
 
-On the cloud side, the [Blues Notehub](https://notehub.io/) acts as the "hub" of data. From Notehub you can [route your data to any cloud platform](https://dev.blues.io/notehub/notehub-walkthrough/#routing-data-with-notehub) like AWS, Azure, Datacake, Ubidots, or your own custom HTTPS or MQTT endpoint!
+On the cloud side, the [Blues Notehub](https://notehub.io/) acts as the "hub" of data. From Notehub you can [route your data to any cloud platform](https://dev.blues.io/notehub/notehub-walkthrough/#routing-data-with-notehub) like AWS, Azure, Datacake, Ubidots, or your own custom HTTPS or MQTT endpoint.
+
+Notehub handles everything for you. It takes all the headaches out of orchestrating your own infrastructure for merging wireless connectivity with cloud connectivity.
 
 ![blues notehub routes](notehub-routes.png)
 
 It's important to note that **communication with the Notecard is bi-directional** in nature, so you can initiate an event on your cloud, deliver that to Notehub using the [Notehub API](https://dev.blues.io/api-reference/notehub-api/api-introduction/), and Notehub will securely send that event to one or more Notecard devices (allowing for remote control or remote updating scenarios).
 
-## The Python Codez
+## The Python Code
 
 With those high-level concepts in mind, let's see how to actually build out this **LoRa -> Wi-Fi -> Cellular** communication device.
 
 When building with the Notecard LoRa, it's important to consider it as the "lowest common denominator" of Notecards. Anything you can do with the Notecard LoRa you can ALSO do with the Notecard Cell+WiFI. But the opposite is sometimes not true. There are higher bandwidth activities and location-tracking scenarios that are easily handled with Cellular or Wi-Fi, but not so much with LoRa. Suffice it to say, it makes sense to start with LoRa!
 
-> The complete source code for this project is available in this gist.
+> The complete source code for this project is [available in this gist](https://gist.github.com/rdlauer/167dac59120f2d7ad730b260dd204b59).
 
 ### Step 1: Change the I2C Address
 
-Since we are connecting to both Notecards over I2C, they both can't have the same default I2C address of `0x17`. This is easily handled using the [card.io API](https://dev.blues.io/api-reference/notecard-api/card-requests/#card-io), which lets us set one of them to a new address of `0x18`:
+Since we are connecting to both Notecards over I2C, they both can't have the same I2C address of `0x17` (which is the Notecard default). This is easily handled using the [card.io API](https://dev.blues.io/api-reference/notecard-api/card-requests/#card-io), which lets us set one of them to a new address of `0x18`:
 
 ```
 {
@@ -154,7 +156,7 @@ FYI, take a look at this article by TJ VanToll for an example of how you might u
 
 ### Step 5: Create Note Templates
 
-A [Note template](https://dev.blues.io/notecard/notecard-walkthrough/low-bandwidth-design/#working-with-note-templates) acts as a hint to the Notecard that allows it to internally store data as fixed-length records rather than as flexible JSON objects, which tend to be much larger. This not only **saves storage** on the Notecard, but also **saves bandwidth** when syncing data with the cloud.
+A [Note template](https://dev.blues.io/notecard/notecard-walkthrough/low-bandwidth-design/#working-with-note-templates) acts as a hint to the Notecard that allows it to internally store data as fixed-length records rather than as flexible JSON objects, which tend to be much larger. This not only **saves storage** on the Notecard, but also **saves bandwidth** when syncing data with the cloud. Templates are also **required** when working with the Notecard LoRa.
 
 Again, on each Notecard, make sure we are creating the same template. In this project, we're just sending an arbitrary value like the registered voltage on the Notecard, but this could be ANYTHING!
 
@@ -176,7 +178,7 @@ rsp = nCardCellWiFi.Transaction(req)
 
 ### Step 6: Get Some Arbitrary Data
 
-Again, this project is keeping things pretty simple. And to extend that, we need _some_ data to send to the cloud, so let's query the Notecard to get a voltage value:
+Again, this project is keeping things pretty simple. And to extend that, we need _some_ data to send to the cloud, so let's query the Notecard to get a voltage value from the power source:
 
 ```
 # query one of the Notecards for power supply voltage
@@ -240,10 +242,13 @@ Great! Project done!
 Well, let's now disconnect my personal LoRaWAN gateway and then see what happens in a `hub.sync.status` request:
 
 ```
-STILL NEED THIS
+# request:
+{"req":"hub.sync.status"}
+# response:
+{'sync': True, 'requested': 59, 'status': 'sync in progress {sync}'}
 ```
 
-Uh oh. Time to fall back to Wi-Fi!
+Uh oh. Unfortunately we are impatient and since "sync in progress" is going on past one minutes it's time to fall back to Wi-Fi!
 
 ### Step 9: From LoRa to Wi-Fi to Cellular
 
@@ -293,7 +298,7 @@ By default, the Notecard Cell+WiFi will try to use Wi-Fi first. Again using the 
 {"status":"wifi disconnected {wifi-disconnected}","mode":"{modem-off}","time":1704984927,"sync":true,"completed":50}
 ```
 
-Uh-oh, Wi-Fi isn't working!
+Oh no, Wi-Fi isn't working!
 
 But here's the beauty of using the Notecard Cell+WiFi - the **fallback capability to cellular is AUTOMATIC**. There is nothing we need to do. The Notecard will detect that Wi-Fi isn't working and within about a minute will initiate the cellular radio to connect to the nearest cell tower and deliver the data:
 
@@ -338,10 +343,12 @@ Back in Notehub, we can look at one of the event details to see how the data com
 }
 ```
 
+In fact, you can drill into the **Session** data from a Notecard event to see the **RAT** that was used (unfortunately this information isn't available for Notecard LoRa though).
+
 Now what? With data synced with the cloud, the next obvious step is to route that data to your cloud endpoint. In your solution, you'll probably want to use one of the aforementioned cloud providers. And luckily [there's probably a guide for you](https://dev.blues.io/guides-and-tutorials/routing-data-to-cloud/)!
 
 ## Next Steps
 
 Learn more about the Notecard API and discover other Blues technical resources on [blues.dev](https://dev.blues.io/). Otherwise if you're ready to get started, grab your own [Blues Starter Kit](https://shop.blues.com/collections/blues-starter-kits) OR if you're looking to follow this project exactly, you'll need the [Notecarrier Pi Hat](https://shop.blues.com/products/carr-pi) along with the [Notecard Cell+WiFi](https://shop.blues.com/products/notecard-cell-wifi), and [Notecard LoRa](https://shop.blues.com/products/notecard-lora).
 
-Happy Hacking! 💙
+Happy Hacking with Blues! 💙
