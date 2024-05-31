@@ -38,11 +38,15 @@ For some perspective on satellite connectivity costs, here's what you will pay w
 
 ### Starnote Satellite Service
 
-Starnote access geostationary (GEO) satellites through Blues's connectivity partner, [Skylo Technologies](https://www.skylo.tech/). Skylo is a "Non-Terrestrial Network service provider" and their technology is built on top of the latest cellular industry standards – so you **don’t need new modems or antennas**, making satellite connectivity more affordable and easier to integrate.
+Starnote accesses geostationary (GEO) satellites through Blues's connectivity partner, [Skylo Technologies](https://www.skylo.tech/). Skylo is a "Non-Terrestrial Network service provider" and their technology is built on top of the latest cellular industry standards – so you **don’t need new modems or antennas**, making satellite connectivity more affordable and easier to integrate.
 
 Skylo's coverage today encompasses most of the US, Europe, Canada, Australia, and New Zealand, along with their near shore areas. Coming soon though they are opening up many other regions including Brazil, Japan, Taiwan, and much of Southeast Asia. As their coverage is always updating, be sure to [check their coverage maps](https://www.skylo.tech/resources/geographical-coverage) for the latest info.
 
 ![skylo coverage map](skylo-coverage.png)
+
+The dataflow between a Notecard/Starnote to Sklyo and then to Notehub and on to your cloud application is complex, but much of the complexity is handled by Blues and Skylo:
+
+![notecard to starnote to skylo to cloud](notecard-to-skylo.png)
 
 ### Starnote Hardware
 
@@ -50,7 +54,7 @@ As of today, there are two variants of the Starnote. Since satellite service wit
 
 ![image of both starnote variants](both-starnotes.png)
 
-In addition, to make it easier to use Starnote and incorporate it in a design that's using a Notecard, Blues offers a new Notecarrier called the Notecarrier XS. With a slot for the Starnote and another slot for a cellular, Wi-Fi, or Cell+WiFi Notecard, it's certainly the easiest way to get started with Starnote (though you can also use the JST connector on the front of the Starnote!).
+In addition, to make it easier to use Starnote and incorporate it in a design that's using a Notecard, Blues offers a new Notecarrier called the Notecarrier XS. With a slot for the Starnote and another slot for a cellular, Wi-Fi, or Cell+WiFi Notecard, it's certainly the easiest way to get started with Starnote (though you can also use the 6-pin connector on the front of the Starnote!).
 
 ![blues notecarrier xs](notecarrier-xs.png)
 
@@ -72,7 +76,7 @@ The Keyboard FeatherWing is attached to the Notecarrier XS via a Qwiic cable:
 
 ![featherwing and xs via qwiic](featherwing-qwiic.jpg)
 
-...and after attaching the external antennas (if not using the Starnote with onboard antennas),we are fully assembled (no soldering required!).
+...and after attaching the external antennas (if not using the Starnote with onboard antennas), we are fully assembled (no soldering required!).
 
 ## Building a Two-Way Messaging System (Firmware)
 
@@ -187,7 +191,7 @@ if (req != NULL)
 
 ### Setup: Need to Know the Device Location!
 
-In order for Starnote to access GEO satellites, it has to know where in the world it physically is. One way to ascertain location is via the onboard GPS/GNSS module on the Notecard. This can happen automatically when the Notecard first tries to use Starnote. However, there is a way to circumvent this process, and that's by setting a "fixed" location for the device.
+In order for Starnote to access GEO satellites, it has to know where in the world it physically is. One way to ascertain location is via the onboard GPS/GNSS module on the Starnote itself. This can happen automatically when the Notecard first tries to use Starnote. However, there is a way to circumvent this process, and that's by setting a "fixed" location for the device.
 
 This "fixed" option is great for testing or if you know your deployment isn't going to move more than a 100 meters or so.
 
@@ -316,7 +320,7 @@ In the Twilio Console, specifically in the [Services](https://console.twilio.com
 
 Create a new **Service** and then a new **Function** (which is essentially just an endpoint, and both can be be named arbitrarily).
 
-This function is a serverless function written in JavaScript (Note.js). and here is the complete code of my function with some additional context beneath it:
+This function is a serverless function written in JavaScript (Node.js). and here is the complete code of my function with some additional context beneath it:
 
 ```
 const axios = require('axios');
@@ -452,7 +456,9 @@ if (req != NULL)
 
 Obviously this is not recommended for production deployments as you will eat into your satellite data allocation when it may not even be necessary. This is why using a `"wifi-cell-ntn"` or `"cell-ntn"` mode is far preferable.
 
-To verify that your Starnote is _actually_ sending data, you can connect your Notecarrier to the [in-browser terminal available at dev.blues.com](https://dev.blues.com/terminal). Then, issue the `t +req` command to see a stream of communications with the Notecard and Starnote:
+To verify that your Starnote is _actually_ sending data, connect your Notecarrier to the [in-browser terminal available at dev.blues.com](https://dev.blues.com/terminal). Then, type the `t +req` command in the terminal and send it to your Notecard to see a stream of communications with the Notecard and Starnote.
+
+The responses will likely include a lot of `ntn.*` output like so:
 
 ```
 {"cmd":"ntn.uplink","id":22,"time":1717171415,"ltime":1717170135,"lat":32.070824999999993,"lon":-78.433070999999996,"payload":"AC0AEQANdGVzdCBvdXRib3VuZA=="}
@@ -463,6 +469,6 @@ S05:19.42 ntn: sent 17-byte packet containing 1 notes
 
 I hope you saw how easy it can be to implement a two-way messaging system that works over Wi-Fi, cellular, AND satellite!
 
-You can get your own Starnote Starter Kit on the [Blues store](https://shop.blues.com/) to create your own satellite-powered IoT solution. I can't wait to see what you build.
+You can get your own [Starnote Starter Kit](https://shop.blues.com/products/starnote-starter-kit) to create your own satellite-powered IoT solution. I can't wait to see what you build.
 
 Happy Hacking! 💙🛰️💙
