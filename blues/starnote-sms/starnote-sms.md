@@ -8,17 +8,17 @@ That's definitely what I thought, at least until the [Blues Starnote](https://sh
 
 Starnote is a failover satellite communication device that works with the well-known [Blues Notecards](https://shop.blues.com/collections/notecard). "Failover" meaning you start by using a Blues Notecard with cellular or Wi-Fi and if you lose connectivity, the Notecard will _automatically_ failover to using Starnote for satellite comms. 🤯
 
-And yes it is just as easy as that.
+And yes it is just as easy as it sounds.
 
 In this project, I'm going to show off how to get started with the Blues Starnote and use it as a remote messaging platform by both sending and receiving SMS messages using cloud services from Blues and Twilio.
 
 Here's a short functional demo of what I'm about to show off:
 
-TODO: VIDEO DEMO
+https://youtu.be/ZnwEdCEZFrI
 
 ## Blues Starnote Background
 
-As previously mentioned, Starnote works _alongside_ an existing Notecard. It has to be paired with a Notecard because you program the Notecard to help it determine when and how to use the Starnote. Effectively you rely on the Notecard to figure out the best time to use satellite data.
+It's important to keep in mind that Starnote works _alongside_ an existing Notecard. It has to be paired with a Notecard because you program the Notecard to help it determine when and how to use the Starnote. Effectively you rely on the Notecard to figure out the best time to use satellite data.
 
 ![notecarrier xs, starnote, and notecard](xs-notecard-starnote.jpg)
 
@@ -28,9 +28,9 @@ That all being said, Starnote is still a cost-effective satellite option because
 
 1. There are no monthly minimum costs or per-device fees.
 1. Starnote ships with 18KB of prepaid data for $49 (including hardware + data).
-1. Additional data beyond 18KB is $0.75/KB.
+1. Beyond 18KB additional data is $0.75/KB.
 
-Keeping in mind that payloads you send with Starnote will end up in the 50-256 byte range, that means those initial 18KBs of data can last quite some time.
+Keeping in mind that payloads you send with Starnote will end up in the 50-256 byte range, that means those initial 18KBs of data should last quite some time.
 
 For some perspective on satellite connectivity costs, here's what you will pay with some competitors:
 
@@ -50,11 +50,11 @@ The dataflow between a Notecard/Starnote to Sklyo and then to Notehub and on to 
 
 ### Starnote Hardware
 
-As of today, there are two variants of the Starnote. Since satellite service with Skylo only requires usage of cellular LTE antennas, one variant is longer and includes onboard LTE and GPS/GNSS antennas from [Ignion](https://ignion.io/). The other includes u.FL connectors for using your own external LTE and GPS/GNSS antennas:
+As of today, there are two variants of the Starnote. One variant is taller and includes onboard LTE and GPS/GNSS antennas from [Ignion](https://ignion.io/). The other includes u.FL connectors for using your own external LTE and GPS/GNSS antennas. **Satellite service with Skylo only requires usage of cellular LTE antennas!**
 
 ![image of both starnote variants](both-starnotes.png)
 
-In addition, to make it easier to use Starnote and incorporate it in a design that's using a Notecard, Blues offers a new Notecarrier called the Notecarrier XS. With a slot for the Starnote and another slot for a cellular, Wi-Fi, or Cell+WiFi Notecard, it's certainly the easiest way to get started with Starnote (though you can also use the 6-pin connector on the front of the Starnote!).
+To make it easier to use Starnote and incorporate it in a design that's using a Notecard, Blues offers a new Notecarrier for $15 called the [Notecarrier XS](https://shop.blues.com/products/notecarrier-xs). With a slot for the Starnote and another slot for a cellular, Wi-Fi, or Cell+WiFi Notecard, it's certainly the easiest way to get started with Starnote (though you can also use the 6-pin connector on the front of the Starnote).
 
 ![blues notecarrier xs](notecarrier-xs.png)
 
@@ -62,7 +62,7 @@ In addition, to make it easier to use Starnote and incorporate it in a design th
 
 With that Starnote background behind us, let's take a look at how to build out this product, step-by-step.
 
-TODO: BANNER IMAGE REPEATED HERE
+![featherwing receiving sms](featherwing-received.jpg)
 
 ### What's that Blackberry-Looking Thing?
 
