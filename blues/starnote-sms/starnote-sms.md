@@ -9,7 +9,7 @@ That's definitely what I thought, at least until the [Blues Starnote](https://sh
 Starnote is a failover satellite communication device that works with the well-known [Blues Notecards](https://shop.blues.com/collections/notecard). "Failover" meaning you start by using a Blues Notecard with cellular or Wi-Fi and if you lose connectivity, the Notecard will _automatically_ failover to using Starnote for satellite comms. 🤯
 
 And yes it is just as easy as it sounds.
-
+x
 In this project, I'm going to show off how to get started with the Blues Starnote and use it as a remote messaging platform by both sending and receiving SMS messages using cloud services from Blues and Twilio.
 
 Here's a short functional demo of what I'm about to show off:
