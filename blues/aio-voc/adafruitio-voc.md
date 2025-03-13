@@ -308,7 +308,7 @@ And the results? Great success!
 
 https://youtu.be/pYM0PNfwX8U
 
-*Bonus points if you spot the cat!*
+*Bonus points if you can spot the cat!*
 
 So I hope you've seen **how easy it can be to build a truly cloud-connected product** that can:
 
