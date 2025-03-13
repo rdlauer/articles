@@ -302,9 +302,13 @@ Let's get this set up.
 
 1. You'll want to repeat this process to set the red color, changing the "if" statement to trigger if the VOC value is > 100.
 
+**NOTE:** The free tier of IFTTT only polls your Adafruit IO feed once per hour. You can upgrade to their "Pro" tier to get more frequent polling.
+
 ## Final Results
 
 And the results? Great success!
+
+The VOC levels in my office naturally range from about 90 to 130 throughout the day, but I hard-coded in some VOC values to quickly demonstrate the lights changing:
 
 https://youtu.be/pYM0PNfwX8U
 
