@@ -310,7 +310,7 @@ https://youtu.be/pYM0PNfwX8U
 
 *Bonus points if you spot the cat!*
 
-So I hope you've seen how easy it can be to build a truly cloud-connected product that can:
+So I hope you've seen **how easy it can be to build a truly cloud-connected product** that can:
 
 1. Measure indoor air quality.
 1. Send that data to the cloud.
