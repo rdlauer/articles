@@ -324,6 +324,6 @@ So I hope you've seen **how easy it can be to build a truly cloud-connected prod
 
 Thanks to the simplicity (and power) of **Blues Notecard and Adafruit IO** this project took me only a few hours to piece together - and I hope you can do the same!
 
-Get started with [Adafruit IO here](https://io.adafruit.com/) and get your own [Blues Starter Kit here](https://io.adafruit.com/). The starter kit includes an STM32 host, Notecarrier F, and a Notecard Cell+WiFi. Remember too, the full source code for this project is [available here on GitHub](https://gist.github.com/rdlauer/8be390f39462117631d8e1b215b4d359)!
+Get started with [Adafruit IO here](https://io.adafruit.com/) and get your own [Blues Starter Kit here](https://shop.blues.com/products/blues-global-starter-kit). The starter kit includes an STM32 host, Notecarrier F, and a Notecard Cell+WiFi. Remember too, the full source code for this project is [available here on GitHub](https://gist.github.com/rdlauer/8be390f39462117631d8e1b215b4d359)!
 
 Happy Hacking!
